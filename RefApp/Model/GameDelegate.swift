@@ -1,0 +1,15 @@
+//
+//  GameDelegate.swift
+//  RefApp
+//
+//  Created by Leandro Wauters on 12/5/18.
+//  Copyright © 2018 Leandro Wauters. All rights reserved.
+//
+
+import Foundation
+
+protocol GameDelegate: class {
+    func numberOfPlayersDidChange(to numberOfPlayers: Int)
+    func locationDidChange(to location: String)
+    func leagueDidChange(to league: String)
+}

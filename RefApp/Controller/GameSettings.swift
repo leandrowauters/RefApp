@@ -23,7 +23,6 @@ class GameSettings: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(Game.lengthSelected)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -42,12 +41,23 @@ class GameSettings: UITableViewController {
             destination.myString = "Enter League:"
             destination.selectedIndexPath = 6
             destination.gameDegelate = self
+        case "gameLength":
+            guard let destination = segue.destination as? GameLengthVC else {return}
+            destination.gameDelegate = self
         default:
             print("Error4")
         }
     }
 }
 extension GameSettings: GameDelegate {
+    func customGameLenghtChage(to lenght: Int) {
+        gameLenghtLabel.text = "\(lenght) minutes"
+    }
+    
+    func gameLengthChange(to lenght: Int) {
+        gameLenghtLabel.text = "\(lenght) minutes"
+    }
+    
     func leagueDidChange(to league: String) {
         leagueNameLabel.text = league
     }
@@ -57,7 +67,7 @@ extension GameSettings: GameDelegate {
     }
     
     func numberOfPlayersDidChange(to numberOfPlayers: Int) {
-        numberOfPlayersLabel.text = String(numberOfPlayers)
+        numberOfPlayersLabel.text = "\(numberOfPlayers) vs. \(numberOfPlayers)"
     }
 }
 

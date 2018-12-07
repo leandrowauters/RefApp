@@ -12,4 +12,10 @@ protocol GameDelegate: class {
     func numberOfPlayersDidChange(to numberOfPlayers: Int)
     func locationDidChange(to location: String)
     func leagueDidChange(to league: String)
+    func gameLengthChange(to lenght: Int)
+    func customGameLenghtChage(to lenght: Int)
+}
+
+protocol GameLengthDelegate: class {
+    func gameLengthChange(to lenght: Int)
 }

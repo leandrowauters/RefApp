@@ -9,7 +9,16 @@
 import UIKit
 
 class GameLengthCell: UITableViewCell {
-
     @IBOutlet weak var gameLength: UILabel!
+    @IBOutlet weak var otherLabel: UILabel!    
+    @IBOutlet weak var customLengthLabel: UILabel!
+    
+    
+    
+
+    
+    
     
 }
+
+

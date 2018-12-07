@@ -13,6 +13,7 @@ class TextVC: UIViewController {
     private var location = Game.location
     private var league = Game.league
     weak var gameDegelate: GameDelegate?
+    weak var gameLenghtDelegate: GameLengthDelegate?
     var selectedIndexPath = Int()
     var myString = String()
     
@@ -46,6 +47,17 @@ extension TextVC: UITextFieldDelegate{
             Game.league.append(textField.text!)
             gameDegelate?.leagueDidChange(to: league!)
             navigationController?.popViewController(animated: true)
+        case 7:
+            let lenght = Int(textField.text!)!
+            Game.lengthSelected = Int(textField.text!)!
+            gameLenghtDelegate?.gameLengthChange(to: lenght)
+            navigationController?.popViewController(animated: true)
+            
+//            gameDegelate?.customGameLenghtChage(to: lenght)
+//            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "gameSettings")
+//            vc.modalPresentationStyle = .overCurrentContext
+//            present(vc, animated: true, completion: nil)
         default:
             print("Error1")
         }

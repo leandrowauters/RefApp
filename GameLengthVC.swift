@@ -11,6 +11,11 @@ import UIKit
 class GameLengthVC: UIViewController {
     var gameLength = Game.length
     var gameDelegate: GameDelegate?
+    var selecteGameLenght = "Not Selected" {
+        didSet{
+            myTableView.reloadData()
+        }
+    }
     @IBOutlet weak var myTableView: UITableView!
  
     override func viewDidLoad() {
@@ -18,12 +23,13 @@ class GameLengthVC: UIViewController {
         myTableView.dataSource = self
         myTableView.delegate = self
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? TextVC else {return}
         destination.myString = "Enter Game Length:"
         destination.selectedIndexPath = 7
         destination.gameDegelate =  gameDelegate
+        destination.gameLenghtDelegate = self
     }
 
 }
@@ -36,15 +42,15 @@ extension GameLengthVC: UITableViewDataSource{
             let chosenGamelength = gameLength[indexPath.row]
         var cellToReturn = UITableViewCell()
         if chosenGamelength != 0{
-            guard let cell = myTableView.dequeueReusableCell(withIdentifier: "gameLength", for: indexPath) as? GameLengthCell else {return UITableViewCell()}
-            cell.gameLength.text = ("\(chosenGamelength) minutes")
+            let cell = myTableView.dequeueReusableCell(withIdentifier: "gameLength", for: indexPath)
+            cell.textLabel?.text = ("\(chosenGamelength) minutes")
             cellToReturn = cell
         } else if chosenGamelength == 0 {
-            guard let cell = myTableView.dequeueReusableCell(withIdentifier: "other", for: indexPath) as? GameLengthCell else {return UITableViewCell()}
-            cell.otherLabel.text = "Enter Other: "
-            
+            let cell = myTableView.dequeueReusableCell(withIdentifier: "other", for: indexPath)
+            cell.textLabel?.text = "Enter Other: "
+            cell.detailTextLabel?.textColor = .lightGray
+            cell.detailTextLabel?.text = "\(selecteGameLenght)"
             cellToReturn = cell
-            
         }
             return cellToReturn
         }
@@ -74,5 +80,11 @@ extension GameLengthVC: UITableViewDelegate {
     }
 }
 
-
+extension GameLengthVC: GameLengthDelegate{
+    func gameLengthChange(to lenght: Int) {
+        selecteGameLenght = "\(lenght) minutes"
+    }
+    
+    
+}
 

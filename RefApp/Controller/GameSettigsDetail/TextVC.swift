@@ -50,7 +50,7 @@ extension TextVC: UITextFieldDelegate{
         case 7:
             let lenght = Int(textField.text!)!
             Game.lengthSelected = Int(textField.text!)!
-            gameDegelate?.customGameLenghtChage(to: lenght)
+            gameDegelate?.gameLengthChange(to: lenght)
             navigationController?.popViewController(animated: true)
             
 //            gameDegelate?.customGameLenghtChage(to: lenght)

@@ -10,16 +10,9 @@ import UIKit
 
 class GameLengthVC: UIViewController {
     var gameLength = Game.length
-    weak var gameDelegate: GameDelegate?
+    var gameDelegate: GameDelegate?
     @IBOutlet weak var myTableView: UITableView!
  
-    
-    
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         myTableView.dataSource = self
@@ -30,7 +23,7 @@ class GameLengthVC: UIViewController {
         guard let destination = segue.destination as? TextVC else {return}
         destination.myString = "Enter Game Length:"
         destination.selectedIndexPath = 7
-        
+        destination.gameDegelate =  gameDelegate
     }
 
 }
@@ -69,8 +62,8 @@ extension GameLengthVC: UITableViewDelegate {
             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
             
         } else if indexPath.row == 3 {
-            //TO DO WHAT ABOVE
-            
+//            Game.lengthSelected = Game.lengthSelected
+//            gameDelegate?.gameLengthChange(to: Game.lengthSelected)//prints 0
         }
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -80,5 +73,6 @@ extension GameLengthVC: UITableViewDelegate {
         return 50
     }
 }
+
 
 

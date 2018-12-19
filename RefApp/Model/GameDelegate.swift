@@ -13,7 +13,6 @@ protocol GameDelegate: class {
     func locationDidChange(to location: String)
     func leagueDidChange(to league: String)
     func gameLengthChange(to lenght: Int)
-    func customGameLenghtChage(to lenght: Int)
 }
 
 protocol GameLengthDelegate: class {

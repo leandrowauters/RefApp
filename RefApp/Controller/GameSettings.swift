@@ -108,9 +108,6 @@ class GameSettings: UITableViewController {
     }
 }
 extension GameSettings: GameDelegate {
-    func customGameLenghtChage(to lenght: Int) {
-        gameLenghtLabel.text = "\(lenght) minutes"
-    }
     
     func gameLengthChange(to lenght: Int) {
         gameLenghtLabel.text = "\(lenght) minutes"

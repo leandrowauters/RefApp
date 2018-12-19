@@ -23,7 +23,59 @@ class GameSettings: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        numberOfSubsLabel.text = "None"
+        myTableView.backgroundColor = #colorLiteral(red: 0.5987986922, green: 0.7483736873, blue: 0.8878619075, alpha: 1)
+        numberOfPlayersLabel.adjustsFontSizeToFitWidth = true
+        printValues()
     }
+    func printValues (){
+        print("Location: \(Game.location)")
+        print("Number Of Players: \(Game.numberOfPlayers)")
+        print("Legue: \(Game.league)")
+        print("Referee \(Game.refereeNames)")
+        print("Home Cap: \(Game.homeCaptain)")
+        print("Away Cap: \(Game.awayCaptain)")
+        print("Length: \(Game.lengthSelected)")
+        print("Home Team: \(Game.homeTeam)")
+        print("Away Team: \(Game.awayTeam)")
+        print("Date: \(Game.dateAndTime)")
+        print("Extra Time? \(Game.extraTime)")
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        printValues()
+    }
+    @IBAction func extraTimeSwitchPressed(_ sender: UISwitch) {
+        if sender.isOn {
+            Game.extraTime = true
+            extraTimeLabel.text = "Yes"
+        } else {
+            Game.extraTime = false
+            extraTimeLabel.text = "No"
+        }
+    }
+    
+    @IBAction func subsStepperPressed(_ sender: UIStepper) {
+        numberOfSubsLabel.isHidden = false
+        let stepperValue = Int(sender.value)
+        func updateValue(){
+            Game.subs = stepperValue
+            numberOfSubsLabel.text = stepperValue.description
+        }
+        switch sender.value {
+        case 0:
+            Game.subs = stepperValue
+            numberOfSubsLabel.text = "None"
+        case 1...6:
+            updateValue()
+        case sender.maximumValue:
+            Game.subs = 7
+            numberOfSubsLabel.text = "∞"
+        default:
+            print("Error subsStepperPresssed")
+        }
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "numberOfPlayers":
@@ -44,6 +96,12 @@ class GameSettings: UITableViewController {
         case "gameLength":
             guard let destination = segue.destination as? GameLengthVC else {return}
             destination.gameDelegate = self
+        case "ref":
+            guard let destination = segue.destination as? NamesInputVC else {return}
+            destination.selectedIndex = 0
+        case "cap":
+            guard let destination = segue.destination as? NamesInputVC else {return}
+            destination.selectedIndex = 1
         default:
             print("Error4")
         }

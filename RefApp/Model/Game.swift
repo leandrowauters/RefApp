@@ -8,19 +8,22 @@
 
 import UIKit
 struct Game {
-    static var teamNames = [String]() // unique vc
+    // unique vc
     static var length = [45, 30, 15, 0] // STATIC VC
     static var lengthSelected = Int()
     static var numberOfPlayers = Int()
     // TYPE INTO CELL
     static var location = String() //TYPE INTO CELL
-    static var dateAndTime = UIDatePicker()//OR DATE? // DATE PICKER VIEW UNIQUE VC
+    static var dateAndTime = Date()//OR DATE? // DATE PICKER VIEW UNIQUE VC
     static var league = [String]() //INPUT MUST BE SAVED - [String]? // TYPE INTO CELL
     static var refereeNames = [String]() // TYPE INTO CELL
-    static var captainNames = [String]() //TYPE INTO CELL
-    static var extraTime = [true,false] // STATIC VC YES OR NOW
-    static var homeTeam = String()
-    static var awayTeam = String()
+    static var homeCaptain = String() //TYPE INTO CELL
+    static var awayCaptain = String()
+    static var extraTime = Bool() // STATIC VC YES OR NOW
+    static var homeTeam = "Home"
+    static var awayTeam = "Away"
+    static var subs = Int()
+    
     
     
     

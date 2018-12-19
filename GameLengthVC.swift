@@ -30,6 +30,7 @@ class GameLengthVC: UIViewController {
         guard let destination = segue.destination as? TextVC else {return}
         destination.myString = "Enter Game Length:"
         destination.selectedIndexPath = 7
+        
     }
 
 }

@@ -10,9 +10,15 @@ import UIKit
 
 class DatePickerVC: UIViewController {
 
+    @IBOutlet weak var picker: UIDatePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    @IBAction func doneWasClicked(_ sender: UIButton) {
+        Game.dateAndTime = picker.date
+        navigationController?.popViewController(animated: true)
     }
     
 }

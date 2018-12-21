@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D510975121CAC57E008638B3 /* PlayerInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510975021CAC57E008638B3 /* PlayerInputVC.swift */; };
 		D529FDFB21B46E7A00DDC366 /* TextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529FDFA21B46E7A00DDC366 /* TextVC.swift */; };
 		D529FDFF21B4748C00DDC366 /* TeamsInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529FDFE21B4748C00DDC366 /* TeamsInputVC.swift */; };
 		D529FE0121B4755F00DDC366 /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529FE0021B4755F00DDC366 /* DatePickerVC.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D510975021CAC57E008638B3 /* PlayerInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInputVC.swift; sourceTree = "<group>"; };
 		D529FDFA21B46E7A00DDC366 /* TextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextVC.swift; sourceTree = "<group>"; };
 		D529FDFE21B4748C00DDC366 /* TeamsInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsInputVC.swift; sourceTree = "<group>"; };
 		D529FE0021B4755F00DDC366 /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		D5FBD98821B235AF005D89F4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D510975021CAC57E008638B3 /* PlayerInputVC.swift */,
 				D5FBD98421B2358D005D89F4 /* GameSettings.swift */,
 				D529FE0421B475E100DDC366 /* GameSettigsDetail */,
 			);
@@ -204,6 +207,7 @@
 				D529FDFB21B46E7A00DDC366 /* TextVC.swift in Sources */,
 				D5637AF721B88BD2003821F5 /* GameDelegate.swift in Sources */,
 				D544EC8F21C8498E004B285C /* NamesInputVC.swift in Sources */,
+				D510975121CAC57E008638B3 /* PlayerInputVC.swift in Sources */,
 				D529FE0121B4755F00DDC366 /* DatePickerVC.swift in Sources */,
 				D529FDFF21B4748C00DDC366 /* TeamsInputVC.swift in Sources */,
 				D58C2FFF21B5D50500A15E03 /* GameLengthCell.swift in Sources */,

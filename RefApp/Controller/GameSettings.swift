@@ -26,23 +26,11 @@ class GameSettings: UITableViewController {
         numberOfSubsLabel.text = "None"
         myTableView.backgroundColor = #colorLiteral(red: 0.5987986922, green: 0.7483736873, blue: 0.8878619075, alpha: 1)
         numberOfPlayersLabel.adjustsFontSizeToFitWidth = true
-        printValues()
+//        Game.printValues()
     }
-    func printValues (){
-        print("Location: \(Game.location)")
-        print("Number Of Players: \(Game.numberOfPlayers)")
-        print("Legue: \(Game.league)")
-        print("Referee \(Game.refereeNames)")
-        print("Home Cap: \(Game.homeCaptain)")
-        print("Away Cap: \(Game.awayCaptain)")
-        print("Length: \(Game.lengthSelected)")
-        print("Home Team: \(Game.homeTeam)")
-        print("Away Team: \(Game.awayTeam)")
-        print("Date: \(Game.dateAndTime)")
-        print("Extra Time? \(Game.extraTime)")
-    }
+
     override func viewDidAppear(_ animated: Bool) {
-        printValues()
+//        Game.printValues()
     }
     @IBAction func extraTimeSwitchPressed(_ sender: UISwitch) {
         if sender.isOn {

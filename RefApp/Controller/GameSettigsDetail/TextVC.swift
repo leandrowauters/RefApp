@@ -16,6 +16,8 @@ class TextVC: UIViewController {
     weak var gameLenghtDelegate: GameLengthDelegate?
     var selectedIndexPath = Int()
     var myString = String()
+
+    
     
     @IBOutlet weak var gameSettingLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
@@ -25,6 +27,37 @@ class TextVC: UIViewController {
         print(selectedIndexPath)
         textField.delegate = self
         gameSettingLabel.text = myString
+        useNumKeyboard()
+        
+    }
+    func useNumKeyboard(){
+        switch selectedIndexPath {
+        case 2,7:
+        textField.keyboardType = .numberPad
+        let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonAction))
+        GameClient.doneButton(view: self.view, doneBtn: doneBtn, textField: textField)
+        default:
+            return
+        }
+    }
+    @objc func doneButtonAction() {
+        switch selectedIndexPath {
+        case 2:
+            let numberOfPlayers = Int(textField.text!)!
+            
+            Game.numberOfPlayers = Int(textField.text!)!
+            gameDegelate?.numberOfPlayersDidChange(to: numberOfPlayers)
+            navigationController?.popViewController(animated: true)
+        case 7:
+            let lenght = Int(textField.text!)!
+            Game.lengthSelected = Int(textField.text!)!
+            gameDegelate?.gameLengthChange(to: lenght)
+            gameLenghtDelegate?.gameLengthChange(to: lenght)
+            navigationController?.popViewController(animated: true)
+        default:
+            return
+        }
+
     }
 }
 
@@ -34,6 +67,7 @@ extension TextVC: UITextFieldDelegate{
         switch selectedIndexPath{
         case 2:
             let numberOfPlayers = Int(textField.text!)!
+
             Game.numberOfPlayers = Int(textField.text!)!
             gameDegelate?.numberOfPlayersDidChange(to: numberOfPlayers)
             navigationController?.popViewController(animated: true)

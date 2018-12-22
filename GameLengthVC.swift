@@ -31,7 +31,6 @@ class GameLengthVC: UIViewController {
         destination.gameDegelate =  gameDelegate
         destination.gameLenghtDelegate = self
     }
-
 }
 extension GameLengthVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

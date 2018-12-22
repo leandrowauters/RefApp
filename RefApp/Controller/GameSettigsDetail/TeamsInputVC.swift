@@ -9,6 +9,9 @@
 import UIKit
 
 class TeamsInputVC: UIViewController {
+    
+    weak var gameDegelate: GameDelegate?
+    
     @IBOutlet weak var teamTextField: UITextField!
     @IBOutlet weak var team1Label: UILabel!
     @IBOutlet weak var team2Label: UILabel!
@@ -28,12 +31,12 @@ class TeamsInputVC: UIViewController {
         teamTextField.placeholder = "Please Enter Home Team Name"
     
     }
-    override func viewDidAppear(_ animated: Bool) {
-        team1Label.text = Game.homeTeam
-        team2Label.text = Game.awayTeam
-        teamTextField.delegate = self
-        teamTextField.placeholder = "Please Enter Home Team Name"
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        team1Label.text = Game.homeTeam
+//        team2Label.text = Game.awayTeam
+//        teamTextField.delegate = self
+//        teamTextField.placeholder = "Please Enter Home Team Name"
+//    }
     @objc func goBack(){
         navigationController?.popViewController(animated: true)
     }
@@ -45,15 +48,18 @@ extension TeamsInputVC: UITextFieldDelegate{
         numberOfClicks += 1
         switch numberOfClicks{
         case 1:
-            textField.placeholder = "Please Enter Away Team Name"
-            team1Label.text = textField.text
-            Game.homeTeam = textField.text!
+            guard let text = textField.text else {return false}
+            team1Label.text = text.capitalized
+            Game.homeTeam = text
             textField.text = ""
+            textField.placeholder = "Please Enter Away Team Name"
             textField.resignFirstResponder()
         case 2:
-            team2Label.text = textField.text
-            Game.awayTeam = textField.text!
+            guard let text = textField.text else {return false}
+            team2Label.text = text.capitalized
+            Game.awayTeam = text
             textField.text = ""
+            gameDegelate?.teamsLabelChange(to: "Selected")
             textField.resignFirstResponder()
             let _: Timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(goBack), userInfo: nil, repeats: true)
 

@@ -77,6 +77,7 @@ class PlayerInputVC: UIViewController {
             playerLeftLabel.text = "Player already entered"
             playersTextField.text = ""
         } else {
+        playersLeft()
         Game.homePlayers.append(Int(num))
         let indexPath = IndexPath(row: Game.homePlayers.count - 1, section: 0)
         playersTableView.beginUpdates()

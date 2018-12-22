@@ -10,6 +10,8 @@ import UIKit
 
 class GameSettings: UITableViewController {
 
+    
+    @IBOutlet weak var teamSelectionLabel: UILabel!
     @IBOutlet weak var gameLenghtLabel: UILabel!
     @IBOutlet weak var numberOfPlayersLabel: UILabel!
     @IBOutlet weak var numberOfSubsLabel: UILabel!
@@ -26,11 +28,11 @@ class GameSettings: UITableViewController {
         numberOfSubsLabel.text = "None"
         myTableView.backgroundColor = #colorLiteral(red: 0.5987986922, green: 0.7483736873, blue: 0.8878619075, alpha: 1)
         numberOfPlayersLabel.adjustsFontSizeToFitWidth = true
-//        Game.printValues()
+        GameClient.printValues()
     }
 
     override func viewDidAppear(_ animated: Bool) {
-//        Game.printValues()
+        GameClient.printValues()
     }
     @IBAction func extraTimeSwitchPressed(_ sender: UISwitch) {
         if sender.isOn {
@@ -66,6 +68,9 @@ class GameSettings: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
+        case "teamSelection":
+            guard let destination = segue.destination as? TeamsInputVC else {return}
+            destination.gameDegelate = self
         case "numberOfPlayers":
             guard let destination = segue.destination as? TextVC else {return}
             destination.myString = "Number Of Players Per Team: "
@@ -75,6 +80,9 @@ class GameSettings: UITableViewController {
             guard let destination = segue.destination as? TextVC else {return}
             destination.myString = "Enter Location:"
             destination.selectedIndexPath = 4
+            destination.gameDegelate = self
+        case "date":
+            guard let destination = segue.destination as? DatePickerVC else {return}
             destination.gameDegelate = self
         case "leagueName":
             guard let destination = segue.destination as? TextVC else {return}
@@ -96,6 +104,14 @@ class GameSettings: UITableViewController {
     }
 }
 extension GameSettings: GameDelegate {
+    func dateLabelChange(to date: String) {
+        dateTimeLabel.text = date
+    }
+    
+    func teamsLabelChange(to selected: String) {
+        teamSelectionLabel.text = "Selected"
+    }
+    
     
     func gameLengthChange(to lenght: Int) {
         gameLenghtLabel.text = "\(lenght) minutes"

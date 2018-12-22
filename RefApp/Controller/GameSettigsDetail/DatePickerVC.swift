@@ -9,7 +9,7 @@
 import UIKit
 
 class DatePickerVC: UIViewController {
-
+weak var gameDegelate: GameDelegate?
     @IBOutlet weak var picker: UIDatePicker!
     
     override func viewDidLoad() {
@@ -18,6 +18,8 @@ class DatePickerVC: UIViewController {
     }
     @IBAction func doneWasClicked(_ sender: UIButton) {
         Game.dateAndTime = picker.date
+        let date = GameClient.convertDateToLocalDate(str: picker.date.description, dateFormat: "MMM d, h:mm a")
+        gameDegelate?.dateLabelChange(to: date)
         navigationController?.popViewController(animated: true)
     }
     

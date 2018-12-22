@@ -30,4 +30,20 @@ struct GameClient {
         toolbar.sizeToFit()
         textField.inputAccessoryView = toolbar
     }
+    
+    static func convertDateToLocalDate(str: String, dateFormat: String) -> String {
+        // Making a Date from a String
+        let dateString = str
+        var dateToReturn = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+        
+        //        dateFormatter.timeZone = T
+        if let date2 = dateFormatter.date(from: dateString) {
+            dateFormatter.dateFormat = dateFormat
+            dateToReturn = date2
+        }
+        dateFormatter.timeZone = TimeZone.current
+        return dateFormatter.string(from: dateToReturn)
+    }
 }

@@ -18,6 +18,7 @@ class NamesInputVC: UIViewController {
     @IBOutlet weak var name1Label: UILabel!
     @IBOutlet weak var name2Label: UILabel!
     @IBOutlet weak var name3Label: UILabel!
+    @IBOutlet weak var name4Label: UILabel!
     
     
     override func viewDidLoad() {

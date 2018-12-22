@@ -13,6 +13,8 @@ protocol GameDelegate: class {
     func locationDidChange(to location: String)
     func leagueDidChange(to league: String)
     func gameLengthChange(to lenght: Int)
+    func teamsLabelChange(to selected: String)
+    func dateLabelChange(to date: String)
 }
 
 protocol GameLengthDelegate: class {

@@ -13,58 +13,66 @@ class NamesInputVC: UIViewController {
     var buttonTapsRef = 0
     var buttonTapsCap = 0
     var selectedIndex = Int()
-    @IBOutlet weak var nameLabel: UILabel!
+    
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var name1Label: UILabel!
-    @IBOutlet weak var name2Label: UILabel!
-    @IBOutlet weak var name3Label: UILabel!
-    @IBOutlet weak var name4Label: UILabel!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var nameLabels: [UILabel]!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.delegate = self
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
         switch selectedIndex {
         case 0:
-            nameLabel.text = "Enter Referee's Name"
+            titleLabel.text = "Enter Referee's Name"
         case 1:
-            nameLabel.text = "Enter \(Game.homeTeam) Captain"
+            titleLabel.text = "Enter \(Game.homeTeam) Captain"
         default:
             print("Error")
         }
         
     }
     
-    @objc func goBack(){
-        navigationController?.popViewController(animated: true)
+//    @objc func goBack(){
+//        navigationController?.popViewController(animated: true)
+//    }
+    @objc func dismissKeyboard(){
+        self.view.endEditing(true)
     }
 }
 
 extension NamesInputVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        buttonTapsRef += 1
+        let nameLabel = nameLabels[buttonTapsRef]
+        guard let text = textField.text else {return false}
+        func helper(title: String, refName: String){
+            Game.refereeNames.append(textField.text!)
+            nameLabel.isHidden = false
+            titleLabel.text = title
+            nameLabel.text = refName
+        }
+
         switch selectedIndex {
         case 0:
             switch buttonTapsRef {
-            case 0:
-                Game.refereeNames.append(textField.text!)
-                nameLabel.text = "Optional: Enter Assistant 1"
-                name1Label.isHidden = false
-                name1Label.text = "First Ref: \(textField.text!)"
-                buttonTapsRef += 1
-                textField.text = ""
             case 1:
-                Game.refereeNames.append(textField.text!)
-                name2Label.text = textField.text!
-                nameLabel.text = "Optional: Enter Assistant 2"
-                name2Label.isHidden = false
-                name2Label.text = "Assistant Ref #1: \(textField.text!)"
-                buttonTapsRef += 1
-                textField.text = ""
+                helper(title: "Enter Assistant 1 (Optional)", refName: "First Ref: \(text.capitalized)")
             case 2:
-                Game.refereeNames.append(textField.text!)
-                name3Label.text = "Assistant Ref #2: \(textField.text!)"
-                name3Label.isHidden = false
-                let _: Timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(goBack), userInfo: nil, repeats: true)
+                helper(title: "Enter Assistant 2 (Optional)", refName: "Assistant Ref #1: \(text.capitalized)")
+            case 3:
+                helper(title: "Enter Fourth Official (Optional)", refName: "Assistant Ref #2: \(text.capitalized)")
+            case 4:
+                helper(title: "Enter Assistant 3 (Optional)", refName: "Fourth Official: \(text.capitalized)")
+            case 5:
+                helper(title: "Enter Assistant 4 (Optional)", refName: "Fourth Official: \(text.capitalized)")
+                view.endEditing(true)
+                nameTextField.isEnabled = false
+                
+//                let _: Timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(goBack), userInfo: nil, repeats: true)
                 
             default:
                 print("Error")
@@ -74,15 +82,15 @@ extension NamesInputVC: UITextFieldDelegate {
             case 0:
                 Game.homeCaptain = textField.text!
                 nameLabel.text = "Enter \(Game.awayTeam) Captain"
-                name1Label.text = "\(Game.homeTeam) Captain: \(textField.text!)"
-                name1Label.isHidden = false
+                nameLabel.text = "\(Game.homeTeam) Captain: \(textField.text!)"
+                nameLabel.isHidden = false
                 buttonTapsCap += 1
                 textField.text = ""
             case 1:
                 Game.awayCaptain = textField.text!
-                name2Label.text = "Away \(Game.awayCaptain): \(textField.text!)"
-                name2Label.isHidden = false
-                let _: Timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(goBack), userInfo: nil, repeats: true)
+                nameLabel.text = "Away \(Game.awayCaptain): \(textField.text!)"
+                nameLabel.isHidden = false
+//                let _: Timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(goBack), userInfo: nil, repeats: true)
                 
             default:
                 print("Error")
@@ -90,6 +98,7 @@ extension NamesInputVC: UITextFieldDelegate {
         default:
             print("Error")
         }
+    textField.text = ""
     return true
     }
 }

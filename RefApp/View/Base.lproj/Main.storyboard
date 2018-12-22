@@ -31,9 +31,9 @@
                             </connections>
                         </button>
                         <sections>
-                            <tableViewSection headerTitle="Section-1" id="GWh-Mk-zBA">
+                            <tableViewSection headerTitle="Section-1" id="GWh-Mk-zBA" userLabel="Game Options">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="teamNames" id="bJW-wh-U04">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="teamNames" id="bJW-wh-U04">
                                         <rect key="frame" x="0.0" y="28" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bJW-wh-U04" id="Y6p-yM-M4L">
@@ -65,7 +65,7 @@
                                             <segue destination="Dyk-sF-0nF" kind="show" identifier="teamSelection" id="wp1-dG-dtP"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="gameLength" id="4Xj-M9-LGv">
+                                    <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="gameLength" id="4Xj-M9-LGv">
                                         <rect key="frame" x="0.0" y="74" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Xj-M9-LGv" id="RKy-hH-aCC">
@@ -96,7 +96,7 @@
                                             <segue destination="k78-hn-mBs" kind="show" identifier="gameLength" id="3AZ-AZ-O71"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="2" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="YOG-fh-pdO">
+                                    <tableViewCell clipsSubviews="YES" tag="2" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="YOG-fh-pdO">
                                         <rect key="frame" x="0.0" y="120" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YOG-fh-pdO" id="oVg-fw-cPN">
@@ -129,7 +129,7 @@
                                             <segue destination="Ibh-8S-whv" kind="show" identifier="numberOfPlayers" id="NBY-At-NIU"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="3" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oDP-nn-eZH">
+                                    <tableViewCell clipsSubviews="YES" tag="3" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="oDP-nn-eZH">
                                         <rect key="frame" x="0.0" y="166" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oDP-nn-eZH" id="E2Y-or-Yp9">
@@ -168,9 +168,9 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Section-2" id="D9S-Bk-fed">
+                            <tableViewSection headerTitle="Section-2" id="D9S-Bk-fed" userLabel="Game Details">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" tag="4" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="WYG-gO-x7A">
+                                    <tableViewCell clipsSubviews="YES" tag="4" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="WYG-gO-x7A">
                                         <rect key="frame" x="0.0" y="240" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WYG-gO-x7A" id="zJm-33-9bW">
@@ -202,7 +202,7 @@
                                             <segue destination="Ibh-8S-whv" kind="show" identifier="location" id="Vsc-yp-8gc"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="5" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="4yY-FH-Hbi">
+                                    <tableViewCell clipsSubviews="YES" tag="5" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="4yY-FH-Hbi">
                                         <rect key="frame" x="0.0" y="286" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4yY-FH-Hbi" id="EdO-cI-lAe">
@@ -234,7 +234,7 @@
                                             <segue destination="LbS-vK-1RD" kind="show" identifier="date" id="Cea-yI-nzH"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="6" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="MZt-Us-6W6">
+                                    <tableViewCell clipsSubviews="YES" tag="6" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="MZt-Us-6W6">
                                         <rect key="frame" x="0.0" y="332" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MZt-Us-6W6" id="l3X-Eb-9BB">
@@ -266,7 +266,7 @@
                                             <segue destination="Ibh-8S-whv" kind="show" identifier="leagueName" id="x7g-4r-ffK"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="7" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="H31-lp-dwp">
+                                    <tableViewCell clipsSubviews="YES" tag="7" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="H31-lp-dwp">
                                         <rect key="frame" x="0.0" y="378" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H31-lp-dwp" id="85p-au-JRm">
@@ -290,7 +290,7 @@
                                             <segue destination="Ulr-3Y-Mih" kind="show" identifier="ref" id="yNa-gg-ekD"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="8" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Nfw-cS-K9d">
+                                    <tableViewCell clipsSubviews="YES" tag="8" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="Nfw-cS-K9d">
                                         <rect key="frame" x="0.0" y="424" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nfw-cS-K9d" id="pOm-Eb-hq3">
@@ -316,9 +316,9 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Section-3" id="sQU-sm-f5m">
+                            <tableViewSection headerTitle="Section-3" id="sQU-sm-f5m" userLabel="Extras">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vRH-Bg-DCU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="vRH-Bg-DCU">
                                         <rect key="frame" x="0.0" y="498" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vRH-Bg-DCU" id="T6E-Dc-pth">
@@ -397,7 +397,7 @@
                                 <rect key="frame" x="0.0" y="32" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gameLength" textLabel="GfG-L5-ua4" style="IBUITableViewCellStyleDefault" id="Yr9-OD-1v3" customClass="GameLengthCell" customModule="RefApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gameLength" textLabel="GfG-L5-ua4" style="IBUITableViewCellStyleDefault" id="Yr9-OD-1v3" customClass="GameLengthCell" customModule="RefApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yr9-OD-1v3" id="4XN-yh-rv3">
@@ -472,7 +472,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jgu-9j-ySp">
                                 <rect key="frame" x="0.0" y="247.5" width="375" height="53.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqL-RA-QgW">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yqL-RA-QgW">
                                         <rect key="frame" x="8" y="0.0" width="228" height="53.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="228" id="CRf-bd-y2H"/>
@@ -748,12 +748,14 @@
                         <viewLayoutGuide key="safeArea" id="tnZ-Jn-swy"/>
                     </view>
                     <connections>
-                        <outlet property="name1Label" destination="nlc-Vd-Vbc" id="VGd-5y-rtL"/>
-                        <outlet property="name2Label" destination="gf9-yb-Wnl" id="dr3-u0-0q1"/>
-                        <outlet property="name3Label" destination="Uas-Ax-TPD" id="Q4X-gB-YoL"/>
-                        <outlet property="name4Label" destination="Uas-Ax-TPD" id="uim-N6-WF3"/>
-                        <outlet property="nameLabel" destination="wUu-bs-sRQ" id="Las-mN-ndB"/>
                         <outlet property="nameTextField" destination="Up0-pG-ibI" id="yuc-PP-n5d"/>
+                        <outlet property="titleLabel" destination="wUu-bs-sRQ" id="Q7W-0y-KaZ"/>
+                        <outletCollection property="nameLabels" destination="nlc-Vd-Vbc" collectionClass="NSMutableArray" id="viQ-2m-gFs"/>
+                        <outletCollection property="nameLabels" destination="gf9-yb-Wnl" collectionClass="NSMutableArray" id="daL-Mu-PpZ"/>
+                        <outletCollection property="nameLabels" destination="DaT-Ar-0Et" collectionClass="NSMutableArray" id="Zwk-iG-WcC"/>
+                        <outletCollection property="nameLabels" destination="Uas-Ax-TPD" collectionClass="NSMutableArray" id="Xsp-zL-qTW"/>
+                        <outletCollection property="nameLabels" destination="5rD-mK-UvD" collectionClass="NSMutableArray" id="fLY-MY-chn"/>
+                        <outletCollection property="nameLabels" destination="Byd-2Z-nTv" collectionClass="NSMutableArray" id="MvE-LX-sVk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rjo-tS-t2H" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -790,7 +792,7 @@
                                 <rect key="frame" x="45" y="168" width="285" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

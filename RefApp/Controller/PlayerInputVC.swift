@@ -26,7 +26,7 @@ class PlayerInputVC: UIViewController {
         super.viewDidLoad()
         playersTableView.tableFooterView = UIView(frame: CGRect.zero)
         GameClient.printValues()
-        playerTitleLabel.text = "Enter \(Game.homeTeam) players numbers"
+        playerTitleLabel.text = "Enter \(Game.homeTeam.capitalized) players numbers"
         playersTableView.delegate = self
         playersTableView.dataSource = self
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Enter Player", style: .done, target: self, action: #selector(doneButtonAction))
@@ -77,8 +77,8 @@ class PlayerInputVC: UIViewController {
             playerLeftLabel.text = "Player already entered"
             playersTextField.text = ""
         } else {
-        playersLeft()
         Game.homePlayers.append(Int(num))
+        playersLeft()
         let indexPath = IndexPath(row: Game.homePlayers.count - 1, section: 0)
         playersTableView.beginUpdates()
         playersTableView.insertRows(at: [indexPath], with: .automatic)

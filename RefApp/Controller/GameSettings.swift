@@ -65,7 +65,18 @@ class GameSettings: UITableViewController {
         }
     }
     
-    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Game Options"
+        case 1:
+            return "Game Details"
+        case 2:
+            return "Extras"
+        default:
+            return "Error"
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "teamSelection":
@@ -118,11 +129,11 @@ extension GameSettings: GameDelegate {
     }
     
     func leagueDidChange(to league: String) {
-        leagueNameLabel.text = league
+        leagueNameLabel.text = league.capitalized
     }
     
     func locationDidChange(to location: String) {
-        locationLabel.text = location
+        locationLabel.text = location.capitalized
     }
     
     func numberOfPlayersDidChange(to numberOfPlayers: Int) {

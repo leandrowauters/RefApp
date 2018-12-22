@@ -561,21 +561,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OeM-3N-HL0">
-                                <rect key="frame" x="11" y="168" width="240.5" height="30"/>
+                                <rect key="frame" x="11" y="168" width="353" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ih3-41-FWH">
-                                <rect key="frame" x="262.5" y="168" width="97.5" height="30"/>
-                                <color key="backgroundColor" red="0.38311418009999998" green="0.57669733499999998" blue="0.3604292248" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Add Player">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="addButtonTapped:" destination="Rv0-o2-Tev" eventType="touchUpInside" id="O6d-3K-rxf"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FR4-sK-n4E">
                                 <rect key="frame" x="0.0" y="248" width="375" height="419"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -611,8 +601,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="OeM-3N-HL0" firstAttribute="centerX" secondItem="zMn-ql-XSm" secondAttribute="centerX" multiplier="0.7" id="1lT-pP-fHb"/>
-                            <constraint firstItem="ih3-41-FWH" firstAttribute="centerY" secondItem="OeM-3N-HL0" secondAttribute="centerY" id="9ab-7Z-201"/>
+                            <constraint firstItem="OeM-3N-HL0" firstAttribute="centerX" secondItem="zMn-ql-XSm" secondAttribute="centerX" multiplier="0.7" constant="56.25" id="1lT-pP-fHb"/>
                             <constraint firstItem="zMn-ql-XSm" firstAttribute="bottom" secondItem="FR4-sK-n4E" secondAttribute="bottom" id="BZQ-TH-4VH"/>
                             <constraint firstItem="WgX-rq-F5V" firstAttribute="leading" secondItem="zMn-ql-XSm" secondAttribute="leading" constant="11" id="E9G-ps-xkF"/>
                             <constraint firstItem="19f-yk-rdd" firstAttribute="top" secondItem="W7j-8b-unq" secondAttribute="bottom" constant="8" id="HZg-KR-j7h"/>
@@ -620,8 +609,6 @@
                             <constraint firstItem="W7j-8b-unq" firstAttribute="leading" secondItem="zMn-ql-XSm" secondAttribute="leading" constant="11" id="JUU-pZ-k3V"/>
                             <constraint firstItem="zMn-ql-XSm" firstAttribute="trailing" secondItem="W7j-8b-unq" secondAttribute="trailing" constant="11" id="RU2-qY-U2o"/>
                             <constraint firstItem="zMn-ql-XSm" firstAttribute="trailing" secondItem="19f-yk-rdd" secondAttribute="trailing" constant="11" id="Sob-B6-XJx"/>
-                            <constraint firstItem="zMn-ql-XSm" firstAttribute="trailing" secondItem="ih3-41-FWH" secondAttribute="trailing" constant="15" id="Uer-Qu-bBZ"/>
-                            <constraint firstItem="ih3-41-FWH" firstAttribute="leading" secondItem="OeM-3N-HL0" secondAttribute="trailing" constant="11" id="V6u-2B-Dvw"/>
                             <constraint firstItem="OeM-3N-HL0" firstAttribute="leading" secondItem="zMn-ql-XSm" secondAttribute="leading" constant="11" id="Vg7-MJ-LrC"/>
                             <constraint firstItem="FR4-sK-n4E" firstAttribute="top" secondItem="WgX-rq-F5V" secondAttribute="bottom" constant="20" id="W1r-hf-77z"/>
                             <constraint firstItem="19f-yk-rdd" firstAttribute="leading" secondItem="zMn-ql-XSm" secondAttribute="leading" constant="11" id="b5n-Y3-tY2"/>

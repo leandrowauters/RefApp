@@ -28,17 +28,5 @@ struct Game {
     
     
     //FUNCTION
-    static func printValues (){
-        print("Location: \(Game.location)")
-        print("Number Of Players: \(Game.numberOfPlayers)")
-        print("Legue: \(Game.league)")
-        print("Referee \(Game.refereeNames)")
-        print("Home Cap: \(Game.homeCaptain)")
-        print("Away Cap: \(Game.awayCaptain)")
-        print("Length: \(Game.lengthSelected)")
-        print("Home Team: \(Game.homeTeam)")
-        print("Away Team: \(Game.awayTeam)")
-        print("Date: \(Game.dateAndTime)")
-        print("Extra Time? \(Game.extraTime)")
-    }
+
 }

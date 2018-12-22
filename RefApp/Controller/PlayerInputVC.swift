@@ -25,11 +25,12 @@ class PlayerInputVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         playersTableView.tableFooterView = UIView(frame: CGRect.zero)
-        Game.printValues()
+        GameClient.printValues()
         playerTitleLabel.text = "Enter \(Game.homeTeam) players numbers"
         playersTableView.delegate = self
         playersTableView.dataSource = self
-        doneButton()
+        let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Enter Player", style: .done, target: self, action: #selector(doneButtonAction))
+        GameClient.doneButton(view: self.view, doneBtn: doneBtn, textField: playersTextField)
         playersLeft()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -68,36 +69,25 @@ class PlayerInputVC: UIViewController {
         print(Game.homePlayers)
     }
     
-    @IBAction func addButtonTapped(_ sender: UIButton) {
-        insertNewPlayer()
-        SwipeLeftLabel.isHidden = false
-        print(Game.homePlayers)
-    }
-    
-    func doneButton() {
-    let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
-    let flexSpace = UIBarButtonItem(barButtonSystemItem:    .flexibleSpace, target: nil, action: nil)
-    let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done Entering Players", style: .done, target: self, action: #selector(doneButtonAction))
-    toolbar.setItems([flexSpace, doneBtn], animated: false)
-    toolbar.sizeToFit()
-    self.playersTextField.inputAccessoryView = toolbar
-    }
     
     func insertNewPlayer(){
         guard let text = playersTextField.text else {return}
         guard let num = Int(text) else {return}
         if Game.homePlayers.contains(num){
             playerLeftLabel.text = "Player already entered"
-        }
+            playersTextField.text = ""
+        } else {
         Game.homePlayers.append(Int(num))
         let indexPath = IndexPath(row: Game.homePlayers.count - 1, section: 0)
         playersTableView.beginUpdates()
         playersTableView.insertRows(at: [indexPath], with: .automatic)
         playersTableView.endUpdates()
         playersTextField.text = ""
+        playersTableView.layoutIfNeeded()
         playersTableView.scrollToRow(at: indexPath,
                                      at: UITableView.ScrollPosition.bottom,
                                    animated: true)
+        }
     }
 }
 

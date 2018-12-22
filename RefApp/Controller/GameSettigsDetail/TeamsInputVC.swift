@@ -54,7 +54,8 @@ extension TeamsInputVC: UITextFieldDelegate{
             team2Label.text = textField.text
             Game.awayTeam = textField.text!
             textField.text = ""
-            let _: Timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(goBack), userInfo: nil, repeats: true)
+            textField.resignFirstResponder()
+            let _: Timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(goBack), userInfo: nil, repeats: true)
 
         default:
             print("Error in Number Of Clicks")

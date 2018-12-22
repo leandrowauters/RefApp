@@ -11,10 +11,15 @@ import UIKit
 class PlayerInputVC: UIViewController {
 
     @IBOutlet weak var playersTableView: UITableView!
+    @IBOutlet weak var bottomConstaint: NSLayoutConstraint!
     @IBOutlet weak var playersTextField: UITextField!
     @IBOutlet weak var playerTitleLabel: UILabel!
     @IBOutlet weak var SwipeLeftLabel: UILabel!
+    @IBOutlet weak var playerLeftLabel: UILabel!
     
+    
+    
+
     
     
     override func viewDidLoad() {
@@ -24,6 +29,43 @@ class PlayerInputVC: UIViewController {
         playerTitleLabel.text = "Enter \(Game.homeTeam) players numbers"
         playersTableView.delegate = self
         playersTableView.dataSource = self
+        doneButton()
+        playersLeft()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    @objc func keyboardWillChange(notification: Notification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height else {return}
+        if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
+                bottomConstaint.constant = keyboardSize - view.safeAreaInsets.bottom
+        } else {
+            bottomConstaint.constant = 0
+        }
+    }
+        
+    
+
+    func playersLeft(){
+        playerLeftLabel.text = "Players Left: \(Game.numberOfPlayers - Game.homePlayers.count)"
+    }
+    
+    @objc func dismissKeyboard(){
+        self.view.endEditing(true)
+    }
+    @objc func doneButtonAction() {
+        insertNewPlayer()
+        SwipeLeftLabel.isHidden = false
+        print(Game.homePlayers)
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
@@ -32,15 +74,30 @@ class PlayerInputVC: UIViewController {
         print(Game.homePlayers)
     }
     
+    func doneButton() {
+    let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
+    let flexSpace = UIBarButtonItem(barButtonSystemItem:    .flexibleSpace, target: nil, action: nil)
+    let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done Entering Players", style: .done, target: self, action: #selector(doneButtonAction))
+    toolbar.setItems([flexSpace, doneBtn], animated: false)
+    toolbar.sizeToFit()
+    self.playersTextField.inputAccessoryView = toolbar
+    }
+    
     func insertNewPlayer(){
-    Game.homePlayers.append(Int(playersTextField.text!)!)
+        guard let text = playersTextField.text else {return}
+        guard let num = Int(text) else {return}
+        if Game.homePlayers.contains(num){
+            playerLeftLabel.text = "Player already entered"
+        }
+        Game.homePlayers.append(Int(num))
         let indexPath = IndexPath(row: Game.homePlayers.count - 1, section: 0)
         playersTableView.beginUpdates()
         playersTableView.insertRows(at: [indexPath], with: .automatic)
         playersTableView.endUpdates()
         playersTextField.text = ""
-        view.endEditing(true)
-        
+        playersTableView.scrollToRow(at: indexPath,
+                                     at: UITableView.ScrollPosition.bottom,
+                                   animated: true)
     }
 }
 

@@ -17,8 +17,7 @@ struct Game {
     static var dateAndTime = Date()//OR DATE? // DATE PICKER VIEW UNIQUE VC
     static var league = [String]() //INPUT MUST BE SAVED - [String]? // TYPE INTO CELL
     static var refereeNames = [String]() // TYPE INTO CELL
-    static var homeCaptain = String() //TYPE INTO CELL
-    static var awayCaptain = String()
+    static var caps = [String]()
     static var extraTime = Bool() // STATIC VC YES OR NOW
     static var homeTeam = "Home"
     static var awayTeam = "Away"

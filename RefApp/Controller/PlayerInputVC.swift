@@ -22,6 +22,8 @@ class PlayerInputVC: UIViewController {
 
     
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         playersTableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -34,9 +36,7 @@ class PlayerInputVC: UIViewController {
         playersLeft()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        notifications()
 
     }
     deinit {
@@ -54,7 +54,11 @@ class PlayerInputVC: UIViewController {
         }
     }
         
-    
+    fileprivate func notifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
 
     func playersLeft(){
         playerLeftLabel.text = "Players Left: \(Game.numberOfPlayers - Game.homePlayers.count)"
@@ -66,7 +70,6 @@ class PlayerInputVC: UIViewController {
     @objc func doneButtonAction() {
         insertNewPlayer()
         SwipeLeftLabel.isHidden = false
-        print(Game.homePlayers)
     }
     
     
@@ -88,6 +91,14 @@ class PlayerInputVC: UIViewController {
         playersTableView.scrollToRow(at: indexPath,
                                      at: UITableView.ScrollPosition.bottom,
                                    animated: true)
+            
+            if Game.numberOfPlayers - Game.homePlayers.count == 0{
+                playerLeftLabel.text = "All Players Selected"
+            }
+            if Game.numberOfPlayers - Game.homePlayers.count < 0{
+                playerLeftLabel.textColor = .red
+                playerLeftLabel.text = "\(abs(Game.numberOfPlayers - Game.homePlayers.count).description) Extra Player!"
+            }
         }
     }
 }

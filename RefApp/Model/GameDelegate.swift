@@ -20,3 +20,4 @@ protocol GameDelegate: class {
 protocol GameLengthDelegate: class {
     func gameLengthChange(to lenght: Int)
 }
+

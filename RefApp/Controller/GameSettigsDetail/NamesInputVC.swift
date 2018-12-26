@@ -128,16 +128,7 @@ extension NamesInputVC: UITableViewDelegate, UITableViewDataSource {
         switch selectedIndex{
         case 0:
             name = Game.refereeNames[indexPath.row]
-            switch buttonTapsRef{
-            case 1:
-                cellToReturn.textLabel?.text = "Ref: \(name.capitalized)"
-            case 2,3,5,6:
-                cellToReturn.textLabel?.text = "Assistant \(buttonTapsRef): \(name.capitalized)"
-            case 4:
-                cellToReturn.textLabel?.text = "Fourth Official \(name.capitalized)"
-            default:
-                print("ERROR")
-            }
+            cellToReturn.textLabel?.text = "\(indexPath.row + 1). \(name.capitalized)"
         case 1:
             name = Game.caps[indexPath.row]
             switch buttonTapsCap{
@@ -156,21 +147,72 @@ extension NamesInputVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            switch selectedIndex{
-            case 0:
-                Game.refereeNames.remove(at: indexPath.row)
-            case 1:
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            switch selectedIndex{
+//            case 0:
+//                Game.refereeNames.remove(at: indexPath.row)
+//            case 1:
+//                Game.caps.remove(at: indexPath.row)
+//            default:
+//                print("Error")
+//            }
+//            tableView.beginUpdates()
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
+//            tableView.endUpdates()
+//        }
+//
+//    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        switch selectedIndex {
+        case 0:
+        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
+            let alert = UIAlertController(title: "", message: "Enter Name", preferredStyle: .alert)
+            alert.addTextField(configurationHandler: { (textField) in
+                self.nameTextField.text = Game.refereeNames[indexPath.row]
+            })
+            alert.addAction(UIAlertAction(title: "Update", style: .default, handler: { (updateAction) in
+                self.buttonTapsRef = indexPath.row + 1
+                Game.refereeNames[indexPath.row] = alert.textFields!.first!.text!
+                self.namesTableView.reloadRows(at: [indexPath], with: .fade)
+                self.nameTextField.text = ""
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: false)
+        })
+        editAction.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
+            Game.refereeNames.remove(at: indexPath.row)
+            tableView.reloadData()
+        })
+        
+        return [deleteAction, editAction]
+        case 1:
+            let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
+                let alert = UIAlertController(title: "", message: "Enter Name", preferredStyle: .alert)
+                alert.addTextField(configurationHandler: { (textField) in
+                    self.nameTextField.text = Game.caps[indexPath.row]
+                })
+                alert.addAction(UIAlertAction(title: "Update", style: .default, handler: { (updateAction) in
+                    self.buttonTapsCap = indexPath.row + 1
+                    Game.caps[indexPath.row] = alert.textFields!.first!.text!
+                    self.namesTableView.reloadRows(at: [indexPath], with: .fade)
+                    self.nameTextField.text = ""
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated: false)
+            })
+            editAction.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+            let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
                 Game.caps.remove(at: indexPath.row)
-            default:
-                print("Error")
-            }
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
-        }
+                tableView.reloadData()
+            })
+            
+            return [deleteAction, editAction]
+            
+        default:
+            return [UITableViewRowAction]()
     }
-    
+    }
 }
 

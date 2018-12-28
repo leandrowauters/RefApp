@@ -7,12 +7,12 @@
 //
 
 import UIKit
-struct Game {
+class Game: Codable {
     // unique vc
     static var length = [45, 30, 15, 0] // STATIC VC
     static var lengthSelected = Int()
-    static var numberOfPlayers = Int()
     // TYPE INTO CELL
+    static var numberOfPlayers = Int()
     static var location = String() //TYPE INTO CELL
     static var dateAndTime = Date()//OR DATE? // DATE PICKER VIEW UNIQUE VC
     static var league = [String]() //INPUT MUST BE SAVED - [String]? // TYPE INTO CELL
@@ -24,8 +24,36 @@ struct Game {
     static var subs = Int()
     static var homePlayers = [Int]()
     
+    var lenght = Game.length
+    var lengthSelected = Game.lengthSelected
+    var numberOfPlayers = Game.numberOfPlayers
+    var location = Game.location
+    var dateAndTime = Game.dateAndTime
+    var league = Game.league
+    var refereeNames = Game.refereeNames
+    var caps = Game.caps
+    var extraTime = Game.extraTime
+    var homeTeam = Game.homeTeam
+    var awayTeam = Game.awayTeam
+    var subs = Game.subs
+    var homePlayers = Game.homePlayers
+    
+    init(length: [Int], lengthSelected:Int, location: String, dateAndTime: Date, league: [String], refereeNames: [String], caps: [String], extraTime: Bool, homeTeam: String, awayTeam: String, subs: Int, homePlayers: [Int]) {
+        self.lenght = length
+        self.lengthSelected = lengthSelected
+        self.location = location
+        self.dateAndTime = dateAndTime
+        self.league = league
+        self.refereeNames = refereeNames
+        self.caps = caps
+        self.extraTime = extraTime
+        self.homeTeam = homeTeam
+        self.awayTeam = awayTeam
+        self.subs = subs
+        self.homePlayers = homePlayers
+        
+    }
     
     
     //FUNCTION
-
 }

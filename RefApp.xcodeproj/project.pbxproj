@@ -11,6 +11,7 @@
 		D529FDFB21B46E7A00DDC366 /* TextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529FDFA21B46E7A00DDC366 /* TextVC.swift */; };
 		D529FDFF21B4748C00DDC366 /* TeamsInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529FDFE21B4748C00DDC366 /* TeamsInputVC.swift */; };
 		D529FE0121B4755F00DDC366 /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529FE0021B4755F00DDC366 /* DatePickerVC.swift */; };
+		D5313FDE21D6CCFE00875B63 /* GameSaveClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5313FDD21D6CCFE00875B63 /* GameSaveClient.swift */; };
 		D544EC8F21C8498E004B285C /* NamesInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D544EC8E21C8498E004B285C /* NamesInputVC.swift */; };
 		D550683221CDE61800F3C6F4 /* GameClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D550683121CDE61800F3C6F4 /* GameClient.swift */; };
 		D5637AF721B88BD2003821F5 /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5637AF621B88BD2003821F5 /* GameDelegate.swift */; };
@@ -29,6 +30,7 @@
 		D529FDFA21B46E7A00DDC366 /* TextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextVC.swift; sourceTree = "<group>"; };
 		D529FDFE21B4748C00DDC366 /* TeamsInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsInputVC.swift; sourceTree = "<group>"; };
 		D529FE0021B4755F00DDC366 /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
+		D5313FDD21D6CCFE00875B63 /* GameSaveClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSaveClient.swift; sourceTree = "<group>"; };
 		D544EC8E21C8498E004B285C /* NamesInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesInputVC.swift; sourceTree = "<group>"; };
 		D550683121CDE61800F3C6F4 /* GameClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClient.swift; sourceTree = "<group>"; };
 		D5637AF621B88BD2003821F5 /* GameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				D5FBD98221B23548005D89F4 /* Game.swift */,
 				D550683121CDE61800F3C6F4 /* GameClient.swift */,
+				D5313FDD21D6CCFE00875B63 /* GameSaveClient.swift */,
 				D5637AF621B88BD2003821F5 /* GameDelegate.swift */,
 			);
 			path = Model;
@@ -210,6 +213,7 @@
 				D529FDFB21B46E7A00DDC366 /* TextVC.swift in Sources */,
 				D5637AF721B88BD2003821F5 /* GameDelegate.swift in Sources */,
 				D550683221CDE61800F3C6F4 /* GameClient.swift in Sources */,
+				D5313FDE21D6CCFE00875B63 /* GameSaveClient.swift in Sources */,
 				D544EC8F21C8498E004B285C /* NamesInputVC.swift in Sources */,
 				D510975121CAC57E008638B3 /* PlayerInputVC.swift in Sources */,
 				D529FE0121B4755F00DDC366 /* DatePickerVC.swift in Sources */,

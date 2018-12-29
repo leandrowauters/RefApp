@@ -16,6 +16,51 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2A-Tk-WgV">
+                    <rect key="frame" x="127.5" y="84" width="120" height="90"/>
+                    <state key="normal" title="1">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="g8Y-ZD-cJT"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWk-6s-km1">
+                    <rect key="frame" x="7.5" y="174" width="120" height="90"/>
+                    <state key="normal" title="2">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="oLW-z0-9S0"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTl-Mr-E4Y">
+                    <rect key="frame" x="127.5" y="174" width="120" height="90"/>
+                    <state key="normal" title="3">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="Lcn-ta-2AI"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DA-vq-N8u">
+                    <rect key="frame" x="247.5" y="174" width="120" height="90"/>
+                    <state key="normal" title="4">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="HU3-6k-z2b"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-jQ-4S6">
+                    <rect key="frame" x="7.5" y="264" width="120" height="90"/>
+                    <state key="normal" title="5">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="YiP-fa-yK8"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oH0-cE-2Nv">
                     <rect key="frame" x="127.5" y="264" width="120" height="90"/>
                     <constraints>
@@ -25,72 +70,63 @@
                     <state key="normal" title="6">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="geO-gI-H7s"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeA-EB-UA5">
                     <rect key="frame" x="247.5" y="264" width="120" height="90"/>
-                    <state key="normal" title="6">
+                    <state key="normal" title="7">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DA-vq-N8u">
-                    <rect key="frame" x="247.5" y="174" width="120" height="90"/>
-                    <state key="normal" title="6">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTl-Mr-E4Y">
-                    <rect key="frame" x="127.5" y="174" width="120" height="90"/>
-                    <state key="normal" title="6">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWk-6s-km1">
-                    <rect key="frame" x="7.5" y="174" width="120" height="90"/>
-                    <state key="normal" title="6">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-jQ-4S6">
-                    <rect key="frame" x="7.5" y="264" width="120" height="90"/>
-                    <state key="normal" title="6">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
+                    <connections>
+                        <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="aHH-87-XZt"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATO-vg-n3S">
                     <rect key="frame" x="7.5" y="354" width="120" height="90"/>
-                    <state key="normal" title="6">
+                    <state key="normal" title="8">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="6UN-s9-vro"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1g-Kv-5kt">
                     <rect key="frame" x="127.5" y="354" width="120" height="90"/>
-                    <state key="normal" title="6">
+                    <state key="normal" title="9">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="ito-ss-zEk"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvn-eP-5wS">
                     <rect key="frame" x="247.5" y="354" width="120" height="90"/>
-                    <state key="normal" title="6">
+                    <state key="normal" title="10">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2A-Tk-WgV">
-                    <rect key="frame" x="127.5" y="84" width="120" height="90"/>
-                    <state key="normal" title="6">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
+                    <connections>
+                        <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="Qcz-0f-ao1"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sea-8D-56p">
                     <rect key="frame" x="7.5" y="444" width="120" height="90"/>
-                    <state key="normal" title="6">
+                    <state key="normal" title="11">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="yWN-y6-jTw"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZU-UV-q0W">
                     <rect key="frame" x="127.5" y="444" width="120" height="90"/>
-                    <state key="normal" title="6">
+                    <state key="normal" title="12">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="FnT-1A-Ue4"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.59879869220000004" green="0.74837368729999998" blue="0.88786190750000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -151,6 +187,20 @@
                 <constraint firstItem="y3t-jQ-4S6" firstAttribute="centerY" secondItem="oH0-cE-2Nv" secondAttribute="centerY" id="yoO-eA-ZXW"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outletCollection property="HomePlayersButtons" destination="Z2A-Tk-WgV" collectionClass="NSMutableArray" id="AbJ-XT-9BY"/>
+                <outletCollection property="HomePlayersButtons" destination="YWk-6s-km1" collectionClass="NSMutableArray" id="Z0J-Vh-YPI"/>
+                <outletCollection property="HomePlayersButtons" destination="fTl-Mr-E4Y" collectionClass="NSMutableArray" id="oye-jL-gHc"/>
+                <outletCollection property="HomePlayersButtons" destination="8DA-vq-N8u" collectionClass="NSMutableArray" id="SK4-Uh-BgQ"/>
+                <outletCollection property="HomePlayersButtons" destination="y3t-jQ-4S6" collectionClass="NSMutableArray" id="EgO-9Z-8al"/>
+                <outletCollection property="HomePlayersButtons" destination="oH0-cE-2Nv" collectionClass="NSMutableArray" id="2rl-np-aAf"/>
+                <outletCollection property="HomePlayersButtons" destination="eeA-EB-UA5" collectionClass="NSMutableArray" id="RTo-5r-n3M"/>
+                <outletCollection property="HomePlayersButtons" destination="ATO-vg-n3S" collectionClass="NSMutableArray" id="Gem-jr-kVp"/>
+                <outletCollection property="HomePlayersButtons" destination="D1g-Kv-5kt" collectionClass="NSMutableArray" id="VsF-om-39J"/>
+                <outletCollection property="HomePlayersButtons" destination="cvn-eP-5wS" collectionClass="NSMutableArray" id="goK-IO-IK0"/>
+                <outletCollection property="HomePlayersButtons" destination="sea-8D-56p" collectionClass="NSMutableArray" id="N5C-js-IHE"/>
+                <outletCollection property="HomePlayersButtons" destination="5ZU-UV-q0W" collectionClass="NSMutableArray" id="I2z-DA-oas"/>
+            </connections>
         </view>
     </objects>
 </document>

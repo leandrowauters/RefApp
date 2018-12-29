@@ -9,7 +9,29 @@
 import UIKit
 
 class HomeView: UIView {
-
     
-
+    
+    @IBOutlet var HomePlayersButtons: [UIButton]!
+    func getCurrentViewController() -> UIViewController? {
+        
+        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+            var currentController: UIViewController! = rootController
+            while( currentController.presentedViewController != nil ) {
+                currentController = currentController.presentedViewController
+            }
+            return currentController
+        }
+        return nil
+        
+    }
+    
+    @IBAction func playerButtonWasPress(_ sender: UIButton) {
+            
+            let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
+           guard let vc = storyboard.instantiateViewController(withIdentifier: "popAction") as? PopActionsVC else {return}
+            let currentController = self.getCurrentViewController()
+            currentController?.present(vc, animated: false, completion: nil)
+    }
+    
+    
 }

@@ -12,15 +12,18 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var teamsScrollView: UIScrollView!
     @IBOutlet weak var pageControll: UIPageControl!
-    
+    static var vc: PopActionsVC!
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+
         teamsScrollView.delegate = self
         let views:[UIView] = createViews()
         setupSlideScrollViews(views: views)
         pageControll.numberOfPages = views.count
         pageControll.currentPage = 0
         view.bringSubviewToFront(pageControll)
+
         
     }
     func createViews () -> [UIView] {

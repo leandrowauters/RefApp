@@ -10,7 +10,6 @@ import UIKit
 
 class HomeView: UIView {
 
-    @IBOutlet weak var testLabel: UILabel!
     
 
 }

@@ -25,9 +25,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     }
     func createViews () -> [UIView] {
         let view1: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
-        view1.testLabel.text = "View 1"
+//        view1.testLabel.text = "View 1"
         let view2: AwayView = Bundle.main.loadNibNamed("AwayView", owner: self, options: nil)?.first as! AwayView
-        view2.testLabel.text = "View 2"
+//        view2.testLabel.text = "View 2"
         
     return [view1, view2]
     }

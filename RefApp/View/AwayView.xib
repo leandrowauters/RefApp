@@ -15,23 +15,8 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AwayView" customModule="RefApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcS-He-BmW">
-                    <rect key="frame" x="159.5" y="333" width="56" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-            </subviews>
             <color key="backgroundColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
-            <constraints>
-                <constraint firstItem="xcS-He-BmW" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="G5f-FD-KMQ"/>
-                <constraint firstItem="xcS-He-BmW" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="WpJ-Vm-XfW"/>
-            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <connections>
-                <outlet property="testLabel" destination="xcS-He-BmW" id="wr3-uS-Z9h"/>
-            </connections>
             <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>
     </objects>

@@ -65,11 +65,13 @@ class HomePlayersInputVC: UIViewController {
     func playersLeft(){
         playerLeftLabel.text = "Players Left: \(Game.numberOfPlayers - Game.homePlayers.count)"
         if Game.numberOfPlayers - Game.homePlayers.count > 0{
+            nextButton.isHidden = !nextButton.isHidden
             playerLeftLabel.textColor = .black
         }
         if Game.numberOfPlayers - Game.homePlayers.count == 0{
             playerLeftLabel.text = "All Players Selected"
             nextButton.isHidden = !nextButton.isHidden
+            dismissKeyboard()
         }
         if Game.numberOfPlayers - Game.homePlayers.count < 0{
             playerLeftLabel.textColor = .red

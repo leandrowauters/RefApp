@@ -852,6 +852,9 @@
                                 <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="70P-ud-vub" kind="show" id="Be6-Lm-RNo"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -892,6 +895,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bwy-an-Ob5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3366" y="118"/>
+        </scene>
+        <!--Main GameVC-->
+        <scene sceneID="Vnd-sE-cRO">
+            <objects>
+                <viewController id="70P-ud-vub" customClass="MainGameVC" customModule="RefApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="an9-4M-wxi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="XkJ-PY-xh2">
+                                <rect key="frame" x="11" y="610" width="353" height="37"/>
+                            </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cn-TS-tby">
+                                <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XkJ-PY-xh2" firstAttribute="leading" secondItem="13S-it-Dhj" secondAttribute="leading" constant="11" id="8CQ-JK-QNd"/>
+                            <constraint firstItem="0cn-TS-tby" firstAttribute="height" secondItem="an9-4M-wxi" secondAttribute="height" multiplier="0.5" id="Vwn-AJ-F8K"/>
+                            <constraint firstItem="13S-it-Dhj" firstAttribute="bottom" secondItem="XkJ-PY-xh2" secondAttribute="bottom" constant="20" id="d8k-Cv-o8T"/>
+                            <constraint firstItem="13S-it-Dhj" firstAttribute="trailing" secondItem="XkJ-PY-xh2" secondAttribute="trailing" constant="11" id="etP-QJ-VDe"/>
+                            <constraint firstItem="0cn-TS-tby" firstAttribute="width" secondItem="an9-4M-wxi" secondAttribute="width" id="irc-cV-Awr"/>
+                            <constraint firstItem="13S-it-Dhj" firstAttribute="bottom" secondItem="0cn-TS-tby" secondAttribute="bottom" id="q7Y-sR-NkM"/>
+                            <constraint firstItem="0cn-TS-tby" firstAttribute="leading" secondItem="13S-it-Dhj" secondAttribute="leading" id="rjI-Xh-7Hb"/>
+                            <constraint firstItem="0cn-TS-tby" firstAttribute="trailing" secondItem="13S-it-Dhj" secondAttribute="trailing" id="sZn-Sw-2U3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="13S-it-Dhj"/>
+                    </view>
+                    <connections>
+                        <outlet property="pageControll" destination="XkJ-PY-xh2" id="bsm-6m-Bku"/>
+                        <outlet property="teamsScrollView" destination="0cn-TS-tby" id="pf2-dj-s0E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vv8-4F-ze2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4210" y="118"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

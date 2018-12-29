@@ -853,7 +853,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="70P-ud-vub" kind="show" id="Be6-Lm-RNo"/>
+                                    <action selector="nextButtonPressed:" destination="V0v-2O-m0e" eventType="touchUpInside" id="keU-Cy-X2j"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -899,7 +899,7 @@
         <!--Main GameVC-->
         <scene sceneID="Vnd-sE-cRO">
             <objects>
-                <viewController id="70P-ud-vub" customClass="MainGameVC" customModule="RefApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainGame" id="70P-ud-vub" customClass="MainGameVC" customModule="RefApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="an9-4M-wxi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

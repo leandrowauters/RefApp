@@ -30,7 +30,8 @@ class HomeView: UIView {
             let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
            guard let vc = storyboard.instantiateViewController(withIdentifier: "popAction") as? PopActionsVC else {return}
             let currentController = self.getCurrentViewController()
-            currentController?.present(vc, animated: false, completion: nil)
+            vc.modalPresentationStyle = .overCurrentContext
+            currentController?.present(vc, animated: true, completion: nil)
     }
     
     

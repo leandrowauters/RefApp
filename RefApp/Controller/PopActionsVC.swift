@@ -13,10 +13,13 @@ class PopActionsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(goBack))
+        view.addGestureRecognizer(tap)
     }
     
-
+    @objc func goBack(){
+        dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

@@ -41,6 +41,11 @@ class NamesInputVC: UIViewController {
         notifications()
         
     }
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
     fileprivate func notifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -166,7 +171,7 @@ extension NamesInputVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         switch selectedIndex {
         case 0:
-        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
+            let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
             let alert = UIAlertController(title: "", message: "Enter Name", preferredStyle: .alert)
             alert.addTextField(configurationHandler: { (textField) in
                 self.nameTextField.text = Game.refereeNames[indexPath.row]

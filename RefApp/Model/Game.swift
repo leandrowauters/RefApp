@@ -23,6 +23,7 @@ class Game: Codable {
     static var awayTeam = "Away"
     static var subs = Int()
     static var homePlayers = [Int]()
+    static var awayPlayers = [Int]()
     
     var lenght = Game.length
     var lengthSelected = Game.lengthSelected

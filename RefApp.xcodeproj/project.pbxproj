@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D510975121CAC57E008638B3 /* PlayerInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510975021CAC57E008638B3 /* PlayerInputVC.swift */; };
+		D510975121CAC57E008638B3 /* HomePlayersInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510975021CAC57E008638B3 /* HomePlayersInputVC.swift */; };
 		D529FDFB21B46E7A00DDC366 /* TextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529FDFA21B46E7A00DDC366 /* TextVC.swift */; };
 		D529FDFF21B4748C00DDC366 /* TeamsInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529FDFE21B4748C00DDC366 /* TeamsInputVC.swift */; };
 		D529FE0121B4755F00DDC366 /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529FE0021B4755F00DDC366 /* DatePickerVC.swift */; };
 		D5313FDE21D6CCFE00875B63 /* GameSaveClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5313FDD21D6CCFE00875B63 /* GameSaveClient.swift */; };
+		D5313FE021D6F26500875B63 /* AwayPlayersInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5313FDF21D6F26500875B63 /* AwayPlayersInputVC.swift */; };
 		D544EC8F21C8498E004B285C /* NamesInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D544EC8E21C8498E004B285C /* NamesInputVC.swift */; };
 		D550683221CDE61800F3C6F4 /* GameClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D550683121CDE61800F3C6F4 /* GameClient.swift */; };
 		D5637AF721B88BD2003821F5 /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5637AF621B88BD2003821F5 /* GameDelegate.swift */; };
@@ -26,11 +27,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D510975021CAC57E008638B3 /* PlayerInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInputVC.swift; sourceTree = "<group>"; };
+		D510975021CAC57E008638B3 /* HomePlayersInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayersInputVC.swift; sourceTree = "<group>"; };
 		D529FDFA21B46E7A00DDC366 /* TextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextVC.swift; sourceTree = "<group>"; };
 		D529FDFE21B4748C00DDC366 /* TeamsInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsInputVC.swift; sourceTree = "<group>"; };
 		D529FE0021B4755F00DDC366 /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
 		D5313FDD21D6CCFE00875B63 /* GameSaveClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSaveClient.swift; sourceTree = "<group>"; };
+		D5313FDF21D6F26500875B63 /* AwayPlayersInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwayPlayersInputVC.swift; sourceTree = "<group>"; };
 		D544EC8E21C8498E004B285C /* NamesInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesInputVC.swift; sourceTree = "<group>"; };
 		D550683121CDE61800F3C6F4 /* GameClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClient.swift; sourceTree = "<group>"; };
 		D5637AF621B88BD2003821F5 /* GameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
@@ -121,7 +123,8 @@
 		D5FBD98821B235AF005D89F4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D510975021CAC57E008638B3 /* PlayerInputVC.swift */,
+				D510975021CAC57E008638B3 /* HomePlayersInputVC.swift */,
+				D5313FDF21D6F26500875B63 /* AwayPlayersInputVC.swift */,
 				D5FBD98421B2358D005D89F4 /* GameSettings.swift */,
 				D529FE0421B475E100DDC366 /* GameSettigsDetail */,
 			);
@@ -212,10 +215,11 @@
 				D58C300121B5D70400A15E03 /* GameLengthVC.swift in Sources */,
 				D529FDFB21B46E7A00DDC366 /* TextVC.swift in Sources */,
 				D5637AF721B88BD2003821F5 /* GameDelegate.swift in Sources */,
+				D5313FE021D6F26500875B63 /* AwayPlayersInputVC.swift in Sources */,
 				D550683221CDE61800F3C6F4 /* GameClient.swift in Sources */,
 				D5313FDE21D6CCFE00875B63 /* GameSaveClient.swift in Sources */,
 				D544EC8F21C8498E004B285C /* NamesInputVC.swift in Sources */,
-				D510975121CAC57E008638B3 /* PlayerInputVC.swift in Sources */,
+				D510975121CAC57E008638B3 /* HomePlayersInputVC.swift in Sources */,
 				D529FE0121B4755F00DDC366 /* DatePickerVC.swift in Sources */,
 				D529FDFF21B4748C00DDC366 /* TeamsInputVC.swift in Sources */,
 				D58C2FFF21B5D50500A15E03 /* GameLengthCell.swift in Sources */,

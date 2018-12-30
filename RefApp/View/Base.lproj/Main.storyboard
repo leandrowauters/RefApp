@@ -910,11 +910,43 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cn-TS-tby">
                                 <rect key="frame" x="0.0" y="196" width="375" height="471"/>
                             </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xe-ED-nU6">
+                                <rect key="frame" x="166.5" y="92.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKK-QO-HKL">
+                                <rect key="frame" x="114.5" y="151" width="34" height="30"/>
+                                <color key="backgroundColor" red="0.38311418009999998" green="0.57669733499999998" blue="0.3604292248" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="startButton:" destination="70P-ud-vub" eventType="touchUpInside" id="Z3Y-DR-U1h"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7MJ-UM-qxD">
+                                <rect key="frame" x="223" y="151" width="42" height="30"/>
+                                <color key="backgroundColor" red="0.99593228099999997" green="0.27651777859999999" blue="0.36207842829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Pause">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="pauseButton:" destination="70P-ud-vub" eventType="touchUpInside" id="2oA-g8-jfD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="1xe-ED-nU6" firstAttribute="centerY" secondItem="13S-it-Dhj" secondAttribute="centerY" multiplier="0.3" id="4x6-9b-MVj"/>
+                            <constraint firstItem="EKK-QO-HKL" firstAttribute="centerX" secondItem="0cn-TS-tby" secondAttribute="centerX" multiplier="0.7" id="6ke-TS-djn"/>
+                            <constraint firstItem="1xe-ED-nU6" firstAttribute="centerX" secondItem="13S-it-Dhj" secondAttribute="centerX" id="843-Sq-IRv"/>
                             <constraint firstItem="XkJ-PY-xh2" firstAttribute="leading" secondItem="13S-it-Dhj" secondAttribute="leading" constant="11" id="8CQ-JK-QNd"/>
+                            <constraint firstItem="0cn-TS-tby" firstAttribute="top" secondItem="EKK-QO-HKL" secondAttribute="bottom" constant="15" id="TRv-Vg-LJR"/>
+                            <constraint firstItem="0cn-TS-tby" firstAttribute="top" secondItem="7MJ-UM-qxD" secondAttribute="bottom" constant="15" id="U2U-jA-6ob"/>
                             <constraint firstItem="0cn-TS-tby" firstAttribute="height" secondItem="an9-4M-wxi" secondAttribute="height" multiplier="0.5" constant="137.5" id="Vwn-AJ-F8K"/>
+                            <constraint firstItem="7MJ-UM-qxD" firstAttribute="centerX" secondItem="0cn-TS-tby" secondAttribute="centerX" multiplier="1.3" id="ZOb-sd-zY8"/>
                             <constraint firstItem="13S-it-Dhj" firstAttribute="bottom" secondItem="XkJ-PY-xh2" secondAttribute="bottom" constant="20" id="d8k-Cv-o8T"/>
                             <constraint firstItem="13S-it-Dhj" firstAttribute="trailing" secondItem="XkJ-PY-xh2" secondAttribute="trailing" constant="11" id="etP-QJ-VDe"/>
                             <constraint firstItem="0cn-TS-tby" firstAttribute="width" secondItem="an9-4M-wxi" secondAttribute="width" id="irc-cV-Awr"/>
@@ -927,6 +959,7 @@
                     <connections>
                         <outlet property="pageControll" destination="XkJ-PY-xh2" id="bsm-6m-Bku"/>
                         <outlet property="teamsScrollView" destination="0cn-TS-tby" id="pf2-dj-s0E"/>
+                        <outlet property="timerLabel" destination="1xe-ED-nU6" id="T5f-pF-dBS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vv8-4F-ze2" userLabel="First Responder" sceneMemberID="firstResponder"/>

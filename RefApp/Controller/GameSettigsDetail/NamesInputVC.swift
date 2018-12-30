@@ -10,8 +10,6 @@ import UIKit
 
 class NamesInputVC: UIViewController {
     
-    var buttonTapsRef = 0
-    var buttonTapsCap = 0
     var selectedIndex = Int()
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -27,9 +25,9 @@ class NamesInputVC: UIViewController {
         namesTableView.dataSource = self
         switch selectedIndex{
         case 0:
-            titleLabel.text = "Enter Ref Name"
+            changeRefTitleLabel()
         case 1:
-            titleLabel.text = "Enter \(Game.homeTeam.capitalized) Captain"
+            changeCapTitleLabel()
         default:
             print("Error")
             
@@ -62,6 +60,31 @@ class NamesInputVC: UIViewController {
     @objc func dismissKeyboard(){
         self.view.endEditing(true)
     }
+
+    func changeRefTitleLabel () {
+        switch Game.refereeNames.count {
+        case 0:
+            titleLabel.text = "Enter Ref Name"
+        case 1 ,2:
+            titleLabel.text = "Enter Assistant 1 and 2 - Optional"
+        case 3:
+            titleLabel.text = "Enter Fourth Official - Optional"
+        case 4:
+            titleLabel.text = "Enter Assistant 5 and 6 - Optional"
+        default:
+            titleLabel.text = "All Names Selected"
+        }
+    }
+    func changeCapTitleLabel () {
+        switch Game.caps.count {
+        case 0:
+            titleLabel.text = "Enter \(Game.homeTeam.capitalized) Captain"
+        case 1:
+            titleLabel.text = "Enter \(Game.awayTeam.capitalized) Captain"
+        default:
+            titleLabel.text = "All Names Entered"
+        }
+    }
     @objc func doneButtonAction() {
         insertName()
     }
@@ -79,35 +102,19 @@ class NamesInputVC: UIViewController {
         }
         switch selectedIndex {
         case 0:
-            buttonTapsRef += 1
+            
             Game.refereeNames.append(name)
             let indexPath = IndexPath(row: Game.refereeNames.count - 1, section: 0)
             helper(indexPath: indexPath)
-            switch buttonTapsRef {
-            case 1 ,2:
-                titleLabel.text = "Enter Assistant 1 and 2 - Optional"
-            case 3:
-                titleLabel.text = "Enter Fourth Official - Optional"
-            case 4:
-                titleLabel.text = "Enter Assistant 5 and 6 - Optional"
-            default:
-                titleLabel.text = "All Names Selected"
-            }
+            changeRefTitleLabel()
             
         case 1:
-            buttonTapsCap += 1
+            if Game.caps.count < 2 {
             Game.caps.append(name)
             let indexPath = IndexPath(row: Game.caps.count - 1, section: 0)
             helper(indexPath: indexPath)
-            switch buttonTapsCap {
-            case 1:
-                titleLabel.text = "Enter \(Game.homeTeam.capitalized) Captain"
-            case 2:
-                titleLabel.text = "Enter \(Game.awayTeam.capitalized) Captain"
-            default:
-                titleLabel.text = "All Names Entered"
+            changeCapTitleLabel()
             }
-            
         default:
             return
         }
@@ -136,14 +143,7 @@ extension NamesInputVC: UITableViewDelegate, UITableViewDataSource {
             cellToReturn.textLabel?.text = "\(indexPath.row + 1). \(name.capitalized)"
         case 1:
             name = Game.caps[indexPath.row]
-            switch buttonTapsCap{
-            case 1:
-                cellToReturn.textLabel?.text = "\(Game.homeTeam.capitalized) Captain: \(name.capitalized)"
-            case 2:
-                cellToReturn.textLabel?.text = "\(Game.awayTeam.capitalized) Captain: \(name.capitalized)"
-            default:
-                print("Error")
-            }
+            cellToReturn.textLabel?.text = "\(indexPath.row + 1). \(name.capitalized)"
         default:
             print("Error")
         }
@@ -152,6 +152,8 @@ extension NamesInputVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
+
 //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 //        if editingStyle == .delete {
 //            switch selectedIndex{
@@ -168,6 +170,7 @@ extension NamesInputVC: UITableViewDelegate, UITableViewDataSource {
 //        }
 //
 //    }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         switch selectedIndex {
         case 0:
@@ -177,7 +180,6 @@ extension NamesInputVC: UITableViewDelegate, UITableViewDataSource {
                 self.nameTextField.text = Game.refereeNames[indexPath.row]
             })
             alert.addAction(UIAlertAction(title: "Update", style: .default, handler: { (updateAction) in
-                self.buttonTapsRef = indexPath.row + 1
                 Game.refereeNames[indexPath.row] = alert.textFields!.first!.text!
                 self.namesTableView.reloadRows(at: [indexPath], with: .fade)
                 self.nameTextField.text = ""
@@ -188,6 +190,8 @@ extension NamesInputVC: UITableViewDelegate, UITableViewDataSource {
         editAction.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             Game.refereeNames.remove(at: indexPath.row)
+            Game.refereeNames.insert(" ", at: indexPath.row)
+            self.changeRefTitleLabel()
             tableView.reloadData()
         })
         
@@ -199,7 +203,7 @@ extension NamesInputVC: UITableViewDelegate, UITableViewDataSource {
                     self.nameTextField.text = Game.caps[indexPath.row]
                 })
                 alert.addAction(UIAlertAction(title: "Update", style: .default, handler: { (updateAction) in
-                    self.buttonTapsCap = indexPath.row + 1
+                    
                     Game.caps[indexPath.row] = alert.textFields!.first!.text!
                     self.namesTableView.reloadRows(at: [indexPath], with: .fade)
                     self.nameTextField.text = ""
@@ -210,6 +214,8 @@ extension NamesInputVC: UITableViewDelegate, UITableViewDataSource {
             editAction.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
             let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
                 Game.caps.remove(at: indexPath.row)
+                Game.caps.insert(" ", at: indexPath.row)
+                self.changeCapTitleLabel()
                 tableView.reloadData()
             })
             

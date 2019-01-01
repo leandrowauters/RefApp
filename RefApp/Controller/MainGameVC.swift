@@ -10,7 +10,7 @@ import UIKit
 
 class MainGameVC: UIViewController, UIScrollViewDelegate {
     
-    var time = 50
+    var time = 0
     var timer = Timer()
     let shapeLayer = CAShapeLayer()
     let trackLayer = CAShapeLayer()
@@ -69,11 +69,11 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     }
     func timerCircle (){
         
-        let y = view.center.y * 0.3
+        let y = view.center.y * 0.33
         let x = view.center.x
         let position = CGPoint(x: x, y: y)
         
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 60, startAngle:  0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 80, startAngle:  0, endAngle: 2 * CGFloat.pi, clockwise: true)
         trackLayer.path = circularPath.cgPath
         trackLayer.strokeColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         trackLayer.lineCap = CAShapeLayerLineCap.round

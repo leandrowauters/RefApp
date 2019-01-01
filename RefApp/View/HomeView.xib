@@ -16,36 +16,27 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2A-Tk-WgV">
-                    <rect key="frame" x="127.5" y="84" width="120" height="90"/>
-                    <state key="normal" title="1">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="g8Y-ZD-cJT"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWk-6s-km1">
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWk-6s-km1">
                     <rect key="frame" x="7.5" y="174" width="120" height="90"/>
-                    <state key="normal" title="2">
+                    <state key="normal" title="1">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
                         <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="oLW-z0-9S0"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTl-Mr-E4Y">
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTl-Mr-E4Y">
                     <rect key="frame" x="127.5" y="174" width="120" height="90"/>
-                    <state key="normal" title="3">
+                    <state key="normal" title="2">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
                         <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="Lcn-ta-2AI"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DA-vq-N8u">
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DA-vq-N8u">
                     <rect key="frame" x="247.5" y="174" width="120" height="90"/>
-                    <state key="normal" title="4">
+                    <state key="normal" title="3">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -54,7 +45,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-jQ-4S6">
                     <rect key="frame" x="7.5" y="264" width="120" height="90"/>
-                    <state key="normal" title="5">
+                    <state key="normal" title="4">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -67,7 +58,7 @@
                         <constraint firstAttribute="width" constant="120" id="h0M-gw-d7d"/>
                         <constraint firstAttribute="height" constant="90" id="yx3-sC-lXy"/>
                     </constraints>
-                    <state key="normal" title="6">
+                    <state key="normal" title="5">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -76,7 +67,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeA-EB-UA5">
                     <rect key="frame" x="247.5" y="264" width="120" height="90"/>
-                    <state key="normal" title="7">
+                    <state key="normal" title="6">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -85,7 +76,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATO-vg-n3S">
                     <rect key="frame" x="7.5" y="354" width="120" height="90"/>
-                    <state key="normal" title="8">
+                    <state key="normal" title="7">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -94,7 +85,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1g-Kv-5kt">
                     <rect key="frame" x="127.5" y="354" width="120" height="90"/>
-                    <state key="normal" title="9">
+                    <state key="normal" title="8">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -103,7 +94,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvn-eP-5wS">
                     <rect key="frame" x="247.5" y="354" width="120" height="90"/>
-                    <state key="normal" title="10">
+                    <state key="normal" title="9">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -112,7 +103,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sea-8D-56p">
                     <rect key="frame" x="7.5" y="444" width="120" height="90"/>
-                    <state key="normal" title="11">
+                    <state key="normal" title="10">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -121,13 +112,19 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZU-UV-q0W">
                     <rect key="frame" x="127.5" y="444" width="120" height="90"/>
-                    <state key="normal" title="12">
+                    <state key="normal" title="11">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
                         <action selector="playerButtonWasPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="FnT-1A-Ue4"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQ2-ad-I5w">
+                    <rect key="frame" x="11" y="123" width="353" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.59879869220000004" green="0.74837368729999998" blue="0.88786190750000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <accessibility key="accessibilityConfiguration">
@@ -144,23 +141,21 @@
                 <constraint firstItem="D1g-Kv-5kt" firstAttribute="top" secondItem="oH0-cE-2Nv" secondAttribute="bottom" id="6u9-hH-3X0"/>
                 <constraint firstItem="8DA-vq-N8u" firstAttribute="centerX" secondItem="eeA-EB-UA5" secondAttribute="centerX" id="82A-Vg-xEd"/>
                 <constraint firstItem="sea-8D-56p" firstAttribute="top" secondItem="ATO-vg-n3S" secondAttribute="bottom" id="8EL-ka-ijf"/>
-                <constraint firstItem="Z2A-Tk-WgV" firstAttribute="width" secondItem="oH0-cE-2Nv" secondAttribute="width" id="8gA-2e-2Gv"/>
                 <constraint firstItem="ATO-vg-n3S" firstAttribute="width" secondItem="oH0-cE-2Nv" secondAttribute="width" id="9dF-rK-tsQ"/>
                 <constraint firstItem="cvn-eP-5wS" firstAttribute="centerX" secondItem="eeA-EB-UA5" secondAttribute="centerX" id="AQr-lP-ph7"/>
                 <constraint firstItem="ATO-vg-n3S" firstAttribute="height" secondItem="oH0-cE-2Nv" secondAttribute="height" id="AWo-07-hYZ"/>
-                <constraint firstItem="Z2A-Tk-WgV" firstAttribute="height" secondItem="oH0-cE-2Nv" secondAttribute="height" id="AhR-zI-4Im"/>
-                <constraint firstItem="Z2A-Tk-WgV" firstAttribute="centerX" secondItem="fTl-Mr-E4Y" secondAttribute="centerX" id="DdA-xw-LlV"/>
                 <constraint firstItem="oH0-cE-2Nv" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="E7g-9m-QNd"/>
                 <constraint firstItem="cvn-eP-5wS" firstAttribute="width" secondItem="oH0-cE-2Nv" secondAttribute="width" id="IV3-iw-qSk"/>
                 <constraint firstItem="D1g-Kv-5kt" firstAttribute="centerY" secondItem="ATO-vg-n3S" secondAttribute="centerY" id="MQD-By-9TW"/>
                 <constraint firstItem="cvn-eP-5wS" firstAttribute="top" secondItem="eeA-EB-UA5" secondAttribute="bottom" id="NX5-l1-Nen"/>
-                <constraint firstItem="fTl-Mr-E4Y" firstAttribute="top" secondItem="Z2A-Tk-WgV" secondAttribute="bottom" id="OYO-8W-l7I"/>
                 <constraint firstItem="cvn-eP-5wS" firstAttribute="height" secondItem="oH0-cE-2Nv" secondAttribute="height" id="PQc-dX-fzx"/>
                 <constraint firstItem="eeA-EB-UA5" firstAttribute="top" secondItem="8DA-vq-N8u" secondAttribute="bottom" id="Ptc-s2-nN5"/>
                 <constraint firstItem="8DA-vq-N8u" firstAttribute="height" secondItem="oH0-cE-2Nv" secondAttribute="height" id="RzX-ar-lDY"/>
                 <constraint firstItem="5ZU-UV-q0W" firstAttribute="width" secondItem="oH0-cE-2Nv" secondAttribute="width" id="Seo-9c-o28"/>
                 <constraint firstItem="fTl-Mr-E4Y" firstAttribute="leading" secondItem="YWk-6s-km1" secondAttribute="trailing" id="U4k-zS-O0W"/>
+                <constraint firstItem="fTl-Mr-E4Y" firstAttribute="top" secondItem="RQ2-ad-I5w" secondAttribute="bottom" constant="30" id="WOL-J2-Rek"/>
                 <constraint firstItem="y3t-jQ-4S6" firstAttribute="width" secondItem="oH0-cE-2Nv" secondAttribute="width" id="Z56-NN-RKF"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="RQ2-ad-I5w" secondAttribute="trailing" constant="11" id="ZT2-Va-wfG"/>
                 <constraint firstItem="eeA-EB-UA5" firstAttribute="centerY" secondItem="oH0-cE-2Nv" secondAttribute="centerY" id="b7u-Wp-6U6"/>
                 <constraint firstItem="y3t-jQ-4S6" firstAttribute="height" secondItem="oH0-cE-2Nv" secondAttribute="height" id="f9n-fK-hbu"/>
                 <constraint firstItem="eeA-EB-UA5" firstAttribute="leading" secondItem="oH0-cE-2Nv" secondAttribute="trailing" id="g8W-Aj-0gv"/>
@@ -183,12 +178,12 @@
                 <constraint firstItem="8DA-vq-N8u" firstAttribute="width" secondItem="oH0-cE-2Nv" secondAttribute="width" id="vVi-5J-mh9"/>
                 <constraint firstItem="sea-8D-56p" firstAttribute="centerX" secondItem="ATO-vg-n3S" secondAttribute="centerX" id="vZD-3g-xn8"/>
                 <constraint firstItem="D1g-Kv-5kt" firstAttribute="leading" secondItem="ATO-vg-n3S" secondAttribute="trailing" id="viR-LC-MFw"/>
+                <constraint firstItem="RQ2-ad-I5w" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="11" id="wcf-Vb-ATw"/>
                 <constraint firstItem="5ZU-UV-q0W" firstAttribute="leading" secondItem="sea-8D-56p" secondAttribute="trailing" id="y6P-oe-VBU"/>
                 <constraint firstItem="y3t-jQ-4S6" firstAttribute="centerY" secondItem="oH0-cE-2Nv" secondAttribute="centerY" id="yoO-eA-ZXW"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outletCollection property="HomePlayersButtons" destination="Z2A-Tk-WgV" collectionClass="NSMutableArray" id="AbJ-XT-9BY"/>
                 <outletCollection property="HomePlayersButtons" destination="YWk-6s-km1" collectionClass="NSMutableArray" id="Z0J-Vh-YPI"/>
                 <outletCollection property="HomePlayersButtons" destination="fTl-Mr-E4Y" collectionClass="NSMutableArray" id="oye-jL-gHc"/>
                 <outletCollection property="HomePlayersButtons" destination="8DA-vq-N8u" collectionClass="NSMutableArray" id="SK4-Uh-BgQ"/>

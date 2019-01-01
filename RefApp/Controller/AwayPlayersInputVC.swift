@@ -76,7 +76,7 @@ class AwayPlayersInputVC: UIViewController {
     func playersLeft(){
         playerLeftLabel.text = "Players Left: \(Game.numberOfPlayers - Game.awayPlayers.count)"
         if Game.numberOfPlayers - Game.awayPlayers.count > 0{
-          nextButton.isHidden = !nextButton.isHidden
+          nextButton.isHidden = true
           playerLeftLabel.textColor = .black
         }
         if Game.numberOfPlayers - Game.awayPlayers.count == 0{

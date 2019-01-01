@@ -11,6 +11,7 @@ import UIKit
 class HomeView: UIView {
     
     
+    @IBOutlet weak var homeLabel: UILabel!
     @IBOutlet var HomePlayersButtons: [UIButton]!
     func getCurrentViewController() -> UIViewController? {
         

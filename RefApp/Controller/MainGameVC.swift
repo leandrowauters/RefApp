@@ -96,10 +96,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         let view1: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
         view1.homeLabel.text = "\(Game.homeTeam)"
 //        view1.testLabel.text = "View 1"
-        let playersSorted = Game.homePlayers.sorted{$0 < $1}
         for index in 0...Game.numberOfPlayers - 1 {
             view1.HomePlayersButtons[index].isHidden = false
-            view1.HomePlayersButtons[index].setTitle(playersSorted[index].description, for: .normal)
+            view1.HomePlayersButtons[index].setTitle(Game.homePlayersSorted[index].description, for: .normal)
         }
         
         let view2: AwayView = Bundle.main.loadNibNamed("AwayView", owner: self, options: nil)?.first as! AwayView

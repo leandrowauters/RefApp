@@ -10,14 +10,14 @@ import UIKit
 
 class PopActionsVC: UIViewController {
 
-    
+    var playerSelected = Int()
     
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(playerSelected)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(goBack))
         view.addGestureRecognizer(tap)
     }

@@ -32,6 +32,7 @@ class HomeView: UIView {
            guard let vc = storyboard.instantiateViewController(withIdentifier: "popAction") as? PopActionsVC else {return}
             let currentController = self.getCurrentViewController()
             vc.modalPresentationStyle = .overCurrentContext
+            vc.playerSelected = Game.homePlayersSorted[sender.tag]
             currentController?.present(vc, animated: true, completion: nil)
     }
     

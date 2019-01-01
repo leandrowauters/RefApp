@@ -1033,11 +1033,20 @@
                                     <constraint firstItem="ZJA-Ic-oRN" firstAttribute="height" secondItem="e1P-gU-Ivz" secondAttribute="height" id="ykQ-lG-rMg"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" ⬅︎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBg-aD-ZYb">
+                                <rect key="frame" x="11" y="25" width="353" height="45.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.25785215736040612" green="0.25785215736040612" blue="0.25785215736040612" alpha="0.4709171660958904" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="bF1-Fi-n0V" firstAttribute="centerY" secondItem="CWr-Vq-33q" secondAttribute="centerY" id="6s8-ic-ZoA"/>
+                            <constraint firstItem="eBg-aD-ZYb" firstAttribute="leading" secondItem="CWr-Vq-33q" secondAttribute="leading" constant="11" id="CXW-k3-SYt"/>
                             <constraint firstItem="bF1-Fi-n0V" firstAttribute="width" secondItem="guj-Dn-sAd" secondAttribute="width" multiplier="0.7" id="DYo-wb-nTm"/>
+                            <constraint firstItem="eBg-aD-ZYb" firstAttribute="top" secondItem="CWr-Vq-33q" secondAttribute="top" constant="5" id="Dyu-9R-NIt"/>
+                            <constraint firstItem="CWr-Vq-33q" firstAttribute="trailing" secondItem="eBg-aD-ZYb" secondAttribute="trailing" constant="11" id="Mef-eZ-2ai"/>
                             <constraint firstItem="bF1-Fi-n0V" firstAttribute="centerX" secondItem="CWr-Vq-33q" secondAttribute="centerX" id="Tyy-kW-bt0"/>
                             <constraint firstItem="bF1-Fi-n0V" firstAttribute="height" secondItem="guj-Dn-sAd" secondAttribute="height" multiplier="0.8" id="XgO-vp-RaE"/>
                         </constraints>

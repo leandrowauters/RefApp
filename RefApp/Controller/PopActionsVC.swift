@@ -22,6 +22,10 @@ class PopActionsVC: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? SelectPlayerVC else {return}
+        destination.selectedPlayer = playerSelected
+    }
     @objc func goBack(){
         dismiss(animated: true, completion: nil)
     }

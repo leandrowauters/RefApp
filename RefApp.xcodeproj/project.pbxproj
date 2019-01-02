@@ -141,8 +141,8 @@
 		D5FBD98821B235AF005D89F4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D532218A21D731F4004B0363 /* PopActionsVC.swift */,
 				D532218C21DC3213004B0363 /* SelectPlayerVC.swift */,
+				D532218A21D731F4004B0363 /* PopActionsVC.swift */,
 				D5313FE521D70A7E00875B63 /* MainGameVC.swift */,
 				D510975021CAC57E008638B3 /* HomePlayersInputVC.swift */,
 				D5313FDF21D6F26500875B63 /* AwayPlayersInputVC.swift */,

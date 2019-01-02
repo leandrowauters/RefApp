@@ -11,7 +11,7 @@ import UIKit
 class PopActionsVC: UIViewController {
 
     var playerSelected = Int()
-    
+    var selectedButton = Int()
     
     
     
@@ -25,6 +25,7 @@ class PopActionsVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? SelectPlayerVC else {return}
         destination.selectedPlayer = playerSelected
+        destination.selectedButton = selectedButton
     }
     @objc func goBack(){
         dismiss(animated: true, completion: nil)

@@ -10,7 +10,7 @@ import UIKit
 
 class HomeView: UIView {
     
-    
+//    var homePlayer = Gam
     @IBOutlet weak var homeLabel: UILabel!
     @IBOutlet var HomePlayersButtons: [UIButton]!
     func getCurrentViewController() -> UIViewController? {
@@ -33,6 +33,7 @@ class HomeView: UIView {
             let currentController = self.getCurrentViewController()
             vc.modalPresentationStyle = .overCurrentContext
             vc.playerSelected = Game.homePlayersSorted[sender.tag]
+            vc.selectedButton = sender.tag
             currentController?.present(vc, animated: true, completion: nil)
     }
     

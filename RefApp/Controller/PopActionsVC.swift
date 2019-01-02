@@ -9,7 +9,7 @@
 import UIKit
 
 class PopActionsVC: UIViewController {
-
+    let timer = MainTimer(timeInterval: 1)
     var playerSelected = Int()
     var selectedButton = Int()
     static var incidents = [Incident]()
@@ -49,6 +49,7 @@ class PopActionsVC: UIViewController {
 
         print(PopActionsVC.incidents.count)
         dismiss(animated: true, completion: nil)
+        timer.resume()
         
     }
     

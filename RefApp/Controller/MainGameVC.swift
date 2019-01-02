@@ -10,9 +10,9 @@ import UIKit
 
 class MainGameVC: UIViewController, UIScrollViewDelegate {
     
-    var time = 0
+//    var time = 0
+    let timer = MainTimer(timeInterval: 1)
     static var timeStamp = String()
-    var timer = Timer()
     let shapeLayer = CAShapeLayer()
     let trackLayer = CAShapeLayer()
     @IBOutlet weak var teamsScrollView: UIScrollView!
@@ -30,17 +30,38 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         pageControll.numberOfPages = views.count
         pageControll.currentPage = 0
         view.bringSubviewToFront(pageControll)
-        timerLabel.text = timeString(time: TimeInterval(time))
+        timerLabel.text = timeString(time: TimeInterval(MainTimer.time))
         timerCircle()
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            if self.timer.state == .resumed{
+                self.runTimer()
+//                self.timer.eventHandler = {
+//                    MainTimer.time += 1
+//                    self.action()
+//                }
+//                self.timer.resume()
+            }
+        }
+
         for incident in PopActionsVC.incidents{
             print(incident)
         }
     }
+    func runTimer (){
+        timer.eventHandler = {
+            MainTimer.time += 1
+            self.action()
+        }
+        timer.resume()
+    }
+    
     @IBAction func startButton(_ sender: UIButton) {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MainGameVC.action), userInfo: nil, repeats: true)
+        
+        runTimer()
+
 //        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
 //        basicAnimation.toValue = 1
 //        basicAnimation.duration = 2
@@ -48,7 +69,10 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //        shapeLayer.add(basicAnimation, forKey: "Any")
     }
     @IBAction func pauseButton(_ sender: UIButton) {
-        timer.invalidate()
+        timer.eventHandler = {
+            print("Timer Paused")
+        }
+        timer.suspend()
     }
     func timeString(time:TimeInterval) -> String {
         let hours = Int(time) / 3600
@@ -57,16 +81,15 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
     @objc func action() {
-        MainGameVC.timeStamp = timeString(time: TimeInterval(time))
-        time += 1
-        timerLabel.text = timeString(time: TimeInterval(time))
         DispatchQueue.main.async {
-            self.shapeLayer.strokeEnd = CGFloat(self.time) / CGFloat((Game.lengthSelected * 60) + ((Game.lengthSelected * 60 ) / 3))
-            if self.time == ((Game.lengthSelected * 60) - ((Game.lengthSelected * 60) / 10)) {
+            MainGameVC.timeStamp = self.timeString(time: TimeInterval(MainTimer.time))
+            self.timerLabel.text = self.timeString(time: TimeInterval(MainTimer.time))
+            self.shapeLayer.strokeEnd = CGFloat(MainTimer.time) / CGFloat((Game.lengthSelected * 60) + ((Game.lengthSelected * 60 ) / 3))
+            if MainTimer.time == ((Game.lengthSelected * 60) - ((Game.lengthSelected * 60) / 10)) {
                 self.shapeLayer.strokeColor = #colorLiteral(red: 1, green: 0.765635848, blue: 0, alpha: 1)
                 self.trackLayer.strokeColor = #colorLiteral(red: 1, green: 0.868950069, blue: 0.4578225017, alpha: 1)
             }
-            if self.time == Game.lengthSelected * 60 {
+            if MainTimer.time == Game.lengthSelected * 60 {
                 self.shapeLayer.strokeColor = #colorLiteral(red: 1, green: 0, blue: 0.1359238923, alpha: 1)
                 self.trackLayer.strokeColor = #colorLiteral(red: 1, green: 0.4121969342, blue: 0.4527801871, alpha: 1)
             }

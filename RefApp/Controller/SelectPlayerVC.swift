@@ -33,6 +33,7 @@ class SelectPlayerVC: UIViewController {
         let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "mainGame") as? MainGameVC else {return}
         vc.modalPresentationStyle = .overCurrentContext
+        vc.timer.resume()
         present(vc, animated: true, completion: nil)
     }
     override func viewDidDisappear(_ animated: Bool) {

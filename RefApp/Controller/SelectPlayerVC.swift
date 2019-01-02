@@ -26,6 +26,8 @@ class SelectPlayerVC: UIViewController {
         Game.homePlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
         Game.homePlayersSorted = Game.homePlayersSorted.sorted{$0 < $1}
         Game.homePlayers = Game.homePlayersSorted
+        let sub = Incident.init(type: TypeOfIncident.sub.rawValue, playerNum: selectedPlayer, subIn: Int(subTextField.text!)!, timeStamp: MainGameVC.timeStamp)
+        PopActionsVC.incidents.append(sub)
         print(Game.homePlayers)
         
         let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)

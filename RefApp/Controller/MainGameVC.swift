@@ -11,6 +11,7 @@ import UIKit
 class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     var time = 0
+    static var timeStamp = String()
     var timer = Timer()
     let shapeLayer = CAShapeLayer()
     let trackLayer = CAShapeLayer()
@@ -33,6 +34,11 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         timerCircle()
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        for incident in PopActionsVC.incidents{
+            print(incident)
+        }
+    }
     @IBAction func startButton(_ sender: UIButton) {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MainGameVC.action), userInfo: nil, repeats: true)
 //        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
@@ -44,9 +50,14 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     @IBAction func pauseButton(_ sender: UIButton) {
         timer.invalidate()
     }
-    
+    func timeString(time:TimeInterval) -> String {
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
+    }
     @objc func action() {
-        
+        MainGameVC.timeStamp = timeString(time: TimeInterval(time))
         time += 1
         timerLabel.text = timeString(time: TimeInterval(time))
         DispatchQueue.main.async {
@@ -61,12 +72,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-    func timeString(time:TimeInterval) -> String {
-        let hours = Int(time) / 3600
-        let minutes = Int(time) / 60 % 60
-        let seconds = Int(time) % 60
-        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
-    }
+
     func timerCircle (){
         
         let y = view.center.y * 0.33

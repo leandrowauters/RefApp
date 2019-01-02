@@ -24,8 +24,10 @@ class SelectPlayerVC: UIViewController {
     @objc func doneButtonAction() {
         Game.homePlayersSorted.remove(at: selectedButton)
         Game.homePlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
+        Game.homePlayersSorted = Game.homePlayersSorted.sorted{$0 < $1}
         Game.homePlayers = Game.homePlayersSorted
         print(Game.homePlayers)
+        
         let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "mainGame") as? MainGameVC else {return}
         vc.modalPresentationStyle = .overCurrentContext

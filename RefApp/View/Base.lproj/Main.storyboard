@@ -1072,7 +1072,7 @@
         <!--Select PlayerVC-->
         <scene sceneID="OPP-AV-Cs7">
             <objects>
-                <viewController id="k2M-Dd-PUN" customClass="SelectPlayerVC" customModule="RefApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="selectPlayer" id="k2M-Dd-PUN" customClass="SelectPlayerVC" customModule="RefApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xCR-ar-myP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

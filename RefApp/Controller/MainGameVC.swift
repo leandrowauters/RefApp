@@ -11,7 +11,9 @@ import UIKit
 class MainGameVC: UIViewController, UIScrollViewDelegate {
     
 //    var time = 0
-    let timer = MainTimer(timeInterval: 1)
+    var timer = MainTimer(timeInterval: 1)
+    var delegate: TimerDelegate!
+    static var turnOnTimer = Bool()
     static var timeStamp = String()
     let shapeLayer = CAShapeLayer()
     let trackLayer = CAShapeLayer()
@@ -23,7 +25,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+        delegate = self
         teamsScrollView.delegate = self
         let views:[UIView] = createViews()
         setupSlideScrollViews(views: views)
@@ -34,15 +36,22 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         timerCircle()
         
     }
+
+//    override func viewWillDisappear(_ animated: Bool) {
+//        let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
+//        guard let vc = storyboard.instantiateViewController(withIdentifier: "selectPlayer") as? SelectPlayerVC else {return}
+//        vc.timerDelegete = self
+//    }
     override func viewWillAppear(_ animated: Bool) {
+        print(MainGameVC.turnOnTimer)
         DispatchQueue.main.async {
-            if self.timer.state == .resumed{
-                self.runTimer()
-//                self.timer.eventHandler = {
-//                    MainTimer.time += 1
-//                    self.action()
-//                }
-//                self.timer.resume()
+            if MainGameVC.turnOnTimer{
+                print("Timer is running")
+//                self.runTimer()
+                self.timer.eventHandler = {
+                    self.action()
+                }
+                self.timer.resume()
             }
         }
 
@@ -124,6 +133,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     func createViews () -> [UIView] {
         let view1: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
         view1.homeLabel.text = "\(Game.homeTeam)"
+        
 //        view1.testLabel.text = "View 1"
         for index in 0...Game.numberOfPlayers - 1 {
             view1.HomePlayersButtons[index].isHidden = false
@@ -148,6 +158,12 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
         pageControll.currentPage = Int(pageIndex)
+    }
+}
+
+extension MainGameVC: TimerDelegate{
+    func turnOnTimer(turnOn: Bool) {
+         MainGameVC.turnOnTimer = turnOn
     }
 }
 

@@ -10,6 +10,7 @@ import UIKit
 
 class PopActionsVC: UIViewController {
     let timer = MainTimer(timeInterval: 1)
+    var timerDelegate: TimerDelegate?
     var playerSelected = Int()
     var selectedButton = Int()
     static var incidents = [Incident]()
@@ -26,6 +27,7 @@ class PopActionsVC: UIViewController {
         guard let destination = segue.destination as? SelectPlayerVC else {return}
         destination.selectedPlayer = playerSelected
         destination.selectedButton = selectedButton
+        destination.timerDelegete = timerDelegate
     }
     @objc func goBack(){
         dismiss(animated: true, completion: nil)

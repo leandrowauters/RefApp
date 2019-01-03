@@ -55,6 +55,7 @@ class MainTimer {
         timer.suspend()
     }
 }
-protocol TimerDelegate: class{
-    func changeTimer(to newTime: Int)
+
+protocol TimerDelegate: class {
+    func turnOnTimer(turnOn: Bool)
 }

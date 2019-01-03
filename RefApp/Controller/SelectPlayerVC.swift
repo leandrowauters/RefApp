@@ -11,6 +11,7 @@ import UIKit
 class SelectPlayerVC: UIViewController {
     var selectedPlayer = Int()
     var selectedButton = Int()
+    weak var timerDelegete: TimerDelegate?
     @IBOutlet weak var subTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class SelectPlayerVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     @objc func doneButtonAction() {
+        timerDelegete?.turnOnTimer(turnOn: true)
         Game.homePlayersSorted.remove(at: selectedButton)
         Game.homePlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
         Game.homePlayersSorted = Game.homePlayersSorted.sorted{$0 < $1}
@@ -33,7 +35,6 @@ class SelectPlayerVC: UIViewController {
         let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "mainGame") as? MainGameVC else {return}
         vc.modalPresentationStyle = .overCurrentContext
-        vc.timer.resume()
         present(vc, animated: true, completion: nil)
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -42,6 +43,7 @@ class SelectPlayerVC: UIViewController {
 
     
 }
+
 //extension SelectPlayerVC: UITextFieldDelegate{
 //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 ////        Game.refereeNames.remove(at: indexPath.row)

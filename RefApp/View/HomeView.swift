@@ -34,6 +34,7 @@ class HomeView: UIView {
             vc.modalPresentationStyle = .overCurrentContext
             vc.playerSelected = Game.homePlayersSorted[sender.tag]
             vc.selectedButton = sender.tag
+        vc.timerDelegate = (currentController as! TimerDelegate)
             currentController?.present(vc, animated: true, completion: nil)
     }
     

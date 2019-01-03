@@ -48,7 +48,9 @@ class PopActionsVC: UIViewController {
             return
             
         }
-
+        for incident in PopActionsVC.incidents{
+            print(incident)
+        }
         print(PopActionsVC.incidents.count)
         dismiss(animated: true, completion: nil)
         timer.resume()

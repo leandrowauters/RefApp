@@ -33,7 +33,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         pageControll.currentPage = 0
         view.bringSubviewToFront(pageControll)
         timerLabel.text = timeString(time: TimeInterval(MainTimer.time))
-        timerCircle()
+        timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat((Game.lengthSelected * 60) + ((Game.lengthSelected * 60 ) / 3)))
         
     }
 
@@ -48,6 +48,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             if MainGameVC.turnOnTimer{
                 print("Timer is running")
 //                self.runTimer()
+                self.timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat((Game.lengthSelected * 60) + ((Game.lengthSelected * 60 ) / 3)))
                 self.timer.eventHandler = {
                     self.action()
                 }
@@ -68,9 +69,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func startButton(_ sender: UIButton) {
-        
+        if timer.state == .suspended {
         runTimer()
-
+        }
 //        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
 //        basicAnimation.toValue = 1
 //        basicAnimation.duration = 2
@@ -105,7 +106,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         }
     }
 
-    func timerCircle (){
+    func timerCircle (strokeValue: CGFloat){
         
         let y = view.center.y * 0.33
         let x = view.center.x
@@ -124,7 +125,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         shapeLayer.lineCap = CAShapeLayerLineCap.round
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineWidth = 10
-        shapeLayer.strokeEnd = 0
+        shapeLayer.strokeEnd = strokeValue
         shapeLayer.position = position
         shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi / 2, 0, 0, 1)
         view.layer.addSublayer(shapeLayer)

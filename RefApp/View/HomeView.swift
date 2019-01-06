@@ -32,11 +32,11 @@ class HomeView: UIView {
             let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
            guard let vc = storyboard.instantiateViewController(withIdentifier: "popAction") as? PopActionsVC else {return}
             let currentController = self.getCurrentViewController()
-            vc.modalPresentationStyle = .overCurrentContext
+            vc.modalPresentationStyle = .fullScreen
             vc.playerSelected = Game.homePlayersSorted[sender.tag]
             vc.selectedButton = sender.tag
             vc.timerDelegate = (currentController as! TimerDelegate)
-            currentController?.present(vc, animated: true, completion: nil)
+            currentController?.present(vc, animated: false, completion: nil)
     }
     
     

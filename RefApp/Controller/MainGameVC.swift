@@ -13,6 +13,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //    var time = 0
     var timer = MainTimer(timeInterval: 1)
     var delegate: TimerDelegate!
+    let view1: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
     static var turnOnTimer = Bool()
     static var timeStamp = String()
     let shapeLayer = CAShapeLayer()
@@ -43,7 +44,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //        vc.timerDelegete = self
 //    }
     override func viewWillAppear(_ animated: Bool) {
-        print(MainGameVC.turnOnTimer)
+        reloadView()
+        
         DispatchQueue.main.async {
             if MainGameVC.turnOnTimer{
                 print("Timer is running")
@@ -66,6 +68,15 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             self.action()
         }
         timer.resume()
+    }
+    func reloadView(){
+        for button in view1.HomePlayersButtons{
+            if let text = button.titleLabel?.text {
+                if Game.yellowCardPlayers.contains(Int(text)!){
+                    button.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+                }
+            }
+        }
     }
     
     @IBAction func startButton(_ sender: UIButton) {
@@ -132,16 +143,13 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         
     }
     func createViews () -> [UIView] {
-        let view1: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
+
         view1.homeLabel.text = "\(Game.homeTeam)"
         
 //        view1.testLabel.text = "View 1"
         for index in 0...Game.numberOfPlayers - 1 {
             view1.HomePlayersButtons[index].isHidden = false
             view1.HomePlayersButtons[index].setTitle(Game.homePlayersSorted[index].description, for: .normal)
-        }
-        for button in view1.HomePlayersButtons{
-            print(button.titleLabel?.text as Any)
         }
         
         let view2: AwayView = Bundle.main.loadNibNamed("AwayView", owner: self, options: nil)?.first as! AwayView

@@ -13,6 +13,7 @@ class HomeView: UIView {
 //    var homePlayer = Gam
     @IBOutlet weak var homeLabel: UILabel!
     @IBOutlet var HomePlayersButtons: [UIButton]!
+    
     func getCurrentViewController() -> UIViewController? {
         
         if let rootController = UIApplication.shared.keyWindow?.rootViewController {
@@ -34,7 +35,7 @@ class HomeView: UIView {
             vc.modalPresentationStyle = .overCurrentContext
             vc.playerSelected = Game.homePlayersSorted[sender.tag]
             vc.selectedButton = sender.tag
-        vc.timerDelegate = (currentController as! TimerDelegate)
+            vc.timerDelegate = (currentController as! TimerDelegate)
             currentController?.present(vc, animated: true, completion: nil)
     }
     

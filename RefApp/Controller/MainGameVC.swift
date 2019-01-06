@@ -56,7 +56,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             }
         }
 
-        for incident in PopActionsVC.incidents{
+        for incident in Game.events{
             print(incident)
         }
     }
@@ -139,6 +139,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         for index in 0...Game.numberOfPlayers - 1 {
             view1.HomePlayersButtons[index].isHidden = false
             view1.HomePlayersButtons[index].setTitle(Game.homePlayersSorted[index].description, for: .normal)
+        }
+        for button in view1.HomePlayersButtons{
+            print(button.titleLabel?.text as Any)
         }
         
         let view2: AwayView = Bundle.main.loadNibNamed("AwayView", owner: self, options: nil)?.first as! AwayView

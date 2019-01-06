@@ -13,7 +13,7 @@ class PopActionsVC: UIViewController {
     var timerDelegate: TimerDelegate?
     var playerSelected = Int()
     var selectedButton = Int()
-    static var incidents = [Incident]()
+    
 
     
     override func viewDidLoad() {
@@ -36,22 +36,23 @@ class PopActionsVC: UIViewController {
     @IBAction func incidentButtonPressed(_ sender: UIButton) {
         switch sender.tag {
         case 0:
-            let yellowCard = Incident.init(type: TypeOfIncident.yellowCard.rawValue, playerNum: playerSelected, subIn: nil, timeStamp: MainGameVC.timeStamp)
-                PopActionsVC.incidents.append(yellowCard)
+            let yellowCard = Events.init(type: TypeOfIncident.yellowCard.rawValue, playerNum: playerSelected, subIn: nil, timeStamp: MainGameVC.timeStamp)
+                Game.events.append(yellowCard)
+                Game.yellowCardPlayers.append(playerSelected)
         case 1:
-            let redCard = Incident.init(type: TypeOfIncident.redCard.rawValue, playerNum: playerSelected, subIn: nil, timeStamp: MainGameVC.timeStamp)
-            PopActionsVC.incidents.append(redCard)
+            let redCard = Events.init(type: TypeOfIncident.redCard.rawValue, playerNum: playerSelected, subIn: nil, timeStamp: MainGameVC.timeStamp)
+                Game.events.append(redCard)
         case 3:
-            let goal = Incident.init(type: TypeOfIncident.goal.rawValue, playerNum: playerSelected, subIn: nil, timeStamp: MainGameVC.timeStamp)
-            PopActionsVC.incidents.append(goal)
+            let goal = Events.init(type: TypeOfIncident.goal.rawValue, playerNum: playerSelected, subIn: nil, timeStamp: MainGameVC.timeStamp)
+                Game.events.append(goal)
         default:
             return
             
         }
-        for incident in PopActionsVC.incidents{
+        for incident in Game.events{
             print(incident)
         }
-        print(PopActionsVC.incidents.count)
+        print(Game.events.count)
         dismiss(animated: true, completion: nil)
         timer.resume()
         

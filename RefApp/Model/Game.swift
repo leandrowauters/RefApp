@@ -21,10 +21,14 @@ class Game: Codable {
     static var extraTime = Bool() // STATIC VC YES OR NOW
     static var homeTeam = "Home"
     static var awayTeam = "Away"
-    static var subs = Int()
+    static var numberOfSubs = Int()
     static var homePlayers = [Int]()
     static var homePlayersSorted = Game.homePlayers.sorted{$0 < $1}
     static var awayPlayers = [Int]()
+    static var yellowCardPlayers = [Int]()
+    static var redCardPlayers = [Int]()
+    static var goalsPlayers = [Int]()
+    static var events = [Events]()
     
     var lenght = Game.length
     var lengthSelected = Game.lengthSelected
@@ -37,7 +41,7 @@ class Game: Codable {
     var extraTime = Game.extraTime
     var homeTeam = Game.homeTeam
     var awayTeam = Game.awayTeam
-    var subs = Game.subs
+    var subs = Game.numberOfSubs
     var homePlayers = Game.homePlayers
     
     init(length: [Int], lengthSelected:Int, location: String, dateAndTime: Date, league: [String], refereeNames: [String], caps: [String], extraTime: Bool, homeTeam: String, awayTeam: String, subs: Int, homePlayers: [Int]) {

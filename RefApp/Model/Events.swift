@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Incident {
+struct Events {
     var type: String
     var playerNum: Int
     var subIn: Int?

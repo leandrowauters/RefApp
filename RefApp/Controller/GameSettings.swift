@@ -55,17 +55,17 @@ class GameSettings: UITableViewController {
         numberOfSubsLabel.isHidden = false
         let stepperValue = Int(sender.value)
         func updateValue(){
-            Game.subs = stepperValue
+            Game.numberOfSubs = stepperValue
             numberOfSubsLabel.text = stepperValue.description
         }
         switch sender.value {
         case 0:
-            Game.subs = stepperValue
+            Game.numberOfSubs = stepperValue
             numberOfSubsLabel.text = "None"
         case 1...6:
             updateValue()
         case sender.maximumValue:
-            Game.subs = 7
+            Game.numberOfSubs = 7
             numberOfSubsLabel.text = "∞"
         default:
             print("Error subsStepperPresssed")

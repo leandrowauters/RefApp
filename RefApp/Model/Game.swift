@@ -9,7 +9,7 @@
 import UIKit
 class Game: Codable {
     // unique vc
-    static var length = [45, 30, 15, 0] // STATIC VC
+    static var length = [90, 60, 30, 0] // STATIC VC
     static var lengthSelected = Int()
     // TYPE INTO CELL
     static var numberOfPlayers = Int()

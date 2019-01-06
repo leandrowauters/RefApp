@@ -34,8 +34,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         pageControll.currentPage = 0
         view.bringSubviewToFront(pageControll)
         timerLabel.text = timeString(time: TimeInterval(MainTimer.time))
-        timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat((Game.lengthSelected * 60) + ((Game.lengthSelected * 60 ) / 3)))
-        
+        timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + (((Game.lengthSelected / 2) * 60 ) / 3)))
     }
 
 //    override func viewWillDisappear(_ animated: Bool) {
@@ -50,7 +49,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             if MainGameVC.turnOnTimer{
                 print("Timer is running")
 //                self.runTimer()
-                self.timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat((Game.lengthSelected * 60) + ((Game.lengthSelected * 60 ) / 3)))
+                self.timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + (((Game.lengthSelected / 2) * 60 ) / 3)))
                 self.timer.eventHandler = {
                     self.action()
                 }
@@ -105,12 +104,12 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         DispatchQueue.main.async {
             MainGameVC.timeStamp = self.timeString(time: TimeInterval(MainTimer.time))
             self.timerLabel.text = self.timeString(time: TimeInterval(MainTimer.time))
-            self.shapeLayer.strokeEnd = CGFloat(MainTimer.time) / CGFloat((Game.lengthSelected * 60) + ((Game.lengthSelected * 60 ) / 3))
-            if MainTimer.time == ((Game.lengthSelected * 60) - ((Game.lengthSelected * 60) / 10)) {
+            self.shapeLayer.strokeEnd = CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + ((Game.lengthSelected / 2 * 60 ) / 3))
+            if MainTimer.time == (((Game.lengthSelected / 2) * 60) - (((Game.lengthSelected / 2) * 60) / 10)) {
                 self.shapeLayer.strokeColor = #colorLiteral(red: 1, green: 0.765635848, blue: 0, alpha: 1)
                 self.trackLayer.strokeColor = #colorLiteral(red: 1, green: 0.868950069, blue: 0.4578225017, alpha: 1)
             }
-            if MainTimer.time == Game.lengthSelected * 60 {
+            if MainTimer.time == (Game.lengthSelected / 2) * 60 {
                 self.shapeLayer.strokeColor = #colorLiteral(red: 1, green: 0, blue: 0.1359238923, alpha: 1)
                 self.trackLayer.strokeColor = #colorLiteral(red: 1, green: 0.4121969342, blue: 0.4527801871, alpha: 1)
             }

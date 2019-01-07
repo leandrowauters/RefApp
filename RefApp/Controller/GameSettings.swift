@@ -39,7 +39,7 @@ class GameSettings: UITableViewController {
     }
     
     @objc func saveTapped(){
-        GameSaveClient.alert(vc: self)
+//        GameSaveClient.alert(vc: self)
     }
     @IBAction func extraTimeSwitchPressed(_ sender: UISwitch) {
         if sender.isOn {

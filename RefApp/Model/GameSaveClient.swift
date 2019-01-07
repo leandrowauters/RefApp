@@ -16,7 +16,7 @@ struct GameSaveClient {
         static var namesOfSaves = [Int: String]()
     static func saveGame(saveName: String) {
         let defaults = UserDefaults.standard
-        var game: Game!
+        var games = [Game]()
         defaults.set(numberOfSaves, forKey: saveName)
         let gameToSave = Game(length: Game.length, lengthSelected: Game.lengthSelected, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers)
         if let encoded = try? JSONEncoder().encode(gameToSave) {
@@ -25,26 +25,28 @@ struct GameSaveClient {
         }
         if let savedGame = defaults.object(forKey: saveName) as? Data {
             if let loadedgame = try? JSONDecoder().decode(Game.self, from: savedGame) {
-                game = loadedgame
-                print(game.lengthSelected)
-            }
-        }
-        let savedGame = SavedGame.init(game: game, slot: numberOfSaves, saveName: saveName)
-        savedGames.append(savedGame)
-        if let encoded = try? JSONEncoder().encode(savedGames){
-            let defaults = UserDefaults.standard
-            defaults.set(encoded, forKey: "savedGames")
-        }
-        if let savedGames = defaults.object(forKey: "savedGames") as? Data {
-            if let loadedgames = try? JSONDecoder().decode([SavedGame].self, from: savedGames){
-                self.savedGames = loadedgames
-                for game in self.savedGames{
-                    print(game.saveName)
+                games.append(loadedgame)
+                for game in games {
+                    print("The game lenght is: \(game.lenght)")
                 }
-                print(self.savedGames.count)
             }
         }
-        print(savedGame.game.lengthSelected)
+//        let savedGame = SavedGame.init(game: game, slot: numberOfSaves, saveName: saveName)
+//        savedGames.append(savedGame)
+//        if let encoded = try? JSONEncoder().encode(savedGames){
+//            let defaults = UserDefaults.standard
+//            defaults.set(encoded, forKey: "savedGames")
+//        }
+//        if let savedGames = defaults.object(forKey: "savedGames") as? Data {
+//            if let loadedgames = try? JSONDecoder().decode([SavedGame].self, from: savedGames){
+//                self.savedGames = loadedgames
+//                for game in self.savedGames{
+//                    print(game.saveName)
+//                }
+//                print(self.savedGames.count)
+//            }
+//        }
+//        print(savedGame.game.lengthSelected)
     }
         static func retriveGame() ->[SavedGame] { //retrive
             let defaults = UserDefaults.standard
@@ -62,9 +64,9 @@ struct GameSaveClient {
             _ = ""
         }
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (updateAction) in
-            let defaults = UserDefaults.standard
+//            let defaults = UserDefaults.standard
             printAllDefaults()
-            defaults.removeObject(forKey: (alert.textFields?.first?.text)!)
+//            defaults.removeObject(forKey: (alert.textFields?.first?.text)!)
 //            saveGame(saveName: (alert.textFields?.first?.text)!)
 //            GameSaveClient.numberOfSaves += 1
         }))

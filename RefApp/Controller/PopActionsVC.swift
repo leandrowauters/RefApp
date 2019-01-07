@@ -46,7 +46,12 @@ class PopActionsVC: UIViewController {
         case 0:
             let yellowCard = Events.init(type: TypeOfIncident.yellowCard.rawValue, playerNum: playerSelected, team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp)
                 Game.events.append(yellowCard)
+            if teamSide == .home{
                 Game.homeYellowCardPlayers.append(playerSelected)
+            } else if teamSide == .away{
+                Game.awayYellowCardPlayers.append(playerSelected)
+            }
+            
         case 1:
             let redCard = Events.init(type: TypeOfIncident.redCard.rawValue, playerNum: playerSelected, team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp)
                 Game.events.append(redCard)

@@ -88,6 +88,13 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                 }
             }
         }
+        for button in awayView.awayPlayersButtons{
+            if let text = button.titleLabel?.text {
+                if Game.awayYellowCardPlayers.contains(Int(text)!){
+                    button.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+                }
+            }
+        }
     }
     
     @IBAction func startButton(_ sender: UIButton) {

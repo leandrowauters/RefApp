@@ -126,7 +126,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.59879869220000004" green="0.74837368729999998" blue="0.88786190750000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
             <accessibility key="accessibilityConfiguration">
                 <bool key="isElement" value="YES"/>
             </accessibility>

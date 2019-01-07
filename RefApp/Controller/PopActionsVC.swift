@@ -10,10 +10,16 @@ import UIKit
 
 class PopActionsVC: UIViewController {
     let timer = MainTimer(timeInterval: 1)
+    let homeTeam = Game.homeTeam
     var timerDelegate: TimerDelegate?
     var playerSelected = Int()
     var selectedButton = Int()
-    
+    var teamSelected = String()
+    var teamSide: Teams!
+    enum Teams{
+        case home
+        case away
+    }
 
     
     override func viewDidLoad() {
@@ -26,6 +32,8 @@ class PopActionsVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? SelectPlayerVC else {return}
         destination.selectedPlayer = playerSelected
+        destination.teamSide = teamSide
+        destination.teamSelected = teamSelected
         destination.selectedButton = selectedButton
         destination.timerDelegete = timerDelegate
     }
@@ -36,14 +44,14 @@ class PopActionsVC: UIViewController {
     @IBAction func incidentButtonPressed(_ sender: UIButton) {
         switch sender.tag {
         case 0:
-            let yellowCard = Events.init(type: TypeOfIncident.yellowCard.rawValue, playerNum: playerSelected, subIn: nil, timeStamp: MainGameVC.timeStamp)
+            let yellowCard = Events.init(type: TypeOfIncident.yellowCard.rawValue, playerNum: playerSelected, team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp)
                 Game.events.append(yellowCard)
-                Game.yellowCardPlayers.append(playerSelected)
+                Game.homeYellowCardPlayers.append(playerSelected)
         case 1:
-            let redCard = Events.init(type: TypeOfIncident.redCard.rawValue, playerNum: playerSelected, subIn: nil, timeStamp: MainGameVC.timeStamp)
+            let redCard = Events.init(type: TypeOfIncident.redCard.rawValue, playerNum: playerSelected, team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp)
                 Game.events.append(redCard)
         case 3:
-            let goal = Events.init(type: TypeOfIncident.goal.rawValue, playerNum: playerSelected, subIn: nil, timeStamp: MainGameVC.timeStamp)
+            let goal = Events.init(type: TypeOfIncident.goal.rawValue, playerNum: playerSelected,team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp)
                 Game.events.append(goal)
         default:
             return

@@ -13,9 +13,11 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //    var time = 0
     var timer = MainTimer(timeInterval: 1)
     var delegate: TimerDelegate!
-    let view1: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
+    let homeView: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
+    let awayView: AwayView = Bundle.main.loadNibNamed("AwayView", owner: self, options: nil)?.first as! AwayView
     static var turnOnTimer = Bool()
     static var timeStamp = String()
+    
     let shapeLayer = CAShapeLayer()
     let trackLayer = CAShapeLayer()
     @IBOutlet weak var teamsScrollView: UIScrollView!
@@ -44,7 +46,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //    }
     override func viewWillAppear(_ animated: Bool) {
         reloadView()
-        
+//        MainTimer.time = -1
         DispatchQueue.main.async {
             if MainGameVC.turnOnTimer{
                 print("Timer is running")
@@ -68,10 +70,20 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         }
         timer.resume()
     }
+    func restartTimer(){
+        timer.suspend()
+        timer.state = .restated
+        MainTimer.time = -1
+        self.timer.eventHandler = {
+            self.action()
+            MainTimer.time += 1
+        }
+        //        self.timer.resume()
+    }
     func reloadView(){
-        for button in view1.HomePlayersButtons{
+        for button in homeView.HomePlayersButtons{
             if let text = button.titleLabel?.text {
-                if Game.yellowCardPlayers.contains(Int(text)!){
+                if Game.homeYellowCardPlayers.contains(Int(text)!){
                     button.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
                 }
             }
@@ -82,17 +94,21 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         if timer.state == .suspended {
         runTimer()
         }
+        if timer.state == .restated {
+            runTimer()
+        }
 //        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
 //        basicAnimation.toValue = 1
 //        basicAnimation.duration = 2
 //        basicAnimation.fillMode = CAMediaTimingFillMode.forwards
 //        shapeLayer.add(basicAnimation, forKey: "Any")
     }
+    
     @IBAction func pauseButton(_ sender: UIButton) {
-        timer.eventHandler = {
-            print("Timer Paused")
-        }
+        //TO DO : it should be: suspend, send alert, display incident, and restart timer(if half == 2 timer == 0.
+//        restartTimer()
         timer.suspend()
+
     }
     func timeString(time:TimeInterval) -> String {
         let hours = Int(time) / 3600
@@ -143,18 +159,21 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     }
     func createViews () -> [UIView] {
 
-        view1.homeLabel.text = "\(Game.homeTeam)"
-        
+        homeView.homeLabel.text = "\(Game.homeTeam)"
+        awayView.awayLabel.text = "\(Game.awayTeam)"
 //        view1.testLabel.text = "View 1"
         for index in 0...Game.numberOfPlayers - 1 {
-            view1.HomePlayersButtons[index].isHidden = false
-            view1.HomePlayersButtons[index].setTitle(Game.homePlayersSorted[index].description, for: .normal)
+            homeView.HomePlayersButtons[index].isHidden = false
+            awayView.awayPlayersButtons[index].isHidden = false
+            homeView.HomePlayersButtons[index].setTitle(Game.homePlayersSorted[index].description, for: .normal)
+            awayView.awayPlayersButtons[index].setTitle(Game.awayPlayersSorted[index].description, for: .normal)
         }
         
-        let view2: AwayView = Bundle.main.loadNibNamed("AwayView", owner: self, options: nil)?.first as! AwayView
-//        view2.testLabel.text = "View 2"
         
-    return [view1, view2]
+        
+
+        
+    return [homeView, awayView]
     }
     func setupSlideScrollViews(views: [UIView]){
         teamsScrollView.frame = CGRect (x: 0, y: 0, width: view.frame.width, height: view.frame.height / 2)

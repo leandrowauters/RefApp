@@ -29,6 +29,7 @@ class MainTimer {
     enum State {
         case suspended
         case resumed
+        case restated
     }
     
     var state: State = .suspended

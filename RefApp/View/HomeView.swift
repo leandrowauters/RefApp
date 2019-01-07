@@ -34,6 +34,8 @@ class HomeView: UIView {
             let currentController = self.getCurrentViewController()
             vc.modalPresentationStyle = .fullScreen
             vc.playerSelected = Game.homePlayersSorted[sender.tag]
+            vc.teamSelected = Game.homeTeam
+            vc.teamSide = .home
             vc.selectedButton = sender.tag
             vc.timerDelegate = (currentController as! TimerDelegate)
             currentController?.present(vc, animated: false, completion: nil)

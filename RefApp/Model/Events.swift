@@ -11,8 +11,11 @@ import Foundation
 struct Events {
     var type: String
     var playerNum: Int
+    var team: String
+    var half: Int
     var subIn: Int?
     var timeStamp: String
+    
 }
 enum TypeOfIncident: String {
     case goal = "Goal"

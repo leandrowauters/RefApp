@@ -11,6 +11,9 @@ import UIKit
 class SelectPlayerVC: UIViewController {
     var selectedPlayer = Int()
     var selectedButton = Int()
+    var teamSide: PopActionsVC.Teams!
+    var teamSelected = String()
+    
     weak var timerDelegete: TimerDelegate?
     @IBOutlet weak var subTextField: UITextField!
     override func viewDidLoad() {
@@ -24,11 +27,18 @@ class SelectPlayerVC: UIViewController {
     }
     @objc func doneButtonAction() {
         timerDelegete?.turnOnTimer(turnOn: true)
+        if teamSide == .home {
         Game.homePlayersSorted.remove(at: selectedButton)
         Game.homePlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
         Game.homePlayersSorted = Game.homePlayersSorted.sorted{$0 < $1}
         Game.homePlayers = Game.homePlayersSorted
-        let sub = Events.init(type: TypeOfIncident.sub.rawValue, playerNum: selectedPlayer, subIn: Int(subTextField.text!)!, timeStamp: MainGameVC.timeStamp)
+        } else if teamSide == .away {
+            Game.awayPlayersSorted.remove(at: selectedButton)
+            Game.awayPlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
+            Game.awayPlayersSorted = Game.awayPlayersSorted.sorted{$0 < $1}
+            Game.awayPlayers = Game.awayPlayersSorted
+        }
+        let sub = Events.init(type: TypeOfIncident.sub.rawValue, playerNum: selectedPlayer, team: teamSelected, half: Game.gameHalf, subIn: Int(subTextField.text!)!, timeStamp: MainGameVC.timeStamp)
         Game.events.append(sub)
         print(Game.homePlayers)
         

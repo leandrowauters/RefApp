@@ -25,10 +25,16 @@ class Game: Codable {
     static var homePlayers = [Int]()
     static var homePlayersSorted = Game.homePlayers.sorted{$0 < $1}
     static var awayPlayers = [Int]()
-    static var yellowCardPlayers = [Int]()
-    static var redCardPlayers = [Int]()
-    static var goalsPlayers = [Int]()
+    static var awayPlayersSorted = Game.awayPlayers.sorted{$0 < $1}
+    static var homeYellowCardPlayers = [Int]()
+    static var homeRedCardPlayers = [Int]()
+    static var homeGoalsPlayers = [Int]()
+    static var awayYellowCardPlayers = [Int]()
+    static var awayRedCardPlayers = [Int]()
+    static var awayGoalsPlayers = [Int]()
     static var events = [Events]()
+    static var gameHalf = 1
+    
     
     var lenght = Game.length
     var lengthSelected = Game.lengthSelected

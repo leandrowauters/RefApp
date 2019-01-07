@@ -10,13 +10,14 @@ import UIKit
 
 struct GameSaveClient {
     
-    static var savedGames = [SavedGame]()
-    var savedGame: SavedGame 
+//    static var savedGames = [SavedGame]()
+    var savedGame: SavedGame
+    static var saveGames = [Game]()
     static var numberOfSaves = UserDefaults.standard.integer(forKey: "numberOfSaves")
         static var namesOfSaves = [Int: String]()
     static func saveGame(saveName: String) {
         let defaults = UserDefaults.standard
-        var games = [Game]()
+        
         defaults.set(numberOfSaves, forKey: saveName)
         let gameToSave = Game(length: Game.length, lengthSelected: Game.lengthSelected, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers)
         if let encoded = try? JSONEncoder().encode(gameToSave) {
@@ -25,9 +26,9 @@ struct GameSaveClient {
         }
         if let savedGame = defaults.object(forKey: saveName) as? Data {
             if let loadedgame = try? JSONDecoder().decode(Game.self, from: savedGame) {
-                games.append(loadedgame)
-                for game in games {
-                    print("The game lenght is: \(game.lenght)")
+                GameSaveClient.saveGames.append(loadedgame)
+                for game in GameSaveClient.saveGames {
+                    print("The game lenght is: \(game.lengthSelected)")
                 }
             }
         }
@@ -65,9 +66,9 @@ struct GameSaveClient {
         }
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (updateAction) in
 //            let defaults = UserDefaults.standard
+//            defaults.removeObject(forKey: (alert.textFields?.first?.text)!) //remove 
+            saveGame(saveName: (alert.textFields?.first?.text)!)
             printAllDefaults()
-//            defaults.removeObject(forKey: (alert.textFields?.first?.text)!)
-//            saveGame(saveName: (alert.textFields?.first?.text)!)
 //            GameSaveClient.numberOfSaves += 1
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

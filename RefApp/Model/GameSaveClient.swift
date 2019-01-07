@@ -19,7 +19,7 @@ struct GameSaveClient {
         let defaults = UserDefaults.standard
         
         defaults.set(numberOfSaves, forKey: saveName)
-        let gameToSave = Game(length: Game.length, lengthSelected: Game.lengthSelected, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers)
+        let gameToSave = Game.init(lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers)
         if let encoded = try? JSONEncoder().encode(gameToSave) {
             let defaults = UserDefaults.standard
             defaults.set(encoded, forKey: saveName)

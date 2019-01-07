@@ -36,7 +36,6 @@ class Game: Codable {
     static var gameHalf = 1
     
     
-    var lenght = Game.length
     var lengthSelected = Game.lengthSelected
     var numberOfPlayers = Game.numberOfPlayers
     var location = Game.location
@@ -49,10 +48,11 @@ class Game: Codable {
     var awayTeam = Game.awayTeam
     var subs = Game.numberOfSubs
     var homePlayers = Game.homePlayers
+    var awayPlayers = Game.awayPlayers
     
-    init(length: [Int], lengthSelected:Int, location: String, dateAndTime: Date, league: [String], refereeNames: [String], caps: [String], extraTime: Bool, homeTeam: String, awayTeam: String, subs: Int, homePlayers: [Int]) {
-        self.lenght = length
+    init(lengthSelected:Int, numberOfPlayers: Int, location: String, dateAndTime: Date, league: [String], refereeNames: [String], caps: [String], extraTime: Bool, homeTeam: String, awayTeam: String, subs: Int, homePlayers: [Int], awayPlayers: [Int]) {
         self.lengthSelected = lengthSelected
+        self.numberOfPlayers = numberOfPlayers
         self.location = location
         self.dateAndTime = dateAndTime
         self.league = league
@@ -63,6 +63,7 @@ class Game: Codable {
         self.awayTeam = awayTeam
         self.subs = subs
         self.homePlayers = homePlayers
+        self.awayPlayers = awayPlayers
         
     }
     

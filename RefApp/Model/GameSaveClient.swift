@@ -26,7 +26,8 @@ struct GameSaveClient {
         }
         if let savedGame = defaults.object(forKey: saveName) as? Data {
             if let loadedgame = try? JSONDecoder().decode(Game.self, from: savedGame) {
-                GameSaveClient.savedGames.append(loadedgame)
+                let gameToLoad = loadedgame
+                GameSaveClient.savedGames.append(gameToLoad)
                 for game in GameSaveClient.savedGames {
                     print("The game lenght is: \(game.lengthSelected)")
                 }

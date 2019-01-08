@@ -12,26 +12,28 @@ struct GameSaveClient {
     
 //    static var savedGames = [SavedGame]()
     var savedGame: SavedGame
-    static var saveGames = [Game]()
-    static var numberOfSaves = UserDefaults.standard.integer(forKey: "numberOfSaves")
-        static var namesOfSaves = [Int: String]()
+    static var savedGames = [Game]()
+//    static var numberOfSaves = UserDefaults.standard.integer(forKey: "numberOfSaves")
+//        static var namesOfSaves = [Int: String]()
     static func saveGame(saveName: String) {
         let defaults = UserDefaults.standard
         
-        defaults.set(numberOfSaves, forKey: saveName)
-        let gameToSave = Game.init(lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers)
+//        defaults.set(numberOfSaves, forKey: saveName)
+        let gameToSave = Game.init(gameName: saveName, lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers)
         if let encoded = try? JSONEncoder().encode(gameToSave) {
             let defaults = UserDefaults.standard
             defaults.set(encoded, forKey: saveName)
         }
         if let savedGame = defaults.object(forKey: saveName) as? Data {
             if let loadedgame = try? JSONDecoder().decode(Game.self, from: savedGame) {
-                GameSaveClient.saveGames.append(loadedgame)
-                for game in GameSaveClient.saveGames {
+                GameSaveClient.savedGames.append(loadedgame)
+                for game in GameSaveClient.savedGames {
                     print("The game lenght is: \(game.lengthSelected)")
                 }
             }
         }
+        let saveGameData = try! JSONEncoder().encode(savedGames)
+        UserDefaults.standard.set(saveGameData, forKey: "SavedGames")
 //        let savedGame = SavedGame.init(game: game, slot: numberOfSaves, saveName: saveName)
 //        savedGames.append(savedGame)
 //        if let encoded = try? JSONEncoder().encode(savedGames){
@@ -49,11 +51,22 @@ struct GameSaveClient {
 //        }
 //        print(savedGame.game.lengthSelected)
     }
-        static func retriveGame() ->[SavedGame] { //retrive
-            let defaults = UserDefaults.standard
-            let array = defaults.array(forKey: "savedGame")  as? [SavedGame] ?? [SavedGame]()
-            return array
-        }
+//        static func retriveGame() ->[SavedGame] { //retrive this is for the previous, I might use it later
+//            let defaults = UserDefaults.standard
+//            let array = defaults.array(forKey: "savedGame")  as? [SavedGame] ?? [SavedGame]()
+//            return array
+//        }
+    static func retriveGame() ->[Game] { //retrive this is for the previous, I might use it later
+        let defaults = UserDefaults.standard
+        let array = defaults.array(forKey: "SavedGames")  as? [Game] ?? [Game]()
+        return array
+    }
+    public static func getSavedGames() -> [Game]?{
+        let savedGamesData = UserDefaults.standard.data(forKey: "SavedGames")
+        let savedGamesArray = try! JSONDecoder().decode([Game].self, from: savedGamesData!)
+        return savedGamesArray
+    }
+    
     static func printAllDefaults(){
         for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
             print("\(key) = \(value) \n")

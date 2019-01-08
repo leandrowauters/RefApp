@@ -14,7 +14,7 @@ class Game: Codable {
     // TYPE INTO CELL
     static var numberOfPlayers = Int()
     static var location = String() //TYPE INTO CELL
-    static var dateAndTime = Date()//OR DATE? // DATE PICKER VIEW UNIQUE VC
+    static var dateAndTime = String()//OR DATE? // DATE PICKER VIEW UNIQUE VC
     static var league = [String]() //INPUT MUST BE SAVED - [String]? // TYPE INTO CELL
     static var refereeNames = [String]() // TYPE INTO CELL
     static var caps = [String]()
@@ -50,7 +50,7 @@ class Game: Codable {
     var homePlayers = Game.homePlayers
     var awayPlayers = Game.awayPlayers
     
-    init(gameName: String, lengthSelected:Int, numberOfPlayers: Int, location: String, dateAndTime: Date, league: [String], refereeNames: [String], caps: [String], extraTime: Bool, homeTeam: String, awayTeam: String, subs: Int, homePlayers: [Int], awayPlayers: [Int]) {
+    init(gameName: String, lengthSelected:Int, numberOfPlayers: Int, location: String, dateAndTime: String, league: [String], refereeNames: [String], caps: [String], extraTime: Bool, homeTeam: String, awayTeam: String, subs: Int, homePlayers: [Int], awayPlayers: [Int]) {
         self.gameName = gameName
         self.lengthSelected = lengthSelected
         self.numberOfPlayers = numberOfPlayers

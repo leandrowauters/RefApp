@@ -17,8 +17,9 @@ weak var gameDegelate: GameDelegate?
 
     }
     @IBAction func doneWasClicked(_ sender: UIButton) {
-        Game.dateAndTime = picker.date
-        let date = GameClient.convertDateToLocalDate(str: picker.date.description, dateFormat: "MMM d, h:mm a")
+       
+        let date = GameClient.convertLocalDateToString(str: picker.date.description, dateFormat: "MMM d, h:mm a")
+        Game.dateAndTime = date
         gameDegelate?.dateLabelChange(to: date)
         navigationController?.popViewController(animated: true)
     }

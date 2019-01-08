@@ -28,8 +28,7 @@ struct GameClient {
         toolbar.sizeToFit()
         textField.inputAccessoryView = toolbar
     }
-    
-    static func convertDateToLocalDate(str: String, dateFormat: String) -> String {
+    static func convertLocalDateToString(str: String, dateFormat: String) -> String {
         // Making a Date from a String
         let dateString = str
         var dateToReturn = Date()

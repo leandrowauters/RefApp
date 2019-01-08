@@ -63,9 +63,12 @@ struct GameSaveClient {
         return array
     }
     public static func getSavedGames() -> [Game]?{
-        let savedGamesData = UserDefaults.standard.data(forKey: "SavedGames")
-        let savedGamesArray = try! JSONDecoder().decode([Game].self, from: savedGamesData!)
-        return savedGamesArray
+        var gameToReturn = [Game]()
+        if let savedGamesData = UserDefaults.standard.data(forKey: "SavedGames"){
+        let savedGamesArray = try! JSONDecoder().decode([Game].self, from: savedGamesData)
+        gameToReturn = savedGamesArray
+        }
+        return gameToReturn
     }
     
     static func printAllDefaults(){

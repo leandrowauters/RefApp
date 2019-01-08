@@ -26,7 +26,7 @@ class GameSettings: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        GameSaveClient.savedGames = GameSaveClient.retriveGame()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
         numberOfSubsLabel.text = "None"
         myTableView.backgroundColor = #colorLiteral(red: 0.5987986922, green: 0.7483736873, blue: 0.8878619075, alpha: 1)
         numberOfPlayersLabel.adjustsFontSizeToFitWidth = true
@@ -39,9 +39,7 @@ class GameSettings: UITableViewController {
         GameClient.printValues()
     }
     
-    @objc func saveTapped(){
-        GameSaveClient.alert(vc: self)
-    }
+
     @IBAction func extraTimeSwitchPressed(_ sender: UISwitch) {
         if sender.isOn {
             Game.extraTime = true

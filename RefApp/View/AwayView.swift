@@ -35,6 +35,7 @@ class AwayView: UIView {
         vc.teamSide = .away
         vc.selectedButton = sender.tag
         vc.timerDelegate = (currentController as! TimerDelegate)
+        vc.eventDelegate = (currentController as! EventDelegate)
         currentController?.present(vc, animated: false, completion: nil)
     }
     

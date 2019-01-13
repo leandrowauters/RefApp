@@ -6,7 +6,7 @@
 //  Copyright © 2019 Leandro Wauters. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Events {
     var type: String
@@ -15,6 +15,7 @@ struct Events {
     var half: Int
     var subIn: Int?
     var timeStamp: String
+    var color: UIColor
     
 }
 enum TypeOfIncident: String {

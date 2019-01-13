@@ -38,6 +38,7 @@ class HomeView: UIView {
             vc.teamSide = .home
             vc.selectedButton = sender.tag
             vc.timerDelegate = (currentController as! TimerDelegate)
+            vc.eventDelegate = (currentController as! EventDelegate)
             currentController?.present(vc, animated: false, completion: nil)
     }
     

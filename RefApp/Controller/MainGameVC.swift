@@ -13,10 +13,18 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //    var time = 0
     var timer = MainTimer(timeInterval: 1)
     var delegate: TimerDelegate!
+    var eventDelegte: EventDelegate!
+    static var hide = false
+    static var disable = false
+    static var yellowCard = false
+    static var redCard = false
+    
     let homeView: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
     let awayView: AwayView = Bundle.main.loadNibNamed("AwayView", owner: self, options: nil)?.first as! AwayView
     static var turnOnTimer = Bool()
     static var timeStamp = String()
+
+    @IBOutlet weak var startButton: UIButton!
     
     let shapeLayer = CAShapeLayer()
     let trackLayer = CAShapeLayer()
@@ -26,8 +34,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
         delegate = self
         teamsScrollView.delegate = self
         let views:[UIView] = createViews()
@@ -37,6 +45,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         view.bringSubviewToFront(pageControll)
         timerLabel.text = timeString(time: TimeInterval(MainTimer.time))
         timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + (((Game.lengthSelected / 2) * 60 ) / 3)))
+
     }
 
 //    override func viewWillDisappear(_ animated: Bool) {
@@ -46,6 +55,12 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //    }
     override func viewWillAppear(_ animated: Bool) {
         reloadView()
+        print("Timer label status: \(timerLabel.isHidden)")
+        print("Start button hidden = \(startButton.isHidden)")
+        print("Start button enable = \(startButton.isEnabled)")
+        startButton.isHidden = MainGameVC.hide
+        startButton.isEnabled = !MainGameVC.disable
+        timerLabel.isHidden = !MainGameVC.hide
 //        MainTimer.time = -1
         DispatchQueue.main.async {
             if MainGameVC.turnOnTimer{
@@ -80,11 +95,37 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         }
         //        self.timer.resume()
     }
+    func animateChangeColor (button: UIButton, color: UIColor) {
+        button.alpha = 0.0
+        button.backgroundColor = .clear
+        UIView.animate(withDuration: 1, animations: {
+            button.alpha = 0.5
+            button.backgroundColor = color
+            
+        }) { (Bool) in
+            button.backgroundColor = color
+            button.alpha = 1.0
+        }
+    }
     func reloadView(){
+        
         for button in homeView.HomePlayersButtons{
             if let text = button.titleLabel?.text {
+                if MainGameVC.yellowCard{
                 if Game.homeYellowCardPlayers.contains(Int(text)!){
+                    animateChangeColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+                }
+                } else if Game.homeYellowCardPlayers.contains(Int(text)!) {
                     button.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+                }
+                if MainGameVC.redCard{
+                    if Game.homeRedCardPlayers.contains(Int(text)!){
+                        animateChangeColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
+                        button.isEnabled = false
+                    } else if Game.homeYellowCardPlayers.contains(Int(text)!) {
+                        button.backgroundColor = #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1)
+                        button.isEnabled = false
+                    }
                 }
             }
         }
@@ -98,12 +139,29 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func startButton(_ sender: UIButton) {
+        print("start was pressed")
         if timer.state == .suspended {
         runTimer()
         }
         if timer.state == .restated {
             runTimer()
         }
+      
+        UIView.animate(withDuration: 0.5, animations: {
+            
+            self.startButton.isHidden = false
+            self.startButton.alpha = 0.0
+            self.timerLabel.isHidden = true
+            
+        }) { (Bool) in
+            self.startButton.alpha = 1.0
+            self.startButton.isHidden = true
+            self.startButton.isEnabled = true
+            self.timerLabel.isHidden = false
+        }
+
+//        startButton.isHidden = true
+//        startButton.isEnabled = true
 //        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
 //        basicAnimation.toValue = 1
 //        basicAnimation.duration = 2
@@ -198,7 +256,23 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     }
 }
 
-extension MainGameVC: TimerDelegate{
+extension MainGameVC: TimerDelegate, EventDelegate{
+    func redCard(bool: Bool) {
+        MainGameVC.redCard = bool
+    }
+    
+    func yellowCall(bool: Bool) {
+        MainGameVC.yellowCard = bool
+    }
+    
+    func keepStartButtonDisable(disable: Bool) {
+        MainGameVC.disable = disable
+    }
+    
+    func keepStartButtonHidden(hide: Bool) {
+        MainGameVC.hide = hide
+    }
+    
     func turnOnTimer(turnOn: Bool) {
          MainGameVC.turnOnTimer = turnOn
     }

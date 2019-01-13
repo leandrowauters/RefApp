@@ -14,7 +14,8 @@ class SelectPlayerVC: UIViewController {
     var teamSide: PopActionsVC.Teams!
     var teamSelected = String()
     
-    weak var timerDelegete: TimerDelegate?
+    weak var timerDelegate: TimerDelegate?
+    weak var eventDelegate: EventDelegate?
     @IBOutlet weak var subTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,10 @@ class SelectPlayerVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     @objc func doneButtonAction() {
-        timerDelegete?.turnOnTimer(turnOn: true)
+        timerDelegate?.turnOnTimer(turnOn: true)
+        timerDelegate?.keepStartButtonHidden(hide: true)
+        timerDelegate?.keepStartButtonDisable(disable: true)
+        eventDelegate?.yellowCall(bool: false)
         if teamSide == .home {
         Game.homePlayersSorted.remove(at: selectedButton)
         Game.homePlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
@@ -38,7 +42,7 @@ class SelectPlayerVC: UIViewController {
             Game.awayPlayersSorted = Game.awayPlayersSorted.sorted{$0 < $1}
             Game.awayPlayers = Game.awayPlayersSorted
         }
-        let sub = Events.init(type: TypeOfIncident.sub.rawValue, playerNum: selectedPlayer, team: teamSelected, half: Game.gameHalf, subIn: Int(subTextField.text!)!, timeStamp: MainGameVC.timeStamp)
+        let sub = Events.init(type: TypeOfIncident.sub.rawValue, playerNum: selectedPlayer, team: teamSelected, half: Game.gameHalf, subIn: Int(subTextField.text!)!, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1))
         Game.events.append(sub)
         print(Game.homePlayers)
         

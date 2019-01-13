@@ -34,10 +34,12 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var halfLabel: UILabel!
     @IBOutlet weak var minutesLabel: UILabel!
+    @IBOutlet weak var changeTimerButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        changeTimerButton.isHidden = true
         setWheelToZero()
         delegate = self
         teamsScrollView.delegate = self
@@ -66,8 +68,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         }
         if MainGameVC.halfTime {
             setWheelToZero()
-            self.startButton.isHidden = false
-            self.startButton.isEnabled = true
+//            self.startButton.isHidden = false
+//            self.startButton.isEnabled = true
             MainGameVC.halfTime = false
         }
         print("Timer label status: \(timerLabel.isHidden)")
@@ -165,6 +167,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     @IBAction func startButton(_ sender: UIButton) {
         print("start was pressed")
+        changeTimerButton.isHidden = false
         if timer.state == .suspended {
         runTimer()
         }
@@ -220,6 +223,13 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 
 
     }
+    
+    @IBAction func changeTimerWasPressed(_ sender: UIButton) {
+        print("change timer was pressed")
+    }
+    
+    
+    
     func timeString(time:TimeInterval) -> String {
         let hours = Int(time) / 3600
         let minutes = Int(time) / 60 % 60

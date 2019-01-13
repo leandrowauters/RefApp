@@ -823,8 +823,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="G8C-oO-eJd">
                         <rightBarButtonItems>
-                            <barButtonItem title="Select" id="TS8-HQ-B4e"/>
-                            <barButtonItem systemItem="trash" id="cy9-PJ-LuA"/>
+                            <barButtonItem title="Select" id="TS8-HQ-B4e">
+                                <connections>
+                                    <action selector="selectWasPress:" destination="F9B-1q-Cge" id="jZv-Oy-1ce"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="cy9-PJ-LuA">
+                                <connections>
+                                    <action selector="deleteWasPressed:" destination="F9B-1q-Cge" id="OT7-Jy-wJy"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                 </viewController>

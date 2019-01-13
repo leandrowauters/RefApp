@@ -23,6 +23,7 @@ class SavedGamesViewController: UIViewController {
             let savedGameDetail = segue.destination as? SavedGameDetailedViewController else {return}
         let game = loadedGames[indexPath.row]
         savedGameDetail.savedGame = game
+        savedGameDetail.index = indexPath.row
     }
 
 

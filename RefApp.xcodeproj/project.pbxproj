@@ -27,6 +27,7 @@
 		D58C300121B5D70400A15E03 /* GameLengthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58C300021B5D70400A15E03 /* GameLengthVC.swift */; };
 		D5A62AA621E4318500C9183B /* SavedGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A62AA521E4318500C9183B /* SavedGamesViewController.swift */; };
 		D5A62AA821E526C700C9183B /* SavedGameDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A62AA721E526C700C9183B /* SavedGameDetailedViewController.swift */; };
+		D5BDD17F21EAB55C0078408E /* DataPersisitanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD17E21EAB55C0078408E /* DataPersisitanceManager.swift */; };
 		D5CE6D6F21DD26CC00FD921A /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE6D6E21DD26CC00FD921A /* Events.swift */; };
 		D5CE6D7121DD3F9700FD921A /* MainTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE6D7021DD3F9700FD921A /* MainTimer.swift */; };
 		D5FBD97121B23538005D89F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBD97021B23538005D89F4 /* AppDelegate.swift */; };
@@ -58,6 +59,7 @@
 		D58C300021B5D70400A15E03 /* GameLengthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameLengthVC.swift; path = ../../../GameLengthVC.swift; sourceTree = "<group>"; };
 		D5A62AA521E4318500C9183B /* SavedGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesViewController.swift; sourceTree = "<group>"; };
 		D5A62AA721E526C700C9183B /* SavedGameDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGameDetailedViewController.swift; sourceTree = "<group>"; };
+		D5BDD17E21EAB55C0078408E /* DataPersisitanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersisitanceManager.swift; sourceTree = "<group>"; };
 		D5CE6D6E21DD26CC00FD921A /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		D5CE6D7021DD3F9700FD921A /* MainTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTimer.swift; sourceTree = "<group>"; };
 		D5FBD96D21B23538005D89F4 /* RefApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RefApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +130,7 @@
 				D5FBD98221B23548005D89F4 /* Game.swift */,
 				D550683121CDE61800F3C6F4 /* GameClient.swift */,
 				D5313FDD21D6CCFE00875B63 /* GameSaveClient.swift */,
+				D5BDD17E21EAB55C0078408E /* DataPersisitanceManager.swift */,
 				D5637AF621B88BD2003821F5 /* GameDelegate.swift */,
 				D5CE6D6E21DD26CC00FD921A /* Events.swift */,
 				D5CE6D7021DD3F9700FD921A /* MainTimer.swift */,
@@ -261,6 +264,7 @@
 				D550683221CDE61800F3C6F4 /* GameClient.swift in Sources */,
 				D5313FDE21D6CCFE00875B63 /* GameSaveClient.swift in Sources */,
 				D544EC8F21C8498E004B285C /* NamesInputVC.swift in Sources */,
+				D5BDD17F21EAB55C0078408E /* DataPersisitanceManager.swift in Sources */,
 				D510975121CAC57E008638B3 /* HomePlayersInputVC.swift in Sources */,
 				D529FE0121B4755F00DDC366 /* DatePickerVC.swift in Sources */,
 				D529FDFF21B4748C00DDC366 /* TeamsInputVC.swift in Sources */,

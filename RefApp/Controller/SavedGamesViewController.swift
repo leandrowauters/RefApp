@@ -9,7 +9,7 @@
 import UIKit
 
 class SavedGamesViewController: UIViewController {
-    let loadedGames = GameSaveClient.getSavedGames()!
+    let loadedGames = GameSaveClient.getGames()
     
     @IBOutlet weak var savedGamesTableView: UITableView!
     override func viewDidLoad() {

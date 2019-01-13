@@ -40,7 +40,11 @@ class PopActionsVC: UIViewController {
         destination.eventDelegate = eventDelegate
     }
     @objc func goBack(){
+
+        timerDelegate?.keepStartButtonDisable(disable: true)
+        timerDelegate?.keepStartButtonHidden(hide: true)
         dismiss(animated: true, completion: nil)
+        
     }
     // TO DO: CREATE INCIDENT PRESSING BUTTON
     @IBAction func incidentButtonPressed(_ sender: UIButton) {

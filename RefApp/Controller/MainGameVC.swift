@@ -35,7 +35,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setWheelToZero()
         delegate = self
         teamsScrollView.delegate = self
         let views:[UIView] = createViews()
@@ -44,7 +44,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         pageControll.currentPage = 0
         view.bringSubviewToFront(pageControll)
         timerLabel.text = timeString(time: TimeInterval(MainTimer.time))
-        timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + (((Game.lengthSelected / 2) * 60 ) / 3)))
+
 
     }
 
@@ -55,6 +55,11 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //    }
     override func viewWillAppear(_ animated: Bool) {
         reloadView()
+        if Game.gameHalf == 2 {
+            setWheelToZero()
+            self.startButton.isHidden = false
+            self.startButton.isEnabled = true
+        }
         print("Timer label status: \(timerLabel.isHidden)")
         print("Start button hidden = \(startButton.isHidden)")
         print("Start button enable = \(startButton.isEnabled)")
@@ -89,10 +94,10 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         timer.suspend()
         timer.state = .restated
         MainTimer.time = -1
-        self.timer.eventHandler = {
-            self.action()
-            MainTimer.time += 1
-        }
+//        self.timer.eventHandler = {
+//            self.action()
+//            MainTimer.time += 1
+//        }
         //        self.timer.resume()
     }
     func animateChangeColor (button: UIButton, color: UIColor) {
@@ -122,10 +127,12 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                     if Game.homeRedCardPlayers.contains(Int(text)!){
                         animateChangeColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
                         button.isEnabled = false
-                    } else if Game.homeYellowCardPlayers.contains(Int(text)!) {
-                        button.backgroundColor = #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1)
-                        button.isEnabled = false
                     }
+
+                    }
+                else if Game.homeRedCardPlayers.contains(Int(text)!) {
+                    button.backgroundColor = #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1)
+                    button.isEnabled = false
                 }
             }
         }
@@ -171,8 +178,23 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     @IBAction func pauseButton(_ sender: UIButton) {
         //TO DO : it should be: suspend, send alert, display incident, and restart timer(if half == 2 timer == 0.
-//        restartTimer()
-        timer.suspend()
+
+        let alert = UIAlertController(title: "You're about to end the half", message: "Press OK to continue", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (updateAction) in
+
+                        let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "EventsVC") as? EventsViewController else {return}
+            vc.timerDelegate = self
+            self.present(vc, animated: false, completion: nil)
+
+
+            Game.gameHalf = 2
+            self.restartTimer()
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        self.present(alert, animated: false)
+        
+
 
     }
     func timeString(time:TimeInterval) -> String {
@@ -196,7 +218,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-
+    func setWheelToZero(){
+        timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + (((Game.lengthSelected / 2) * 60 ) / 3)))
+    }
     func timerCircle (strokeValue: CGFloat){
         
         let y = view.center.y * 0.33

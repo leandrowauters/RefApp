@@ -11,7 +11,7 @@ import UIKit
 class NamesInputVC: UIViewController {
     
     var selectedIndex = Int()
-    
+    var gameDelegate: GameDelegate!
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -102,13 +102,14 @@ class NamesInputVC: UIViewController {
         }
         switch selectedIndex {
         case 0:
-            
+            gameDelegate.refereeNameChange(to: "Selected")
             Game.refereeNames.append(name)
             let indexPath = IndexPath(row: Game.refereeNames.count - 1, section: 0)
             helper(indexPath: indexPath)
             changeRefTitleLabel()
             
         case 1:
+            gameDelegate.capsNameChanged(to: "Selected")
             if Game.caps.count < 2 {
             Game.caps.append(name)
             let indexPath = IndexPath(row: Game.caps.count - 1, section: 0)

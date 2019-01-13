@@ -135,6 +135,7 @@ class AwayPlayersInputVC: UIViewController {
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let player = Game.awayPlayers[indexPath.row]
             guard let cell = playersTableView.dequeueReusableCell(withIdentifier: "playerCell") else {return UITableViewCell()}
+            cell.textLabel?.textAlignment = .center
             cell.textLabel?.text = player.description
             return cell
         }

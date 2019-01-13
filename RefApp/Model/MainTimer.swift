@@ -55,6 +55,7 @@ class MainTimer {
         state = .suspended
         timer.suspend()
     }
+
 }
 
 protocol TimerDelegate: class {

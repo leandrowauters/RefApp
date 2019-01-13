@@ -23,6 +23,8 @@ class GameSettings: UITableViewController {
 
     @IBOutlet var labelArrays: [UILabel]!
     
+    @IBOutlet weak var refereeNamesLabel: UILabel!
+    @IBOutlet weak var capsNamesLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 //        GameSaveClient.savedGames = GameSaveClient.retriveGame()
@@ -112,15 +114,25 @@ class GameSettings: UITableViewController {
         case "ref":
             guard let destination = segue.destination as? NamesInputVC else {return}
             destination.selectedIndex = 0
+            destination.gameDelegate = self
         case "cap":
             guard let destination = segue.destination as? NamesInputVC else {return}
             destination.selectedIndex = 1
+            destination.gameDelegate = self
         default:
             print("Error4")
         }
     }
 }
 extension GameSettings: GameDelegate {
+    func capsNameChanged(to selected: String) {
+        capsNamesLabel.text = "Selected"
+    }
+    
+    func refereeNameChange(to selected: String) {
+        refereeNamesLabel.text = "Selected"
+    }
+    
     func dateLabelChange(to date: String) {
         dateTimeLabel.text = date
     }

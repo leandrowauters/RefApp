@@ -119,6 +119,7 @@ extension HomePlayersInputVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let player = Game.homePlayers[indexPath.row]
         guard let cell = playersTableView.dequeueReusableCell(withIdentifier: "playerCell") else {return UITableViewCell()}
+        cell.textLabel?.textAlignment = .center
         cell.textLabel?.text = player.description
         return cell
     }

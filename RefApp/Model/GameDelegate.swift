@@ -15,6 +15,8 @@ protocol GameDelegate: class {
     func gameLengthChange(to lenght: Int)
     func teamsLabelChange(to selected: String)
     func dateLabelChange(to date: String)
+    func refereeNameChange(to selected: String)
+    func capsNameChanged(to selected: String)
 }
 
 protocol GameLengthDelegate: class {

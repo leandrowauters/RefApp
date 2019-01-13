@@ -26,6 +26,19 @@ class SavedGameDetailedViewController: UIViewController {
     @IBAction func selectWasPress(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title:"Are You Sure?" , message: "Once The Game Begins Settings Cannot Be Change" , preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (updateAction) in
+            Game.lengthSelected = self.savedGame.lengthSelected
+            Game.numberOfPlayers = self.savedGame.numberOfPlayers
+            Game.location = self.savedGame.location
+            Game.dateAndTime = self.savedGame.dateAndTime
+            Game.league = self.savedGame.league
+            Game.refereeNames = self.savedGame.refereeNames
+            Game.caps = self.savedGame.caps
+            Game.extraTime = self.savedGame.extraTime
+            Game.homeTeam = self.savedGame.homeTeam
+            Game.awayTeam = self.savedGame.awayTeam
+            Game.numberOfSubs = self.savedGame.subs
+            Game.homePlayers = self.savedGame.homePlayers
+            Game.awayPlayers = self.savedGame.awayPlayers
             let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
             guard let vc = storyboard.instantiateViewController(withIdentifier: "mainGame") as? MainGameVC else {return}
             self.present(vc, animated: true, completion: nil)
@@ -33,19 +46,7 @@ class SavedGameDetailedViewController: UIViewController {
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         self.present(alert, animated: false)
-        Game.lengthSelected = savedGame.lengthSelected
-        Game.numberOfPlayers = savedGame.numberOfPlayers
-        Game.location = savedGame.location
-        Game.dateAndTime = savedGame.dateAndTime
-        Game.league = savedGame.league
-        Game.refereeNames = savedGame.refereeNames
-        Game.caps = savedGame.caps
-        Game.extraTime = savedGame.extraTime
-        Game.homeTeam = savedGame.homeTeam
-        Game.awayTeam = savedGame.awayTeam
-        Game.numberOfSubs = savedGame.subs
-        Game.homePlayers = savedGame.homePlayers
-        Game.awayPlayers = savedGame.awayPlayers
+
     }
     
     /*

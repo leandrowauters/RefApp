@@ -10,7 +10,7 @@ import UIKit
 
 class GameLengthVC: UIViewController {
     var gameLength = Game.length
-    var gameDelegate: GameDelegate?
+    weak var gameDelegate: GameDelegate?
     var selecteGameLenght = "Not Selected" {
         didSet{
             myTableView.reloadData()

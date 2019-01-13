@@ -19,7 +19,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     static var yellowCard = false
     static var redCard = false
     static var halfTime = false
-    
+    static var timerViewOne = true
     let homeView: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
     let awayView: AwayView = Bundle.main.loadNibNamed("AwayView", owner: self, options: nil)?.first as! AwayView
     static var turnOnTimer = Bool()
@@ -36,11 +36,13 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var minutesLabel: UILabel!
     @IBOutlet weak var changeTimerButton: UIButton!
     
+    @IBOutlet weak var timer2View: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        timer2View.isHidden = true
         changeTimerButton.isHidden = true
-        setWheelToZero()
+//        setWheelToZero()
         delegate = self
         teamsScrollView.delegate = self
         let views:[UIView] = createViews()
@@ -168,6 +170,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     @IBAction func startButton(_ sender: UIButton) {
         print("start was pressed")
         changeTimerButton.isHidden = false
+        setWheelToZero()
+
         if timer.state == .suspended {
         runTimer()
         }
@@ -212,7 +216,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             vc.timerDelegate = self
             vc.eventDelegate = self
             self.present(vc, animated: false, completion: nil)
-
+            self.changeTimerButton.isHidden = true
             MainGameVC.halfTime = true
             Game.gameHalf = 2
             self.restartTimer()
@@ -226,6 +230,10 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     @IBAction func changeTimerWasPressed(_ sender: UIButton) {
         print("change timer was pressed")
+        timer2View.isHidden = false
+        MainGameVC.timerViewOne = false
+        trackLayer.isHidden = true
+        shapeLayer.isHidden = true
     }
     
     
@@ -255,12 +263,13 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     func setWheelToZero(){
         timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + (((Game.lengthSelected / 2) * 60 ) / 3)))
     }
+    
     func timerCircle (strokeValue: CGFloat){
         
+        if MainGameVC.timerViewOne {
         let y = view.center.y * 0.4
         let x = view.center.x
         let position = CGPoint(x: x, y: y)
-        
         let circularPath = UIBezierPath(arcCenter: .zero, radius: 115, startAngle:  0, endAngle: 2 * CGFloat.pi, clockwise: true)
         trackLayer.path = circularPath.cgPath
         trackLayer.strokeColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
@@ -278,7 +287,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         shapeLayer.position = position
         shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi / 2, 0, 0, 1)
         view.layer.addSublayer(shapeLayer)
-        
+        }
     }
     func createViews () -> [UIView] {
 

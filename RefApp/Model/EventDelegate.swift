@@ -11,5 +11,6 @@ import Foundation
 protocol EventDelegate: class {
     func yellowCall(bool: Bool)
     func redCard(bool: Bool)
+    func halfTime(bool: Bool)
     
 }

@@ -11,7 +11,8 @@ import UIKit
 class EventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
-    var timerDelegate: TimerDelegate!
+    weak var timerDelegate: TimerDelegate!
+    weak var eventDelegate: EventDelegate!
     var events = Game.events
     
     @IBOutlet weak var eventTableView: UITableView!
@@ -23,11 +24,17 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func dismiss(_ sender: UIButton) {
-        if Game.gameHalf == 2 {
-            timerDelegate?.keepStartButtonDisable(disable: !MainGameVC.disable)
-            timerDelegate?.keepStartButtonHidden(hide: !MainGameVC.hide)
+        if MainGameVC.halfTime {
+            eventDelegate.halfTime(bool: true)
+            timerDelegate?.keepStartButtonDisable(disable: false)
+            timerDelegate?.keepStartButtonHidden(hide: false)
+        } else {
+        eventDelegate.halfTime(bool: false)
+        timerDelegate?.keepStartButtonDisable(disable: true)
+        timerDelegate?.keepStartButtonHidden(hide: true)
         }
         dismiss(animated: true, completion: nil)
+        
     }
     
     

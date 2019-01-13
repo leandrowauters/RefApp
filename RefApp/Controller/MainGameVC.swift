@@ -18,6 +18,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     static var disable = false
     static var yellowCard = false
     static var redCard = false
+    static var halfTime = false
     
     let homeView: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
     let awayView: AwayView = Bundle.main.loadNibNamed("AwayView", owner: self, options: nil)?.first as! AwayView
@@ -55,10 +56,11 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //    }
     override func viewWillAppear(_ animated: Bool) {
         reloadView()
-        if Game.gameHalf == 2 {
+        if MainGameVC.halfTime {
             setWheelToZero()
             self.startButton.isHidden = false
             self.startButton.isEnabled = true
+            MainGameVC.halfTime = false
         }
         print("Timer label status: \(timerLabel.isHidden)")
         print("Start button hidden = \(startButton.isHidden)")
@@ -82,6 +84,12 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         for incident in Game.events{
             print(incident)
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? EventsViewController else {return}
+        destination.eventDelegate = self
+        destination.timerDelegate = self
     }
     func runTimer (){
         timer.eventHandler = {
@@ -185,9 +193,10 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                         let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
             guard let vc = storyboard.instantiateViewController(withIdentifier: "EventsVC") as? EventsViewController else {return}
             vc.timerDelegate = self
+            vc.eventDelegate = self
             self.present(vc, animated: false, completion: nil)
 
-
+            MainGameVC.halfTime = true
             Game.gameHalf = 2
             self.restartTimer()
         }))
@@ -281,6 +290,10 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 }
 
 extension MainGameVC: TimerDelegate, EventDelegate{
+    func halfTime(bool: Bool) {
+        MainGameVC.halfTime = bool
+    }
+    
     func redCard(bool: Bool) {
         MainGameVC.redCard = bool
     }

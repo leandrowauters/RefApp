@@ -29,7 +29,7 @@ class HomePlayersInputVC: UIViewController {
         super.viewDidLoad()
 
         GameClient.printValues()
-        playerTitleLabel.text = "Enter \(Game.homeTeam.capitalized) players numbers"
+        playerTitleLabel.text = "Enter \(Game.homeTeam.capitalized) player's number"
         playersTableView.delegate = self
         playersTableView.dataSource = self
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Enter Player", style: .done, target: self, action: #selector(doneButtonAction))

@@ -32,6 +32,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var teamsScrollView: UIScrollView!
     @IBOutlet weak var pageControll: UIPageControl!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var halfLabel: UILabel!
+    @IBOutlet weak var minutesLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -56,6 +58,12 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //    }
     override func viewWillAppear(_ animated: Bool) {
         reloadView()
+        minutesLabel.text = "\(Game.lengthSelected / 2) Mins"
+        if Game.gameHalf == 1 {
+            halfLabel.text =  "1st Half"
+        } else if Game.gameHalf == 2 {
+            halfLabel.text = "2nd Half"
+        }
         if MainGameVC.halfTime {
             setWheelToZero()
             self.startButton.isHidden = false
@@ -68,6 +76,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         startButton.isHidden = MainGameVC.hide
         startButton.isEnabled = !MainGameVC.disable
         timerLabel.isHidden = !MainGameVC.hide
+        halfLabel.isHidden = !MainGameVC.hide
+        minutesLabel.isHidden = !MainGameVC.hide
 //        MainTimer.time = -1
         DispatchQueue.main.async {
             if MainGameVC.turnOnTimer{
@@ -167,12 +177,16 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             self.startButton.isHidden = false
             self.startButton.alpha = 0.0
             self.timerLabel.isHidden = true
-            
+            self.halfLabel.isHidden = true
+            self.minutesLabel.isHidden = true
         }) { (Bool) in
             self.startButton.alpha = 1.0
             self.startButton.isHidden = true
             self.startButton.isEnabled = true
             self.timerLabel.isHidden = false
+            self.halfLabel.isHidden = false
+            self.minutesLabel.isHidden = false
+            
         }
 
 //        startButton.isHidden = true
@@ -216,6 +230,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         DispatchQueue.main.async {
             MainGameVC.timeStamp = self.timeString(time: TimeInterval(MainTimer.time))
             self.timerLabel.text = self.timeString(time: TimeInterval(MainTimer.time))
+            
             self.shapeLayer.strokeEnd = CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + ((Game.lengthSelected / 2 * 60 ) / 3))
             if MainTimer.time == (((Game.lengthSelected / 2) * 60) - (((Game.lengthSelected / 2) * 60) / 10)) {
                 self.shapeLayer.strokeColor = #colorLiteral(red: 1, green: 0.765635848, blue: 0, alpha: 1)

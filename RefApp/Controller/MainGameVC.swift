@@ -247,23 +247,23 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     }
     func timerCircle (strokeValue: CGFloat){
         
-        let y = view.center.y * 0.33
+        let y = view.center.y * 0.4
         let x = view.center.x
         let position = CGPoint(x: x, y: y)
         
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 80, startAngle:  0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 115, startAngle:  0, endAngle: 2 * CGFloat.pi, clockwise: true)
         trackLayer.path = circularPath.cgPath
         trackLayer.strokeColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         trackLayer.lineCap = CAShapeLayerLineCap.round
         trackLayer.fillColor = UIColor.clear.cgColor
-        trackLayer.lineWidth = 10
+        trackLayer.lineWidth = 20
         trackLayer.position = position
         view.layer.addSublayer(trackLayer)
         shapeLayer.path = circularPath.cgPath
         shapeLayer.strokeColor = #colorLiteral(red: 0, green: 0.6274659038, blue: 0, alpha: 1)
         shapeLayer.lineCap = CAShapeLayerLineCap.round
         shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = 10
+        shapeLayer.lineWidth = 20
         shapeLayer.strokeEnd = strokeValue
         shapeLayer.position = position
         shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi / 2, 0, 0, 1)

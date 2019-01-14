@@ -17,9 +17,11 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     static var hide = false
     static var disable = false
     static var yellowCard = false
+    static var sub = false
     static var redCard = false
     static var halfTime = false
     static var timerViewOne = true
+    
     let homeView: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
     let awayView: AwayView = Bundle.main.loadNibNamed("AwayView", owner: self, options: nil)?.first as! AwayView
     static var turnOnTimer = Bool()
@@ -38,9 +40,12 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var changeTimerButton: UIButton!
     
     @IBOutlet weak var timer2View: UIView!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scoreLabel.text = "\(Game.homeTeam) \(Game.homeScore) - \(Game.awayTeam) \(Game.awayScore)"
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideTimerView))
         timer2View.addGestureRecognizer(tap)
         for index in 0...timerLabels.count - 1 {
@@ -56,8 +61,20 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         }
         timer2View.isHidden = true
         changeTimerButton.isHidden = true
+        if MainGameVC.sub{
+            if MainGameVC.timerViewOne{
+            timer2View.isHidden = true
+            } else {
+            timer2View.isHidden = false
+            shapeLayer.isHidden = true
+            trackLayer.isHidden = true
+            }
+            changeTimerButton.isHidden = false
+        }
 //        setWheelToZero()
+        
         delegate = self
+        eventDelegte = self
         teamsScrollView.delegate = self
         let views:[UIView] = createViews()
         setupSlideScrollViews(views: views)
@@ -78,6 +95,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //    }
     override func viewWillAppear(_ animated: Bool) {
         reloadView()
+
         minutesLabel.text = "\(Game.lengthSelected / 2) Mins"
         if Game.gameHalf == 1 {
             halfLabel.text =  "1st Half"
@@ -151,7 +169,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         }
     }
     func reloadView(){
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideTimerView))
+        timer2View.addGestureRecognizer(tap)
+        scoreLabel.text = "\(Game.homeTeam) \(Game.homeScore) - \(Game.awayTeam) \(Game.awayScore)"
         for button in homeView.HomePlayersButtons{
             if let text = button.titleLabel?.text {
                 if MainGameVC.yellowCard{
@@ -358,6 +378,10 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 }
 
 extension MainGameVC: TimerDelegate, EventDelegate{
+    func addTapAfterSub(add: Bool) {
+        MainGameVC.sub = add
+    }
+    
     func halfTime(bool: Bool) {
         MainGameVC.halfTime = bool
     }

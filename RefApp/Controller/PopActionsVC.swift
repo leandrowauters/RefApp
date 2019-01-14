@@ -77,7 +77,15 @@ class PopActionsVC: UIViewController {
         case 3:
             let goal = Events.init(type: TypeOfIncident.goal.rawValue, playerNum: playerSelected,team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1))
                 eventDelegate?.yellowCall(bool: false)
+                eventDelegate?.redCard(bool: false)
                 Game.events.append(goal)
+            if teamSide == .home {
+                Game.homeGoalsPlayers.append(playerSelected)
+                Game.homeScore += 1
+            } else if teamSide == .away{
+                Game.awayGoalsPlayers.append(playerSelected)
+                Game.awayScore += 1
+            }
         default:
             return
             

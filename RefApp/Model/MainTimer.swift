@@ -62,4 +62,5 @@ protocol TimerDelegate: class {
     func turnOnTimer(turnOn: Bool)
     func keepStartButtonHidden(hide: Bool)
     func keepStartButtonDisable(disable: Bool)
+    func addTapAfterSub(add: Bool)
 }

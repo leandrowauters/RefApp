@@ -30,6 +30,7 @@ class SelectPlayerVC: UIViewController {
         timerDelegate?.turnOnTimer(turnOn: true)
         timerDelegate?.keepStartButtonHidden(hide: true)
         timerDelegate?.keepStartButtonDisable(disable: true)
+        timerDelegate?.addTapAfterSub(add: true)
         eventDelegate?.yellowCall(bool: false)
         if teamSide == .home {
         Game.homePlayersSorted.remove(at: selectedButton)

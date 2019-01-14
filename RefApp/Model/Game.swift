@@ -32,6 +32,8 @@ class Game: Codable {
     static var awayYellowCardPlayers = [Int]()
     static var awayRedCardPlayers = [Int]()
     static var awayGoalsPlayers = [Int]()
+    static var homeScore = Int()
+    static var awayScore = Int()
     static var events = [Events]()
     static var gameHalf = 1
     

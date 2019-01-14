@@ -10,7 +10,7 @@ import Foundation
 class MainTimer {
     
     let timeInterval: TimeInterval
-    static var time = 0
+    static var time = 0.0
     init(timeInterval: TimeInterval) {
         self.timeInterval = timeInterval
     }
@@ -23,7 +23,7 @@ class MainTimer {
         })
         return t
     }()
-    
+     
     var eventHandler: (() -> Void)?
     
     enum State {

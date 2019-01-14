@@ -1210,6 +1210,12 @@
                                             <action selector="pauseButton:" destination="70P-ud-vub" eventType="touchUpInside" id="hve-rj-sI5"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bb-jI-CyA">
+                                        <rect key="frame" x="11" y="65.5" width="353" height="63.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="53"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="otl-E7-CZd">
                                         <rect key="frame" x="330" y="0.0" width="45" height="45"/>
                                         <constraints>
@@ -1224,7 +1230,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="otl-E7-CZd" secondAttribute="trailing" id="840-jh-n77"/>
+                                    <constraint firstItem="7bb-jI-CyA" firstAttribute="centerY" secondItem="4S6-lB-3Wn" secondAttribute="centerY" multiplier="0.8" id="VY8-SQ-rz4"/>
+                                    <constraint firstItem="7bb-jI-CyA" firstAttribute="centerX" secondItem="4S6-lB-3Wn" secondAttribute="centerX" id="XuB-bz-8K5"/>
                                     <constraint firstItem="5Nr-fd-bxc" firstAttribute="top" secondItem="4S6-lB-3Wn" secondAttribute="top" id="YyT-8b-bqq"/>
+                                    <constraint firstAttribute="trailing" secondItem="7bb-jI-CyA" secondAttribute="trailing" constant="11" id="anV-MK-9m1"/>
+                                    <constraint firstItem="7bb-jI-CyA" firstAttribute="leading" secondItem="4S6-lB-3Wn" secondAttribute="leading" constant="11" id="eCP-aK-hm2"/>
                                     <constraint firstItem="5Nr-fd-bxc" firstAttribute="leading" secondItem="4S6-lB-3Wn" secondAttribute="leading" constant="5" id="jqm-Sw-8ts"/>
                                     <constraint firstItem="otl-E7-CZd" firstAttribute="top" secondItem="4S6-lB-3Wn" secondAttribute="top" id="vz9-LT-HkW"/>
                                 </constraints>
@@ -1274,7 +1284,8 @@
                         <outlet property="startButton" destination="EKK-QO-HKL" id="h2V-Jn-KjX"/>
                         <outlet property="teamsScrollView" destination="0cn-TS-tby" id="pf2-dj-s0E"/>
                         <outlet property="timer2View" destination="4S6-lB-3Wn" id="8dh-Tz-uDt"/>
-                        <outlet property="timerLabel" destination="1xe-ED-nU6" id="T5f-pF-dBS"/>
+                        <outletCollection property="timerLabels" destination="7bb-jI-CyA" collectionClass="NSMutableArray" id="sNV-ma-PTD"/>
+                        <outletCollection property="timerLabels" destination="1xe-ED-nU6" collectionClass="NSMutableArray" id="4ti-hy-tgc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vv8-4F-ze2" userLabel="First Responder" sceneMemberID="firstResponder"/>

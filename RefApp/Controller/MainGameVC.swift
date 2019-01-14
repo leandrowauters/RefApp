@@ -11,7 +11,7 @@ import UIKit
 class MainGameVC: UIViewController, UIScrollViewDelegate {
     
 //    var time = 0
-    var timer = MainTimer(timeInterval: 1)
+    var timer = MainTimer(timeInterval: 0.0001)
     var delegate: TimerDelegate!
     var eventDelegte: EventDelegate!
     static var hide = false
@@ -31,7 +31,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     let trackLayer = CAShapeLayer()
     @IBOutlet weak var teamsScrollView: UIScrollView!
     @IBOutlet weak var pageControll: UIPageControl!
-    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet var timerLabels: [UILabel]!
+    
     @IBOutlet weak var halfLabel: UILabel!
     @IBOutlet weak var minutesLabel: UILabel!
     @IBOutlet weak var changeTimerButton: UIButton!
@@ -40,6 +41,18 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        for index in 0...timerLabels.count - 1 {
+            switch index {
+            case 0:
+                timerLabels[index].font = UIFont.monospacedDigitSystemFont(ofSize: 53, weight: UIFont.Weight.regular)
+            case 1:
+                timerLabels[index].font = UIFont.monospacedDigitSystemFont(ofSize: 25, weight: UIFont.Weight.regular)
+            default:
+                print("Timer Label Index Error")
+                
+            }
+        }
         timer2View.isHidden = true
         changeTimerButton.isHidden = true
 //        setWheelToZero()
@@ -50,7 +63,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         pageControll.numberOfPages = views.count
         pageControll.currentPage = 0
         view.bringSubviewToFront(pageControll)
-        timerLabel.text = timeString(time: TimeInterval(MainTimer.time))
+        for label in timerLabels{
+            label.text = timeString(time: TimeInterval(MainTimer.time))
+        }
 
 
     }
@@ -74,12 +89,12 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //            self.startButton.isEnabled = true
             MainGameVC.halfTime = false
         }
-        print("Timer label status: \(timerLabel.isHidden)")
+
         print("Start button hidden = \(startButton.isHidden)")
         print("Start button enable = \(startButton.isEnabled)")
         startButton.isHidden = MainGameVC.hide
         startButton.isEnabled = !MainGameVC.disable
-        timerLabel.isHidden = !MainGameVC.hide
+        timerLabels.forEach {$0.isHidden = !MainGameVC.hide}
         halfLabel.isHidden = !MainGameVC.hide
         minutesLabel.isHidden = !MainGameVC.hide
 //        MainTimer.time = -1
@@ -107,7 +122,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     }
     func runTimer (){
         timer.eventHandler = {
-            MainTimer.time += 1
+            MainTimer.time += 0.0001
             self.action()
         }
         timer.resume()
@@ -183,14 +198,14 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             
             self.startButton.isHidden = false
             self.startButton.alpha = 0.0
-            self.timerLabel.isHidden = true
+            self.timerLabels.forEach {$0.isHidden = true}
             self.halfLabel.isHidden = true
             self.minutesLabel.isHidden = true
         }) { (Bool) in
             self.startButton.alpha = 1.0
             self.startButton.isHidden = true
             self.startButton.isEnabled = true
-            self.timerLabel.isHidden = false
+            self.timerLabels.forEach {$0.isHidden = false}
             self.halfLabel.isHidden = false
             self.minutesLabel.isHidden = false
             
@@ -244,17 +259,32 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         let seconds = Int(time) % 60
         return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
+    
+    func timeStringWithMilSec(time:TimeInterval) -> String {
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        let milliseconds = Int(((time.truncatingRemainder(dividingBy: 1)) * 1000) / 10)
+        return String(format: "%02i:%02i:%02i:%0.2i", hours, minutes, seconds, milliseconds)
+    }
+    
     @objc func action() {
         DispatchQueue.main.async {
             MainGameVC.timeStamp = self.timeString(time: TimeInterval(MainTimer.time))
-            self.timerLabel.text = self.timeString(time: TimeInterval(MainTimer.time))
-            
+            for timeLabel in self.timerLabels {
+                if MainGameVC.timerViewOne{
+                    timeLabel.text = self.timeString(time: TimeInterval(MainTimer.time))
+                } else {
+                    timeLabel.text = self.timeStringWithMilSec(time: TimeInterval(MainTimer.time))
+                }
+                
+            }
             self.shapeLayer.strokeEnd = CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + ((Game.lengthSelected / 2 * 60 ) / 3))
-            if MainTimer.time == (((Game.lengthSelected / 2) * 60) - (((Game.lengthSelected / 2) * 60) / 10)) {
+            if Int(MainTimer.time) == (((Game.lengthSelected / 2) * 60) - (((Game.lengthSelected / 2) * 60) / 10)) {
                 self.shapeLayer.strokeColor = #colorLiteral(red: 1, green: 0.765635848, blue: 0, alpha: 1)
                 self.trackLayer.strokeColor = #colorLiteral(red: 1, green: 0.868950069, blue: 0.4578225017, alpha: 1)
             }
-            if MainTimer.time == (Game.lengthSelected / 2) * 60 {
+            if Int(MainTimer.time) == (Game.lengthSelected / 2) * 60 {
                 self.shapeLayer.strokeColor = #colorLiteral(red: 1, green: 0, blue: 0.1359238923, alpha: 1)
                 self.trackLayer.strokeColor = #colorLiteral(red: 1, green: 0.4121969342, blue: 0.4527801871, alpha: 1)
             }
@@ -265,8 +295,6 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     }
     
     func timerCircle (strokeValue: CGFloat){
-        
-        if MainGameVC.timerViewOne {
         let y = view.center.y * 0.4
         let x = view.center.x
         let position = CGPoint(x: x, y: y)
@@ -287,7 +315,6 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         shapeLayer.position = position
         shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi / 2, 0, 0, 1)
         view.layer.addSublayer(shapeLayer)
-        }
     }
     func createViews () -> [UIView] {
 

@@ -54,6 +54,7 @@ class PopActionsVC: UIViewController {
             timerDelegate?.keepStartButtonHidden(hide: true)
             eventDelegate?.yellowCall(bool: true)
             eventDelegate?.redCard(bool: false)
+            eventDelegate?.playerSelected(player: String(playerSelected))
             let yellowCard = Events.init(type: TypeOfIncident.yellowCard.rawValue, playerNum: playerSelected, team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
                 Game.events.append(yellowCard)
             if teamSide == .home{
@@ -69,6 +70,7 @@ class PopActionsVC: UIViewController {
                 timerDelegate?.keepStartButtonHidden(hide: true)
                 eventDelegate?.yellowCall(bool: false)
                 eventDelegate?.redCard(bool: true)
+                eventDelegate?.playerSelected(player: String(playerSelected))
             if teamSide == .home{
                 Game.homeRedCardPlayers.append(playerSelected)
             } else if teamSide == .away{

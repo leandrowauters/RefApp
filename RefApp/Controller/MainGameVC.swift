@@ -22,6 +22,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     static var redCard = false
     static var halfTime = false
     static var timerViewOne = true
+    static var playerSelected = String()
     
     let homeView: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
     let awayView: AwayView = Bundle.main.loadNibNamed("AwayView", owner: self, options: nil)?.first as! AwayView
@@ -213,7 +214,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         for button in homeView.HomePlayersButtons{
             if let text = button.titleLabel?.text { //this should be selected player, create a delegation
                 if MainGameVC.yellowCard{
-                if Game.homeYellowCardPlayers.contains(Int(text)!){
+                if text == MainGameVC.playerSelected{
                     animateChangeColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
                     
                 }
@@ -221,7 +222,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                     changeButtonColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
                 }
                 if MainGameVC.redCard{
-                    if Game.homeRedCardPlayers.contains(Int(text)!){
+                    if text == MainGameVC.playerSelected{
                         animateChangeColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
                         button.isEnabled = false
                     }
@@ -414,6 +415,10 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 }
 
 extension MainGameVC: TimerDelegate, EventDelegate{
+    func playerSelected(player: String) {
+        MainGameVC.playerSelected = player
+    }
+    
     func addTapAfterSub(add: Bool) {
         MainGameVC.sub = add
     }

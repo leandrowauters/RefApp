@@ -32,6 +32,8 @@ class SelectPlayerVC: UIViewController {
         timerDelegate?.keepStartButtonDisable(disable: true)
         timerDelegate?.addTapAfterSub(add: true)
         eventDelegate?.yellowCall(bool: false)
+        eventDelegate?.redCard(bool: false)
+        eventDelegate?.playerSelected(player: String(selectedPlayer))
         if teamSide == .home {
         Game.homePlayersSorted.remove(at: selectedButton)
         Game.homePlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)

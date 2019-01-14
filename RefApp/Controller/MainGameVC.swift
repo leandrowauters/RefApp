@@ -41,13 +41,14 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideTimerView))
+        timer2View.addGestureRecognizer(tap)
         for index in 0...timerLabels.count - 1 {
             switch index {
             case 0:
-                timerLabels[index].font = UIFont.monospacedDigitSystemFont(ofSize: 53, weight: UIFont.Weight.regular)
+                timerLabels[index].font = UIFont.monospacedDigitSystemFont(ofSize: 53, weight: .regular)
             case 1:
-                timerLabels[index].font = UIFont.monospacedDigitSystemFont(ofSize: 25, weight: UIFont.Weight.regular)
+                timerLabels[index].font = UIFont.monospacedDigitSystemFont(ofSize: 25, weight: .bold)
             default:
                 print("Timer Label Index Error")
                 
@@ -251,7 +252,13 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         shapeLayer.isHidden = true
     }
     
-    
+    @objc func hideTimerView(){
+        timer2View.isHidden = true
+        MainGameVC.timerViewOne = true
+        self.timer2View.isHidden = true
+        trackLayer.isHidden = false
+        shapeLayer.isHidden = false
+    }
     
     func timeString(time:TimeInterval) -> String {
         let hours = Int(time) / 3600

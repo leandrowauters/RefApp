@@ -30,6 +30,7 @@
 		D5BDD17F21EAB55C0078408E /* DataPersisitanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD17E21EAB55C0078408E /* DataPersisitanceManager.swift */; };
 		D5BDD18121EB01220078408E /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD18021EB01220078408E /* EventsViewController.swift */; };
 		D5BDD18321EB06670078408E /* EventDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD18221EB06670078408E /* EventDelegate.swift */; };
+		D5CDA72221ED267000A59133 /* Graphic Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDA72121ED267000A59133 /* Graphic Client.swift */; };
 		D5CE6D6F21DD26CC00FD921A /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE6D6E21DD26CC00FD921A /* Events.swift */; };
 		D5CE6D7121DD3F9700FD921A /* MainTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE6D7021DD3F9700FD921A /* MainTimer.swift */; };
 		D5FBD97121B23538005D89F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBD97021B23538005D89F4 /* AppDelegate.swift */; };
@@ -64,6 +65,7 @@
 		D5BDD17E21EAB55C0078408E /* DataPersisitanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersisitanceManager.swift; sourceTree = "<group>"; };
 		D5BDD18021EB01220078408E /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		D5BDD18221EB06670078408E /* EventDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDelegate.swift; sourceTree = "<group>"; };
+		D5CDA72121ED267000A59133 /* Graphic Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Graphic Client.swift"; sourceTree = "<group>"; };
 		D5CE6D6E21DD26CC00FD921A /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		D5CE6D7021DD3F9700FD921A /* MainTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTimer.swift; sourceTree = "<group>"; };
 		D5FBD96D21B23538005D89F4 /* RefApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RefApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,7 @@
 				D5637AF621B88BD2003821F5 /* GameDelegate.swift */,
 				D5CE6D6E21DD26CC00FD921A /* Events.swift */,
 				D5CE6D7021DD3F9700FD921A /* MainTimer.swift */,
+				D5CDA72121ED267000A59133 /* Graphic Client.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				D532218B21D731F4004B0363 /* PopActionsVC.swift in Sources */,
 				D5313FE421D7099900875B63 /* HomeView.swift in Sources */,
 				D5637AF721B88BD2003821F5 /* GameDelegate.swift in Sources */,
+				D5CDA72221ED267000A59133 /* Graphic Client.swift in Sources */,
 				D5CE6D6F21DD26CC00FD921A /* Events.swift in Sources */,
 				D5BDD18121EB01220078408E /* EventsViewController.swift in Sources */,
 				D5313FE021D6F26500875B63 /* AwayPlayersInputVC.swift in Sources */,

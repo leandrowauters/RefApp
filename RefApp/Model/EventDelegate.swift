@@ -12,5 +12,5 @@ protocol EventDelegate: class {
     func yellowCall(bool: Bool)
     func redCard(bool: Bool)
     func halfTime(bool: Bool)
-    
+    func playerSelected(player: String)
 }

@@ -45,6 +45,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(pauseTimer), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startApp) , name: UIApplication.didBecomeActiveNotification, object: nil)
         scoreLabel.text = "\(Game.homeTeam) \(Game.homeScore) - \(Game.awayTeam) \(Game.awayScore)"
@@ -175,28 +176,49 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     func animateChangeColor (button: UIButton, color: UIColor) {
         button.alpha = 0.0
-        button.backgroundColor = .clear
+        button.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        button.layer.borderWidth = 2.0
+        button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont.init(name: "Verdana", size: 27)// THIS SETS FONT
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 27)
         UIView.animate(withDuration: 1, animations: {
             button.alpha = 0.5
             button.backgroundColor = color
-            
+            button.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            button.layer.borderWidth = 2.0
+            button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
+            button.titleLabel?.font = UIFont.init(name: "Verdana", size: 27)// THIS SETS FONT
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 27)
         }) { (Bool) in
-            button.backgroundColor = color
             button.alpha = 1.0
+            button.backgroundColor = color
+            button.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            button.layer.borderWidth = 2.0
+            button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
+            button.titleLabel?.font = UIFont.init(name: "Verdana", size: 27)// THIS SETS FONT
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 27)
         }
+    }
+    func changeButtonColor (button: UIButton, color: UIColor){
+        button.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        button.layer.borderWidth = 2.0
+        button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont.init(name: "Verdana", size: 27)// THIS SETS FONT
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 27)
     }
     func reloadView(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideTimerView))
         timer2View.addGestureRecognizer(tap)
         scoreLabel.text = "\(Game.homeTeam) \(Game.homeScore) - \(Game.awayTeam) \(Game.awayScore)"
         for button in homeView.HomePlayersButtons{
-            if let text = button.titleLabel?.text {
+            if let text = button.titleLabel?.text { //this should be selected player, create a delegation
                 if MainGameVC.yellowCard{
                 if Game.homeYellowCardPlayers.contains(Int(text)!){
                     animateChangeColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+                    
                 }
                 } else if Game.homeYellowCardPlayers.contains(Int(text)!) {
-                    button.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+                    changeButtonColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
                 }
                 if MainGameVC.redCard{
                     if Game.homeRedCardPlayers.contains(Int(text)!){
@@ -206,7 +228,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 
                     }
                 else if Game.homeRedCardPlayers.contains(Int(text)!) {
-                    button.backgroundColor = #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1)
+                    changeButtonColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
                     button.isEnabled = false
                 }
             }
@@ -337,7 +359,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     func setWheelToZero(){
         timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + (((Game.lengthSelected / 2) * 60 ) / 3)))
     }
-    
+
     func timerCircle (strokeValue: CGFloat){
         let y = view.center.y * 0.4
         let x = view.center.x
@@ -361,9 +383,10 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         view.layer.addSublayer(shapeLayer)
     }
     func createViews () -> [UIView] {
-
         homeView.homeLabel.text = "\(Game.homeTeam)"
         awayView.awayLabel.text = "\(Game.awayTeam)"
+        
+        homeView.buttons()
 //        view1.testLabel.text = "View 1"
         for index in 0...Game.numberOfPlayers - 1 {
             homeView.HomePlayersButtons[index].isHidden = false
@@ -371,13 +394,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             homeView.HomePlayersButtons[index].setTitle(Game.homePlayersSorted[index].description, for: .normal)
             awayView.awayPlayersButtons[index].setTitle(Game.awayPlayersSorted[index].description, for: .normal)
         }
-        
-        
-        
-
-        
     return [homeView, awayView]
     }
+    
     func setupSlideScrollViews(views: [UIView]){
         teamsScrollView.frame = CGRect (x: 0, y: 0, width: view.frame.width, height: view.frame.height / 2)
         teamsScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(views.count), height: view.frame.height / 2)

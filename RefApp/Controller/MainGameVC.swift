@@ -14,6 +14,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     var timer = MainTimer(timeInterval: 0.0001)
     var delegate: TimerDelegate!
     var eventDelegte: EventDelegate!
+    var currentBackgroundDate = NSDate()
     static var hide = false
     static var disable = false
     static var yellowCard = false
@@ -44,7 +45,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(pauseTimer), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(startApp) , name: UIApplication.didBecomeActiveNotification, object: nil)
         scoreLabel.text = "\(Game.homeTeam) \(Game.homeScore) - \(Game.awayTeam) \(Game.awayScore)"
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideTimerView))
         timer2View.addGestureRecognizer(tap)
@@ -146,6 +148,20 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         }
         timer.resume()
     }
+    @objc func pauseTimer() {
+        timer.suspend()
+        currentBackgroundDate = NSDate()
+    }
+    @objc func startApp(){
+        let difference = self.currentBackgroundDate.timeIntervalSince(NSDate() as Date)
+        let timeSince = abs(difference)
+        MainTimer.time += timeSince
+        timer.eventHandler = {
+            MainTimer.time += 0.0001
+            self.action()
+        }
+        timer.resume()
+    }
     func restartTimer(){
         timer.suspend()
         timer.state = .restated
@@ -156,6 +172,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //        }
         //        self.timer.resume()
     }
+    
     func animateChangeColor (button: UIButton, color: UIColor) {
         button.alpha = 0.0
         button.backgroundColor = .clear

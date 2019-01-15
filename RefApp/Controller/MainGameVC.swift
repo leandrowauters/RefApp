@@ -203,6 +203,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     func changeButtonColor (button: UIButton, color: UIColor){
         button.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         button.layer.borderWidth = 2.0
+        button.backgroundColor = color
         button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Verdana", size: 27)// THIS SETS FONT
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 27)
@@ -212,11 +213,10 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         timer2View.addGestureRecognizer(tap)
         scoreLabel.text = "\(Game.homeTeam) \(Game.homeScore) - \(Game.awayTeam) \(Game.awayScore)"
         for button in homeView.HomePlayersButtons{
-            if let text = button.titleLabel?.text { //this should be selected player, create a delegation
+            if let text = button.titleLabel?.text {
                 if MainGameVC.yellowCard{
                 if text == MainGameVC.playerSelected{
                     animateChangeColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
-                    
                 }
                 } else if Game.homeYellowCardPlayers.contains(Int(text)!) {
                     changeButtonColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
@@ -232,6 +232,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                     changeButtonColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
                     button.isEnabled = false
                 }
+
             }
         }
         for button in awayView.awayPlayersButtons{

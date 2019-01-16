@@ -14,6 +14,7 @@ class SavedGamesViewController: UIViewController {
     @IBOutlet weak var savedGamesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         savedGamesTableView.dataSource = self
         savedGamesTableView.delegate = self
     }

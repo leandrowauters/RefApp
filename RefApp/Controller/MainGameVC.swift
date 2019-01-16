@@ -12,8 +12,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
 //    var time = 0
     var timer = MainTimer(timeInterval: 0.0001)
-    var delegate: TimerDelegate!
-    var eventDelegte: EventDelegate!
+    weak var delegate: TimerDelegate!
+    weak var eventDelegte: EventDelegate!
     var currentBackgroundDate = NSDate()
     static var hide = false
     static var disable = false

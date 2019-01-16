@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol GameDelegate: class {
+protocol GameDelegate: AnyObject {
     func numberOfPlayersDidChange(to numberOfPlayers: Int)
     func locationDidChange(to location: String)
     func leagueDidChange(to league: String)
@@ -19,7 +19,7 @@ protocol GameDelegate: class {
     func capsNameChanged(to selected: String)
 }
 
-protocol GameLengthDelegate: class {
+protocol GameLengthDelegate: AnyObject {
     func gameLengthChange(to lenght: Int)
 }
 

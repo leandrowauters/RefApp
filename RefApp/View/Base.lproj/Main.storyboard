@@ -1216,7 +1216,7 @@
                                             <action selector="pauseButton:" destination="70P-ud-vub" eventType="touchUpInside" id="hve-rj-sI5"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bb-jI-CyA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7bb-jI-CyA">
                                         <rect key="frame" x="11" y="65.5" width="353" height="63.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="53"/>
                                         <nil key="textColor"/>
@@ -1247,7 +1247,6 @@
                                     <constraint firstItem="7bb-jI-CyA" firstAttribute="centerY" secondItem="4S6-lB-3Wn" secondAttribute="centerY" multiplier="0.8" id="VY8-SQ-rz4"/>
                                     <constraint firstItem="7bb-jI-CyA" firstAttribute="centerX" secondItem="4S6-lB-3Wn" secondAttribute="centerX" id="XuB-bz-8K5"/>
                                     <constraint firstItem="5Nr-fd-bxc" firstAttribute="top" secondItem="4S6-lB-3Wn" secondAttribute="top" constant="5" id="YyT-8b-bqq"/>
-                                    <constraint firstAttribute="trailing" secondItem="7bb-jI-CyA" secondAttribute="trailing" constant="11" id="anV-MK-9m1"/>
                                     <constraint firstItem="7bb-jI-CyA" firstAttribute="leading" secondItem="4S6-lB-3Wn" secondAttribute="leading" constant="11" id="eCP-aK-hm2"/>
                                     <constraint firstItem="5Nr-fd-bxc" firstAttribute="leading" secondItem="4S6-lB-3Wn" secondAttribute="leading" constant="15" id="jqm-Sw-8ts"/>
                                     <constraint firstItem="ZvN-wC-sVn" firstAttribute="top" secondItem="7bb-jI-CyA" secondAttribute="bottom" constant="25" id="mqn-qa-f9Q"/>
@@ -1513,6 +1512,7 @@
                     </view>
                     <connections>
                         <outlet property="subTextField" destination="NTE-XX-fUQ" id="tKu-dw-Uc3"/>
+                        <outlet property="textLabel" destination="4pQ-hS-pU0" id="YZm-IA-LFk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8c9-Ua-BTA" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol EventDelegate: class {
+protocol EventDelegate: AnyObject {
     func yellowCall(bool: Bool)
     func redCard(bool: Bool)
     func halfTime(bool: Bool)

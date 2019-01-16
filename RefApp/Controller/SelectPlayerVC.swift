@@ -17,6 +17,9 @@ class SelectPlayerVC: UIViewController {
     weak var timerDelegate: TimerDelegate?
     weak var eventDelegate: EventDelegate?
     @IBOutlet weak var subTextField: UITextField!
+    
+    @IBOutlet weak var textLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(selectedPlayer)
@@ -26,6 +29,7 @@ class SelectPlayerVC: UIViewController {
 //        subTextField.delegate = self
         // Do any additional setup after loading the view.
     }
+    
     @objc func doneButtonAction() {
         timerDelegate?.turnOnTimer(turnOn: true)
         timerDelegate?.keepStartButtonHidden(hide: true)
@@ -34,7 +38,15 @@ class SelectPlayerVC: UIViewController {
         eventDelegate?.yellowCall(bool: false)
         eventDelegate?.redCard(bool: false)
         eventDelegate?.playerSelected(player: String(selectedPlayer))
-        if teamSide == .home {
+        if Game.homePlayers.contains(Int(subTextField.text!)!){
+            textLabel.text = "Player Already Entered"
+            subTextField.text = ""
+            textLabel.textColor = .red
+
+            let _: Timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(changeLabel), userInfo: nil, repeats: true)
+
+            return
+        }else if teamSide == .home {
         Game.homePlayersSorted.remove(at: selectedButton)
         Game.homePlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
         Game.homePlayersSorted = Game.homePlayersSorted.sorted{$0 < $1}
@@ -53,6 +65,10 @@ class SelectPlayerVC: UIViewController {
         guard let vc = storyboard.instantiateViewController(withIdentifier: "mainGame") as? MainGameVC else {return}
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: true, completion: nil)
+    }
+    @objc func changeLabel (){
+        textLabel.text = "Enter Sub Number"
+        textLabel.textColor = .black
     }
     override func viewDidDisappear(_ animated: Bool) {
         print(Game.homePlayers)

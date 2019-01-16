@@ -11,8 +11,8 @@ import UIKit
 class PopActionsVC: UIViewController {
     let timer = MainTimer(timeInterval: 1)
     let homeTeam = Game.homeTeam
-    var timerDelegate: TimerDelegate?
-    var eventDelegate: EventDelegate?
+    weak var timerDelegate: TimerDelegate?
+    weak var eventDelegate: EventDelegate?
     var playerSelected = Int()
     var selectedButton = Int()
     var teamSelected = String()

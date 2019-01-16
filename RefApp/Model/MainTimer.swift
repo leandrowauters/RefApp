@@ -55,7 +55,31 @@ class MainTimer {
         state = .suspended
         timer.suspend()
     }
-
+    
+    func restartTimer(){
+        timer.suspend()
+        state = .restated
+//        MainTimer.time = -1
+        //        self.timer.eventHandler = {
+        //            self.action()
+        //            MainTimer.time += 1
+        //        }
+        //        self.timer.resume()
+    }
+    static func timeString(time:TimeInterval) -> String {
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
+    }
+    
+    static func timeStringWithMilSec(time:TimeInterval) -> String {
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        let milliseconds = Int(((time.truncatingRemainder(dividingBy: 1)) * 1000) / 10)
+        return String(format: "%02i:%02i:%02i:%0.2i", hours, minutes, seconds, milliseconds)
+    }
 }
 
 protocol TimerDelegate: class {

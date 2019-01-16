@@ -11,6 +11,7 @@ import UIKit
 class MainGameVC: UIViewController, UIScrollViewDelegate {
     
 //    var time = 0
+    let graphics = GraphicClient()
     var timer = MainTimer(timeInterval: 0.0001)
     weak var delegate: TimerDelegate!
     weak var eventDelegte: EventDelegate!
@@ -31,8 +32,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var startButton: UIButton!
     
-    let shapeLayer = CAShapeLayer()
-    let trackLayer = CAShapeLayer()
+//    let shapeLayer = CAShapeLayer()
+//    let trackLayer = CAShapeLayer()
     @IBOutlet weak var teamsScrollView: UIScrollView!
     @IBOutlet weak var pageControll: UIPageControl!
     @IBOutlet var timerLabels: [UILabel]!
@@ -70,8 +71,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             timer2View.isHidden = true
             } else {
             timer2View.isHidden = false
-            shapeLayer.isHidden = true
-            trackLayer.isHidden = true
+            graphics.shapeLayer.isHidden = true
+            graphics.trackLayer.isHidden = true
             }
             changeTimerButton.isHidden = false
         }
@@ -86,7 +87,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         pageControll.currentPage = 0
         view.bringSubviewToFront(pageControll)
         for label in timerLabels{
-            label.text = timeString(time: TimeInterval(MainTimer.time))
+            label.text = MainTimer.timeString(time: TimeInterval(MainTimer.time))
         }
 
 
@@ -107,7 +108,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             halfLabel.text = "2nd Half"
         }
         if MainGameVC.halfTime {
-            setWheelToZero()
+            graphics.setWheelToZero(view: self.view)
 //            self.startButton.isHidden = false
 //            self.startButton.isEnabled = true
             MainGameVC.halfTime = false
@@ -125,7 +126,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             if MainGameVC.turnOnTimer{
                 print("Timer is running")
 //                self.runTimer()
-                self.timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + (((Game.lengthSelected / 2) * 60 ) / 3)))
+                self.graphics.timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + (((Game.lengthSelected / 2) * 60 ) / 3)), view: self.view)
                 self.timer.eventHandler = {
                     self.action()
                 }
@@ -164,16 +165,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         }
         timer.resume()
     }
-    func restartTimer(){
-        timer.suspend()
-        timer.state = .restated
-        MainTimer.time = -1
-//        self.timer.eventHandler = {
-//            self.action()
-//            MainTimer.time += 1
-//        }
-        //        self.timer.resume()
-    }
+
     
     func animateChangeColor (button: UIButton, color: UIColor) {
         button.alpha = 0.0
@@ -247,7 +239,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     @IBAction func startButton(_ sender: UIButton) {
         print("start was pressed")
         changeTimerButton.isHidden = false
-        setWheelToZero()
+        graphics.setWheelToZero(view: self.view)
 
         if timer.state == .suspended {
         runTimer()
@@ -296,7 +288,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             self.changeTimerButton.isHidden = true
             MainGameVC.halfTime = true
             Game.gameHalf = 2
-            self.restartTimer()
+            self.timer.restartTimer()
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         self.present(alert, animated: false)
@@ -309,80 +301,32 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         print("change timer was pressed")
         timer2View.isHidden = false
         MainGameVC.timerViewOne = false
-        trackLayer.isHidden = true
-        shapeLayer.isHidden = true
+        graphics.trackLayer.isHidden = true
+        graphics.shapeLayer.isHidden = true
     }
     
     @objc func hideTimerView(){
         timer2View.isHidden = true
         MainGameVC.timerViewOne = true
         self.timer2View.isHidden = true
-        trackLayer.isHidden = false
-        shapeLayer.isHidden = false
+        graphics.trackLayer.isHidden = false
+        graphics.shapeLayer.isHidden = false
     }
     
-    func timeString(time:TimeInterval) -> String {
-        let hours = Int(time) / 3600
-        let minutes = Int(time) / 60 % 60
-        let seconds = Int(time) % 60
-        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
-    }
-    
-    func timeStringWithMilSec(time:TimeInterval) -> String {
-        let hours = Int(time) / 3600
-        let minutes = Int(time) / 60 % 60
-        let seconds = Int(time) % 60
-        let milliseconds = Int(((time.truncatingRemainder(dividingBy: 1)) * 1000) / 10)
-        return String(format: "%02i:%02i:%02i:%0.2i", hours, minutes, seconds, milliseconds)
-    }
     
     @objc func action() {
         DispatchQueue.main.async {
-            MainGameVC.timeStamp = self.timeString(time: TimeInterval(MainTimer.time))
+            MainGameVC.timeStamp = MainTimer.timeString(time: TimeInterval(MainTimer.time))
             for timeLabel in self.timerLabels {
                 if MainGameVC.timerViewOne{
-                    timeLabel.text = self.timeString(time: TimeInterval(MainTimer.time))
+                    timeLabel.text = MainTimer.timeString(time: TimeInterval(MainTimer.time))
                 } else {
-                    timeLabel.text = self.timeStringWithMilSec(time: TimeInterval(MainTimer.time))
+                    timeLabel.text = MainTimer.timeStringWithMilSec(time: TimeInterval(MainTimer.time))
                 }
                 
             }
-            self.shapeLayer.strokeEnd = CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + ((Game.lengthSelected / 2 * 60 ) / 3))
-            if Int(MainTimer.time) == (((Game.lengthSelected / 2) * 60) - (((Game.lengthSelected / 2) * 60) / 10)) {
-                self.shapeLayer.strokeColor = #colorLiteral(red: 1, green: 0.765635848, blue: 0, alpha: 1)
-                self.trackLayer.strokeColor = #colorLiteral(red: 1, green: 0.868950069, blue: 0.4578225017, alpha: 1)
-            }
-            if Int(MainTimer.time) == (Game.lengthSelected / 2) * 60 {
-                self.shapeLayer.strokeColor = #colorLiteral(red: 1, green: 0, blue: 0.1359238923, alpha: 1)
-                self.trackLayer.strokeColor = #colorLiteral(red: 1, green: 0.4121969342, blue: 0.4527801871, alpha: 1)
-            }
+            self.graphics.setTimerGraphics()
         }
-    }
-    func setWheelToZero(){
-        timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + (((Game.lengthSelected / 2) * 60 ) / 3)))
-    }
-
-    func timerCircle (strokeValue: CGFloat){
-        let y = view.center.y * 0.4
-        let x = view.center.x
-        let position = CGPoint(x: x, y: y)
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 115, startAngle:  0, endAngle: 2 * CGFloat.pi, clockwise: true)
-        trackLayer.path = circularPath.cgPath
-        trackLayer.strokeColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
-        trackLayer.lineCap = CAShapeLayerLineCap.round
-        trackLayer.fillColor = UIColor.clear.cgColor
-        trackLayer.lineWidth = 20
-        trackLayer.position = position
-        view.layer.addSublayer(trackLayer)
-        shapeLayer.path = circularPath.cgPath
-        shapeLayer.strokeColor = #colorLiteral(red: 0, green: 0.6274659038, blue: 0, alpha: 1)
-        shapeLayer.lineCap = CAShapeLayerLineCap.round
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = 20
-        shapeLayer.strokeEnd = strokeValue
-        shapeLayer.position = position
-        shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi / 2, 0, 0, 1)
-        view.layer.addSublayer(shapeLayer)
     }
     func createViews () -> [UIView] {
         homeView.homeLabel.text = "\(Game.homeTeam)"

@@ -49,4 +49,9 @@ class GraphicClient {
             trackLayer.strokeColor = #colorLiteral(red: 1, green: 0.4121969342, blue: 0.4527801871, alpha: 1)
         }
     }
+    func hideTimerWheel(isHidden: Bool) {
+        trackLayer.isHidden = isHidden
+        shapeLayer.isHidden = isHidden
+    }
+    
 }

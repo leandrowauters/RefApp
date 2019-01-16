@@ -71,8 +71,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             timer2View.isHidden = true
             } else {
             timer2View.isHidden = false
-            graphics.shapeLayer.isHidden = true
-            graphics.trackLayer.isHidden = true
+            graphics.hideTimerWheel(isHidden: true)
             }
             changeTimerButton.isHidden = false
         }
@@ -299,18 +298,17 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     @IBAction func changeTimerWasPressed(_ sender: UIButton) {
         print("change timer was pressed")
+        graphics.hideTimerWheel(isHidden: true)
         timer2View.isHidden = false
         MainGameVC.timerViewOne = false
-        graphics.trackLayer.isHidden = true
-        graphics.shapeLayer.isHidden = true
     }
     
     @objc func hideTimerView(){
         timer2View.isHidden = true
         MainGameVC.timerViewOne = true
+        graphics.hideTimerWheel(isHidden: false)
         self.timer2View.isHidden = true
-        graphics.trackLayer.isHidden = false
-        graphics.shapeLayer.isHidden = false
+       
     }
     
     

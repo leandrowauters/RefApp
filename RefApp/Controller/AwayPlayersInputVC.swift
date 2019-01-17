@@ -39,6 +39,7 @@ class AwayPlayersInputVC: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         notifications()
+    
         
     }
     deinit {

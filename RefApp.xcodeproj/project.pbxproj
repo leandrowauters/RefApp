@@ -33,6 +33,8 @@
 		D5CDA72221ED267000A59133 /* GraphicClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDA72121ED267000A59133 /* GraphicClient.swift */; };
 		D5CE6D6F21DD26CC00FD921A /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE6D6E21DD26CC00FD921A /* Events.swift */; };
 		D5CE6D7121DD3F9700FD921A /* MainTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE6D7021DD3F9700FD921A /* MainTimer.swift */; };
+		D5FA730921EFF53D007F77CE /* HomePlayersSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA730821EFF53D007F77CE /* HomePlayersSelectionViewController.swift */; };
+		D5FA730B21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA730A21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift */; };
 		D5FBD97121B23538005D89F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBD97021B23538005D89F4 /* AppDelegate.swift */; };
 		D5FBD97621B23538005D89F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5FBD97421B23538005D89F4 /* Main.storyboard */; };
 		D5FBD97821B23539005D89F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5FBD97721B23539005D89F4 /* Assets.xcassets */; };
@@ -68,6 +70,8 @@
 		D5CDA72121ED267000A59133 /* GraphicClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicClient.swift; sourceTree = "<group>"; };
 		D5CE6D6E21DD26CC00FD921A /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		D5CE6D7021DD3F9700FD921A /* MainTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTimer.swift; sourceTree = "<group>"; };
+		D5FA730821EFF53D007F77CE /* HomePlayersSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayersSelectionViewController.swift; sourceTree = "<group>"; };
+		D5FA730A21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayersCollectionViewCell.swift; sourceTree = "<group>"; };
 		D5FBD96D21B23538005D89F4 /* RefApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RefApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5FBD97021B23538005D89F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5FBD97521B23538005D89F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 				D5313FE321D7099900875B63 /* HomeView.swift */,
 				D5313FE721D70D7900875B63 /* AwayView.xib */,
 				D5313FE921D70D8E00875B63 /* AwayView.swift */,
+				D5FA730A21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 				D532218A21D731F4004B0363 /* PopActionsVC.swift */,
 				D5313FE521D70A7E00875B63 /* MainGameVC.swift */,
 				D510975021CAC57E008638B3 /* HomePlayersInputVC.swift */,
+				D5FA730821EFF53D007F77CE /* HomePlayersSelectionViewController.swift */,
 				D5313FDF21D6F26500875B63 /* AwayPlayersInputVC.swift */,
 				D5FBD98421B2358D005D89F4 /* GameSettings.swift */,
 				D529FE0421B475E100DDC366 /* GameSettigsDetail */,
@@ -279,8 +285,10 @@
 				D5BDD17F21EAB55C0078408E /* DataPersisitanceManager.swift in Sources */,
 				D510975121CAC57E008638B3 /* HomePlayersInputVC.swift in Sources */,
 				D529FE0121B4755F00DDC366 /* DatePickerVC.swift in Sources */,
+				D5FA730921EFF53D007F77CE /* HomePlayersSelectionViewController.swift in Sources */,
 				D529FDFF21B4748C00DDC366 /* TeamsInputVC.swift in Sources */,
 				D5A62AA821E526C700C9183B /* SavedGameDetailedViewController.swift in Sources */,
+				D5FA730B21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift in Sources */,
 				D58C2FFF21B5D50500A15E03 /* GameLengthCell.swift in Sources */,
 				D5FBD97121B23538005D89F4 /* AppDelegate.swift in Sources */,
 				D5FBD98521B2358D005D89F4 /* GameSettings.swift in Sources */,

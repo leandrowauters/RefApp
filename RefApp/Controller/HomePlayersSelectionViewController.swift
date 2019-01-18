@@ -63,15 +63,23 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width:190, height:225)
+        if indexPath.row <= homePlayers.count - 2 {
+            return CGSize.init(width: 200 / 1.5, height:225 / 1.5)
+        }
+        return CGSize.init(width: 200, height:225)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let cellWidth : CGFloat = 145.0
-        
-        let numberOfCells = floor(self.view.frame.size.width / cellWidth)
-        let edgeInsets = (self.view.frame.size.width - (numberOfCells * cellWidth)) / (numberOfCells + 1)
-        
-        return UIEdgeInsets(top: 15, left: edgeInsets, bottom: 0, right: edgeInsets)
+        let cellWidth : CGFloat = 200.0
+//        let cellCount = homePlayers.count
+        let leftInsets = (view.frame.size.width / 2) + (cellWidth / 2)
+        let rightInstets = (self.view.frame.size.width / 2) - (cellWidth / 2)
+//        if cellCount == 1 {
+//            leftInsets = (view.frame.size.width / 2) + (cellWidth / 2)
+//            return UIEdgeInsets(top: 0, left: leftInsets, bottom: 0, right: rightInstets)
+//        }
+//        let numberOfCells = floor(self.view.frame.size.width / cellWidth)
+//        leftInsets = (self.view.frame.size.width - (numberOfCells * cellWidth)) / (numberOfCells + 1)
+        return UIEdgeInsets(top: 0, left: leftInsets, bottom: 0, right: rightInstets)
     }
 
 

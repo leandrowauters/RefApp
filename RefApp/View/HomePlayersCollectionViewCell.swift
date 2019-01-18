@@ -10,6 +10,7 @@ import UIKit
 
 class HomePlayersCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var playerNumberTextView: UITextView!
+    
     
 }

@@ -585,7 +585,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7gP-oS-pDB">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7gP-oS-pDB">
                                 <rect key="frame" x="0.0" y="20" width="375" height="267"/>
                                 <color key="backgroundColor" red="1" green="0.81004911310000005" blue="0.059001396349999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6T0-cT-MDu">
@@ -602,31 +602,32 @@
                                             <rect key="frame" x="0.0" y="0.0" width="190" height="225"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xxa-Xp-qyI">
+                                                    <rect key="frame" x="36" y="51.5" width="118" height="122"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="118" id="DDG-fs-CCu"/>
+                                                        <constraint firstAttribute="height" constant="122" id="Puv-2l-5cv"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="90"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1x-O9-sc1">
-                                                    <rect key="frame" x="137" y="43" width="30" height="41"/>
+                                                    <rect key="frame" x="137" y="33" width="30" height="41"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                     <state key="normal" title="X"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adU-Qc-MNy">
-                                                    <rect key="frame" x="19" y="67.5" width="152" height="90"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="75"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="adU-Qc-MNy" firstAttribute="centerY" secondItem="pw0-Dh-W5o" secondAttribute="centerY" id="5Qk-LS-ZCa"/>
-                                            <constraint firstItem="adU-Qc-MNy" firstAttribute="leading" secondItem="pw0-Dh-W5o" secondAttribute="leadingMargin" constant="11" id="9Nx-Q1-Xcu"/>
-                                            <constraint firstItem="N1x-O9-sc1" firstAttribute="top" secondItem="pw0-Dh-W5o" secondAttribute="topMargin" constant="15" id="FKd-AR-uRp"/>
+                                            <constraint firstItem="N1x-O9-sc1" firstAttribute="top" secondItem="pw0-Dh-W5o" secondAttribute="topMargin" constant="5" id="FKd-AR-uRp"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="N1x-O9-sc1" secondAttribute="trailing" constant="15" id="Fl7-fJ-ZyX"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="adU-Qc-MNy" secondAttribute="trailing" constant="11" id="Ojy-Rs-RDs"/>
-                                            <constraint firstItem="adU-Qc-MNy" firstAttribute="centerX" secondItem="pw0-Dh-W5o" secondAttribute="centerX" id="h02-HL-2za"/>
+                                            <constraint firstItem="Xxa-Xp-qyI" firstAttribute="centerX" secondItem="pw0-Dh-W5o" secondAttribute="centerX" id="VP1-Ol-1pI"/>
+                                            <constraint firstItem="Xxa-Xp-qyI" firstAttribute="centerY" secondItem="pw0-Dh-W5o" secondAttribute="centerY" id="VzG-HA-ah6"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="deleteButton" destination="N1x-O9-sc1" id="AND-ME-SYm"/>
-                                            <outlet property="numberLabel" destination="adU-Qc-MNy" id="xes-FN-w6N"/>
+                                            <outlet property="playerNumberTextView" destination="Xxa-Xp-qyI" id="ruJ-B5-VBC"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

@@ -48,9 +48,7 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
     @IBAction func numberPadWasPressed(_ sender: UIButton) {
         number.append(Character(sender.tag.description))
 //        numbersTextView.text = number
-        let indexPath = IndexPath(row: homePlayers.count, section: 0)
-        guard let cell = numbersCollectionView.dequeueReusableCell(withReuseIdentifier: "numberCell", for: indexPath) as? HomePlayersCollectionViewCell else {fatalError("No cell")}
-        cell.playerNumberTextView.text = number
+
     }
     
     @IBAction func enterWasPressed(_ sender: UIButton) {
@@ -72,7 +70,10 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "numberCell", for: indexPath) as? HomePlayersCollectionViewCell else {return UICollectionViewCell()}
-        cell.playerNumberTextView.text = number
+        cell.playerNumberLabel.text = number
+        if indexPath.row <= homePlayers.count - 1 {
+            cell.playerNumberLabel.text = homePlayers[indexPath.row].description
+        }
 //        cell.numberLabel.text = homePlayers[indexPath.row].description
         return cell
     }

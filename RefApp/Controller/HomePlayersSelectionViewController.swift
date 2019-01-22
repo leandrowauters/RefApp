@@ -65,13 +65,6 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
         let indexPath = IndexPath(row: homePlayers.count, section: 0)
         numbersCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
-    @IBAction func deletePlayerWasPressed(_ sender: UIBarButtonItem) {
-
-    }
-    
-    
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return homePlayers.count + 1
     }
@@ -111,10 +104,10 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: 365, height:247)
+        return CGSize.init(width: 250, height:250)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let cellWidth : CGFloat = 365.0
+        let cellWidth : CGFloat = 250.0
         let numberOfCells = floor(self.view.frame.size.width / cellWidth)
 //        var leftInsets = (view.frame.size.width / 2) + (cellWidth / 2)
         let rightInstets = (self.view.frame.size.width / 2) - (cellWidth / 2)

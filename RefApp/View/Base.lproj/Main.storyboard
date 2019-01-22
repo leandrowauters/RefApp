@@ -804,13 +804,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zpw-Jw-JFG"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="tF3-L2-bFZ">
-                        <barButtonItem key="rightBarButtonItem" title="Delete Player" id="a0y-Xf-qGt">
-                            <connections>
-                                <action selector="deletePlayerWasPressed:" destination="8pI-QS-oCL" id="ZWd-4s-p1C"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="tF3-L2-bFZ"/>
                     <connections>
                         <outlet property="numbersCollectionView" destination="7gP-oS-pDB" id="vbA-Bc-84i"/>
                         <outletCollection property="numberPadButtons" destination="mI1-9Y-O4g" collectionClass="NSMutableArray" id="Knh-tz-zSn"/>

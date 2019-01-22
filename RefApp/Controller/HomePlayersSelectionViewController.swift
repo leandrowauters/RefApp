@@ -71,37 +71,36 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "numberCell", for: indexPath) as? HomePlayersCollectionViewCell else {return UICollectionViewCell()}
-        
-        cell.playerNumberLabel.text = number
-        cell.deleteButton.tag = indexPath.row
-        print("INDEX PATH: \(indexPath.row)")
-//       if homePlayers.count + 1 == 1 {
-//            cell.deleteButton.isHidden = false
+        return HomePlayersCollectionViewCell.setUpCell(collectionView: collectionView, cell: cell, indexPath: indexPath.row, number: number)
+//        cell.playerNumberLabel.text = number
+//        cell.deleteButton.tag = indexPath.row
+////       if homePlayers.count + 1 == 1 {
+////            cell.deleteButton.isHidden = false
+////        } else {
+////            cell.deleteButton.isHidden = true
+////        }
+//        if cell.playerNumberLabel.text != "" {
+//            cell.deleteButton.isEnabled = true
 //        } else {
-//            cell.deleteButton.isHidden = true
+//            cell.deleteButton.isEnabled = false
 //        }
-        if cell.playerNumberLabel.text != "" {
-            cell.deleteButton.isEnabled = true
-        } else {
-            cell.deleteButton.isEnabled = false
-        }
-        
-        if cell.deleteButton.tag <= homePlayers.count - 1 {
-            cell.playerNumberLabel.text = homePlayers[indexPath.row].description
-            cell.okayButton.isHidden = true
-            cell.deleteButton.isEnabled = true
-        }
-        if cell.deleteButton.tag == Game.numberOfPlayers{
-            cell.okayButton.isHidden = false
-            cell.playerNumberLabel.isHidden = true
-//            cell.deleteButton.isHidden = true
-        } else {
-            cell.okayButton.isHidden = true
-            cell.playerNumberLabel.isHidden = false
-            
-        }
-//        cell.numberLabel.text = homePlayers[indexPath.row].description
-        return cell
+//
+//        if cell.deleteButton.tag <= homePlayers.count - 1 {
+//            cell.playerNumberLabel.text = homePlayers[indexPath.row].description
+//            cell.okayButton.isHidden = true
+//            cell.deleteButton.isEnabled = true
+//        }
+//        if cell.deleteButton.tag == Game.numberOfPlayers{
+//            cell.okayButton.isHidden = false
+//            cell.playerNumberLabel.isHidden = true
+////            cell.deleteButton.isHidden = true
+//        } else {
+//            cell.okayButton.isHidden = true
+//            cell.playerNumberLabel.isHidden = false
+//
+//        }
+////        cell.numberLabel.text = homePlayers[indexPath.row].description
+//        return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize.init(width: 250, height:250)

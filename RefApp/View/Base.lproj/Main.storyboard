@@ -653,7 +653,7 @@
                                     <constraint firstAttribute="height" constant="60" id="GTz-NE-IOU"/>
                                     <constraint firstAttribute="width" constant="60" id="Spy-rr-RUE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <state key="normal" title="2"/>
                                 <connections>
                                     <action selector="numberPadWasPressed:" destination="8pI-QS-oCL" eventType="touchUpInside" id="Law-6f-Ru4"/>
@@ -661,7 +661,7 @@
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOX-Q6-3tb">
                                 <rect key="frame" x="72.5" y="341" width="60" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <state key="normal" title="1"/>
                                 <connections>
                                     <action selector="numberPadWasPressed:" destination="8pI-QS-oCL" eventType="touchUpInside" id="PyD-eT-0l8"/>
@@ -669,7 +669,7 @@
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zif-c9-xFS">
                                 <rect key="frame" x="242.5" y="341" width="60" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <state key="normal" title="3"/>
                                 <connections>
                                     <action selector="numberPadWasPressed:" destination="8pI-QS-oCL" eventType="touchUpInside" id="tkD-j7-KDX"/>
@@ -677,7 +677,7 @@
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AlW-uH-9zh">
                                 <rect key="frame" x="157.5" y="426" width="60" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <state key="normal" title="5"/>
                                 <connections>
                                     <action selector="numberPadWasPressed:" destination="8pI-QS-oCL" eventType="touchUpInside" id="srn-xe-iYr"/>
@@ -685,7 +685,7 @@
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6z-mm-Iek">
                                 <rect key="frame" x="72.5" y="426" width="60" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <state key="normal" title="4"/>
                                 <connections>
                                     <action selector="numberPadWasPressed:" destination="8pI-QS-oCL" eventType="touchUpInside" id="fgW-Ab-H7G"/>
@@ -693,7 +693,7 @@
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOi-6r-Y9a">
                                 <rect key="frame" x="242.5" y="426" width="60" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <state key="normal" title="6"/>
                                 <connections>
                                     <action selector="numberPadWasPressed:" destination="8pI-QS-oCL" eventType="touchUpInside" id="AkK-g2-juk"/>
@@ -701,7 +701,7 @@
                             </button>
                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Pq-SM-yvg">
                                 <rect key="frame" x="157.5" y="511" width="60" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <state key="normal" title="8"/>
                                 <connections>
                                     <action selector="numberPadWasPressed:" destination="8pI-QS-oCL" eventType="touchUpInside" id="6YA-yQ-OQs"/>
@@ -709,7 +709,7 @@
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dc-mA-BNR">
                                 <rect key="frame" x="72.5" y="511" width="60" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <state key="normal" title="7"/>
                                 <connections>
                                     <action selector="numberPadWasPressed:" destination="8pI-QS-oCL" eventType="touchUpInside" id="EaP-6q-lIz"/>
@@ -717,7 +717,7 @@
                             </button>
                             <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWQ-Gd-bK8">
                                 <rect key="frame" x="242.5" y="511" width="60" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <state key="normal" title="9"/>
                                 <connections>
                                     <action selector="numberPadWasPressed:" destination="8pI-QS-oCL" eventType="touchUpInside" id="YrM-G4-hbg"/>
@@ -725,7 +725,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GT2-lG-Ei5">
                                 <rect key="frame" x="157.5" y="596" width="60" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <state key="normal" title="0"/>
                                 <connections>
                                     <action selector="numberPadWasPressed:" destination="8pI-QS-oCL" eventType="touchUpInside" id="3lR-2D-7K2"/>
@@ -733,6 +733,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rv0-C7-gaP">
                                 <rect key="frame" x="72.5" y="596" width="60" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Enter"/>
                                 <connections>
                                     <action selector="enterWasPressed:" destination="8pI-QS-oCL" eventType="touchUpInside" id="YcC-h6-4U2"/>
@@ -740,8 +741,19 @@
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nad-YO-Za3">
                                 <rect key="frame" x="242.5" y="596" width="60" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" image="delete"/>
+                                <connections>
+                                    <action selector="backspacePressed:" destination="8pI-QS-oCL" eventType="touchUpInside" id="qwd-9V-1go"/>
+                                </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Already Entered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lZ-S5-2fe">
+                                <rect key="frame" x="0.0" y="64" width="375" height="277"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.66510595034246578" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -750,6 +762,7 @@
                             <constraint firstItem="zif-c9-xFS" firstAttribute="height" secondItem="mI1-9Y-O4g" secondAttribute="height" id="1ty-4o-2XO"/>
                             <constraint firstItem="1dc-mA-BNR" firstAttribute="width" secondItem="mI1-9Y-O4g" secondAttribute="width" id="23O-9c-lGd"/>
                             <constraint firstItem="AlW-uH-9zh" firstAttribute="top" secondItem="mI1-9Y-O4g" secondAttribute="bottom" constant="25" id="2xP-KO-hgR"/>
+                            <constraint firstItem="9lZ-S5-2fe" firstAttribute="leading" secondItem="Zpw-Jw-JFG" secondAttribute="leading" id="32X-Wo-cKR"/>
                             <constraint firstItem="7gP-oS-pDB" firstAttribute="height" secondItem="MRE-Id-VZl" secondAttribute="height" multiplier="0.4" id="4EL-4P-m2O"/>
                             <constraint firstItem="rv0-C7-gaP" firstAttribute="centerY" secondItem="GT2-lG-Ei5" secondAttribute="centerY" id="4pp-un-LBA"/>
                             <constraint firstItem="U6z-mm-Iek" firstAttribute="width" secondItem="mI1-9Y-O4g" secondAttribute="width" id="5fy-1n-pyJ"/>
@@ -759,8 +772,10 @@
                             <constraint firstItem="U6z-mm-Iek" firstAttribute="centerY" secondItem="AlW-uH-9zh" secondAttribute="centerY" id="AGL-Bf-c6U"/>
                             <constraint firstItem="nad-YO-Za3" firstAttribute="width" secondItem="mI1-9Y-O4g" secondAttribute="width" id="CGa-ST-QRS"/>
                             <constraint firstItem="mI1-9Y-O4g" firstAttribute="leading" secondItem="DOX-Q6-3tb" secondAttribute="trailing" constant="25" id="CgU-gW-rPc"/>
+                            <constraint firstItem="Zpw-Jw-JFG" firstAttribute="trailing" secondItem="9lZ-S5-2fe" secondAttribute="trailing" id="GVe-QS-e5x"/>
                             <constraint firstItem="1dc-mA-BNR" firstAttribute="height" secondItem="mI1-9Y-O4g" secondAttribute="height" id="Gq0-Og-KOU"/>
                             <constraint firstItem="AlW-uH-9zh" firstAttribute="centerX" secondItem="mI1-9Y-O4g" secondAttribute="centerX" id="JKI-0d-gIG"/>
+                            <constraint firstItem="9lZ-S5-2fe" firstAttribute="top" secondItem="Zpw-Jw-JFG" secondAttribute="top" id="KAe-Sl-HBA"/>
                             <constraint firstItem="AlW-uH-9zh" firstAttribute="height" secondItem="mI1-9Y-O4g" secondAttribute="height" id="Md5-9u-D4H"/>
                             <constraint firstItem="2Pq-SM-yvg" firstAttribute="top" secondItem="AlW-uH-9zh" secondAttribute="bottom" constant="25" id="Mqq-YI-BLF"/>
                             <constraint firstItem="EOi-6r-Y9a" firstAttribute="height" secondItem="mI1-9Y-O4g" secondAttribute="height" id="Na8-gf-BRd"/>
@@ -800,6 +815,7 @@
                             <constraint firstItem="GT2-lG-Ei5" firstAttribute="top" secondItem="2Pq-SM-yvg" secondAttribute="bottom" constant="25" id="wPq-C6-Ny1"/>
                             <constraint firstItem="fWQ-Gd-bK8" firstAttribute="top" secondItem="EOi-6r-Y9a" secondAttribute="bottom" constant="25" id="wvK-51-JXN"/>
                             <constraint firstItem="rv0-C7-gaP" firstAttribute="height" secondItem="mI1-9Y-O4g" secondAttribute="height" id="x86-3e-Wth"/>
+                            <constraint firstItem="mI1-9Y-O4g" firstAttribute="top" secondItem="9lZ-S5-2fe" secondAttribute="bottom" id="yv7-gN-Xd5"/>
                             <constraint firstItem="zif-c9-xFS" firstAttribute="centerY" secondItem="mI1-9Y-O4g" secondAttribute="centerY" id="zWb-QS-vRU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zpw-Jw-JFG"/>
@@ -807,6 +823,7 @@
                     <navigationItem key="navigationItem" title="Title" id="tF3-L2-bFZ"/>
                     <connections>
                         <outlet property="numbersCollectionView" destination="7gP-oS-pDB" id="vbA-Bc-84i"/>
+                        <outlet property="playeredEnteredLabel" destination="9lZ-S5-2fe" id="ozv-pP-vFG"/>
                         <outletCollection property="numberPadButtons" destination="mI1-9Y-O4g" collectionClass="NSMutableArray" id="Knh-tz-zSn"/>
                         <outletCollection property="numberPadButtons" destination="DOX-Q6-3tb" collectionClass="NSMutableArray" id="CGB-BW-sBD"/>
                         <outletCollection property="numberPadButtons" destination="zif-c9-xFS" collectionClass="NSMutableArray" id="Y0P-O3-bds"/>
@@ -1800,7 +1817,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="delete" width="60" height="60"/>
+        <image name="delete" width="37" height="37"/>
         <image name="stopButton" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>

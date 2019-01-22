@@ -14,13 +14,12 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
 
     @IBOutlet var numberPadButtons: [UIButton]!
     @IBOutlet weak var numbersCollectionView: UICollectionView!
-//    @IBOutlet weak var numbersTextView: UITextView!
+    @IBOutlet weak var playeredEnteredLabel: UILabel!
     
     var number = ""{
         didSet{
             DispatchQueue.main.async {
                 self.numbersCollectionView.reloadData()
-                print(Game.numberOfPlayers)
             }
         }
     }
@@ -37,6 +36,7 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "\(Game.homeTeam) Players"
         numbersCollectionView.delegate = self
         numbersCollectionView.dataSource = self
     }
@@ -45,21 +45,30 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
 //        numbersTextView.text = number
 
     }
-    
+    @objc func hideLabel() {
+        playeredEnteredLabel.isHidden = true
+    }
     @IBAction func enterWasPressed(_ sender: UIButton) {
+        if !homePlayers.contains(Int(number)!){
             homePlayers.append(Int(number)!)
             Game.homePlayers.append(Int(number)!)
-            print(Game.homePlayers.count)
+            print("Number of players \(Game.homePlayers.count)")
             number = ""
-//            print(homePlayers[0])
-//            numbersTextView.text = ""
             let indexPath = IndexPath(row: homePlayers.count, section: 0)
             numbersCollectionView.insertItems(at: [indexPath])
             numbersCollectionView.layoutIfNeeded()
             numbersCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        
-
+        } else {
+            playeredEnteredLabel.isHidden = false
+            let _: Timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(hideLabel), userInfo: nil, repeats: true)
+            number = ""
+            print("Number of players \(Game.homePlayers.count)")
+        }
     }
+    @IBAction func backspacePressed(_ sender: UIButton) {
+        number.removeLast()
+    }
+    
     @IBAction func deleteWasPressed(_ sender: UIButton) {
         homePlayers.remove(at: sender.tag)
         let indexPath = IndexPath(row: homePlayers.count, section: 0)
@@ -72,35 +81,7 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "numberCell", for: indexPath) as? HomePlayersCollectionViewCell else {return UICollectionViewCell()}
         return HomePlayersCollectionViewCell.setUpCell(collectionView: collectionView, cell: cell, indexPath: indexPath.row, number: number)
-//        cell.playerNumberLabel.text = number
-//        cell.deleteButton.tag = indexPath.row
-////       if homePlayers.count + 1 == 1 {
-////            cell.deleteButton.isHidden = false
-////        } else {
-////            cell.deleteButton.isHidden = true
-////        }
-//        if cell.playerNumberLabel.text != "" {
-//            cell.deleteButton.isEnabled = true
-//        } else {
-//            cell.deleteButton.isEnabled = false
-//        }
-//
-//        if cell.deleteButton.tag <= homePlayers.count - 1 {
-//            cell.playerNumberLabel.text = homePlayers[indexPath.row].description
-//            cell.okayButton.isHidden = true
-//            cell.deleteButton.isEnabled = true
-//        }
-//        if cell.deleteButton.tag == Game.numberOfPlayers{
-//            cell.okayButton.isHidden = false
-//            cell.playerNumberLabel.isHidden = true
-////            cell.deleteButton.isHidden = true
-//        } else {
-//            cell.okayButton.isHidden = true
-//            cell.playerNumberLabel.isHidden = false
-//
-//        }
-////        cell.numberLabel.text = homePlayers[indexPath.row].description
-//        return cell
+
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize.init(width: 250, height:250)

@@ -11,7 +11,7 @@ import UIKit
 class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
     
-
+    let graphics = GraphicClient()
     @IBOutlet var numberPadButtons: [UIButton]!
     @IBOutlet weak var numbersCollectionView: UICollectionView!
     @IBOutlet weak var playeredEnteredLabel: UILabel!
@@ -39,6 +39,7 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
         title = "\(Game.homeTeam) Players"
         numbersCollectionView.delegate = self
         numbersCollectionView.dataSource = self
+        graphics.changeButtonLayout(buttons: numberPadButtons)
     }
     @IBAction func numberPadWasPressed(_ sender: UIButton) {
         number.append(Character(sender.tag.description))
@@ -71,6 +72,8 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
     
     @IBAction func deleteWasPressed(_ sender: UIButton) {
         homePlayers.remove(at: sender.tag)
+        Game.homePlayers.remove(at: sender.tag)
+        
         let indexPath = IndexPath(row: homePlayers.count, section: 0)
         numbersCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }

@@ -53,5 +53,21 @@ class GraphicClient {
         trackLayer.isHidden = isHidden
         shapeLayer.isHidden = isHidden
     }
-    
+    func changeButtonLayout(buttons: [UIButton]) {
+            for button in buttons{
+                
+                button.frame = CGRect(x: button.frame.origin.x, y: button.frame.origin.y, width: 60
+                    , height: 60)
+                button.layer.masksToBounds = true
+                button.layer.cornerRadius = button.frame.width / 2
+                button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                button.layer.borderWidth = 2.0
+                button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+                button.titleLabel?.font = UIFont.init(name: "Verdana", size: 37)// THIS SETS FONT
+                button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 37)
+                //CREAT BUTTONS FOR EACH INSTANCE (YELLOW, RED, ....)
+                //            button.layer.cornerRadius = 0.5 * button.bounds.size.width
+                button.layer.masksToBounds = true
+            }
+        }
 }

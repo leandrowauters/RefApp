@@ -16,7 +16,10 @@ class HomePlayersCollectionViewCell: UICollectionViewCell {
     
     static func setUpCell(collectionView: UICollectionView, cell: HomePlayersCollectionViewCell, indexPath row: Int, number: String) -> HomePlayersCollectionViewCell{
 
-        
+        cell.layer.borderWidth = 2
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.cornerRadius = 35
+        cell.layer.masksToBounds = true
         cell.playerNumberLabel.text = number
         cell.deleteButton.tag = row
         //       if homePlayers.count + 1 == 1 {

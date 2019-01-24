@@ -78,6 +78,8 @@ class PopActionsVC: UIViewController {
             }
         case 3:
             let goal = Events.init(type: TypeOfIncident.goal.rawValue, playerNum: playerSelected,team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1))
+                timerDelegate?.keepStartButtonDisable(disable: true)
+                timerDelegate?.keepStartButtonHidden(hide: true)
                 eventDelegate?.yellowCall(bool: false)
                 eventDelegate?.redCard(bool: false)
                 Game.events.append(goal)

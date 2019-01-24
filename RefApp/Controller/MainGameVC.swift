@@ -47,7 +47,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("The view height is: \(timer2View.bounds.height)")
         NotificationCenter.default.addObserver(self, selector: #selector(pauseTimer), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startApp) , name: UIApplication.didBecomeActiveNotification, object: nil)
         scoreLabel.text = "\(Game.homeTeam) \(Game.homeScore) - \(Game.awayTeam) \(Game.awayScore)"
@@ -125,7 +125,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             if MainGameVC.turnOnTimer{
                 print("Timer is running")
 //                self.runTimer()
-                self.graphics.timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + (((Game.lengthSelected / 2) * 60 ) / 3)), view: self.view)
+                self.graphics.timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + (((Game.lengthSelected / 2) * 60 ) / 3)), view: self.view, radius: self.timer2View.bounds.height / 2)
                 self.timer.eventHandler = {
                     self.action()
                 }

@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AwayView" customModule="RefApp" customModuleProvider="target">
+        <view contentMode="scaleAspectFit" id="iN0-l3-epB" customClass="AwayView" customModule="RefApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -126,7 +126,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" red="0.20392156859999999" green="0.4039215686" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="VJr-bq-8DW" firstAttribute="width" secondItem="erA-tf-gJH" secondAttribute="width" id="0uZ-yB-1jx"/>
                 <constraint firstItem="VJr-bq-8DW" firstAttribute="top" secondItem="vaB-3n-Ev5" secondAttribute="bottom" id="2hM-x0-Rkq"/>

@@ -1,21 +1,20 @@
 //
-//  HomePlayersCollectionViewCell.swift
+//  AwayPlayersCollectionViewCell.swift
 //  RefApp
 //
-//  Created by Leandro Wauters on 1/16/19.
+//  Created by Leandro Wauters on 1/22/19.
 //  Copyright © 2019 Leandro Wauters. All rights reserved.
 //
 
 import UIKit
 
-class HomePlayersCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var deleteButton: UIButton!
+class AwayPlayersCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var playerNumberLabel: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var okayButton: UIButton!
-    
-    
-    static func setUpCell(collectionView: UICollectionView, cell: HomePlayersCollectionViewCell, indexPath row: Int, number: String) -> HomePlayersCollectionViewCell{
 
+    static func setUpCell(collectionView: UICollectionView, cell: AwayPlayersCollectionViewCell, indexPath row: Int, number: String) -> AwayPlayersCollectionViewCell{
+        
         cell.layer.borderWidth = 10
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.cornerRadius = 35
@@ -33,8 +32,8 @@ class HomePlayersCollectionViewCell: UICollectionViewCell {
             cell.deleteButton.isEnabled = false
         }
         
-        if cell.deleteButton.tag <= Game.homePlayers.count - 1 {
-            cell.playerNumberLabel.text = Game.homePlayers[row].description
+        if cell.deleteButton.tag <= Game.awayPlayers.count - 1 {
+            cell.playerNumberLabel.text = Game.awayPlayers[row].description
             cell.okayButton.isHidden = true
             cell.deleteButton.isEnabled = true
         }

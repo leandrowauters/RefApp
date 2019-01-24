@@ -12,12 +12,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HomeView" customModule="RefApp" customModuleProvider="target">
+        <view clipsSubviews="YES" contentMode="scaleAspectFit" id="iN0-l3-epB" customClass="HomeView" customModule="RefApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWk-6s-km1">
-                    <rect key="frame" x="40" y="125" width="75" height="75"/>
+                    <rect key="frame" x="62.5" y="147.5" width="60" height="60"/>
                     <state key="normal">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -26,7 +26,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTl-Mr-E4Y">
-                    <rect key="frame" x="150" y="125" width="75" height="75"/>
+                    <rect key="frame" x="157.5" y="147.5" width="60" height="60"/>
                     <state key="normal">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -35,7 +35,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DA-vq-N8u">
-                    <rect key="frame" x="260" y="125" width="75" height="75"/>
+                    <rect key="frame" x="252.5" y="147.5" width="60" height="60"/>
                     <state key="normal">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -44,7 +44,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-jQ-4S6">
-                    <rect key="frame" x="40" y="220" width="75" height="75"/>
+                    <rect key="frame" x="62.5" y="227.5" width="60" height="60"/>
                     <state key="normal">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -53,10 +53,10 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oH0-cE-2Nv">
-                    <rect key="frame" x="150" y="220" width="75" height="75"/>
+                    <rect key="frame" x="157.5" y="227.5" width="60" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="75" id="h0M-gw-d7d"/>
-                        <constraint firstAttribute="height" constant="75" id="yx3-sC-lXy"/>
+                        <constraint firstAttribute="width" constant="60" id="h0M-gw-d7d"/>
+                        <constraint firstAttribute="height" constant="60" id="yx3-sC-lXy"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal">
@@ -67,7 +67,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeA-EB-UA5">
-                    <rect key="frame" x="260" y="220" width="75" height="75"/>
+                    <rect key="frame" x="252.5" y="227.5" width="60" height="60"/>
                     <state key="normal">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -76,7 +76,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATO-vg-n3S">
-                    <rect key="frame" x="40" y="315" width="75" height="75"/>
+                    <rect key="frame" x="62.5" y="307.5" width="60" height="60"/>
                     <state key="normal">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -85,7 +85,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1g-Kv-5kt">
-                    <rect key="frame" x="150" y="315" width="75" height="75"/>
+                    <rect key="frame" x="157.5" y="307.5" width="60" height="60"/>
                     <state key="normal">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -94,7 +94,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvn-eP-5wS">
-                    <rect key="frame" x="260" y="315" width="75" height="75"/>
+                    <rect key="frame" x="252.5" y="307.5" width="60" height="60"/>
                     <state key="normal">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -103,7 +103,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sea-8D-56p">
-                    <rect key="frame" x="40" y="410" width="75" height="75"/>
+                    <rect key="frame" x="62.5" y="387.5" width="60" height="60"/>
                     <state key="normal">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -112,7 +112,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZU-UV-q0W">
-                    <rect key="frame" x="150" y="410" width="75" height="75"/>
+                    <rect key="frame" x="157.5" y="387.5" width="60" height="60"/>
                     <state key="normal">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -121,13 +121,13 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQ2-ad-I5w">
-                    <rect key="frame" x="11" y="94" width="353" height="21"/>
+                    <rect key="frame" x="11" y="116.5" width="353" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+            <color key="backgroundColor" red="0.2156862745" green="0.36862745099999999" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
             <accessibility key="accessibilityConfiguration">
                 <bool key="isElement" value="YES"/>
             </accessibility>

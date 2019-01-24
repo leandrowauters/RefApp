@@ -30,7 +30,8 @@ class GameSettings: UITableViewController {
 //        GameSaveClient.savedGames = GameSaveClient.retriveGame()
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
         numberOfSubsLabel.text = "None"
-        myTableView.backgroundColor = #colorLiteral(red: 0.5987986922, green: 0.7483736873, blue: 0.8878619075, alpha: 1)
+        title = "Game Settings"
+        myTableView.backgroundColor = #colorLiteral(red: 0.2737779021, green: 0.4506875277, blue: 0.6578510404, alpha: 1)
         numberOfPlayersLabel.adjustsFontSizeToFitWidth = true
         GameClient.printValues()
 //        GameSaveClient.printAllDefaults()

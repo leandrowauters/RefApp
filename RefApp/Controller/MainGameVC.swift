@@ -281,11 +281,11 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         let alert = UIAlertController(title: "You're about to end the half", message: "Press OK to continue", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (updateAction) in
 
-                        let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
+            let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
             guard let vc = storyboard.instantiateViewController(withIdentifier: "EventsVC") as? EventsViewController else {return}
             vc.timerDelegate = self
             vc.eventDelegate = self
-            self.present(vc, animated: false, completion: nil)
+            self.present(vc, animated: false, completion: nil) //TO DO: PRESENT THE OTHER VIEW
             self.changeTimerButton.isHidden = true
             MainGameVC.halfTime = true
             Game.gameHalf = 2
@@ -360,6 +360,10 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 }
 
 extension MainGameVC: TimerDelegate, EventDelegate{
+    func activateViewDidAppear(bool: Bool) {
+        viewWillAppear(bool)
+    }
+    
     func playerSelected(player: String) {
         MainGameVC.playerSelected = player
     }

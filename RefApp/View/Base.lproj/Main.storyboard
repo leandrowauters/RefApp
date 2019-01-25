@@ -1766,7 +1766,7 @@
                                     <constraint firstAttribute="height" constant="45" id="lmF-Oa-28d"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="803-Ip-Sg7" kind="presentation" id="i0C-bt-bVX"/>
+                                    <segue destination="803-Ip-Sg7" kind="presentation" modalPresentationStyle="overCurrentContext" id="i0C-bt-bVX"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Orf-WM-FGA">
@@ -1804,7 +1804,7 @@
                                             <constraint firstAttribute="width" constant="45" id="YSQ-uc-yzd"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="803-Ip-Sg7" kind="presentation" id="ipq-Jh-EmO"/>
+                                            <segue destination="803-Ip-Sg7" kind="presentation" modalPresentationStyle="overCurrentContext" id="ipq-Jh-EmO"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home 0 - Away 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZvN-wC-sVn">
@@ -2119,7 +2119,7 @@
         <image name="stopButton" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="i0C-bt-bVX"/>
+        <segue reference="ipq-Jh-EmO"/>
         <segue reference="FJf-qx-wD5"/>
         <segue reference="Vsc-yp-8gc"/>
     </inferredMetricsTieBreakers>

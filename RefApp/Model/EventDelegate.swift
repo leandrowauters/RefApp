@@ -13,4 +13,5 @@ protocol EventDelegate: AnyObject {
     func redCard(bool: Bool)
     func halfTime(bool: Bool)
     func playerSelected(player: String)
+    func activateViewDidAppear(bool: Bool)
 }

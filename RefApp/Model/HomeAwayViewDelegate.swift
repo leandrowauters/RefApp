@@ -8,6 +8,4 @@
 
 import Foundation
 
-protocol HomeAwayViewDelegate: AnyObject {
-    func presentPopUpAction()
-}
+

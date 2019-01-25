@@ -28,10 +28,14 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
             eventDelegate.halfTime(bool: true)
             timerDelegate?.keepStartButtonDisable(disable: false)
             timerDelegate?.keepStartButtonHidden(hide: false)
+            eventDelegate.redCard(bool: false)
+            eventDelegate.yellowCall(bool: false)
         } else {
         eventDelegate.halfTime(bool: false)
         timerDelegate?.keepStartButtonDisable(disable: true)
         timerDelegate?.keepStartButtonHidden(hide: true)
+        eventDelegate.redCard(bool: false)
+        eventDelegate.yellowCall(bool: false)
         }
         dismiss(animated: true, completion: nil)
         

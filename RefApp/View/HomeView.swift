@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class HomeView: UIView {
     
 //    var homePlayer = Gam
@@ -16,7 +15,7 @@ class HomeView: UIView {
     @IBOutlet var HomePlayersButtons: [UIButton]!
     
      let graphics = GraphicClient()
-    
+
     
     func buttons() {
         graphics.changeButtonLayout(buttons: HomePlayersButtons)
@@ -35,19 +34,18 @@ class HomeView: UIView {
     }
     
     @IBAction func playerButtonWasPress(_ sender: UIButton) {
-        
-//
-//            let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
-//           guard let vc = storyboard.instantiateViewController(withIdentifier: "popAction") as? PopActionsVC else {return}
-//            let currentController = self.getCurrentViewController()
-//            vc.modalPresentationStyle = .fullScreen
-//            vc.playerSelected = Game.homePlayersSorted[sender.tag]
-//            vc.teamSelected = Game.homeTeam
-//            vc.teamSide = .home
-//            vc.selectedButton = sender.tag
-//            vc.timerDelegate = (currentController as! TimerDelegate)
-//            vc.eventDelegate = (currentController as! EventDelegate)
-//            currentController?.present(vc, animated: false, completion: nil)
+
+            let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
+           guard let vc = storyboard.instantiateViewController(withIdentifier: "popAction") as? PopActionsVC else {return}
+            let currentController = self.getCurrentViewController()
+            vc.modalPresentationStyle = .fullScreen
+            vc.playerSelected = Game.homePlayersSorted[sender.tag]
+            vc.teamSelected = Game.homeTeam
+            vc.teamSide = .home
+            vc.selectedButton = sender.tag
+            vc.timerDelegate = (currentController as! TimerDelegate)
+            vc.eventDelegate = (currentController as! EventDelegate)
+            currentController?.present(vc, animated: false, completion: nil)
     }
     
     

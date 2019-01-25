@@ -16,6 +16,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     weak var delegate: TimerDelegate!
     weak var eventDelegte: EventDelegate!
     var currentBackgroundDate = NSDate()
+    lazy var viewWidth = (timer2View.bounds.height / 2) - 30
     static var hide = false
     static var disable = false
     static var yellowCard = false
@@ -24,7 +25,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     static var halfTime = false
     static var timerViewOne = true
     static var playerSelected = String()
-    
+    let homeView2 = HomeView()
     let homeView: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
     let awayView: AwayView = Bundle.main.loadNibNamed("AwayView", owner: self, options: nil)?.first as! AwayView
     static var turnOnTimer = Bool()
@@ -47,6 +48,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
         print("The view height is: \(timer2View.bounds.height)")
         NotificationCenter.default.addObserver(self, selector: #selector(pauseTimer), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startApp) , name: UIApplication.didBecomeActiveNotification, object: nil)
@@ -107,7 +109,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             halfLabel.text = "2nd Half"
         }
         if MainGameVC.halfTime {
-            graphics.setWheelToZero(view: self.view)
+            graphics.setWheelToZero(view: self.view, radius: viewWidth)
 //            self.startButton.isHidden = false
 //            self.startButton.isEnabled = true
             MainGameVC.halfTime = false
@@ -125,7 +127,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             if MainGameVC.turnOnTimer{
                 print("Timer is running")
 //                self.runTimer()
-                self.graphics.timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + (((Game.lengthSelected / 2) * 60 ) / 3)), view: self.view, radius: self.timer2View.bounds.height / 2)
+                self.graphics.timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + (((Game.lengthSelected / 2) * 60 ) / 3)), view: self.view, radius: self.viewWidth)
                 self.timer.eventHandler = {
                     self.action()
                 }
@@ -168,36 +170,36 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     func animateChangeColor (button: UIButton, color: UIColor) {
         button.alpha = 0.0
-        button.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         button.layer.borderWidth = 2.0
-        button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Verdana", size: 27)// THIS SETS FONT
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 27)
         UIView.animate(withDuration: 1, animations: {
             button.alpha = 0.5
             button.backgroundColor = color
-            button.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             button.layer.borderWidth = 2.0
-            button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
-            button.titleLabel?.font = UIFont.init(name: "Verdana", size: 27)// THIS SETS FONT
-            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 27)
+            button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+            button.titleLabel?.font = UIFont.init(name: "Verdana", size: 30)// THIS SETS FONT
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         }) { (Bool) in
             button.alpha = 1.0
             button.backgroundColor = color
-            button.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             button.layer.borderWidth = 2.0
-            button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
-            button.titleLabel?.font = UIFont.init(name: "Verdana", size: 27)// THIS SETS FONT
-            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 27)
+            button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+            button.titleLabel?.font = UIFont.init(name: "Verdana", size: 37)// THIS SETS FONT
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 37)
         }
     }
     func changeButtonColor (button: UIButton, color: UIColor){
-        button.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         button.layer.borderWidth = 2.0
         button.backgroundColor = color
-        button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
-        button.titleLabel?.font = UIFont.init(name: "Verdana", size: 27)// THIS SETS FONT
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 27)
+        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont.init(name: "Verdana", size: 37)// THIS SETS FONT
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 37)
     }
     func reloadView(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideTimerView))
@@ -238,7 +240,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     @IBAction func startButton(_ sender: UIButton) {
         print("start was pressed")
         changeTimerButton.isHidden = false
-        graphics.setWheelToZero(view: self.view)
+        graphics.setWheelToZero(view: self.view, radius: viewWidth)
 
         if timer.state == .suspended {
         runTimer()

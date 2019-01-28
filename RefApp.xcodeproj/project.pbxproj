@@ -102,11 +102,11 @@
 		D529FE0421B475E100DDC366 /* GameSettigsDetail */ = {
 			isa = PBXGroup;
 			children = (
+				D58C300021B5D70400A15E03 /* GameLengthVC.swift */,
 				D529FE0021B4755F00DDC366 /* DatePickerVC.swift */,
 				D529FDFE21B4748C00DDC366 /* TeamsInputVC.swift */,
 				D544EC8E21C8498E004B285C /* NamesInputVC.swift */,
 				D529FDFA21B46E7A00DDC366 /* TextVC.swift */,
-				D58C300021B5D70400A15E03 /* GameLengthVC.swift */,
 			);
 			path = GameSettigsDetail;
 			sourceTree = "<group>";

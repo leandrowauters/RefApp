@@ -84,7 +84,7 @@ class PopActionsVC: UIViewController {
                 timerDelegate?.keepStartButtonHidden(hide: true)
                 eventDelegate?.yellowCall(bool: false)
                 eventDelegate?.redCard(bool: false)
-                eventDelegate?.activateViewDidAppear(bool: true)
+            
                 Game.events.append(goal)
             if teamSide == .home {
                 Game.homeGoalsPlayers.append(playerSelected)
@@ -93,6 +93,7 @@ class PopActionsVC: UIViewController {
                 Game.awayGoalsPlayers.append(playerSelected)
                 Game.awayScore += 1
             }
+             eventDelegate?.activateViewDidAppear(bool: true)
         default:
             return
             

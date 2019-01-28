@@ -21,7 +21,9 @@ class TextVC: UIViewController {
     
     @IBOutlet weak var gameSettingLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
+
     
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -30,6 +32,7 @@ class TextVC: UIViewController {
         gameSettingLabel.text = myString
         useNumKeyboard()
 
+        
         
     }
     func useNumKeyboard(){

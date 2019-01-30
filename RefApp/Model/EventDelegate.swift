@@ -14,4 +14,5 @@ protocol EventDelegate: AnyObject {
     func halfTime(bool: Bool)
     func playerSelected(player: String)
     func activateViewDidAppear(bool: Bool)
+    func substitution(bool: Bool, playerIn: String, playerOut: String, home: Bool,index: Int)
 }

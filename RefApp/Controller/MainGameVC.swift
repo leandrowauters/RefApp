@@ -25,6 +25,11 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     static var halfTime = false
     static var timerViewOne = true
     static var playerSelected = String()
+    static var substitution = false
+    static var playerIn = String()
+    static var playerOut = String()
+    static var home = Bool()
+    static var index = Int()
     let homeView2 = HomeView()
     let homeView: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
     let awayView: AwayView = Bundle.main.loadNibNamed("AwayView", owner: self, options: nil)?.first as! AwayView
@@ -220,6 +225,21 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                     changeButtonColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
                     button.isEnabled = false
                 }
+                if MainGameVC.substitution{
+                    if text == MainGameVC.playerOut {
+                        fadeOut(button: button,1 , delay: 0.5) { (Done) in
+                            button.setTitle(MainGameVC.playerIn, for: .normal)
+                            self.fadeIn(button: button, 0.5, delay: 0) { (Done) in
+                                button.setTitle(MainGameVC.playerIn, for: .normal)
+                                Game.homePlayers.remove(at: MainGameVC.index)
+                                Game.homePlayers.insert(Int(MainGameVC.playerIn)!, at: Int(MainGameVC.index))
+                                print(MainGameVC.index)
+                                print(MainGameVC.playerIn)
+                            }
+                        }
+
+                    }
+                }
 
             }
         }
@@ -332,8 +352,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         for index in 0...Game.numberOfPlayers - 1 {
             homeView.HomePlayersButtons[index].isHidden = false
             awayView.awayPlayersButtons[index].isHidden = false
-            homeView.HomePlayersButtons[index].setTitle(Game.homePlayersSorted[index].description, for: .normal)
-            awayView.awayPlayersButtons[index].setTitle(Game.awayPlayersSorted[index].description, for: .normal)
+            homeView.HomePlayersButtons[index].setTitle(Game.homePlayers[index].description, for: .normal)
+            awayView.awayPlayersButtons[index].setTitle(Game.awayPlayers[index].description, for: .normal)
         }
     return [homeView, awayView]
     }
@@ -355,6 +375,15 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 }
 
 extension MainGameVC: TimerDelegate, EventDelegate{
+    func substitution(bool: Bool, playerIn: String, playerOut: String, home: Bool,index: Int) {
+       MainGameVC.substitution = bool
+        MainGameVC.playerIn = playerIn
+        MainGameVC.playerOut = playerOut
+        MainGameVC.home = home
+        MainGameVC.index = index
+        
+    }
+    
     func activateViewDidAppear(bool: Bool) {
         viewWillAppear(bool)
     }
@@ -392,3 +421,14 @@ extension MainGameVC: TimerDelegate, EventDelegate{
     }
 }
 
+extension MainGameVC{
+    func fadeIn(button: UIButton, _ duration: TimeInterval = 1.5, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
+        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            button.alpha = 1.0
+        }, completion: completion)  }
+    func fadeOut(button: UIButton,_ duration: TimeInterval = 1.5, delay: TimeInterval = 2.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
+        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            button.alpha = 0.3
+        }, completion: completion)
+    }
+}

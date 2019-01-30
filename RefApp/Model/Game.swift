@@ -23,7 +23,7 @@ class Game: Codable {
     static var awayTeam = "Away"
     static var numberOfSubs = Int()
     static var homePlayers = [Int]()
-    static var homePlayersSorted = Game.homePlayers.sorted{$0 < $1}
+//    static var homePlayersSorted = Game.homePlayers.sorted{$0 < $1}
     static var awayPlayers = [Int]()
     static var awayPlayersSorted = Game.awayPlayers.sorted{$0 < $1}
     static var homeYellowCardPlayers = [Int]()

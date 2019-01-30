@@ -47,10 +47,13 @@ class SelectPlayerVC: UIViewController {
 
             return
         }else if teamSide == .home {
-        Game.homePlayersSorted.remove(at: selectedButton)
-        Game.homePlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
-        Game.homePlayersSorted = Game.homePlayersSorted.sorted{$0 < $1}
-        Game.homePlayers = Game.homePlayersSorted
+            if let text = subTextField.text{
+                eventDelegate?.substitution(bool: true, playerIn: text, playerOut: selectedPlayer.description, home: true, index: selectedButton)
+//            Game.homePlayersSorted.remove(at: selectedButton)
+//            Game.homePlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
+//            Game.homePlayersSorted = Game.homePlayersSorted.sorted{$0 < $1}
+//            Game.homePlayers = Game.homePlayersSorted
+            }
         } else if teamSide == .away {
             Game.awayPlayersSorted.remove(at: selectedButton)
             Game.awayPlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)

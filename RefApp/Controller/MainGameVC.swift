@@ -227,7 +227,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                 }
                 if MainGameVC.substitution{
                     if text == MainGameVC.playerOut {
-                        fadeOut(button: button,1 , delay: 0.5) { (Done) in
+                        fadeOut(button: button,0.5 , delay: 0.5) { (Done) in
                             button.setTitle(MainGameVC.playerIn, for: .normal)
                             self.fadeIn(button: button, 0.5, delay: 0) { (Done) in
                                 button.setTitle(MainGameVC.playerIn, for: .normal)
@@ -428,7 +428,7 @@ extension MainGameVC{
         }, completion: completion)  }
     func fadeOut(button: UIButton,_ duration: TimeInterval = 1.5, delay: TimeInterval = 2.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
         UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
-            button.alpha = 0.3
+            button.alpha = 0.1
         }, completion: completion)
     }
 }

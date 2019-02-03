@@ -20,6 +20,7 @@
 		D5313FE621D70A7E00875B63 /* MainGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5313FE521D70A7E00875B63 /* MainGameVC.swift */; };
 		D5313FE821D70D7900875B63 /* AwayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5313FE721D70D7900875B63 /* AwayView.xib */; };
 		D5313FEA21D70D8E00875B63 /* AwayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5313FE921D70D8E00875B63 /* AwayView.swift */; };
+		D532217722067BBD00773748 /* TeamSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D532217622067BBC00773748 /* TeamSelectionViewController.swift */; };
 		D532218B21D731F4004B0363 /* PopActionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D532218A21D731F4004B0363 /* PopActionsVC.swift */; };
 		D532218D21DC3213004B0363 /* SelectPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D532218C21DC3213004B0363 /* SelectPlayerVC.swift */; };
 		D544EC8F21C8498E004B285C /* NamesInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D544EC8E21C8498E004B285C /* NamesInputVC.swift */; };
@@ -60,6 +61,7 @@
 		D5313FE521D70A7E00875B63 /* MainGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameVC.swift; sourceTree = "<group>"; };
 		D5313FE721D70D7900875B63 /* AwayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AwayView.xib; sourceTree = "<group>"; };
 		D5313FE921D70D8E00875B63 /* AwayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwayView.swift; sourceTree = "<group>"; };
+		D532217622067BBC00773748 /* TeamSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectionViewController.swift; sourceTree = "<group>"; };
 		D532218A21D731F4004B0363 /* PopActionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopActionsVC.swift; sourceTree = "<group>"; };
 		D532218C21DC3213004B0363 /* SelectPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayerVC.swift; sourceTree = "<group>"; };
 		D544EC8E21C8498E004B285C /* NamesInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesInputVC.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				D58C300021B5D70400A15E03 /* GameLengthVC.swift */,
 				D529FE0021B4755F00DDC366 /* DatePickerVC.swift */,
 				D529FDFE21B4748C00DDC366 /* TeamsInputVC.swift */,
+				D532217622067BBC00773748 /* TeamSelectionViewController.swift */,
 				D544EC8E21C8498E004B285C /* NamesInputVC.swift */,
 				D529FDFA21B46E7A00DDC366 /* TextVC.swift */,
 			);
@@ -302,6 +305,7 @@
 				D5A62AA821E526C700C9183B /* SavedGameDetailedViewController.swift in Sources */,
 				D5FA730B21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift in Sources */,
 				D58C2FFF21B5D50500A15E03 /* GameLengthCell.swift in Sources */,
+				D532217722067BBD00773748 /* TeamSelectionViewController.swift in Sources */,
 				D5FBD97121B23538005D89F4 /* AppDelegate.swift in Sources */,
 				D5FBD98521B2358D005D89F4 /* GameSettings.swift in Sources */,
 				D5313FEA21D70D8E00875B63 /* AwayView.swift in Sources */,

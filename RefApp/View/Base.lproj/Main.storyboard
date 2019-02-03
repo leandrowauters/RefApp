@@ -27,7 +27,8 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
-                                <segue destination="8pI-QS-oCL" kind="show" id="Uwu-lF-pR4"/>
+                                <action selector="nextButtonWasPressed:" destination="DbE-02-AZ3" eventType="touchUpInside" id="6FF-1M-9YP"/>
+                                <segue destination="8pI-QS-oCL" kind="show" id="eik-c7-PAw"/>
                             </connections>
                         </button>
                         <sections>
@@ -62,7 +63,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="QL6-2N-LjD" kind="presentation" id="HQy-8u-v4n"/>
+                                            <segue destination="QL6-2N-LjD" kind="presentation" identifier="teamSelection" id="HQy-8u-v4n"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="gameLength" id="4Xj-M9-LGv">
@@ -149,7 +150,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="7" translatesAutoresizingMaskIntoConstraints="NO" id="uR3-r8-aT7">
-                                                    <rect key="frame" x="179" y="8.3333333333333357" width="94" height="29"/>
+                                                    <rect key="frame" x="179.33333333333334" y="8.3333333333333357" width="94.000000000000028" height="29"/>
                                                     <connections>
                                                         <action selector="subsStepperPressed:" destination="DbE-02-AZ3" eventType="valueChanged" id="h64-Tu-UHd"/>
                                                     </connections>

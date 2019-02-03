@@ -16,12 +16,13 @@ class TeamSelectionViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var doneButton: UIButton!
     
-    
+    weak var delegate: GameDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
         homeTeamTextField.delegate = self
         awayTeamTextField.delegate = self
         setupUI()
+        
     }
     
     func setupUI() {
@@ -57,6 +58,7 @@ class TeamSelectionViewController: UIViewController, UITextFieldDelegate {
             if let team = awayTeamTextField.text {
                 Game.awayTeam = team
             }
+            delegate.teamsLabelChange(to: "Selected")
             self.dismiss(animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Please Select Two Team", message: nil, preferredStyle: .alert)

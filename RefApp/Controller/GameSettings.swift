@@ -53,6 +53,16 @@ class GameSettings: UITableViewController {
         }
     }
     
+    @IBAction func nextButtonWasPressed(_ sender: UIButton) {
+        if Game.lengthSelected == 0 && Game.numberOfPlayers == 0 {
+            let alert = UIAlertController(title: "Please select a duration and number of players", message: nil, preferredStyle: .alert)
+            let okay = UIAlertAction(title: "Okay", style: .default) { (UIAlertAction) in
+                alert.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(okay)
+            present(alert, animated: true, completion: nil)
+        }
+    }
     @IBAction func subsStepperPressed(_ sender: UIStepper) {
         numberOfSubsLabel.isHidden = false
         let stepperValue = Int(sender.value)
@@ -89,8 +99,8 @@ class GameSettings: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "teamSelection":
-            guard let destination = segue.destination as? TeamsInputVC else {return}
-            destination.gameDegelate = self
+            guard let destination = segue.destination as? TeamSelectionViewController else {return}
+            destination.delegate = self
         case "numberOfPlayers":
             guard let destination = segue.destination as? TextVC else {return}
             destination.myString = "Number Of Players Per Team: "

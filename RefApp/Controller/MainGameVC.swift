@@ -28,7 +28,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     static var substitution = false
     static var playerIn = String()
     static var playerOut = String()
-    static var home = Bool()
+    static var home = true
     static var index = Int()
     let homeView2 = HomeView()
     let homeView: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
@@ -89,13 +89,12 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         let views:[UIView] = createViews()
         setupSlideScrollViews(views: views)
         pageControll.numberOfPages = views.count
-        pageControll.currentPage = 0
+        pageControll.currentPage =  0
+
         view.bringSubviewToFront(pageControll)
         for label in timerLabels{
             label.text = MainTimer.timeString(time: TimeInterval(MainTimer.time))
         }
-
-
     }
 
 //    override func viewWillDisappear(_ animated: Bool) {
@@ -105,7 +104,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //    }
     override func viewWillAppear(_ animated: Bool) {
         reloadView()
-        
+        if !MainGameVC.home{
+            teamsScrollView.scrollRectToVisible(CGRect(x: view.frame.width * CGFloat(1), y: 0, width: view.frame.width, height: view.frame.height / 2), animated: true)
+        }
         minutesLabel.text = "\(Game.lengthSelected / 2) Mins"
         if Game.gameHalf == 1 {
             halfLabel.text =  "1st Half"
@@ -406,6 +407,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
         pageControll.currentPage = Int(pageIndex)
     }
+    
 }
 
 extension MainGameVC: TimerDelegate, EventDelegate{

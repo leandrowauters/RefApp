@@ -383,6 +383,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         awayView.awayLabel.text = "\(Game.awayTeam)"
         
         homeView.buttons()
+        awayView.changeButton()
 //        view1.testLabel.text = "View 1"
         for index in 0...Game.numberOfPlayers - 1 {
             homeView.HomePlayersButtons[index].isHidden = false
@@ -411,6 +412,22 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 }
 
 extension MainGameVC: TimerDelegate, EventDelegate{
+    func yellowCall(bool: Bool, home: Bool?) {
+        MainGameVC.yellowCard = bool
+        if let home = home{
+        MainGameVC.home = home
+        }
+    }
+    
+    func redCard(bool: Bool, home: Bool?) {
+        MainGameVC.redCard = bool
+        if let home = home{
+            MainGameVC.home = home
+        }
+    }
+    
+ 
+    
     func substitution(bool: Bool, playerIn: String, playerOut: String, home: Bool,index: Int) {
        MainGameVC.substitution = bool
         MainGameVC.playerIn = playerIn

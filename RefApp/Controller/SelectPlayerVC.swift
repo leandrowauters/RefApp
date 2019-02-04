@@ -35,8 +35,8 @@ class SelectPlayerVC: UIViewController {
         timerDelegate?.keepStartButtonHidden(hide: true)
         timerDelegate?.keepStartButtonDisable(disable: true)
         timerDelegate?.addTapAfterSub(add: true)
-        eventDelegate?.yellowCall(bool: false)
-        eventDelegate?.redCard(bool: false)
+        eventDelegate?.yellowCall(bool: false, home: true)
+        eventDelegate?.redCard(bool: false, home: true)
         eventDelegate?.playerSelected(player: String(selectedPlayer))
         if Game.homePlayers.contains(Int(subTextField.text!)!){
             textLabel.text = "Player Already Entered"
@@ -47,6 +47,8 @@ class SelectPlayerVC: UIViewController {
 
             return
         }else if teamSide == .home {
+            eventDelegate?.yellowCall(bool: false, home: true)
+            eventDelegate?.redCard(bool: false, home: true)
             if let text = subTextField.text{
                 eventDelegate?.substitution(bool: true, playerIn: text, playerOut: selectedPlayer.description, home: true, index: selectedButton)
 //            Game.homePlayersSorted.remove(at: selectedButton)
@@ -55,6 +57,8 @@ class SelectPlayerVC: UIViewController {
 //            Game.homePlayers = Game.homePlayersSorted
             }
         } else if teamSide == .away {
+            eventDelegate?.yellowCall(bool: false, home: false)
+            eventDelegate?.redCard(bool: false, home: false)
             if let text = subTextField.text{
                 eventDelegate?.substitution(bool: true, playerIn: text, playerOut: selectedPlayer.description, home: false, index: selectedButton)
             }

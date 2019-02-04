@@ -13,6 +13,11 @@ class AwayView: UIView {
     @IBOutlet weak var awayLabel: UILabel!
     @IBOutlet var awayPlayersButtons: [UIButton]!
     
+     let graphics = GraphicClient()
+   
+    func changeButton () {
+        graphics.changeButtonLayout(buttons: awayPlayersButtons)
+    }
     func getCurrentViewController() -> UIViewController? {
         
         if let rootController = UIApplication.shared.keyWindow?.rootViewController {

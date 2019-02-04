@@ -9,8 +9,8 @@
 import Foundation
 
 protocol EventDelegate: AnyObject {
-    func yellowCall(bool: Bool)
-    func redCard(bool: Bool)
+    func yellowCall(bool: Bool, home: Bool?)
+    func redCard(bool: Bool, home: Bool?)
     func halfTime(bool: Bool)
     func playerSelected(player: String)
     func activateViewDidAppear(bool: Bool)

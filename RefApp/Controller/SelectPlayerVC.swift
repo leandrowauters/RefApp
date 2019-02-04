@@ -55,10 +55,13 @@ class SelectPlayerVC: UIViewController {
 //            Game.homePlayers = Game.homePlayersSorted
             }
         } else if teamSide == .away {
-            Game.awayPlayersSorted.remove(at: selectedButton)
-            Game.awayPlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
-            Game.awayPlayersSorted = Game.awayPlayersSorted.sorted{$0 < $1}
-            Game.awayPlayers = Game.awayPlayersSorted
+            if let text = subTextField.text{
+                eventDelegate?.substitution(bool: true, playerIn: text, playerOut: selectedPlayer.description, home: false, index: selectedButton)
+            }
+//            Game.awayPlayersSorted.remove(at: selectedButton)
+//            Game.awayPlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
+//            Game.awayPlayersSorted = Game.awayPlayersSorted.sorted{$0 < $1}
+//            Game.awayPlayers = Game.awayPlayersSorted
         }
         let sub = Events.init(type: TypeOfIncident.sub.rawValue, playerNum: selectedPlayer, team: teamSelected, half: Game.gameHalf, subIn: Int(subTextField.text!)!, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1))
         Game.events.append(sub)

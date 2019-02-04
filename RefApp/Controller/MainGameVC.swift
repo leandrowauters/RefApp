@@ -53,7 +53,6 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
         print("The view height is: \(timer2View.bounds.height)")
         NotificationCenter.default.addObserver(self, selector: #selector(pauseTimer), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startApp) , name: UIApplication.didBecomeActiveNotification, object: nil)
@@ -106,7 +105,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //    }
     override func viewWillAppear(_ animated: Bool) {
         reloadView()
-
+        
         minutesLabel.text = "\(Game.lengthSelected / 2) Mins"
         if Game.gameHalf == 1 {
             halfLabel.text =  "1st Half"
@@ -205,6 +204,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideTimerView))
         timer2View.addGestureRecognizer(tap)
         scoreLabel.text = "\(Game.homeTeam) \(Game.homeScore) - \(Game.awayTeam) \(Game.awayScore)"
+        if MainGameVC.home{
         for button in homeView.HomePlayersButtons{
             if let text = button.titleLabel?.text {
                 if MainGameVC.yellowCard{
@@ -226,6 +226,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                     button.isEnabled = false
                 }
                 if MainGameVC.substitution{
+                    if !MainGameVC.home{
                     if text == MainGameVC.playerOut {
                         fadeOut(button: button,0.5 , delay: 0.5) { (Done) in
                             button.setTitle(MainGameVC.playerIn, for: .normal)
@@ -240,15 +241,48 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 
                     }
                 }
+                }
 
             }
         }
+        } else {
         for button in awayView.awayPlayersButtons{
             if let text = button.titleLabel?.text {
-                if Game.awayYellowCardPlayers.contains(Int(text)!){
-                    button.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+                if MainGameVC.yellowCard{
+                    if text == MainGameVC.playerSelected{
+                        animateChangeColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+                    }
+                } else if Game.awayYellowCardPlayers.contains(Int(text)!) {
+                    changeButtonColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
                 }
+                if MainGameVC.redCard{
+                    if text == MainGameVC.playerSelected{
+                        animateChangeColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
+                        button.isEnabled = false
+                    }
+                }
+                else if Game.awayRedCardPlayers.contains(Int(text)!) {
+                    changeButtonColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
+                    button.isEnabled = false
+                }
+                if MainGameVC.substitution{
+                    if text == MainGameVC.playerOut {
+                        fadeOut(button: button,0.5 , delay: 0.5) { (Done) in
+                            button.setTitle(MainGameVC.playerIn, for: .normal)
+                            self.fadeIn(button: button, 0.5, delay: 0) { (Done) in
+                                button.setTitle(MainGameVC.playerIn, for: .normal)
+                                Game.awayPlayers.remove(at: MainGameVC.index)
+                                Game.awayPlayers.insert(Int(MainGameVC.playerIn)!, at: Int(MainGameVC.index))
+                                print(MainGameVC.index)
+                                print(MainGameVC.playerIn)
+                            }
+                        }
+                        
+                    }
+                }
+                
             }
+        }
         }
     }
     

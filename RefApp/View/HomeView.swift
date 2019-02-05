@@ -16,7 +16,11 @@ class HomeView: UIView {
     
      let graphics = GraphicClient()
 
-    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        buttons()
+        
+    }
     func buttons() {
         graphics.changeButtonLayout(buttons: HomePlayersButtons)
     }

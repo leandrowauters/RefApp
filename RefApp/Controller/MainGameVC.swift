@@ -53,6 +53,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        homeView.HomePlayersButtons.forEach{$0.isEnabled = false}
+        awayView.awayPlayersButtons.forEach{$0.isEnabled = false}
         print("The view height is: \(timer2View.bounds.height)")
         NotificationCenter.default.addObserver(self, selector: #selector(pauseTimer), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startApp) , name: UIApplication.didBecomeActiveNotification, object: nil)
@@ -291,7 +293,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         print("start was pressed")
         changeTimerButton.isHidden = false
         graphics.setWheelToZero(view: self.view, radius: viewWidth)
-
+        homeView.HomePlayersButtons.forEach{$0.isEnabled = true}
+        awayView.awayPlayersButtons.forEach{$0.isEnabled = true}
         if timer.state == .suspended {
         runTimer()
         }
@@ -325,7 +328,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //        shapeLayer.add(basicAnimation, forKey: "Any")
     }
     
-    @IBAction func pauseButton(_ sender: UIButton) {
+    @IBAction func halfTimeButtonPressed(_ sender: UIButton) {
         //TO DO : it should be: suspend, send alert, display incident, and restart timer(if half == 2 timer == 0.
 
         let alert = UIAlertController(title: "You're about to end the half", message: "Press OK to continue", preferredStyle: .alert)

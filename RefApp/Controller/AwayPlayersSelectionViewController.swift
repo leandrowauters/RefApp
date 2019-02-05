@@ -40,7 +40,7 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
         title = "\(Game.awayTeam) Players"
         numbersCollectionView.delegate = self
         numbersCollectionView.dataSource = self
-        graphics.changeButtonLayout(buttons: numberPadButtons)
+//        graphics.changeButtonLayout(buttons: numberPadButtons)
     }
     @IBAction func numberPadWasPressed(_ sender: UIButton) {
         number.append(Character(sender.tag.description))

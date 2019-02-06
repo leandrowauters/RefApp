@@ -66,7 +66,6 @@ class SubHalfTimeView: UIView {
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(performSub), for: .touchUpInside)
         return button
     }()
     lazy var animatedView: UIView = {
@@ -158,28 +157,5 @@ class SubHalfTimeView: UIView {
         doneButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
     }
 
-    @objc func performSub(){
-        print("Before sub: \(Game.homePlayers)")
-        var playerIn = String()
-        var playerOut = String()
-        if let text = playerInTextField.text {
-            playerIn = text
-        }
-        if let text = playerOutTextField.text {
-            playerOut = text
-        }
-        var index = 0
-        for player in Game.homePlayers {
-            if Int(playerOut) == player{
-                print(index)
-                Game.homePlayers.remove(at: index)
-                Game.homePlayers.insert(Int(playerIn)!, at: index)
-                
-            } else {
-                index += 1
-                print("No player found")
-            }
-        }
-        print("After Sub: \(Game.homePlayers)")
-    }
+
 }

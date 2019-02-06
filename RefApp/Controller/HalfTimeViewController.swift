@@ -48,6 +48,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        subHalftimeView.doneButton.addTarget(self, action: #selector(performSub), for: .touchUpInside)
         views = [eventHalfTimeView,subHalftimeView,noteHalfTimeView]
         setupCustomSegmentedBar()
         setupAnimatedViewRail()
@@ -110,6 +111,48 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         animatedViewRail.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         animatedViewRail.heightAnchor.constraint(equalToConstant: 5).isActive = true
         animatedViewRail.widthAnchor.constraint(equalTo: customSegmentedBar.widthAnchor).isActive = true
+    }
+    func showAlert(title: String, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okay = UIAlertAction(title: "Okay", style: .default) { (UIAlertAction) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(okay)
+        present(alert, animated: true, completion: nil)
+        
+    }
+    @objc func performSub(){
+        print("Before sub: \(Game.homePlayers)")
+        var playerIn = String()
+        var playerOut = String()
+        if let text = subHalftimeView.playerInTextField.text {
+            playerIn = text
+        }
+        if let text = subHalftimeView.playerOutTextField.text {
+            playerOut = text
+        }
+        var index = 0
+        if Game.homePlayers.contains(Int(playerIn)!) {
+            print("Player Already Playing")
+            showAlert(title: "Player Already Playing", message: "Please select another player")
+            return
+        }
+        for player in Game.homePlayers {
+            if Int(playerOut) == player{
+                print(index)
+                Game.homePlayers.remove(at: index)
+                Game.homePlayers.insert(Int(playerIn)!, at: index)
+                break
+            } else {
+                index += 1
+            }
+            if index == Game.homePlayers.count - 1{
+                showAlert(title: "Player Not Playing", message: "Please select another player")
+                print("No Player Found")
+            }
+            
+        }
+        print("After Sub: \(Game.homePlayers)")
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count

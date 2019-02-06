@@ -34,10 +34,17 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         return segmentedControl
     }()
     
+    lazy var animatedView: UIView = {
+       var view = UIView()
+        view.backgroundColor = .orange
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         views = [eventHalfTimeView,subHalftimeView,noteHalfTimeView]
         setupCustomSegmentedBar()
+        setupAnimatedView()
         setupViews(views: views)
         eventHalfTimeView.eventsTableView.dataSource = self
         eventHalfTimeView.eventsTableView.delegate = self
@@ -62,12 +69,15 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
                 views[i].isHidden = true
             }
         }
+        UIView.animate(withDuration: 0.3) {
+            self.animatedView.frame.origin.x = (self.customSegmentedBar.frame.width / CGFloat(self.customSegmentedBar.numberOfSegments)) * CGFloat(self.customSegmentedBar.selectedSegmentIndex)
+        }
     }
     func setupViews(views: [UIView]){
         for view in views{
             self.view.addSubview(view)
             view.translatesAutoresizingMaskIntoConstraints = false
-            view.topAnchor.constraint(equalTo: customSegmentedBar.bottomAnchor).isActive = true
+            view.topAnchor.constraint(equalTo: animatedView.bottomAnchor).isActive = true
             view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
             view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
             view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
@@ -75,7 +85,15 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         views.first?.isHidden = false
     }
-    
+    func setupAnimatedView(){
+        view.addSubview(animatedView)
+        animatedView.translatesAutoresizingMaskIntoConstraints = false
+        animatedView.topAnchor.constraint(equalTo: customSegmentedBar.bottomAnchor).isActive = true
+        animatedView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        animatedView.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        animatedView.widthAnchor.constraint(equalToConstant: view.frame.width / 3).isActive = true
+        
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
     }

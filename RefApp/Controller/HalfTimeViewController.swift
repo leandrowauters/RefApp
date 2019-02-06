@@ -21,22 +21,28 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         segmentedControl.insertSegment(withTitle: "Subtitution", at: 1, animated: true)
         segmentedControl.insertSegment(withTitle: "Notes", at: 2, animated: true)
         segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.backgroundColor = .clear
+        segmentedControl.backgroundColor = #colorLiteral(red: 0.2567201853, green: 0.4751234055, blue: 0.4362891316, alpha: 1)
         segmentedControl.tintColor = .clear
         segmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 18)!,
-            NSAttributedString.Key.foregroundColor: UIColor.lightGray
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20),
+            NSAttributedString.Key.foregroundColor: UIColor.white
             ], for: .normal)
         segmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 18)!,
-            NSAttributedString.Key.foregroundColor: UIColor.orange
+            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 22.0),
+            NSAttributedString.Key.foregroundColor: UIColor.white
             ], for: .selected)
         return segmentedControl
     }()
     
     lazy var animatedView: UIView = {
        var view = UIView()
-        view.backgroundColor = .orange
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        return view
+    }()
+    
+    lazy var animatedViewRail: UIView = {
+        var view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.2567201853, green: 0.4751234055, blue: 0.4362891316, alpha: 1)
         return view
     }()
     
@@ -44,6 +50,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         views = [eventHalfTimeView,subHalftimeView,noteHalfTimeView]
         setupCustomSegmentedBar()
+        setupAnimatedViewRail()
         setupAnimatedView()
         setupViews(views: views)
         eventHalfTimeView.eventsTableView.dataSource = self
@@ -93,6 +100,14 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         animatedView.heightAnchor.constraint(equalToConstant: 5).isActive = true
         animatedView.widthAnchor.constraint(equalToConstant: view.frame.width / 3).isActive = true
         
+    }
+    func setupAnimatedViewRail(){
+        view.addSubview(animatedViewRail)
+        animatedViewRail.translatesAutoresizingMaskIntoConstraints = false
+        animatedViewRail.topAnchor.constraint(equalTo: customSegmentedBar.bottomAnchor).isActive = true
+        animatedViewRail.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        animatedViewRail.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        animatedViewRail.widthAnchor.constraint(equalTo: customSegmentedBar.widthAnchor).isActive = true
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count

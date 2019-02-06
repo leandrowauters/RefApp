@@ -25,6 +25,9 @@
 		D532218D21DC3213004B0363 /* SelectPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D532218C21DC3213004B0363 /* SelectPlayerVC.swift */; };
 		D544EC8F21C8498E004B285C /* NamesInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D544EC8E21C8498E004B285C /* NamesInputVC.swift */; };
 		D550683221CDE61800F3C6F4 /* GameClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D550683121CDE61800F3C6F4 /* GameClient.swift */; };
+		D558FF57220A859900B3B62D /* EventHalfTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558FF56220A859900B3B62D /* EventHalfTimeView.swift */; };
+		D558FF59220A85B100B3B62D /* SubHalfTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558FF58220A85B100B3B62D /* SubHalfTimeView.swift */; };
+		D558FF5B220A85C100B3B62D /* NoteHalfTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558FF5A220A85C100B3B62D /* NoteHalfTimeView.swift */; };
 		D5637AF721B88BD2003821F5 /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5637AF621B88BD2003821F5 /* GameDelegate.swift */; };
 		D58B2FC42208AEB4005FB7FB /* HalfTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B2FC32208AEB4005FB7FB /* HalfTimeViewController.swift */; };
 		D58C2FFF21B5D50500A15E03 /* GameLengthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58C2FFE21B5D50500A15E03 /* GameLengthCell.swift */; };
@@ -67,6 +70,9 @@
 		D532218C21DC3213004B0363 /* SelectPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayerVC.swift; sourceTree = "<group>"; };
 		D544EC8E21C8498E004B285C /* NamesInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesInputVC.swift; sourceTree = "<group>"; };
 		D550683121CDE61800F3C6F4 /* GameClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClient.swift; sourceTree = "<group>"; };
+		D558FF56220A859900B3B62D /* EventHalfTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHalfTimeView.swift; sourceTree = "<group>"; };
+		D558FF58220A85B100B3B62D /* SubHalfTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubHalfTimeView.swift; sourceTree = "<group>"; };
+		D558FF5A220A85C100B3B62D /* NoteHalfTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteHalfTimeView.swift; sourceTree = "<group>"; };
 		D5637AF621B88BD2003821F5 /* GameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
 		D58B2FC32208AEB4005FB7FB /* HalfTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfTimeViewController.swift; sourceTree = "<group>"; };
 		D58C2FFE21B5D50500A15E03 /* GameLengthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLengthCell.swift; sourceTree = "<group>"; };
@@ -178,6 +184,9 @@
 			children = (
 				D58C2FFE21B5D50500A15E03 /* GameLengthCell.swift */,
 				D5FBD97421B23538005D89F4 /* Main.storyboard */,
+				D558FF56220A859900B3B62D /* EventHalfTimeView.swift */,
+				D558FF58220A85B100B3B62D /* SubHalfTimeView.swift */,
+				D558FF5A220A85C100B3B62D /* NoteHalfTimeView.swift */,
 				D58B2FC52208CB20005FB7FB /* Teams Views */,
 				D5FA730A21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift */,
 				D52C80A321F79DA6005B8C95 /* AwayPlayersCollectionViewCell.swift */,
@@ -288,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5A62AA621E4318500C9183B /* SavedGamesViewController.swift in Sources */,
+				D558FF5B220A85C100B3B62D /* NoteHalfTimeView.swift in Sources */,
 				D5FBD98321B23548005D89F4 /* Game.swift in Sources */,
 				D58C300121B5D70400A15E03 /* GameLengthVC.swift in Sources */,
 				D5BDD18321EB06670078408E /* EventDelegate.swift in Sources */,
@@ -298,6 +308,7 @@
 				D5313FE421D7099900875B63 /* HomeView.swift in Sources */,
 				D5637AF721B88BD2003821F5 /* GameDelegate.swift in Sources */,
 				D5CDA72221ED267000A59133 /* GraphicClient.swift in Sources */,
+				D558FF57220A859900B3B62D /* EventHalfTimeView.swift in Sources */,
 				D5CE6D6F21DD26CC00FD921A /* Events.swift in Sources */,
 				D5BDD18121EB01220078408E /* EventsViewController.swift in Sources */,
 				D5313FE021D6F26500875B63 /* AwayPlayersInputVC.swift in Sources */,
@@ -317,6 +328,7 @@
 				D5A62AA821E526C700C9183B /* SavedGameDetailedViewController.swift in Sources */,
 				D5FA730B21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift in Sources */,
 				D58C2FFF21B5D50500A15E03 /* GameLengthCell.swift in Sources */,
+				D558FF59220A85B100B3B62D /* SubHalfTimeView.swift in Sources */,
 				D532217722067BBD00773748 /* TeamSelectionViewController.swift in Sources */,
 				D5FBD97121B23538005D89F4 /* AppDelegate.swift in Sources */,
 				D5FBD98521B2358D005D89F4 /* GameSettings.swift in Sources */,

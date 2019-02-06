@@ -10,7 +10,7 @@ import UIKit
 
 class HalfTimeViewController: UIViewController {
     
-    
+    let views = [NoteHalfTimeView(),EventHalfTimeView(),SubHalfTimeView()]
     lazy var customSegmentedBar: UISegmentedControl = {
         var segmentedControl = UISegmentedControl()
         segmentedControl.insertSegment(withTitle: "Events", at: 0, animated: true)
@@ -32,17 +32,40 @@ class HalfTimeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpCustomSegmentedBar()
-        // Do any additional setup after loading the view.
+        setupCustomSegmentedBar()
+        setupViews(views: views)
+        
     }
     
-    func setUpCustomSegmentedBar() {
+    func setupCustomSegmentedBar() {
         view.addSubview(customSegmentedBar)
         customSegmentedBar.translatesAutoresizingMaskIntoConstraints = false
-        customSegmentedBar.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: ( ( -self.view.frame.height / 2) * 0.5)).isActive = true
-        customSegmentedBar.centerXAnchor.constraint(equalToSystemSpacingAfter: self.view.centerXAnchor, multiplier: 0).isActive = true
-        customSegmentedBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        customSegmentedBar.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: ( ( -view.frame.height / 2) * 0.5)).isActive = true
+        customSegmentedBar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        customSegmentedBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         customSegmentedBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        customSegmentedBar.addTarget(self, action: #selector(customSegmentedBarPressed(sender:)), for: UIControl.Event.valueChanged)
+    }
+    @objc func customSegmentedBarPressed(sender: UISegmentedControl){
+        for i in 0...views.count - 1 {
+            if i == sender.selectedSegmentIndex{
+                views[i].isHidden = false
+            } else {
+                views[i].isHidden = true
+            }
+        }
+    }
+    func setupViews(views: [UIView]){
+        for view in views{
+            self.view.addSubview(view)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.topAnchor.constraint(equalTo: customSegmentedBar.bottomAnchor).isActive = true
+            view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+            view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+            view.isHidden = true
+        }
+        views.first?.isHidden = false
     }
 
 }

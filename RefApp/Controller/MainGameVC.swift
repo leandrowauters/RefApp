@@ -335,9 +335,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (updateAction) in
 
             let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
-            guard let vc = storyboard.instantiateViewController(withIdentifier: "EventsVC") as? EventsViewController else {return}
-            vc.timerDelegate = self
-            vc.eventDelegate = self
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "HalfTime") as? HalfTimeViewController else {return}
+//            vc.timerDelegate = self
+//            vc.eventDelegate = self
             self.present(vc, animated: false, completion: nil) //TO DO: PRESENT THE OTHER VIEW
             self.changeTimerButton.isHidden = true
             MainGameVC.halfTime = true

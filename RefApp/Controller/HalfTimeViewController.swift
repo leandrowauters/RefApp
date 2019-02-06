@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
     let events = Game.events
     let eventHalfTimeView = EventHalfTimeView()
@@ -55,6 +55,8 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         setupViews(views: views)
         eventHalfTimeView.eventsTableView.dataSource = self
         eventHalfTimeView.eventsTableView.delegate = self
+        subHalftimeView.playerInTextField.delegate = self
+        subHalftimeView.playerOutTextField.delegate = self
         
     }
     
@@ -128,5 +130,16 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
-
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == subHalftimeView.playerInTextField{
+            subHalftimeView.playerInTextField.placeholder = ""
+        } else {
+            subHalftimeView.playerOutTextField.placeholder = ""
+        }
+        
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

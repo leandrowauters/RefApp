@@ -59,7 +59,16 @@ class SubHalfTimeView: UIView {
         textField.layer.borderColor = UIColor.white.cgColor
         return textField
     }()
-    
+    lazy var doneButton: UIButton = {
+        var button = UIButton()
+        button.setTitle("Done", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(performSub), for: .touchUpInside)
+        return button
+    }()
     lazy var animatedView: UIView = {
         var view = UIView()
         view.backgroundColor = .white
@@ -81,6 +90,7 @@ class SubHalfTimeView: UIView {
         addPlayerInTextField()
         addPlayerOutTextField()
         addImage()
+        addDoneButton()
         
     }
     
@@ -140,18 +150,36 @@ class SubHalfTimeView: UIView {
         image.heightAnchor.constraint(equalToConstant: 50).isActive = true
         image.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
+    func addDoneButton() {
+        addSubview(doneButton)
+        doneButton.translatesAutoresizingMaskIntoConstraints = false
+        doneButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        doneButton.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 50).isActive = true
+        doneButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+    }
 
-    func performSub(playerNumber: Int){
+    @objc func performSub(){
+        print("Before sub: \(Game.homePlayers)")
+        var playerIn = String()
+        var playerOut = String()
+        if let text = playerInTextField.text {
+            playerIn = text
+        }
+        if let text = playerOutTextField.text {
+            playerOut = text
+        }
         var index = 0
         for player in Game.homePlayers {
-            if playerNumber == player{
-                index += 1
+            if Int(playerOut) == player{
                 print(index)
-//                Game.homePlayers.remove(at: index)
-//                Game.homePlayers.insert(playerNumber, at: index)
+                Game.homePlayers.remove(at: index)
+                Game.homePlayers.insert(Int(playerIn)!, at: index)
+                
             } else {
                 index += 1
+                print("No player found")
             }
         }
+        print("After Sub: \(Game.homePlayers)")
     }
 }

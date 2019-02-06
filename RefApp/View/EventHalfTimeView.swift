@@ -9,14 +9,27 @@
 import UIKit
 
 class EventHalfTimeView: UIView {
-
+    lazy var eventsTableView: UITableView = {
+       var tableView = UITableView()
+        return tableView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .orange
+        eventsTableView.register(EventsTableViewCell.self, forCellReuseIdentifier: "HalfTimeEventCell")
+        setupTableView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
 
+    }
+    func setupTableView() {
+        addSubview(eventsTableView)
+        eventsTableView.translatesAutoresizingMaskIntoConstraints = false
+        eventsTableView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        eventsTableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        eventsTableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        eventsTableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    }
 }

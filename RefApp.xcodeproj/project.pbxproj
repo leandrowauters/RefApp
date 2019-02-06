@@ -28,6 +28,7 @@
 		D558FF57220A859900B3B62D /* EventHalfTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558FF56220A859900B3B62D /* EventHalfTimeView.swift */; };
 		D558FF59220A85B100B3B62D /* SubHalfTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558FF58220A85B100B3B62D /* SubHalfTimeView.swift */; };
 		D558FF5B220A85C100B3B62D /* NoteHalfTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558FF5A220A85C100B3B62D /* NoteHalfTimeView.swift */; };
+		D558FF5E220A9A0C00B3B62D /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558FF5D220A9A0C00B3B62D /* EventsTableViewCell.swift */; };
 		D5637AF721B88BD2003821F5 /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5637AF621B88BD2003821F5 /* GameDelegate.swift */; };
 		D58B2FC42208AEB4005FB7FB /* HalfTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B2FC32208AEB4005FB7FB /* HalfTimeViewController.swift */; };
 		D58C2FFF21B5D50500A15E03 /* GameLengthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58C2FFE21B5D50500A15E03 /* GameLengthCell.swift */; };
@@ -73,6 +74,7 @@
 		D558FF56220A859900B3B62D /* EventHalfTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHalfTimeView.swift; sourceTree = "<group>"; };
 		D558FF58220A85B100B3B62D /* SubHalfTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubHalfTimeView.swift; sourceTree = "<group>"; };
 		D558FF5A220A85C100B3B62D /* NoteHalfTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteHalfTimeView.swift; sourceTree = "<group>"; };
+		D558FF5D220A9A0C00B3B62D /* EventsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
 		D5637AF621B88BD2003821F5 /* GameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
 		D58B2FC32208AEB4005FB7FB /* HalfTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfTimeViewController.swift; sourceTree = "<group>"; };
 		D58C2FFE21B5D50500A15E03 /* GameLengthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLengthCell.swift; sourceTree = "<group>"; };
@@ -122,7 +124,18 @@
 			path = GameSettigsDetail;
 			sourceTree = "<group>";
 		};
-		D58B2FC52208CB20005FB7FB /* Teams Views */ = {
+		D558FF5C220A998800B3B62D /* HalfTimeViews */ = {
+			isa = PBXGroup;
+			children = (
+				D558FF56220A859900B3B62D /* EventHalfTimeView.swift */,
+				D558FF5D220A9A0C00B3B62D /* EventsTableViewCell.swift */,
+				D558FF58220A85B100B3B62D /* SubHalfTimeView.swift */,
+				D558FF5A220A85C100B3B62D /* NoteHalfTimeView.swift */,
+			);
+			name = HalfTimeViews;
+			sourceTree = "<group>";
+		};
+		D58B2FC52208CB20005FB7FB /* TeamsViews */ = {
 			isa = PBXGroup;
 			children = (
 				D5313FE121D7096B00875B63 /* HomeView.xib */,
@@ -130,7 +143,7 @@
 				D5313FE721D70D7900875B63 /* AwayView.xib */,
 				D5313FE921D70D8E00875B63 /* AwayView.swift */,
 			);
-			name = "Teams Views";
+			name = TeamsViews;
 			sourceTree = "<group>";
 		};
 		D5FBD96421B23538005D89F4 = {
@@ -184,10 +197,8 @@
 			children = (
 				D58C2FFE21B5D50500A15E03 /* GameLengthCell.swift */,
 				D5FBD97421B23538005D89F4 /* Main.storyboard */,
-				D558FF56220A859900B3B62D /* EventHalfTimeView.swift */,
-				D558FF58220A85B100B3B62D /* SubHalfTimeView.swift */,
-				D558FF5A220A85C100B3B62D /* NoteHalfTimeView.swift */,
-				D58B2FC52208CB20005FB7FB /* Teams Views */,
+				D558FF5C220A998800B3B62D /* HalfTimeViews */,
+				D58B2FC52208CB20005FB7FB /* TeamsViews */,
 				D5FA730A21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift */,
 				D52C80A321F79DA6005B8C95 /* AwayPlayersCollectionViewCell.swift */,
 			);
@@ -328,6 +339,7 @@
 				D5A62AA821E526C700C9183B /* SavedGameDetailedViewController.swift in Sources */,
 				D5FA730B21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift in Sources */,
 				D58C2FFF21B5D50500A15E03 /* GameLengthCell.swift in Sources */,
+				D558FF5E220A9A0C00B3B62D /* EventsTableViewCell.swift in Sources */,
 				D558FF59220A85B100B3B62D /* SubHalfTimeView.swift in Sources */,
 				D532217722067BBD00773748 /* TeamSelectionViewController.swift in Sources */,
 				D5FBD97121B23538005D89F4 /* AppDelegate.swift in Sources */,

@@ -26,7 +26,6 @@ weak var gameDegelate: GameDelegate?
         picker.layer.cornerRadius = 10
     }
     @IBAction func doneWasClicked(_ sender: UIButton) {
-       
         let date = GameClient.convertLocalDateToString(str: picker.date.description, dateFormat: "MMM d, h:mm a")
         Game.dateAndTime = date
         gameDegelate?.dateLabelChange(to: date)

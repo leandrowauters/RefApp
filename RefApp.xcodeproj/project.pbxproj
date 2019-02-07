@@ -195,11 +195,11 @@
 		D5FBD98721B235A9005D89F4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D58C2FFE21B5D50500A15E03 /* GameLengthCell.swift */,
 				D5FBD97421B23538005D89F4 /* Main.storyboard */,
 				D558FF5C220A998800B3B62D /* HalfTimeViews */,
 				D58B2FC52208CB20005FB7FB /* TeamsViews */,
 				D5FA730A21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift */,
+				D58C2FFE21B5D50500A15E03 /* GameLengthCell.swift */,
 				D52C80A321F79DA6005B8C95 /* AwayPlayersCollectionViewCell.swift */,
 			);
 			path = View;

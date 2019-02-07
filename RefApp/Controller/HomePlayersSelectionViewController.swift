@@ -39,6 +39,9 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
         title = "\(Game.homeTeam) Players"
         numbersCollectionView.delegate = self
         numbersCollectionView.dataSource = self
+
+    }
+    override func viewDidLayoutSubviews() {
         graphics.changeButtonLayout(buttons: numberPadButtons)
     }
     @IBAction func numberPadWasPressed(_ sender: UIButton) {

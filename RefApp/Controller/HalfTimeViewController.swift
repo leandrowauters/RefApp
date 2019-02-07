@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UITextViewDelegate {
 
     let events = Game.events
     let eventHalfTimeView = EventHalfTimeView()
@@ -60,10 +60,12 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         eventHalfTimeView.eventsTableView.delegate = self
         subHalftimeView.playerInTextField.delegate = self
         subHalftimeView.playerOutTextField.delegate = self
+        noteHalfTimeView.notesTextView.delegate = self
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Enter", style: .done, target: self, action: #selector(dismissKeyboard))
         GameClient.doneButton(view: self.view, doneBtn: doneBtn, textFields: [subHalftimeView.playerInTextField,subHalftimeView.playerOutTextField])
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
         
     }
     
@@ -211,6 +213,20 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         textField.resignFirstResponder()
         return true
     }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if noteHalfTimeView.notesTextView.text == "Tap to enter notes..." {
+            noteHalfTimeView.notesTextView.text = ""
+            noteHalfTimeView.notesTextView.textColor = .black
+        }
+    }
+    
 }
 
 extension HalfTimeViewController {

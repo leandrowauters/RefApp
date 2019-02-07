@@ -14,6 +14,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     let eventHalfTimeView = EventHalfTimeView()
     let subHalftimeView = SubHalfTimeView()
     let noteHalfTimeView = NoteHalfTimeView()
+    let graphics = GraphicClient()
     var views = [UIView]()
     lazy var customSegmentedBar: UISegmentedControl = {
         var segmentedControl = UISegmentedControl()
@@ -45,6 +46,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         view.backgroundColor = #colorLiteral(red: 0.2567201853, green: 0.4751234055, blue: 0.4362891316, alpha: 1)
         return view
     }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +60,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         eventHalfTimeView.eventsTableView.delegate = self
         subHalftimeView.playerInTextField.delegate = self
         subHalftimeView.playerOutTextField.delegate = self
+        
         
     }
     
@@ -135,6 +138,8 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         if Game.homePlayers.contains(Int(playerIn)!) {
             print("Player Already Playing")
             showAlert(title: "Player Already Playing", message: "Please select another player")
+            subHalftimeView.playerOutTextField.text = ""
+            subHalftimeView.playerInTextField.text = ""
             return
         }
         for player in Game.homePlayers {
@@ -142,17 +147,46 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
                 print(index)
                 Game.homePlayers.remove(at: index)
                 Game.homePlayers.insert(Int(playerIn)!, at: index)
+                subHalftimeView.textAnimationViewRight.isHidden = false
+                subHalftimeView.textAnimationViewLeft.isHidden = false
+                UIView.transition(with: subHalftimeView.textAnimationViewLeft, duration: 1, options: [.transitionFlipFromRight], animations: {
+                    self.subHalftimeView.animatedLabelLeft.text = playerOut
+                    self.subHalftimeView.playerInTextField.text = ""
+                }) { (Bool) in
+                    UIView.animate(withDuration: 1, delay: 0.5, options: [], animations: {
+                        self.subHalftimeView.animatedLabelLeft.alpha = 0
+                    }, completion: { (Bool) in
+                        self.subHalftimeView.animatedLabelLeft.alpha = 1
+                        self.subHalftimeView.textAnimationViewLeft.isHidden = true
+                        self.subHalftimeView.playerInTextField.isHidden = false
+                    })
+                }
+                
+                UIView.transition(with: subHalftimeView.textAnimationViewRight, duration: 1, options: [.transitionFlipFromRight], animations: {
+                    self.subHalftimeView.animatedLabelRight.text = playerIn
+                    self.subHalftimeView.playerOutTextField.text = ""
+                }) { (Bool) in
+                    UIView.animate(withDuration: 1, delay: 0.5, options: [], animations: {
+                        self.subHalftimeView.animatedLabelRight.alpha = 0
+                    }, completion: { (Bool) in
+                        self.subHalftimeView.animatedLabelRight.alpha = 1
+                        self.subHalftimeView.textAnimationViewRight.isHidden = true
+                        self.subHalftimeView.playerOutTextField.isHidden = false
+                    })
+                }
                 break
             } else {
                 index += 1
             }
             if index == Game.homePlayers.count - 1{
                 showAlert(title: "Player Not Playing", message: "Please select another player")
+                subHalftimeView.playerOutTextField.text = ""
+                subHalftimeView.playerInTextField.text = ""
                 print("No Player Found")
             }
             
         }
-        print("After Sub: \(Game.homePlayers)")
+
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count

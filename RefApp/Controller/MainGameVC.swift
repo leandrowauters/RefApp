@@ -231,9 +231,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                 if MainGameVC.substitution{
                     if !MainGameVC.home{
                     if text == MainGameVC.playerOut {
-                        fadeOut(button: button,0.5 , delay: 0.5) { (Done) in
+                        graphics.fadeOut(button: button,0.5 , delay: 0.5) { (Done) in
                             button.setTitle(MainGameVC.playerIn, for: .normal)
-                            self.fadeIn(button: button, 0.5, delay: 0) { (Done) in
+                            self.graphics.fadeIn(button: button, 0.5, delay: 0) { (Done) in
                                 button.setTitle(MainGameVC.playerIn, for: .normal)
                                 Game.homePlayers.remove(at: MainGameVC.index)
                                 Game.homePlayers.insert(Int(MainGameVC.playerIn)!, at: Int(MainGameVC.index))
@@ -270,9 +270,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                 }
                 if MainGameVC.substitution{
                     if text == MainGameVC.playerOut {
-                        fadeOut(button: button,0.5 , delay: 0.5) { (Done) in
+                        graphics.fadeOut(button: button,0.5 , delay: 0.5) { (Done) in
                             button.setTitle(MainGameVC.playerIn, for: .normal)
-                            self.fadeIn(button: button, 0.5, delay: 0) { (Done) in
+                            self.graphics.fadeIn(button: button, 0.5, delay: 0) { (Done) in
                                 button.setTitle(MainGameVC.playerIn, for: .normal)
                                 Game.awayPlayers.remove(at: MainGameVC.index)
                                 Game.awayPlayers.insert(Int(MainGameVC.playerIn)!, at: Int(MainGameVC.index))
@@ -477,14 +477,4 @@ extension MainGameVC: TimerDelegate, EventDelegate{
     }
 }
 
-extension MainGameVC{
-    func fadeIn(button: UIButton, _ duration: TimeInterval = 1.5, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
-        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
-            button.alpha = 1.0
-        }, completion: completion)  }
-    func fadeOut(button: UIButton,_ duration: TimeInterval = 1.5, delay: TimeInterval = 2.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
-        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
-            button.alpha = 0.1
-        }, completion: completion)
-    }
-}
+

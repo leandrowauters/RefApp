@@ -80,6 +80,43 @@ class SubHalfTimeView: UIView {
         image.image = UIImage(named: "substitution")
         return image
     }()
+    
+    lazy var textAnimationViewLeft: UIView = {
+        var view = UIView()
+        view.backgroundColor = .clear
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.white.cgColor
+        view.isHidden = true
+        view.addSubview(animatedLabelLeft)
+        return view
+    }()
+    
+    lazy var textAnimationViewRight: UIView = {
+        var view = UIView()
+        view.backgroundColor = .clear
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.white.cgColor
+        view.isHidden = true
+        view.addSubview(animatedLabelRight)
+        return view
+    }()
+    lazy var animatedLabelLeft: UILabel = {
+        var label = UILabel()
+        label.text = "4"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 35)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    lazy var animatedLabelRight: UILabel = {
+        var label = UILabel()
+        label.text = "5"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 35)
+        label.textAlignment = .center
+        return label
+    }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = #colorLiteral(red: 0.2737779021, green: 0.4506875277, blue: 0.6578510404, alpha: 1)
@@ -90,7 +127,10 @@ class SubHalfTimeView: UIView {
         addPlayerOutTextField()
         addImage()
         addDoneButton()
-        
+        addLeftAnimatedTextView()
+        addRightAnimatedTextView()
+        addLeftAnimtedLabel()
+        addRightAnimatedLabel()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -156,6 +196,38 @@ class SubHalfTimeView: UIView {
         doneButton.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 50).isActive = true
         doneButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
     }
-
-
+    func addLeftAnimatedTextView(){
+        addSubview(textAnimationViewLeft)
+        textAnimationViewLeft.translatesAutoresizingMaskIntoConstraints = false
+        textAnimationViewLeft.heightAnchor.constraint(equalTo: playerInTextField.heightAnchor).isActive = true
+        textAnimationViewLeft.widthAnchor.constraint(equalTo: playerInTextField.widthAnchor).isActive = true
+        textAnimationViewLeft.centerXAnchor.constraint(equalTo: playerInTextField.centerXAnchor).isActive = true
+        textAnimationViewLeft.centerYAnchor.constraint(equalTo: playerInTextField.centerYAnchor).isActive = true
+        
+    }
+    
+    func addRightAnimatedTextView(){
+        addSubview(textAnimationViewRight)
+        textAnimationViewRight.translatesAutoresizingMaskIntoConstraints = false
+        textAnimationViewRight.heightAnchor.constraint(equalTo: playerOutTextField.heightAnchor).isActive = true
+        textAnimationViewRight.widthAnchor.constraint(equalTo: playerOutTextField.widthAnchor).isActive = true
+        textAnimationViewRight.centerXAnchor.constraint(equalTo: playerOutTextField.centerXAnchor).isActive = true
+        textAnimationViewRight.centerYAnchor.constraint(equalTo: playerOutTextField.centerYAnchor).isActive = true
+        
+    }
+    func addLeftAnimtedLabel() {
+        animatedLabelLeft.translatesAutoresizingMaskIntoConstraints = false
+        animatedLabelLeft.centerXAnchor.constraint(equalTo: textAnimationViewLeft.centerXAnchor).isActive = true
+        animatedLabelLeft.centerYAnchor.constraint(equalTo: textAnimationViewLeft.centerYAnchor).isActive = true
+        animatedLabelLeft.leadingAnchor.constraint(equalTo: textAnimationViewLeft.leadingAnchor).isActive = true
+        animatedLabelLeft.trailingAnchor.constraint(equalTo: textAnimationViewLeft.trailingAnchor).isActive = true
+        
+    }
+    func addRightAnimatedLabel() {
+        animatedLabelRight.translatesAutoresizingMaskIntoConstraints = false
+        animatedLabelRight.centerXAnchor.constraint(equalTo: textAnimationViewRight.centerXAnchor).isActive = true
+        animatedLabelRight.centerYAnchor.constraint(equalTo: textAnimationViewRight.centerYAnchor).isActive = true
+        animatedLabelRight.leadingAnchor.constraint(equalTo: textAnimationViewRight.leadingAnchor).isActive = true
+        animatedLabelRight.trailingAnchor.constraint(equalTo: textAnimationViewRight.trailingAnchor).isActive = true
+    }
 }

@@ -60,8 +60,16 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         eventHalfTimeView.eventsTableView.delegate = self
         subHalftimeView.playerInTextField.delegate = self
         subHalftimeView.playerOutTextField.delegate = self
+        let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Enter", style: .done, target: self, action: #selector(dismissKeyboard))
+        GameClient.doneButton(view: self.view, doneBtn: doneBtn, textFields: [subHalftimeView.playerInTextField,subHalftimeView.playerOutTextField])
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
     }
     
+    @objc func dismissKeyboard() {
+         self.view.endEditing(true)
+    }
     func setupCustomSegmentedBar() {
         view.addSubview(customSegmentedBar)
         customSegmentedBar.translatesAutoresizingMaskIntoConstraints = false
@@ -77,25 +85,17 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         registerKeyboardNotification()
     }
     private func registerKeyboardNotification(){
-        NotificationCenter.default.addObserver(self, selector: #selector(willShowKeyboard(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(willHideKeyboard(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willShowKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willHideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     private func unregisterKeyboardNotifications(){
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
     }
-    @objc private func willShowKeyboard(notification: Notification){
+    @objc private func willShowKeyboard(){
         let view = views[customSegmentedBar.selectedSegmentIndex]
         view.transform = CGAffineTransform(translationX: 0, y: -(self.view.frame.height - self.customSegmentedBar.frame.height - animatedView.frame.height - view.frame.height))
-//        guard let info = notification.userInfo,
-//            let keyboardFrame = info["UIKeyboardFrameEndUserInfoKey"] as? CGRect else {
-//
-//                print("UserInfo is nil")
-//                return
-//        }
-        
-//        conteinerView.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.height)
     }
-    @objc private func willHideKeyboard(notification: Notification){
+    @objc private func willHideKeyboard(){
         let view = views[customSegmentedBar.selectedSegmentIndex]
         view.transform = CGAffineTransform.identity
         
@@ -175,8 +175,9 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
             print("Away After sub: \(Game.awayPlayers)")
         }
         
-        }
+        } else {
         showAlert(title: "Invalid Input", message: "Please have two players for substitution")
+        }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count

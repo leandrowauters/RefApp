@@ -38,6 +38,7 @@ class SubHalfTimeView: UIView {
     
     lazy var playerInTextField: UITextField = {
        var textField = UITextField()
+        textField.keyboardType = .numberPad
         textField.textColor = .white
         textField.attributedPlaceholder = NSAttributedString(string: "In",attributes:[NSAttributedString.Key.foregroundColor: UIColor.white])
         textField.textAlignment = .center
@@ -50,6 +51,7 @@ class SubHalfTimeView: UIView {
     }()
     lazy var playerOutTextField: UITextField = {
         var textField = UITextField()
+        textField.keyboardType = .numberPad
            textField.textColor = .white
            textField.attributedPlaceholder = NSAttributedString(string: "Out",attributes:[NSAttributedString.Key.foregroundColor: UIColor.white])
         textField.textAlignment = .center
@@ -131,6 +133,7 @@ class SubHalfTimeView: UIView {
         addRightAnimatedTextView()
         addLeftAnimtedLabel()
         addRightAnimatedLabel()
+
     }
     
     required init?(coder aDecoder: NSCoder) {

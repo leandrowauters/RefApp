@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/GameSettigsDetail/TextVC.swift"
-            timestampString = "570079339.112393"
+            timestampString = "571265556.253569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
@@ -826,11 +826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/View/SubHalfTimeView.swift"
-            timestampString = "571258782.417002"
+            timestampString = "571265556.254096"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "addRightAnimatedTextView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -842,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/View/SubHalfTimeView.swift"
-            timestampString = "571258782.417056"
+            timestampString = "571265556.25416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "addRightAnimatedTextView()"
             landmarkType = "7">
          </BreakpointContent>

@@ -72,6 +72,34 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         customSegmentedBar.heightAnchor.constraint(equalToConstant: 50).isActive = true
         customSegmentedBar.addTarget(self, action: #selector(customSegmentedBarPressed(sender:)), for: UIControl.Event.valueChanged)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        registerKeyboardNotification()
+    }
+    private func registerKeyboardNotification(){
+        NotificationCenter.default.addObserver(self, selector: #selector(willShowKeyboard(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willHideKeyboard(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    private func unregisterKeyboardNotifications(){
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    @objc private func willShowKeyboard(notification: Notification){
+        let view = views[customSegmentedBar.selectedSegmentIndex]
+        view.transform = CGAffineTransform(translationX: 0, y: -(self.view.frame.height - self.customSegmentedBar.frame.height - animatedView.frame.height - view.frame.height))
+//        guard let info = notification.userInfo,
+//            let keyboardFrame = info["UIKeyboardFrameEndUserInfoKey"] as? CGRect else {
+//
+//                print("UserInfo is nil")
+//                return
+//        }
+        
+//        conteinerView.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.height)
+    }
+    @objc private func willHideKeyboard(notification: Notification){
+        let view = views[customSegmentedBar.selectedSegmentIndex]
+        view.transform = CGAffineTransform.identity
+        
+    }
     @objc func customSegmentedBarPressed(sender: UISegmentedControl){
         for i in 0...views.count - 1 {
             if i == sender.selectedSegmentIndex{

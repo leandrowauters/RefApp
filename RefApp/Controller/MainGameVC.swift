@@ -75,6 +75,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         timer2View.isHidden = true
         changeTimerButton.isHidden = true
         if MainGameVC.sub{
+            homeView.HomePlayersButtons.forEach{$0.isEnabled = true}
+            awayView.awayPlayersButtons.forEach{$0.isEnabled = true}
             if MainGameVC.timerViewOne{
             timer2View.isHidden = true
             } else {
@@ -229,7 +231,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                     button.isEnabled = false
                 }
                 if MainGameVC.substitution{
-                    if !MainGameVC.home{
+                    if MainGameVC.home{
                     if text == MainGameVC.playerOut {
                         graphics.fadeOut(button: button,0.5 , delay: 0.5) { (Done) in
                             button.setTitle(MainGameVC.playerIn, for: .normal)
@@ -239,6 +241,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                                 Game.homePlayers.insert(Int(MainGameVC.playerIn)!, at: Int(MainGameVC.index))
                                 print(MainGameVC.index)
                                 print(MainGameVC.playerIn)
+                                print("Home Players = \(Game.homePlayers)")
                             }
                         }
 
@@ -269,6 +272,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                     button.isEnabled = false
                 }
                 if MainGameVC.substitution{
+                    if !MainGameVC.home{
                     if text == MainGameVC.playerOut {
                         graphics.fadeOut(button: button,0.5 , delay: 0.5) { (Done) in
                             button.setTitle(MainGameVC.playerIn, for: .normal)
@@ -278,9 +282,10 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                                 Game.awayPlayers.insert(Int(MainGameVC.playerIn)!, at: Int(MainGameVC.index))
                                 print(MainGameVC.index)
                                 print(MainGameVC.playerIn)
+                                print("Away Players = \(Game.awayPlayers)")
                             }
                         }
-                        
+                        }
                     }
                 }
                 

@@ -60,8 +60,6 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         eventHalfTimeView.eventsTableView.delegate = self
         subHalftimeView.playerInTextField.delegate = self
         subHalftimeView.playerOutTextField.delegate = self
-        
-        
     }
     
     func setupCustomSegmentedBar() {
@@ -130,8 +128,11 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         print("Away Before sub: \(Game.awayPlayers)")
         var playerIn = Int()
         var playerOut = Int()
+        if subHalftimeView.playerInTextField.text != "" && subHalftimeView.playerOutTextField.text != ""{
         if let text = subHalftimeView.playerInTextField.text {
-            playerIn = Int(text)!
+            if let playerInNumber = Int(text){
+                playerIn = playerInNumber
+            }
         }
         if let text = subHalftimeView.playerOutTextField.text {
             playerOut = Int(text)!
@@ -146,7 +147,8 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
             print("Away After sub: \(Game.awayPlayers)")
         }
         
-
+        }
+        showAlert(title: "Invalid Input", message: "Please have two players for substitution")
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count

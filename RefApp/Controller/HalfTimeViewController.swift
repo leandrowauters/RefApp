@@ -50,7 +50,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        subHalftimeView.doneButton.addTarget(self, action: #selector(performSub), for: .touchUpInside)
+        subHalftimeView.doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
         views = [eventHalfTimeView,subHalftimeView,noteHalfTimeView]
         setupCustomSegmentedBar()
         setupAnimatedViewRail()
@@ -124,68 +124,28 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         present(alert, animated: true, completion: nil)
         
     }
-    @objc func performSub(){
-        print("Before sub: \(Game.homePlayers)")
-        var playerIn = String()
-        var playerOut = String()
+    
+    @objc func doneButtonPressed(){
+        print("Home Before sub: \(Game.homePlayers)")
+        print("Away Before sub: \(Game.awayPlayers)")
+        var playerIn = Int()
+        var playerOut = Int()
         if let text = subHalftimeView.playerInTextField.text {
-            playerIn = text
+            playerIn = Int(text)!
         }
         if let text = subHalftimeView.playerOutTextField.text {
-            playerOut = text
+            playerOut = Int(text)!
         }
         var index = 0
-        if Game.homePlayers.contains(Int(playerIn)!) {
-            print("Player Already Playing")
-            showAlert(title: "Player Already Playing", message: "Please select another player")
-            subHalftimeView.playerOutTextField.text = ""
-            subHalftimeView.playerInTextField.text = ""
-            return
+        if subHalftimeView.teamSegmentedBar.selectedSegmentIndex == 0 {
+        perfomSub(team: &Game.homePlayers, playerIn: playerIn, playerOut: playerOut, index: &index)
+            print("Home After sub: \(Game.homePlayers)")
+       
+        } else {
+            perfomSub(team: &Game.awayPlayers, playerIn: playerIn, playerOut: playerOut, index: &index)
+            print("Away After sub: \(Game.awayPlayers)")
         }
-        for player in Game.homePlayers {
-            if Int(playerOut) == player{
-                print(index)
-                Game.homePlayers.remove(at: index)
-                Game.homePlayers.insert(Int(playerIn)!, at: index)
-                subHalftimeView.textAnimationViewRight.isHidden = false
-                subHalftimeView.textAnimationViewLeft.isHidden = false
-                UIView.transition(with: subHalftimeView.textAnimationViewLeft, duration: 1, options: [.transitionFlipFromRight], animations: {
-                    self.subHalftimeView.animatedLabelLeft.text = playerOut
-                    self.subHalftimeView.playerInTextField.text = ""
-                }) { (Bool) in
-                    UIView.animate(withDuration: 1, delay: 0.5, options: [], animations: {
-                        self.subHalftimeView.animatedLabelLeft.alpha = 0
-                    }, completion: { (Bool) in
-                        self.subHalftimeView.animatedLabelLeft.alpha = 1
-                        self.subHalftimeView.textAnimationViewLeft.isHidden = true
-                        self.subHalftimeView.playerInTextField.isHidden = false
-                    })
-                }
-                
-                UIView.transition(with: subHalftimeView.textAnimationViewRight, duration: 1, options: [.transitionFlipFromRight], animations: {
-                    self.subHalftimeView.animatedLabelRight.text = playerIn
-                    self.subHalftimeView.playerOutTextField.text = ""
-                }) { (Bool) in
-                    UIView.animate(withDuration: 1, delay: 0.5, options: [], animations: {
-                        self.subHalftimeView.animatedLabelRight.alpha = 0
-                    }, completion: { (Bool) in
-                        self.subHalftimeView.animatedLabelRight.alpha = 1
-                        self.subHalftimeView.textAnimationViewRight.isHidden = true
-                        self.subHalftimeView.playerOutTextField.isHidden = false
-                    })
-                }
-                break
-            } else {
-                index += 1
-            }
-            if index == Game.homePlayers.count - 1{
-                showAlert(title: "Player Not Playing", message: "Please select another player")
-                subHalftimeView.playerOutTextField.text = ""
-                subHalftimeView.playerInTextField.text = ""
-                print("No Player Found")
-            }
-            
-        }
+        
 
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -215,8 +175,65 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
     }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension HalfTimeViewController {
+    func perfomSub ( team: inout [Int], playerIn: Int, playerOut: Int, index: inout Int){
+        if team.contains(playerIn) {
+            print("Player Already Playing")
+            showAlert(title: "Player Already Playing", message: "Please select another player")
+            subHalftimeView.playerOutTextField.text = ""
+            subHalftimeView.playerInTextField.text = ""
+            return
+        }
+        for player in team {
+            if Int(playerOut) == player{
+                print(index)
+                team.remove(at: index)
+                team.insert(playerIn, at: index)
+                subHalftimeView.textAnimationViewRight.isHidden = false
+                subHalftimeView.textAnimationViewLeft.isHidden = false
+                UIView.transition(with: subHalftimeView.textAnimationViewLeft, duration: 1, options: [.transitionFlipFromRight], animations: {
+                    self.subHalftimeView.animatedLabelLeft.text = playerOut.description
+                    self.subHalftimeView.playerInTextField.text = ""
+                }) { (Bool) in
+                    UIView.animate(withDuration: 1, delay: 0.5, options: [], animations: {
+                        self.subHalftimeView.animatedLabelLeft.alpha = 0
+                    }, completion: { (Bool) in
+                        self.subHalftimeView.animatedLabelLeft.alpha = 1
+                        self.subHalftimeView.textAnimationViewLeft.isHidden = true
+                        self.subHalftimeView.playerInTextField.isHidden = false
+                    })
+                }
+                
+                UIView.transition(with: subHalftimeView.textAnimationViewRight, duration: 1, options: [.transitionFlipFromRight], animations: {
+                    self.subHalftimeView.animatedLabelRight.text = playerIn.description
+                    self.subHalftimeView.playerOutTextField.text = ""
+                }) { (Bool) in
+                    UIView.animate(withDuration: 1, delay: 0.5, options: [], animations: {
+                        self.subHalftimeView.animatedLabelRight.alpha = 0
+                    }, completion: { (Bool) in
+                        self.subHalftimeView.animatedLabelRight.alpha = 1
+                        self.subHalftimeView.textAnimationViewRight.isHidden = true
+                        self.subHalftimeView.playerOutTextField.isHidden = false
+                    })
+                }
+                break
+            } else {
+                index += 1
+            }
+            if index == team.count - 1{
+                showAlert(title: "Player Not Playing", message: "Please select another player")
+                subHalftimeView.playerOutTextField.text = ""
+                subHalftimeView.playerInTextField.text = ""
+                print("No Player Found")
+            }
+            
+        }
     }
 }

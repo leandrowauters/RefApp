@@ -40,6 +40,11 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
         title = "\(Game.awayTeam) Players"
         numbersCollectionView.delegate = self
         numbersCollectionView.dataSource = self
+
+    }
+    
+
+    override func viewDidLayoutSubviews() {
         graphics.changeButtonLayout(buttons: numberPadButtons)
     }
     @IBAction func numberPadWasPressed(_ sender: UIButton) {
@@ -59,6 +64,9 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
             
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Save For Later", style: .default, handler: { (UIAlertAction) in
+                GameSaveClient.alert(vc: self)
+        }))
         self.present(alert, animated: false)
     }
     
@@ -66,7 +74,6 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
         if !awayPlayers.contains(Int(number)!){
             awayPlayers.append(Int(number)!)
             Game.awayPlayers.append(Int(number)!)
-            print("Number of players \(Game.awayPlayers.count)")
             number = ""
             let indexPath = IndexPath(row: awayPlayers.count, section: 0)
             numbersCollectionView.insertItems(at: [indexPath])

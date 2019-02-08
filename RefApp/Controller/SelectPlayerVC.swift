@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectPlayerVC: UIViewController {
+class SelectPlayerVC: UIViewController, UITextFieldDelegate {
     var selectedPlayer = Int()
     var selectedButton = Int()
     var teamSide: PopActionsVC.Teams!
@@ -19,16 +19,37 @@ class SelectPlayerVC: UIViewController {
     @IBOutlet weak var subTextField: UITextField!
     
     @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var playerOutLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(selectedPlayer)
+        subTextField.delegate = self
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Enter Player", style: .done, target: self, action: #selector(doneButtonAction))
             
         GameClient.doneButton(view: self.view, doneBtn: doneBtn, textFields: [subTextField])
+        setupUI()
 //        subTextField.delegate = self
         // Do any additional setup after loading the view.
     }
+    func setupUI(){
+        if teamSide == .home{
+            view.backgroundColor = #colorLiteral(red: 0.2737779021, green: 0.4506875277, blue: 0.6578510404, alpha: 1)
+        } else {
+            view.backgroundColor = #colorLiteral(red: 0.2567201853, green: 0.4751234055, blue: 0.4362891316, alpha: 1)
+        }
+        playerOutLabel.text = selectedPlayer.description
+        playerOutLabel.layer.borderColor = UIColor.white.cgColor
+        playerOutLabel.layer.borderWidth = 2
+        subTextField.attributedPlaceholder = NSAttributedString(string: "In",attributes:[NSAttributedString.Key.foregroundColor: UIColor.white])
+        subTextField.layer.borderWidth = 2
+        subTextField.layer.borderColor = UIColor.white.cgColor
+    }
+    @IBAction func cancelPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     
     @objc func doneButtonAction() {
         timerDelegate?.turnOnTimer(turnOn: true)
@@ -78,12 +99,14 @@ class SelectPlayerVC: UIViewController {
     }
     @objc func changeLabel (){
         textLabel.text = "Enter Sub Number"
-        textLabel.textColor = .black
+        textLabel.textColor = .white
     }
     override func viewDidDisappear(_ animated: Bool) {
         print(Game.homePlayers)
     }
-
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.placeholder = ""
+    }
     
 }
 

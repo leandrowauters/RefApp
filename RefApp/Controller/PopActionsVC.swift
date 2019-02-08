@@ -40,7 +40,6 @@ class PopActionsVC: UIViewController {
         destination.eventDelegate = eventDelegate
     }
     @objc func goBack(){
-
         timerDelegate?.keepStartButtonDisable(disable: true)
         timerDelegate?.keepStartButtonHidden(hide: true)
         dismiss(animated: true, completion: nil)

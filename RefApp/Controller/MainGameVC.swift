@@ -177,34 +177,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     }
 
     
-    func animateChangeColor (button: UIButton, color: UIColor) {
-        button.alpha = 0
-        button.backgroundColor = color
-        button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        button.layer.borderWidth = 2.0
-        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
-        button.titleLabel?.font = UIFont.init(name: "Verdana", size: 37)// THIS SETS FONT
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 37)
-        UIView.animate(withDuration: 1.5, animations: {
-            button.alpha = 1.0
-            button.backgroundColor = color
-            button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            button.layer.borderWidth = 2.0
-            button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
-            button.titleLabel?.font = UIFont.init(name: "Verdana", size: 37)// THIS SETS FONT
-            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 37)
 
-        }, completion: nil)
-        
-    }
-    func changeButtonColor (button: UIButton, color: UIColor){
-        button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        button.layer.borderWidth = 2.0
-        button.backgroundColor = color
-        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
-        button.titleLabel?.font = UIFont.init(name: "Verdana", size: 37)// THIS SETS FONT
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 37)
-    }
     func reloadView(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideTimerView))
         timer2View.addGestureRecognizer(tap)
@@ -214,20 +187,20 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             if let text = button.titleLabel?.text {
                 if MainGameVC.yellowCard{
                 if text == MainGameVC.playerSelected{
-                    animateChangeColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+                    graphics.animateChangeColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
                 }
                 } else if Game.homeYellowCardPlayers.contains(Int(text)!) {
-                    changeButtonColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+                    graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
                 }
                 if MainGameVC.redCard{
                     if text == MainGameVC.playerSelected{
-                        animateChangeColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
+                        graphics.animateChangeColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
                         button.isEnabled = false
                     }
 
                     }
                 else if Game.homeRedCardPlayers.contains(Int(text)!) {
-                    changeButtonColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
+                    graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
                     button.isEnabled = false
                 }
                 if MainGameVC.substitution{
@@ -256,19 +229,19 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             if let text = button.titleLabel?.text {
                 if MainGameVC.yellowCard{
                     if text == MainGameVC.playerSelected{
-                        animateChangeColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+                        graphics.animateChangeColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
                     }
                 } else if Game.awayYellowCardPlayers.contains(Int(text)!) {
-                    changeButtonColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+                    graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
                 }
                 if MainGameVC.redCard{
                     if text == MainGameVC.playerSelected{
-                        animateChangeColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
+                        graphics.animateChangeColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
                         button.isEnabled = false
                     }
                 }
                 else if Game.awayRedCardPlayers.contains(Int(text)!) {
-                    changeButtonColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
+                    graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
                     button.isEnabled = false
                 }
                 if MainGameVC.substitution{

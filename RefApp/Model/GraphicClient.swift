@@ -79,5 +79,23 @@ class GraphicClient {
                 button.alpha = 0.1
             }, completion: completion)
         }
-    
+    func animateChangeColor (button: UIButton, color: UIColor) {
+        fadeOut(button: button, 1, delay: 0.25) { (Bool) in
+            button.alpha = 0
+            button.backgroundColor = color
+            self.fadeIn(button: button, 1, delay: 0, completion: { (Bool) in
+                
+                button.alpha = 1
+               
+            })
+        }
+    }
+    func changeButtonColor (button: UIButton, color: UIColor){
+        button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        button.layer.borderWidth = 2.0
+        button.backgroundColor = color
+        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont.init(name: "Verdana", size: 37)// THIS SETS FONT
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 37)
+    }
 }

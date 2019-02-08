@@ -19,13 +19,13 @@ class NoteHalfTimeView: UIView {
         return textView
     }()
     
-    lazy var doneButton: UIButton = {
+    lazy var enterTextButton: UIButton = {
         var button = UIButton()
-        button.setTitle("Done", for: .normal)
+        button.setTitle("Enter Note", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.354026258, green: 0.7636645436, blue: 0.9697399735, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 0.2737779021, green: 0.4506875277, blue: 0.6578510404, alpha: 1)
         button.layer.borderWidth = 5
-        button.layer.borderColor = #colorLiteral(red: 0.2737779021, green: 0.4506875277, blue: 0.6578510404, alpha: 1)
+        button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return button
     }()
     override init(frame: CGRect) {
@@ -38,12 +38,12 @@ class NoteHalfTimeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     func addButton() {
-        addSubview(doneButton)
-        doneButton.translatesAutoresizingMaskIntoConstraints = false
-        doneButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        doneButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        doneButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        doneButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        addSubview(enterTextButton)
+        enterTextButton.translatesAutoresizingMaskIntoConstraints = false
+        enterTextButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        enterTextButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        enterTextButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        enterTextButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
     }
     
@@ -53,7 +53,7 @@ class NoteHalfTimeView: UIView {
         notesTextView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         notesTextView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         notesTextView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        notesTextView.bottomAnchor.constraint(equalTo: doneButton.topAnchor).isActive = true
+        notesTextView.bottomAnchor.constraint(equalTo: enterTextButton.topAnchor).isActive = true
     }
 
 }

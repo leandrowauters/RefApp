@@ -51,6 +51,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         subHalftimeView.doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
+        noteHalfTimeView.enterTextButton.addTarget(self, action: #selector(enterButtonPressed), for: .touchUpInside)
         views = [eventHalfTimeView,subHalftimeView,noteHalfTimeView]
         setupCustomSegmentedBar()
         setupAnimatedViewRail()
@@ -87,19 +88,32 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         registerKeyboardNotification()
     }
     private func registerKeyboardNotification(){
-        NotificationCenter.default.addObserver(self, selector: #selector(willShowKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willShowKeyboard(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willHideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     private func unregisterKeyboardNotifications(){
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
     }
-    @objc private func willShowKeyboard(){
+    @objc private func willShowKeyboard(notification: Notification){
+        guard let info = notification.userInfo,
+            let keyboardFrame = info["UIKeyboardFrameEndUserInfoKey"] as? CGRect else {
+                
+                print("UserInfo is nil")
+                return
+        }
         let view = views[customSegmentedBar.selectedSegmentIndex]
         view.transform = CGAffineTransform(translationX: 0, y: -(self.view.frame.height - self.customSegmentedBar.frame.height - animatedView.frame.height - view.frame.height))
+        if view == noteHalfTimeView {
+            view.bringSubviewToFront(noteHalfTimeView.enterTextButton)
+            noteHalfTimeView.enterTextButton.transform = CGAffineTransform(translationX: 0, y: -(keyboardFrame.height-(self.view.frame.height - self.customSegmentedBar.frame.height - animatedView.frame.height - view.frame.height)))
+        }
     }
     @objc private func willHideKeyboard(){
         let view = views[customSegmentedBar.selectedSegmentIndex]
         view.transform = CGAffineTransform.identity
+        if view == noteHalfTimeView {
+            noteHalfTimeView.enterTextButton.transform = CGAffineTransform.identity
+        }
         
     }
     @objc func customSegmentedBarPressed(sender: UISegmentedControl){
@@ -152,7 +166,15 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         present(alert, animated: true, completion: nil)
         
     }
-    
+    @objc func enterButtonPressed(){
+        if noteHalfTimeView.notesTextView.text != "" {
+            Game.gameNotes = noteHalfTimeView.notesTextView.text
+            showAlert(title: "Text Saved", message: nil)
+            print(Game.gameNotes)
+        } else {
+            showAlert(title: "Please Enter Text", message: nil)
+        }
+    }
     @objc func doneButtonPressed(){
         print("Home Before sub: \(Game.homePlayers)")
         print("Away Before sub: \(Game.awayPlayers)")

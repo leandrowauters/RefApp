@@ -47,8 +47,6 @@ class TeamSelectionViewController: UIViewController, UITextFieldDelegate {
         if textField == homeTeamTextField || textField == awayTeamTextField {
             textField.text = ""
         }
-        
-        
     }
     @IBAction func doneButtonPressed(_ sender: UIButton) {
         if (homeTeamTextField.text != "" && homeTeamTextField.text != "Home") && (awayTeamTextField.text != "" && awayTeamTextField.text != "Away") {
@@ -68,7 +66,6 @@ class TeamSelectionViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(okay)
             present(alert, animated: true, completion: nil)
         }
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

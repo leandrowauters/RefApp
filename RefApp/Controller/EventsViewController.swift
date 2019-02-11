@@ -24,19 +24,12 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func dismiss(_ sender: UIButton) {
-        if MainGameVC.halfTime {
-            eventDelegate.halfTime(bool: true)
-            timerDelegate?.keepStartButtonDisable(disable: false)
-            timerDelegate?.keepStartButtonHidden(hide: false)
-            eventDelegate.redCard(bool: false, home: nil)
-            eventDelegate.yellowCall(bool: false, home: nil)
-        } else {
+       
         eventDelegate.halfTime(bool: false)
         timerDelegate?.keepStartButtonDisable(disable: true)
         timerDelegate?.keepStartButtonHidden(hide: true)
             eventDelegate.redCard(bool: false, home: nil)
             eventDelegate.yellowCall(bool: false, home: nil)
-        }
         dismiss(animated: true, completion: nil)
         
     }

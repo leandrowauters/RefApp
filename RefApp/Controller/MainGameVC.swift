@@ -118,7 +118,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             halfLabel.text = "2nd Half"
         }
         if MainGameVC.halfTime {
+            
             graphics.setWheelToZero(view: self.view, radius: viewWidth)
+            
 //            self.startButton.isHidden = false
 //            self.startButton.isEnabled = true
             MainGameVC.halfTime = false
@@ -314,11 +316,12 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 
             let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
             guard let vc = storyboard.instantiateViewController(withIdentifier: "HalfTime") as? HalfTimeViewController else {return}
-//            vc.timerDelegate = self
-//            vc.eventDelegate = self
+            vc.timerDelegate = self
+            vc.eventDelegate = self
             self.present(vc, animated: false, completion: nil) //TO DO: PRESENT THE OTHER VIEW
             self.changeTimerButton.isHidden = true
-            MainGameVC.halfTime = true
+//            MainGameVC.halfTime = true
+            MainTimer.time = 0
             Game.gameHalf = 2
             self.timer.restartTimer()
         }))

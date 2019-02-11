@@ -15,6 +15,8 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     let subHalftimeView = SubHalfTimeView()
     let noteHalfTimeView = NoteHalfTimeView()
     let graphics = GraphicClient()
+    weak var timerDelegate: TimerDelegate!
+    weak var eventDelegate: EventDelegate!
     var views = [UIView]()
     lazy var customSegmentedBar: UISegmentedControl = {
         var segmentedControl = UISegmentedControl()
@@ -72,6 +74,12 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @objc func dismissKeyboard() {
          self.view.endEditing(true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        eventDelegate.halfTime(bool: true)
+        timerDelegate?.keepStartButtonDisable(disable: false)
+        timerDelegate?.keepStartButtonHidden(hide: false)
     }
     func setupCustomSegmentedBar() {
         view.addSubview(customSegmentedBar)

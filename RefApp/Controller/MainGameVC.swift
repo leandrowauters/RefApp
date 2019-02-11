@@ -118,9 +118,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             halfLabel.text = "2nd Half"
         }
         if MainGameVC.halfTime {
-            
+            startButton.setTitle("Begin 2nd Half", for: .normal)
+            startButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
             graphics.setWheelToZero(view: self.view, radius: viewWidth)
-            
 //            self.startButton.isHidden = false
 //            self.startButton.isEnabled = true
             MainGameVC.halfTime = false
@@ -310,7 +310,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     @IBAction func halfTimeButtonPressed(_ sender: UIButton) {
         //TO DO : it should be: suspend, send alert, display incident, and restart timer(if half == 2 timer == 0.
-
+        if Game.gameHalf == 1 {
         let alert = UIAlertController(title: "You're about to end the half", message: "Press OK to continue", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (updateAction) in
 
@@ -318,6 +318,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             guard let vc = storyboard.instantiateViewController(withIdentifier: "HalfTime") as? HalfTimeViewController else {return}
             vc.timerDelegate = self
             vc.eventDelegate = self
+            vc.gameRunningTime = MainTimer.time
             self.present(vc, animated: false, completion: nil) //TO DO: PRESENT THE OTHER VIEW
             self.changeTimerButton.isHidden = true
 //            MainGameVC.halfTime = true
@@ -325,8 +326,18 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             Game.gameHalf = 2
             self.timer.restartTimer()
         }))
-        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-        self.present(alert, animated: false)
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            self.present(alert, animated: false)
+        } else if Game.gameHalf == 2 {
+            let alert = UIAlertController(title: "You're about the end the game", message: "Press OK to continue", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (updateAction) in
+                
+                print("Game ended")
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            self.present(alert, animated: false)
+        }
+
         
 
 

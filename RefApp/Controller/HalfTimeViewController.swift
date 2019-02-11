@@ -15,9 +15,20 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     let subHalftimeView = SubHalfTimeView()
     let noteHalfTimeView = NoteHalfTimeView()
     let graphics = GraphicClient()
+    var gameRunningTime = 0.0
     weak var timerDelegate: TimerDelegate!
     weak var eventDelegate: EventDelegate!
     var views = [UIView]()
+    
+    @IBOutlet weak var halfTimeTeamsLabel: UILabel!
+    
+    @IBOutlet weak var halfTimeScoreLabel: UILabel!
+    
+    @IBOutlet weak var halfTimeTimeLabel: UILabel!
+    
+    
+    
+    
     lazy var customSegmentedBar: UISegmentedControl = {
         var segmentedControl = UISegmentedControl()
         segmentedControl.insertSegment(withTitle: "Events", at: 0, animated: true)
@@ -52,6 +63,9 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        halfTimeTeamsLabel.text = "\(Game.homeTeam) Vs. \(Game.awayTeam)"
+        halfTimeScoreLabel.text = "\(Game.homeScore) - \(Game.awayScore)"
+        halfTimeTimeLabel.text = "\(MainTimer.timeString(time: gameRunningTime))"
         subHalftimeView.doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
         noteHalfTimeView.enterTextButton.addTarget(self, action: #selector(enterButtonPressed), for: .touchUpInside)
         views = [eventHalfTimeView,subHalftimeView,noteHalfTimeView]

@@ -2078,10 +2078,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mRd-MF-GUp"/>
                     </view>
+                    <connections>
+                        <outlet property="halfTimeScoreLabel" destination="gms-NP-cDx" id="188-1i-Dxq"/>
+                        <outlet property="halfTimeTeamsLabel" destination="L3T-Cx-f4K" id="l45-RJ-N2X"/>
+                        <outlet property="halfTimeTimeLabel" destination="w1J-Ri-qlf" id="iaF-Cx-DS0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sNZ-xG-V3f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6001" y="920"/>
+            <point key="canvasLocation" x="6000.0000000000009" y="919.56521739130437"/>
         </scene>
         <!--Pop ActionsVC-->
         <scene sceneID="DQW-7V-5M3">

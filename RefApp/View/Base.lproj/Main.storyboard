@@ -1968,7 +1968,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="unt-oW-IWe">
-                                <rect key="frame" x="41.333333333333343" y="83.666666666666686" width="331.33333333333326" height="588.66666666666652"/>
+                                <rect key="frame" x="41.333333333333343" y="120.33333333333331" width="331.33333333333326" height="515.33333333333348"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCell" textLabel="5bn-zt-nUK" detailTextLabel="UVY-Nk-LbG" rowHeight="76" style="IBUITableViewCellStyleSubtitle" id="4Bn-gC-wyG" customClass="EventCell">
@@ -2010,7 +2010,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="0.34720141267123289" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="unt-oW-IWe" firstAttribute="height" secondItem="68s-fW-oni" secondAttribute="height" multiplier="0.8" id="7dK-PR-J2k"/>
+                            <constraint firstItem="unt-oW-IWe" firstAttribute="height" secondItem="68s-fW-oni" secondAttribute="height" multiplier="0.7" id="7dK-PR-J2k"/>
                             <constraint firstItem="Pqw-At-TDn" firstAttribute="top" secondItem="TsG-S4-RDa" secondAttribute="top" id="EcJ-Dd-MbE"/>
                             <constraint firstItem="unt-oW-IWe" firstAttribute="centerY" secondItem="TsG-S4-RDa" secondAttribute="centerY" id="MIW-DZ-xRa"/>
                             <constraint firstItem="unt-oW-IWe" firstAttribute="width" secondItem="68s-fW-oni" secondAttribute="width" multiplier="0.8" id="SMF-Mz-ARe"/>

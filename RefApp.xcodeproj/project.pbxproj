@@ -42,6 +42,8 @@
 		D5CE6D6F21DD26CC00FD921A /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE6D6E21DD26CC00FD921A /* Events.swift */; };
 		D5CE6D7121DD3F9700FD921A /* MainTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE6D7021DD3F9700FD921A /* MainTimer.swift */; };
 		D5D7194721FA674C003F2BF6 /* HomeAwayViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D7194621FA674C003F2BF6 /* HomeAwayViewDelegate.swift */; };
+		D5F5048122132ED7001A8E8F /* EventVCDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5048022132ED7001A8E8F /* EventVCDetailsView.swift */; };
+		D5F5048322132EE9001A8E8F /* EventVCTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5048222132EE9001A8E8F /* EventVCTextView.swift */; };
 		D5FA730921EFF53D007F77CE /* HomePlayersSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA730821EFF53D007F77CE /* HomePlayersSelectionViewController.swift */; };
 		D5FA730B21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA730A21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift */; };
 		D5FBD97121B23538005D89F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBD97021B23538005D89F4 /* AppDelegate.swift */; };
@@ -88,6 +90,8 @@
 		D5CE6D6E21DD26CC00FD921A /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		D5CE6D7021DD3F9700FD921A /* MainTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTimer.swift; sourceTree = "<group>"; };
 		D5D7194621FA674C003F2BF6 /* HomeAwayViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAwayViewDelegate.swift; sourceTree = "<group>"; };
+		D5F5048022132ED7001A8E8F /* EventVCDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVCDetailsView.swift; sourceTree = "<group>"; };
+		D5F5048222132EE9001A8E8F /* EventVCTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVCTextView.swift; sourceTree = "<group>"; };
 		D5FA730821EFF53D007F77CE /* HomePlayersSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayersSelectionViewController.swift; sourceTree = "<group>"; };
 		D5FA730A21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayersCollectionViewCell.swift; sourceTree = "<group>"; };
 		D5FBD96D21B23538005D89F4 /* RefApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RefApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +148,15 @@
 				D5313FE921D70D8E00875B63 /* AwayView.swift */,
 			);
 			name = TeamsViews;
+			sourceTree = "<group>";
+		};
+		D5F5048422132EFD001A8E8F /* EventViews */ = {
+			isa = PBXGroup;
+			children = (
+				D5F5048022132ED7001A8E8F /* EventVCDetailsView.swift */,
+				D5F5048222132EE9001A8E8F /* EventVCTextView.swift */,
+			);
+			path = EventViews;
 			sourceTree = "<group>";
 		};
 		D5FBD96421B23538005D89F4 = {
@@ -212,6 +225,7 @@
 				D5A62AA521E4318500C9183B /* SavedGamesViewController.swift */,
 				D5A62AA721E526C700C9183B /* SavedGameDetailedViewController.swift */,
 				D5BDD18021EB01220078408E /* EventsViewController.swift */,
+				D5F5048422132EFD001A8E8F /* EventViews */,
 				D532218C21DC3213004B0363 /* SelectPlayerVC.swift */,
 				D532218A21D731F4004B0363 /* PopActionsVC.swift */,
 				D5313FE521D70A7E00875B63 /* MainGameVC.swift */,
@@ -308,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5A62AA621E4318500C9183B /* SavedGamesViewController.swift in Sources */,
+				D5F5048122132ED7001A8E8F /* EventVCDetailsView.swift in Sources */,
 				D558FF5B220A85C100B3B62D /* NoteHalfTimeView.swift in Sources */,
 				D5FBD98321B23548005D89F4 /* Game.swift in Sources */,
 				D58C300121B5D70400A15E03 /* GameLengthVC.swift in Sources */,
@@ -317,6 +332,7 @@
 				D5D7194721FA674C003F2BF6 /* HomeAwayViewDelegate.swift in Sources */,
 				D532218B21D731F4004B0363 /* PopActionsVC.swift in Sources */,
 				D5313FE421D7099900875B63 /* HomeView.swift in Sources */,
+				D5F5048322132EE9001A8E8F /* EventVCTextView.swift in Sources */,
 				D5637AF721B88BD2003821F5 /* GameDelegate.swift in Sources */,
 				D5CDA72221ED267000A59133 /* GraphicClient.swift in Sources */,
 				D558FF57220A859900B3B62D /* EventHalfTimeView.swift in Sources */,

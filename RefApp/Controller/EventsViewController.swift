@@ -14,10 +14,12 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     weak var timerDelegate: TimerDelegate!
     weak var eventDelegate: EventDelegate!
     var events = Game.events
+    var views = [UIView]()
     lazy var customSegmentedBar: UISegmentedControl = {
         var segmentedControl = UISegmentedControl()
-        segmentedControl.insertSegment(withTitle: "Home", at: 0, animated: true)
-        segmentedControl.insertSegment(withTitle: "Away", at: 1, animated: true)
+        segmentedControl.insertSegment(withTitle: "Events", at: 0, animated: true)
+        segmentedControl.insertSegment(withTitle: "Details", at: 1, animated: true)
+        segmentedControl.insertSegment(withTitle: "Text", at: 2, animated: true)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.backgroundColor = #colorLiteral(red: 0.2567201853, green: 0.4751234055, blue: 0.4362891316, alpha: 1)
         segmentedControl.tintColor = .clear
@@ -31,6 +33,19 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
             ], for: .selected)
         return segmentedControl
     }()
+    lazy var detailView: UIView = {
+        var myView = UIView()
+        myView.backgroundColor = .yellow
+        myView.isHidden = true
+        return myView
+    }()
+    
+    lazy var textView: UIView = {
+        var myView = UIView()
+        myView.backgroundColor = .blue
+        myView.isHidden = true
+        return myView
+    }()
     lazy var animatedView: UIView = {
         var view = UIView()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -42,19 +57,20 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         view.backgroundColor = #colorLiteral(red: 0.2567201853, green: 0.4751234055, blue: 0.4362891316, alpha: 1)
         return view
     }()
+    
     @IBOutlet weak var eventTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        views = [eventTableView,detailView,textView]
+        views.first?.isHidden = false
+        detailView.isHidden = true
         setupAnimatedViewRail()
         setupCustomSegmentedBar()
         setupAnimatedView()
-        
-        
-        
+        setupDetailView()
+        setupTextView()
         eventTableView.dataSource = self
         eventTableView.delegate = self
-        // Do any additional setup after loading the view.
     }
     func setupCustomSegmentedBar() {
         view.addSubview(customSegmentedBar)
@@ -74,17 +90,28 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         animatedView.topAnchor.constraint(equalTo: customSegmentedBar.bottomAnchor).isActive = true
         animatedView.leadingAnchor.constraint(equalTo: animatedViewRail.leadingAnchor).isActive = true
         animatedView.heightAnchor.constraint(equalToConstant: 5).isActive = true
-        animatedView.widthAnchor.constraint(equalTo: animatedViewRail.widthAnchor, multiplier: 0.5).isActive = true
-        
-        
+        animatedView.widthAnchor.constraint(equalTo: animatedViewRail.widthAnchor, multiplier: 0.33).isActive = true   
     }
     func setupAnimatedViewRail(){
+        
         view.addSubview(animatedViewRail)
         animatedViewRail.translatesAutoresizingMaskIntoConstraints = false
         animatedViewRail.centerXAnchor.constraint(equalTo: eventTableView.centerXAnchor).isActive = true
         animatedViewRail.bottomAnchor.constraint(equalTo: eventTableView.topAnchor).isActive = true
         animatedViewRail.heightAnchor.constraint(equalToConstant: 5).isActive = true
         animatedViewRail.widthAnchor.constraint(equalTo: eventTableView.widthAnchor).isActive = true
+    }
+    
+    func setupDetailView(){
+        view.addSubview(detailView)
+        detailView.translatesAutoresizingMaskIntoConstraints = false
+        detailView.frame = eventTableView.frame
+    }
+    
+    func setupTextView(){
+        view.addSubview(textView)
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.frame = eventTableView.frame
     }
     @IBAction func dismiss(_ sender: UIButton) {
        
@@ -99,7 +126,14 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     @objc func customSegmentedBarPressed(sender: UISegmentedControl){
-        let selectorStartPosition = self.eventTableView.frame.width / CGFloat(2) * CGFloat(sender.selectedSegmentIndex)
+        for i in 0...views.count - 1 {
+            if i == sender.selectedSegmentIndex{
+                views[i].isHidden = false
+            } else {
+                views[i].isHidden = true
+            }
+        }
+        let selectorStartPosition = self.eventTableView.frame.width / CGFloat(3) * CGFloat(sender.selectedSegmentIndex)
         UIView.animate(withDuration: 0.3) {
             self.animatedView.frame.origin.x = selectorStartPosition + (self.view.frame.width - self.eventTableView.frame.width) / 2
         }

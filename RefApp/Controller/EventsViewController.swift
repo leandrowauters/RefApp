@@ -101,10 +101,7 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         animatedViewRail.widthAnchor.constraint(equalTo: eventTableView.widthAnchor).isActive = true
     }
     func setupDetailView(){
-        for player in Game.homeYellowCardPlayers{
-           detailView.yellowCardLabelHome.text = "Home: \(player.description.split(separator: ","))"
-        }
-        
+        detailView.yellowCardLabelHome.text = "Home: \(Game.homeYellowCardPlayers.description)"
         detailView.yellowCardLabelAway.text = "Away: \(Game.awayYellowCardPlayers.description)"
         detailView.redCardLabelHome.text = "Home: \(Game.homeRedCardPlayers.description)"
         detailView.redCardLabelAway.text = "Away: \(Game.awayRedCardPlayers.description)"
@@ -125,15 +122,18 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
 
-    @IBAction func dismiss() {
+    @IBAction func dismiss(_ sender: UIButton) {
        
+        dismiss()
+        
+    }
+    func dismiss() {
         eventDelegate.halfTime(bool: false)
         timerDelegate?.keepStartButtonDisable(disable: true)
         timerDelegate?.keepStartButtonHidden(hide: true)
-            eventDelegate.redCard(bool: false, home: nil)
-            eventDelegate.yellowCall(bool: false, home: nil)
+        eventDelegate.redCard(bool: false, home: nil)
+        eventDelegate.yellowCall(bool: false, home: nil)
         dismiss(animated: true, completion: nil)
-        
     }
     @objc func enterButtonPressed(){
         if textDetailView.notesTextView.text != "" {

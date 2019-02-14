@@ -18,8 +18,17 @@ extension UIViewController {
         present(alert, animated: true, completion: nil)
         
     }
-    func showAlert(title: String, message: String, handler: @escaping (UIAlertController) -> Void) {
+    func showAlert(title: String, message: String?, handler: @escaping (UIAlertController) -> Void) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         handler(alertController)
+    }
+    func showAlertYesNo(title: String, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (updateAction) in
+            
+            print("Game ended")
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        self.present(alert, animated: false)
     }
 }

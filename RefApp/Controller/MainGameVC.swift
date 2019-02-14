@@ -407,6 +407,17 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 }
 
 extension MainGameVC: TimerDelegate, EventDelegate{
+    func substitution(playerIn: String, playerOut: String, home: Bool, index: Int) {
+        MainGameVC.playerIn = playerIn
+        MainGameVC.playerOut = playerOut
+        MainGameVC.home = home
+        MainGameVC.index = index
+    }
+    
+    func subWasMade(bool: Bool) {
+        MainGameVC.substitution = bool
+    }
+    
     func yellowCall(bool: Bool, home: Bool?) {
         MainGameVC.yellowCard = bool
         if let home = home{
@@ -423,14 +434,7 @@ extension MainGameVC: TimerDelegate, EventDelegate{
     
  
     
-    func substitution(bool: Bool, playerIn: String, playerOut: String, home: Bool,index: Int) {
-       MainGameVC.substitution = bool
-        MainGameVC.playerIn = playerIn
-        MainGameVC.playerOut = playerOut
-        MainGameVC.home = home
-        MainGameVC.index = index
-        
-    }
+
     
     func activateViewDidAppear(bool: Bool) {
         viewWillAppear(bool)

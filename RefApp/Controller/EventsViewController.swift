@@ -8,12 +8,14 @@
 
 import UIKit
 
-class EventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class EventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
     
     weak var timerDelegate: TimerDelegate!
     weak var eventDelegate: EventDelegate!
     var events = Game.events
+    let detailView = EventVCDetails()
+    let textDetailView = EventVCTextView()
     var views = [UIView]()
     lazy var customSegmentedBar: UISegmentedControl = {
         var segmentedControl = UISegmentedControl()
@@ -33,19 +35,6 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
             ], for: .selected)
         return segmentedControl
     }()
-    lazy var detailView: UIView = {
-        var myView = UIView()
-        myView.backgroundColor = .yellow
-        myView.isHidden = true
-        return myView
-    }()
-    
-    lazy var textView: UIView = {
-        var myView = UIView()
-        myView.backgroundColor = .blue
-        myView.isHidden = true
-        return myView
-    }()
     lazy var animatedView: UIView = {
         var view = UIView()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -61,17 +50,27 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var eventTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        views = [eventTableView,detailView,textView]
+        views = [eventTableView,detailView,textDetailView]
         views.first?.isHidden = false
-        detailView.isHidden = true
         setupAnimatedViewRail()
         setupCustomSegmentedBar()
         setupAnimatedView()
+        setupViews(views: views)
         setupDetailView()
-        setupTextView()
         eventTableView.dataSource = self
         eventTableView.delegate = self
+        textDetailView.notesTextView.delegate = self
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
     }
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        setTextView()
+    }
+
     func setupCustomSegmentedBar() {
         view.addSubview(customSegmentedBar)
         customSegmentedBar.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +84,7 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     func setupAnimatedView(){
         view.addSubview(animatedView)
-        animatedView.centerXAnchor.constraint(equalTo: eventTableView.centerXAnchor).isActive = true
+//        animatedView.centerXAnchor.constraint(equalTo: eventTableView.centerXAnchor).isActive = true
         animatedView.translatesAutoresizingMaskIntoConstraints = false
         animatedView.topAnchor.constraint(equalTo: customSegmentedBar.bottomAnchor).isActive = true
         animatedView.leadingAnchor.constraint(equalTo: animatedViewRail.leadingAnchor).isActive = true
@@ -101,19 +100,32 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         animatedViewRail.heightAnchor.constraint(equalToConstant: 5).isActive = true
         animatedViewRail.widthAnchor.constraint(equalTo: eventTableView.widthAnchor).isActive = true
     }
-    
     func setupDetailView(){
-        view.addSubview(detailView)
-        detailView.translatesAutoresizingMaskIntoConstraints = false
-        detailView.frame = eventTableView.frame
+        for player in Game.homeYellowCardPlayers{
+           detailView.yellowCardLabelHome.text = "Home: \(player.description.split(separator: ","))"
+        }
+        
+        detailView.yellowCardLabelAway.text = "Away: \(Game.awayYellowCardPlayers.description)"
+        detailView.redCardLabelHome.text = "Home: \(Game.homeRedCardPlayers.description)"
+        detailView.redCardLabelAway.text = "Away: \(Game.awayRedCardPlayers.description)"
+        detailView.goalLabelHome.text = "Home: \(Game.homeGoalsPlayers.description)"
+        detailView.goalLabelAway.text = "Home: \(Game.awayGoalsPlayers.description)"
+    }
+    func setupViews(views: [UIView]){
+        for view in views{
+            self.view.addSubview(view)
+                    view.translatesAutoresizingMaskIntoConstraints = false
+                    view.centerXAnchor.constraint(equalTo: eventTableView.centerXAnchor).isActive = true
+                    view.centerYAnchor.constraint(equalTo: eventTableView.centerYAnchor).isActive = true
+                    view.heightAnchor.constraint(equalTo: eventTableView.heightAnchor).isActive = true
+                    view.widthAnchor.constraint(equalTo: eventTableView.widthAnchor).isActive = true
+                    view.isHidden = true
+        }
+        views.first?.isHidden = false
     }
     
-    func setupTextView(){
-        view.addSubview(textView)
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.frame = eventTableView.frame
-    }
-    @IBAction func dismiss(_ sender: UIButton) {
+
+    @IBAction func dismiss() {
        
         eventDelegate.halfTime(bool: false)
         timerDelegate?.keepStartButtonDisable(disable: true)
@@ -123,8 +135,27 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         dismiss(animated: true, completion: nil)
         
     }
-    
-    
+    @objc func enterButtonPressed(){
+        if textDetailView.notesTextView.text != "" {
+            Game.gameNotes.append(textDetailView.notesTextView.text! + "\n")
+            showAlert(title: "Text Saved", message: "") { (UIAlertController) in
+                self.dismiss()
+            }
+            print(Game.gameNotes)
+        } else {
+            showAlert(title: "Please Enter Text", message: nil)
+        }
+        
+    }
+    func setTextView(){
+        textDetailView.enterTextButton.addTarget(self, action: #selector(enterButtonPressed), for: .touchUpInside)
+        if Game.gameNotes.count == 0 {
+            textDetailView.notesTextView.text = "Tap to enter notes..."
+        } else {
+            textDetailView.notesTextView.textColor = .black
+            textDetailView.notesTextView.text = Game.gameNotes.last
+        }
+    }
     @objc func customSegmentedBarPressed(sender: UISegmentedControl){
         for i in 0...views.count - 1 {
             if i == sender.selectedSegmentIndex{
@@ -155,5 +186,23 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textDetailView.notesTextView.text == "Tap to enter notes..." {
+            textDetailView.notesTextView.text = ""
+            textDetailView.notesTextView.textColor = .black
+        }
     }
 }

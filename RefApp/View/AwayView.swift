@@ -35,7 +35,7 @@ class AwayView: UIView {
         guard let vc = storyboard.instantiateViewController(withIdentifier: "popAction") as? PopActionsVC else {return}
         let currentController = self.getCurrentViewController()
         vc.modalPresentationStyle = .fullScreen
-        vc.playerSelected = Game.awayPlayersSorted[sender.tag]
+        vc.playerSelected = Game.awayPlayers[sender.tag]
         vc.teamSelected = Game.awayTeam
         vc.teamSide = .away
         vc.selectedButton = sender.tag

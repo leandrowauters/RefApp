@@ -36,7 +36,9 @@ class Game: Codable {
     static var awayScore = Int()
     static var events = [Events]()
     static var gameHalf = 1
-    static var gameNotes = String()
+    static var gameNotes = [String]()
+    static var subtitutions = [(In: String, Out: String)]()
+    
     
     
     var gameName = String()

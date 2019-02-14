@@ -71,7 +71,8 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
             eventDelegate?.yellowCall(bool: false, home: true)
             eventDelegate?.redCard(bool: false, home: true)
             if let text = subTextField.text{
-                eventDelegate?.substitution(bool: true, playerIn: text, playerOut: selectedPlayer.description, home: true, index: selectedButton)
+                eventDelegate?.substitution(playerIn: text, playerOut: selectedPlayer.description, home: true, index: selectedButton)
+                eventDelegate?.subWasMade(bool: true)
 //            Game.homePlayersSorted.remove(at: selectedButton)
 //            Game.homePlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
 //            Game.homePlayersSorted = Game.homePlayersSorted.sorted{$0 < $1}
@@ -81,13 +82,15 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
             eventDelegate?.yellowCall(bool: false, home: false)
             eventDelegate?.redCard(bool: false, home: false)
             if let text = subTextField.text{
-                eventDelegate?.substitution(bool: true, playerIn: text, playerOut: selectedPlayer.description, home: false, index: selectedButton)
+                eventDelegate?.substitution(playerIn: text, playerOut: selectedPlayer.description, home: false, index: selectedButton)
+                eventDelegate?.subWasMade(bool: true)
             }
 //            Game.awayPlayersSorted.remove(at: selectedButton)
 //            Game.awayPlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
 //            Game.awayPlayersSorted = Game.awayPlayersSorted.sorted{$0 < $1}
 //            Game.awayPlayers = Game.awayPlayersSorted
         }
+//        Game.subs.append((In: subTextField.text!, Out: String(selectedPlayer) ))
         let sub = Events.init(type: TypeOfIncident.sub.rawValue, playerNum: selectedPlayer, team: teamSelected, half: Game.gameHalf, subIn: Int(subTextField.text!)!, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1))
         Game.events.append(sub)
         print(Game.homePlayers)

@@ -67,7 +67,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         halfTimeScoreLabel.text = "\(Game.homeScore) - \(Game.awayScore)"
         halfTimeTimeLabel.text = "\(MainTimer.timeString(time: gameRunningTime))"
         subHalftimeView.doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
-        noteHalfTimeView.enterTextButton.addTarget(self, action: #selector(enterButtonPressed), for: .touchUpInside)
+
         views = [eventHalfTimeView,subHalftimeView,noteHalfTimeView]
         setupCustomSegmentedBar()
         setupAnimatedViewRail()
@@ -107,7 +107,19 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        setTextView()
         registerKeyboardNotification()
+    }
+    
+    func setTextView(){
+        noteHalfTimeView.enterTextButton.addTarget(self, action: #selector(enterButtonPressed), for: .touchUpInside)
+        if Game.gameNotes.count == 0 {
+            noteHalfTimeView.notesTextView.text = "Tap to enter notes..."
+        } else {
+            noteHalfTimeView.notesTextView.textColor = .black
+            
+            noteHalfTimeView.notesTextView.text = Game.gameNotes.last
+        }
     }
     private func registerKeyboardNotification(){
         NotificationCenter.default.addObserver(self, selector: #selector(willShowKeyboard(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -179,18 +191,10 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         animatedViewRail.heightAnchor.constraint(equalToConstant: 5).isActive = true
         animatedViewRail.widthAnchor.constraint(equalTo: customSegmentedBar.widthAnchor).isActive = true
     }
-    func showAlert(title: String, message: String?) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okay = UIAlertAction(title: "Okay", style: .default) { (UIAlertAction) in
-            alert.dismiss(animated: true, completion: nil)
-        }
-        alert.addAction(okay)
-        present(alert, animated: true, completion: nil)
-        
-    }
+
     @objc func enterButtonPressed(){
         if noteHalfTimeView.notesTextView.text != "" {
-            Game.gameNotes = noteHalfTimeView.notesTextView.text
+            Game.gameNotes.append(noteHalfTimeView.notesTextView.text! + "\n")
             showAlert(title: "Text Saved", message: nil)
             print(Game.gameNotes)
         } else {

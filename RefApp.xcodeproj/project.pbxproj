@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31B9B91FF7CC2C962B67870A /* Pods_RefApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718F9C17FA0EB1C3BE311C17 /* Pods_RefApp.framework */; };
 		D510975121CAC57E008638B3 /* HomePlayersInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510975021CAC57E008638B3 /* HomePlayersInputVC.swift */; };
 		D529FDFB21B46E7A00DDC366 /* TextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529FDFA21B46E7A00DDC366 /* TextVC.swift */; };
 		D529FDFF21B4748C00DDC366 /* TeamsInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529FDFE21B4748C00DDC366 /* TeamsInputVC.swift */; };
@@ -30,15 +31,21 @@
 		D558FF5B220A85C100B3B62D /* NoteHalfTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558FF5A220A85C100B3B62D /* NoteHalfTimeView.swift */; };
 		D558FF5E220A9A0C00B3B62D /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558FF5D220A9A0C00B3B62D /* EventsTableViewCell.swift */; };
 		D5637AF721B88BD2003821F5 /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5637AF621B88BD2003821F5 /* GameDelegate.swift */; };
+		D57420C9221739EA006D1CCB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57420C8221739EA006D1CCB /* CreateAccountViewController.swift */; };
+		D57420CD22173EC0006D1CCB /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57420CC22173EC0006D1CCB /* MyAccountViewController.swift */; };
 		D58B2FC42208AEB4005FB7FB /* HalfTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B2FC32208AEB4005FB7FB /* HalfTimeViewController.swift */; };
 		D58C2FFF21B5D50500A15E03 /* GameLengthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58C2FFE21B5D50500A15E03 /* GameLengthCell.swift */; };
 		D58C300121B5D70400A15E03 /* GameLengthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58C300021B5D70400A15E03 /* GameLengthVC.swift */; };
 		D5A62AA621E4318500C9183B /* SavedGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A62AA521E4318500C9183B /* SavedGamesViewController.swift */; };
 		D5A62AA821E526C700C9183B /* SavedGameDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A62AA721E526C700C9183B /* SavedGameDetailedViewController.swift */; };
 		D5A851882215FA020019AFC0 /* Alert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A851872215FA020019AFC0 /* Alert+Extension.swift */; };
+		D5A8518A22163F580019AFC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5A8518922163F580019AFC0 /* GoogleService-Info.plist */; };
+		D5A8518C22166ABC0019AFC0 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8518B22166ABC0019AFC0 /* SignInViewController.swift */; };
+		D5A8519022166C060019AFC0 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8518F22166C060019AFC0 /* MainScreenViewController.swift */; };
 		D5BDD17F21EAB55C0078408E /* DataPersisitanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD17E21EAB55C0078408E /* DataPersisitanceManager.swift */; };
 		D5BDD18121EB01220078408E /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD18021EB01220078408E /* EventsViewController.swift */; };
 		D5BDD18321EB06670078408E /* EventDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD18221EB06670078408E /* EventDelegate.swift */; };
+		D5C0F75022176893006722DE /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C0F74F22176893006722DE /* UserSession.swift */; };
 		D5CDA72221ED267000A59133 /* GraphicClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDA72121ED267000A59133 /* GraphicClient.swift */; };
 		D5CE6D6F21DD26CC00FD921A /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE6D6E21DD26CC00FD921A /* Events.swift */; };
 		D5CE6D7121DD3F9700FD921A /* MainTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE6D7021DD3F9700FD921A /* MainTimer.swift */; };
@@ -56,6 +63,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		718F9C17FA0EB1C3BE311C17 /* Pods_RefApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RefApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93C9AD570AB70A8476E784C3 /* Pods-RefApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefApp.debug.xcconfig"; path = "Target Support Files/Pods-RefApp/Pods-RefApp.debug.xcconfig"; sourceTree = "<group>"; };
+		B1D99525BDDE2393A018765D /* Pods-RefApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefApp.release.xcconfig"; path = "Target Support Files/Pods-RefApp/Pods-RefApp.release.xcconfig"; sourceTree = "<group>"; };
 		D510975021CAC57E008638B3 /* HomePlayersInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayersInputVC.swift; sourceTree = "<group>"; };
 		D529FDFA21B46E7A00DDC366 /* TextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextVC.swift; sourceTree = "<group>"; };
 		D529FDFE21B4748C00DDC366 /* TeamsInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsInputVC.swift; sourceTree = "<group>"; };
@@ -79,15 +89,21 @@
 		D558FF5A220A85C100B3B62D /* NoteHalfTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteHalfTimeView.swift; sourceTree = "<group>"; };
 		D558FF5D220A9A0C00B3B62D /* EventsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
 		D5637AF621B88BD2003821F5 /* GameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
+		D57420C8221739EA006D1CCB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		D57420CC22173EC0006D1CCB /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		D58B2FC32208AEB4005FB7FB /* HalfTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfTimeViewController.swift; sourceTree = "<group>"; };
 		D58C2FFE21B5D50500A15E03 /* GameLengthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLengthCell.swift; sourceTree = "<group>"; };
 		D58C300021B5D70400A15E03 /* GameLengthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameLengthVC.swift; path = ../../../GameLengthVC.swift; sourceTree = "<group>"; };
 		D5A62AA521E4318500C9183B /* SavedGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesViewController.swift; sourceTree = "<group>"; };
 		D5A62AA721E526C700C9183B /* SavedGameDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGameDetailedViewController.swift; sourceTree = "<group>"; };
 		D5A851872215FA020019AFC0 /* Alert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Extension.swift"; sourceTree = "<group>"; };
+		D5A8518922163F580019AFC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D5A8518B22166ABC0019AFC0 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		D5A8518F22166C060019AFC0 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		D5BDD17E21EAB55C0078408E /* DataPersisitanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersisitanceManager.swift; sourceTree = "<group>"; };
 		D5BDD18021EB01220078408E /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		D5BDD18221EB06670078408E /* EventDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDelegate.swift; sourceTree = "<group>"; };
+		D5C0F74F22176893006722DE /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		D5CDA72121ED267000A59133 /* GraphicClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicClient.swift; sourceTree = "<group>"; };
 		D5CE6D6E21DD26CC00FD921A /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		D5CE6D7021DD3F9700FD921A /* MainTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTimer.swift; sourceTree = "<group>"; };
@@ -111,12 +127,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31B9B91FF7CC2C962B67870A /* Pods_RefApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A107CE7C18002B3AC015D116 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				93C9AD570AB70A8476E784C3 /* Pods-RefApp.debug.xcconfig */,
+				B1D99525BDDE2393A018765D /* Pods-RefApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D529FE0421B475E100DDC366 /* GameSettigsDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +192,8 @@
 			children = (
 				D5FBD96F21B23538005D89F4 /* RefApp */,
 				D5FBD96E21B23538005D89F4 /* Products */,
+				A107CE7C18002B3AC015D116 /* Pods */,
+				FA7C7087B5FE7C07E0F7E586 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				D5FBD97C21B23539005D89F4 /* Info.plist */,
+				D5A8518922163F580019AFC0 /* GoogleService-Info.plist */,
 				D5FBD98621B2359D005D89F4 /* Model */,
 				D5FBD98721B235A9005D89F4 /* View */,
 				D5FBD98821B235AF005D89F4 /* Controller */,
@@ -198,6 +227,7 @@
 				D5313FDD21D6CCFE00875B63 /* GameSaveClient.swift */,
 				D5A851872215FA020019AFC0 /* Alert+Extension.swift */,
 				D5BDD17E21EAB55C0078408E /* DataPersisitanceManager.swift */,
+				D5C0F74F22176893006722DE /* UserSession.swift */,
 				D5BDD18221EB06670078408E /* EventDelegate.swift */,
 				D5637AF621B88BD2003821F5 /* GameDelegate.swift */,
 				D5CE6D6E21DD26CC00FD921A /* Events.swift */,
@@ -237,6 +267,10 @@
 				D510975021CAC57E008638B3 /* HomePlayersInputVC.swift */,
 				D5313FDF21D6F26500875B63 /* AwayPlayersInputVC.swift */,
 				D5FBD98421B2358D005D89F4 /* GameSettings.swift */,
+				D57420CC22173EC0006D1CCB /* MyAccountViewController.swift */,
+				D57420C8221739EA006D1CCB /* CreateAccountViewController.swift */,
+				D5A8518B22166ABC0019AFC0 /* SignInViewController.swift */,
+				D5A8518F22166C060019AFC0 /* MainScreenViewController.swift */,
 				D529FE0421B475E100DDC366 /* GameSettigsDetail */,
 			);
 			path = Controller;
@@ -251,6 +285,14 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		FA7C7087B5FE7C07E0F7E586 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				718F9C17FA0EB1C3BE311C17 /* Pods_RefApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -258,9 +300,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5FBD97F21B23539005D89F4 /* Build configuration list for PBXNativeTarget "RefApp" */;
 			buildPhases = (
+				B914051CC4B7DBB3656A7B06 /* [CP] Check Pods Manifest.lock */,
 				D5FBD96921B23538005D89F4 /* Sources */,
 				D5FBD96A21B23538005D89F4 /* Frameworks */,
 				D5FBD96B21B23538005D89F4 /* Resources */,
+				4DCD1031B894074024D88F1C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -313,11 +357,73 @@
 				D5FBD97B21B23539005D89F4 /* LaunchScreen.storyboard in Resources */,
 				D5313FE221D7096B00875B63 /* HomeView.xib in Resources */,
 				D5FBD97821B23539005D89F4 /* Assets.xcassets in Resources */,
+				D5A8518A22163F580019AFC0 /* GoogleService-Info.plist in Resources */,
 				D5FBD97621B23538005D89F4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4DCD1031B894074024D88F1C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RefApp/Pods-RefApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RefApp/Pods-RefApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B914051CC4B7DBB3656A7B06 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RefApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D5FBD96921B23538005D89F4 /* Sources */ = {
@@ -338,12 +444,16 @@
 				D5637AF721B88BD2003821F5 /* GameDelegate.swift in Sources */,
 				D5CDA72221ED267000A59133 /* GraphicClient.swift in Sources */,
 				D558FF57220A859900B3B62D /* EventHalfTimeView.swift in Sources */,
+				D5A8518C22166ABC0019AFC0 /* SignInViewController.swift in Sources */,
+				D57420C9221739EA006D1CCB /* CreateAccountViewController.swift in Sources */,
 				D5CE6D6F21DD26CC00FD921A /* Events.swift in Sources */,
+				D57420CD22173EC0006D1CCB /* MyAccountViewController.swift in Sources */,
 				D5BDD18121EB01220078408E /* EventsViewController.swift in Sources */,
 				D5E76063221346FC00450F2E /* EventVCDetails.swift in Sources */,
 				D5313FE021D6F26500875B63 /* AwayPlayersInputVC.swift in Sources */,
 				D5CE6D7121DD3F9700FD921A /* MainTimer.swift in Sources */,
 				D532218D21DC3213004B0363 /* SelectPlayerVC.swift in Sources */,
+				D5C0F75022176893006722DE /* UserSession.swift in Sources */,
 				D550683221CDE61800F3C6F4 /* GameClient.swift in Sources */,
 				D5313FDE21D6CCFE00875B63 /* GameSaveClient.swift in Sources */,
 				D58B2FC42208AEB4005FB7FB /* HalfTimeViewController.swift in Sources */,
@@ -364,6 +474,7 @@
 				D5FBD97121B23538005D89F4 /* AppDelegate.swift in Sources */,
 				D5FBD98521B2358D005D89F4 /* GameSettings.swift in Sources */,
 				D5313FEA21D70D8E00875B63 /* AwayView.swift in Sources */,
+				D5A8519022166C060019AFC0 /* MainScreenViewController.swift in Sources */,
 				D5A851882215FA020019AFC0 /* Alert+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,6 +619,7 @@
 		};
 		D5FBD98021B23539005D89F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93C9AD570AB70A8476E784C3 /* Pods-RefApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -520,12 +632,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Testing.RefApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		D5FBD98121B23539005D89F4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1D99525BDDE2393A018765D /* Pods-RefApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -538,7 +651,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Testing.RefApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -39,13 +39,13 @@
 		D5A62AA621E4318500C9183B /* SavedGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A62AA521E4318500C9183B /* SavedGamesViewController.swift */; };
 		D5A62AA821E526C700C9183B /* SavedGameDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A62AA721E526C700C9183B /* SavedGameDetailedViewController.swift */; };
 		D5A851882215FA020019AFC0 /* Alert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A851872215FA020019AFC0 /* Alert+Extension.swift */; };
-		D5A8518A22163F580019AFC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5A8518922163F580019AFC0 /* GoogleService-Info.plist */; };
 		D5A8518C22166ABC0019AFC0 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8518B22166ABC0019AFC0 /* SignInViewController.swift */; };
 		D5A8519022166C060019AFC0 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8518F22166C060019AFC0 /* MainScreenViewController.swift */; };
 		D5BDD17F21EAB55C0078408E /* DataPersisitanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD17E21EAB55C0078408E /* DataPersisitanceManager.swift */; };
 		D5BDD18121EB01220078408E /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD18021EB01220078408E /* EventsViewController.swift */; };
 		D5BDD18321EB06670078408E /* EventDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD18221EB06670078408E /* EventDelegate.swift */; };
 		D5C0F75022176893006722DE /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C0F74F22176893006722DE /* UserSession.swift */; };
+		D5C0F752221BA8AD006722DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5C0F751221BA8AD006722DE /* GoogleService-Info.plist */; };
 		D5CDA72221ED267000A59133 /* GraphicClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDA72121ED267000A59133 /* GraphicClient.swift */; };
 		D5CE6D6F21DD26CC00FD921A /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE6D6E21DD26CC00FD921A /* Events.swift */; };
 		D5CE6D7121DD3F9700FD921A /* MainTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE6D7021DD3F9700FD921A /* MainTimer.swift */; };
@@ -97,13 +97,13 @@
 		D5A62AA521E4318500C9183B /* SavedGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesViewController.swift; sourceTree = "<group>"; };
 		D5A62AA721E526C700C9183B /* SavedGameDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGameDetailedViewController.swift; sourceTree = "<group>"; };
 		D5A851872215FA020019AFC0 /* Alert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Extension.swift"; sourceTree = "<group>"; };
-		D5A8518922163F580019AFC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D5A8518B22166ABC0019AFC0 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		D5A8518F22166C060019AFC0 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		D5BDD17E21EAB55C0078408E /* DataPersisitanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersisitanceManager.swift; sourceTree = "<group>"; };
 		D5BDD18021EB01220078408E /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		D5BDD18221EB06670078408E /* EventDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDelegate.swift; sourceTree = "<group>"; };
 		D5C0F74F22176893006722DE /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		D5C0F751221BA8AD006722DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D5CDA72121ED267000A59133 /* GraphicClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicClient.swift; sourceTree = "<group>"; };
 		D5CE6D6E21DD26CC00FD921A /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		D5CE6D7021DD3F9700FD921A /* MainTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTimer.swift; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				D5FBD97C21B23539005D89F4 /* Info.plist */,
-				D5A8518922163F580019AFC0 /* GoogleService-Info.plist */,
+				D5C0F751221BA8AD006722DE /* GoogleService-Info.plist */,
 				D5FBD98621B2359D005D89F4 /* Model */,
 				D5FBD98721B235A9005D89F4 /* View */,
 				D5FBD98821B235AF005D89F4 /* Controller */,
@@ -357,8 +357,8 @@
 				D5FBD97B21B23539005D89F4 /* LaunchScreen.storyboard in Resources */,
 				D5313FE221D7096B00875B63 /* HomeView.xib in Resources */,
 				D5FBD97821B23539005D89F4 /* Assets.xcassets in Resources */,
-				D5A8518A22163F580019AFC0 /* GoogleService-Info.plist in Resources */,
 				D5FBD97621B23538005D89F4 /* Main.storyboard in Resources */,
+				D5C0F752221BA8AD006722DE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

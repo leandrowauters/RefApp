@@ -17,8 +17,13 @@ class SignInViewController: UIViewController {
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(createAccountTapped))
         createAccountLabel.isUserInteractionEnabled = true
         createAccountLabel.addGestureRecognizer(tap)
+        let screenTap = UITapGestureRecognizer.init(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(screenTap)
     }
     
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
     @objc func createAccountTapped() {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CreateAccountViewController")

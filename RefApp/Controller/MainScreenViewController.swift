@@ -14,14 +14,23 @@ class MainScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if UserSession.loginStatus == .existingAccount {
+//            barButton.title = "My Account"
+            barButton.image = UIImage(named: "icons8-guest_male")
+        }
         
     }
     
     @IBAction func barButtonPressed(_ sender: UIBarButtonItem) {
+        
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "SignInViewController")
-        navigationController?.pushViewController(vc, animated: true)
+        let signInVC = storyBoard.instantiateViewController(withIdentifier: "SignInViewController")
+        let myAccountVC = storyBoard.instantiateViewController(withIdentifier: "MyAccountVC")
+        if UserSession.loginStatus == .existingAccount{
+        navigationController?.pushViewController(myAccountVC, animated: true)
+        } else {
+            navigationController?.pushViewController(signInVC, animated: true)
+        }
     }
     
     /*

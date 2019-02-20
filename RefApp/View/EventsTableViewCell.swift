@@ -25,7 +25,7 @@ class EventsTableViewCell: UITableViewCell {
     lazy var timeStampLabel: UILabel = {
         var label = UILabel()
         label.text = "Label"
-        label.textColor = .white
+        label.textColor = .white 
         return label
     }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

@@ -49,6 +49,10 @@
 		D5CDA72221ED267000A59133 /* GraphicClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDA72121ED267000A59133 /* GraphicClient.swift */; };
 		D5CE6D6F21DD26CC00FD921A /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE6D6E21DD26CC00FD921A /* Events.swift */; };
 		D5CE6D7121DD3F9700FD921A /* MainTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE6D7021DD3F9700FD921A /* MainTimer.swift */; };
+		D5D03CCE221DCFE000F04E03 /* MyAccountInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5D03CCD221DCFE000F04E03 /* MyAccountInfoView.xib */; };
+		D5D03CD0221DD04800F04E03 /* MyAccountInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D03CCF221DD04800F04E03 /* MyAccountInfoView.swift */; };
+		D5D03CD2221DDCD900F04E03 /* PreviousGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D03CD1221DDCD900F04E03 /* PreviousGamesView.swift */; };
+		D5D03CD6221DE12900F04E03 /* PreviousGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5D03CD5221DE12900F04E03 /* PreviousGamesView.xib */; };
 		D5D7194721FA674C003F2BF6 /* HomeAwayViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D7194621FA674C003F2BF6 /* HomeAwayViewDelegate.swift */; };
 		D5E76063221346FC00450F2E /* EventVCDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E76062221346FC00450F2E /* EventVCDetails.swift */; };
 		D5E76067221349FD00450F2E /* EventVCTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E76066221349FD00450F2E /* EventVCTextView.swift */; };
@@ -107,6 +111,10 @@
 		D5CDA72121ED267000A59133 /* GraphicClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicClient.swift; sourceTree = "<group>"; };
 		D5CE6D6E21DD26CC00FD921A /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		D5CE6D7021DD3F9700FD921A /* MainTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTimer.swift; sourceTree = "<group>"; };
+		D5D03CCD221DCFE000F04E03 /* MyAccountInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyAccountInfoView.xib; sourceTree = "<group>"; };
+		D5D03CCF221DD04800F04E03 /* MyAccountInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountInfoView.swift; sourceTree = "<group>"; };
+		D5D03CD1221DDCD900F04E03 /* PreviousGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousGamesView.swift; sourceTree = "<group>"; };
+		D5D03CD5221DE12900F04E03 /* PreviousGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviousGamesView.xib; sourceTree = "<group>"; };
 		D5D7194621FA674C003F2BF6 /* HomeAwayViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAwayViewDelegate.swift; sourceTree = "<group>"; };
 		D5E76062221346FC00450F2E /* EventVCDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVCDetails.swift; sourceTree = "<group>"; };
 		D5E76066221349FD00450F2E /* EventVCTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVCTextView.swift; sourceTree = "<group>"; };
@@ -187,6 +195,17 @@
 			name = TeamsViews;
 			sourceTree = "<group>";
 		};
+		D5D03CD4221DDD0B00F04E03 /* MyAccountViews */ = {
+			isa = PBXGroup;
+			children = (
+				D5D03CCD221DCFE000F04E03 /* MyAccountInfoView.xib */,
+				D5D03CCF221DD04800F04E03 /* MyAccountInfoView.swift */,
+				D5D03CD1221DDCD900F04E03 /* PreviousGamesView.swift */,
+				D5D03CD5221DE12900F04E03 /* PreviousGamesView.xib */,
+			);
+			name = MyAccountViews;
+			sourceTree = "<group>";
+		};
 		D5FBD96421B23538005D89F4 = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				D5FBD97421B23538005D89F4 /* Main.storyboard */,
+				D5D03CD4221DDD0B00F04E03 /* MyAccountViews */,
 				D57C22C722134B4000FEC9D1 /* EventsViews */,
 				D558FF5C220A998800B3B62D /* HalfTimeViews */,
 				D58B2FC52208CB20005FB7FB /* TeamsViews */,
@@ -356,6 +376,8 @@
 				D5313FE821D70D7900875B63 /* AwayView.xib in Resources */,
 				D5FBD97B21B23539005D89F4 /* LaunchScreen.storyboard in Resources */,
 				D5313FE221D7096B00875B63 /* HomeView.xib in Resources */,
+				D5D03CD6221DE12900F04E03 /* PreviousGamesView.xib in Resources */,
+				D5D03CCE221DCFE000F04E03 /* MyAccountInfoView.xib in Resources */,
 				D5FBD97821B23539005D89F4 /* Assets.xcassets in Resources */,
 				D5FBD97621B23538005D89F4 /* Main.storyboard in Resources */,
 				D5C0F752221BA8AD006722DE /* GoogleService-Info.plist in Resources */,
@@ -453,11 +475,13 @@
 				D5313FE021D6F26500875B63 /* AwayPlayersInputVC.swift in Sources */,
 				D5CE6D7121DD3F9700FD921A /* MainTimer.swift in Sources */,
 				D532218D21DC3213004B0363 /* SelectPlayerVC.swift in Sources */,
+				D5D03CD2221DDCD900F04E03 /* PreviousGamesView.swift in Sources */,
 				D5C0F75022176893006722DE /* UserSession.swift in Sources */,
 				D550683221CDE61800F3C6F4 /* GameClient.swift in Sources */,
 				D5313FDE21D6CCFE00875B63 /* GameSaveClient.swift in Sources */,
 				D58B2FC42208AEB4005FB7FB /* HalfTimeViewController.swift in Sources */,
 				D52C80A421F79DA6005B8C95 /* AwayPlayersCollectionViewCell.swift in Sources */,
+				D5D03CD0221DD04800F04E03 /* MyAccountInfoView.swift in Sources */,
 				D544EC8F21C8498E004B285C /* NamesInputVC.swift in Sources */,
 				D5BDD17F21EAB55C0078408E /* DataPersisitanceManager.swift in Sources */,
 				D510975121CAC57E008638B3 /* HomePlayersInputVC.swift in Sources */,

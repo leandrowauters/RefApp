@@ -12,13 +12,23 @@ class MainScreenViewController: UIViewController {
 
     @IBOutlet weak var barButton: UIBarButtonItem!
     
+    @IBOutlet weak var newGameButton: UIButton!
+    @IBOutlet weak var loadGameButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if UserSession.loginStatus == .existingAccount {
 //            barButton.title = "My Account"
             barButton.image = UIImage(named: "icons8-guest_male")
         }
-        
+        setupButtons(buttons: [newGameButton, loadGameButton])
+    }
+    func setupButtons(buttons: [UIButton]) {
+        for button in buttons {
+            button.layer.borderWidth = 2
+            button.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            button.layer.cornerRadius = 20
+        }
     }
     
     @IBAction func barButtonPressed(_ sender: UIBarButtonItem) {

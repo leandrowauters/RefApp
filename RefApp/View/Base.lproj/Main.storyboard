@@ -1640,29 +1640,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ph-4M-3xT">
-                                <rect key="frame" x="50" y="385" width="314" height="30"/>
-                                <state key="normal" title="New Game"/>
+                                <rect key="frame" x="93" y="380.66666666666669" width="228" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="New Game">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="DbE-02-AZ3" kind="show" id="WRS-Fq-bhA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ala-Qy-fhd">
-                                <rect key="frame" x="50" y="445" width="314" height="30"/>
-                                <state key="normal" title="Load Game"/>
+                                <rect key="frame" x="93" y="449.66666666666669" width="228" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Load Game">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="6KD-LE-re0" kind="show" id="anP-vB-6qi"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.2156862745" green="0.36862745099999999" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ala-Qy-fhd" firstAttribute="top" secondItem="5ph-4M-3xT" secondAttribute="bottom" constant="30" id="7ej-wH-jZi"/>
-                            <constraint firstItem="5ph-4M-3xT" firstAttribute="leading" secondItem="qaf-0u-vK1" secondAttribute="leading" constant="50" id="AnH-LK-8oo"/>
-                            <constraint firstItem="qaf-0u-vK1" firstAttribute="trailing" secondItem="ala-Qy-fhd" secondAttribute="trailing" constant="50" id="LDT-gX-P8A"/>
-                            <constraint firstItem="5ph-4M-3xT" firstAttribute="centerX" secondItem="qaf-0u-vK1" secondAttribute="centerX" id="WMM-Cf-39q"/>
-                            <constraint firstItem="qaf-0u-vK1" firstAttribute="trailing" secondItem="5ph-4M-3xT" secondAttribute="trailing" constant="50" id="ZY4-8M-5wc"/>
-                            <constraint firstItem="5ph-4M-3xT" firstAttribute="centerY" secondItem="qaf-0u-vK1" secondAttribute="centerY" id="gZm-2D-X6W"/>
-                            <constraint firstItem="ala-Qy-fhd" firstAttribute="leading" secondItem="qaf-0u-vK1" secondAttribute="leading" constant="50" id="h22-c5-jb9"/>
+                            <constraint firstItem="5ph-4M-3xT" firstAttribute="centerY" secondItem="qaf-0u-vK1" secondAttribute="centerY" id="8MN-I2-vg6"/>
+                            <constraint firstItem="ala-Qy-fhd" firstAttribute="centerX" secondItem="5ph-4M-3xT" secondAttribute="centerX" id="ERO-EG-Iv7"/>
+                            <constraint firstItem="ala-Qy-fhd" firstAttribute="top" secondItem="5ph-4M-3xT" secondAttribute="bottom" constant="30" id="Yvp-OR-SAo"/>
+                            <constraint firstItem="ala-Qy-fhd" firstAttribute="width" secondItem="5ph-4M-3xT" secondAttribute="width" id="eFm-SZ-gLU"/>
+                            <constraint firstItem="5ph-4M-3xT" firstAttribute="centerX" secondItem="qaf-0u-vK1" secondAttribute="centerX" id="enQ-4d-Ac3"/>
+                            <constraint firstItem="5ph-4M-3xT" firstAttribute="width" secondItem="nXx-gb-Dp7" secondAttribute="width" multiplier="0.55" id="kgd-zH-AJ8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qaf-0u-vK1"/>
                     </view>
@@ -1675,6 +1680,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="barButton" destination="nR7-xe-zJF" id="TxK-KV-j0S"/>
+                        <outlet property="loadGameButton" destination="ala-Qy-fhd" id="sX7-Un-98a"/>
+                        <outlet property="newGameButton" destination="5ph-4M-3xT" id="0YR-wd-MSV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rBd-At-sdg" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -40,7 +40,7 @@ class TextVC: UIViewController {
         case 2,7:
         textField.keyboardType = .numberPad
         
-        GameClient.doneButton(view: self.view, doneBtn: doneBtn, textFields: [textField])
+        GraphicClient.doneButton(view: self.view, doneBtn: doneBtn, textFields: [textField])
         default:
             return
         }

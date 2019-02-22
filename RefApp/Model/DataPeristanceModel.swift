@@ -10,10 +10,12 @@ import UIKit
 
 struct DataPeristanceModel {
     private static var games = [Game]()
-    private static let filename = "SavedGames.plist"
+    private static var settings: Settings?
+    private static let saveGameFileName = "SavedGames.plist"
+    private static let settingsFileName = "SavedSettings.plist"
     
     static func getGames() -> [Game]{
-        let path = DataPersistanceManager.filepathToDocumentsDirectory(filename: filename).path
+        let path = DataPersistanceManager.filepathToDocumentsDirectory(filename: saveGameFileName).path
         if FileManager.default.fileExists(atPath: path) {
             if let data = FileManager.default.contents(atPath: path){
                 do {
@@ -23,22 +25,22 @@ struct DataPeristanceModel {
                 }
             }
         } else {
-            print("\(filename) does not exist")
+            print("\(saveGameFileName) does not exist")
         }
         return games
     }
     
     static func addGame(game: Game){
         games.append(game)
-        save()
+        saveGame()
     }
     static func deleteGame(game: Game, atIndex index: Int){
         games.remove(at: index)
-        save()
+        saveGame()
     }
     
-    static func save(){
-        let path = DataPersistanceManager.filepathToDocumentsDirectory(filename: filename)
+    static func saveGame(){
+        let path = DataPersistanceManager.filepathToDocumentsDirectory(filename: saveGameFileName)
         do{
             let data = try PropertyListEncoder().encode(games)
             try data.write(to: path, options:  .atomic)
@@ -47,7 +49,7 @@ struct DataPeristanceModel {
         }
     }
 
-    static func saveGame(vc: UIViewController){
+    static func saveGameAlert(vc: UIViewController){
         let alert = UIAlertController(title: "", message: "Enter Game Name", preferredStyle: .alert)
         alert.addTextField { (TextField) in
             _ = ""
@@ -60,15 +62,23 @@ struct DataPeristanceModel {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         vc.present(alert, animated: false)
     }
-}
-class SavedGame: Codable {
-    var game: Game
-    var slot: Int
-    var saveName: String
-    
-    init(game: Game, slot: Int, saveName: String) {
-        self.game = game
-        self.slot = slot
-        self.saveName = saveName
+    static func saveSettings() {
+        
+    }
+    static func loadSettings() -> Settings?{ //USE USER ID AS PARAMETER TO PERSONIFICATE EACH SETTINGS
+        let path = DataPersistanceManager.filepathToDocumentsDirectory(filename: saveGameFileName).path
+        if FileManager.default.fileExists(atPath: path) {
+            if let data = FileManager.default.contents(atPath: path){
+                do {
+                    settings = try PropertyListDecoder().decode(Settings.self, from: data)
+                }catch {
+                    print ("property list dedoding error:\(error)")
+                }
+            }
+        } else {
+            print("\(saveGameFileName) does not exist")
+        }
+        return settings
     }
 }
+

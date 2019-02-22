@@ -30,6 +30,8 @@
 		D558FF59220A85B100B3B62D /* SubHalfTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558FF58220A85B100B3B62D /* SubHalfTimeView.swift */; };
 		D558FF5B220A85C100B3B62D /* NoteHalfTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558FF5A220A85C100B3B62D /* NoteHalfTimeView.swift */; };
 		D558FF5E220A9A0C00B3B62D /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558FF5D220A9A0C00B3B62D /* EventsTableViewCell.swift */; };
+		D55DD9322220A423009843D2 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55DD9312220A423009843D2 /* GameData.swift */; };
+		D55DD9342220A4E7009843D2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55DD9332220A4E7009843D2 /* Settings.swift */; };
 		D5637AF721B88BD2003821F5 /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5637AF621B88BD2003821F5 /* GameDelegate.swift */; };
 		D57420C9221739EA006D1CCB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57420C8221739EA006D1CCB /* CreateAccountViewController.swift */; };
 		D57420CD22173EC0006D1CCB /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57420CC22173EC0006D1CCB /* MyAccountViewController.swift */; };
@@ -93,6 +95,8 @@
 		D558FF58220A85B100B3B62D /* SubHalfTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubHalfTimeView.swift; sourceTree = "<group>"; };
 		D558FF5A220A85C100B3B62D /* NoteHalfTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteHalfTimeView.swift; sourceTree = "<group>"; };
 		D558FF5D220A9A0C00B3B62D /* EventsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
+		D55DD9312220A423009843D2 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		D55DD9332220A4E7009843D2 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D5637AF621B88BD2003821F5 /* GameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
 		D57420C8221739EA006D1CCB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		D57420CC22173EC0006D1CCB /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +248,8 @@
 			isa = PBXGroup;
 			children = (
 				D5FBD98221B23548005D89F4 /* Game.swift */,
+				D55DD9312220A423009843D2 /* GameData.swift */,
+				D55DD9332220A4E7009843D2 /* Settings.swift */,
 				D550683121CDE61800F3C6F4 /* GameClient.swift */,
 				D5313FDD21D6CCFE00875B63 /* DataPeristanceModel.swift */,
 				D5A851872215FA020019AFC0 /* Alert+Extension.swift */,
@@ -458,6 +464,7 @@
 				D5D03CDC221E3FBF00F04E03 /* Statistics.swift in Sources */,
 				D5A62AA621E4318500C9183B /* SavedGamesViewController.swift in Sources */,
 				D5E76067221349FD00450F2E /* EventVCTextView.swift in Sources */,
+				D55DD9342220A4E7009843D2 /* Settings.swift in Sources */,
 				D558FF5B220A85C100B3B62D /* NoteHalfTimeView.swift in Sources */,
 				D5FBD98321B23548005D89F4 /* Game.swift in Sources */,
 				D58C300121B5D70400A15E03 /* GameLengthVC.swift in Sources */,
@@ -486,6 +493,7 @@
 				D58B2FC42208AEB4005FB7FB /* HalfTimeViewController.swift in Sources */,
 				D52C80A421F79DA6005B8C95 /* AwayPlayersCollectionViewCell.swift in Sources */,
 				D5D03CD0221DD04800F04E03 /* MyAccountInfoView.swift in Sources */,
+				D55DD9322220A423009843D2 /* GameData.swift in Sources */,
 				D544EC8F21C8498E004B285C /* NamesInputVC.swift in Sources */,
 				D5BDD17F21EAB55C0078408E /* DataPersisitanceManager.swift in Sources */,
 				D510975121CAC57E008638B3 /* HomePlayersInputVC.swift in Sources */,

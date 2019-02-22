@@ -55,6 +55,16 @@ class GraphicClient {
         trackLayer.isHidden = isHidden
         shapeLayer.isHidden = isHidden
     }
+    static func doneButton(view: UIView, doneBtn: UIBarButtonItem, textFields: [UITextField]) {
+        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: view.frame.size.width, height: 30))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        //        let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Enter Player", style: .done, target: self, action: #selector(doneButtonAction))
+        toolbar.setItems([flexSpace, doneBtn], animated: false)
+        toolbar.sizeToFit()
+        for textField in textFields{
+            textField.inputAccessoryView = toolbar
+        }
+    }
     func changeButtonLayout(buttons: [UIButton]) {
             for button in buttons{
                 button.layer.masksToBounds = true

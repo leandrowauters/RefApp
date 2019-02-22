@@ -33,7 +33,7 @@ class AwayPlayersInputVC: UIViewController {
         playersTableView.delegate = self
         playersTableView.dataSource = self
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Enter Player", style: .done, target: self, action: #selector(doneButtonAction))
-        GameClient.doneButton(view: self.view, doneBtn: doneBtn, textFields: [playersTextField])
+        GraphicClient.doneButton(view: self.view, doneBtn: doneBtn, textFields: [playersTextField])
         playersLeft()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save For Later", style: .plain, target: self, action: #selector(saveTapped))
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -62,7 +62,7 @@ class AwayPlayersInputVC: UIViewController {
         }
     }
     @objc func saveTapped(){
-        DataPeristanceModel.saveGame(vc: self)
+        DataPeristanceModel.saveGameAlert(vc: self)
     }
     @IBAction func nextButtonPressed(_ sender: UIButton) {
         let alert = UIAlertController(title:"Are You Sure?" , message: "Once The Game Begins Settings Cannot Be Change" , preferredStyle: .alert)

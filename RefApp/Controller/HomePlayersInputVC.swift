@@ -33,7 +33,7 @@ class HomePlayersInputVC: UIViewController {
         playersTableView.delegate = self
         playersTableView.dataSource = self
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Enter Player", style: .done, target: self, action: #selector(doneButtonAction))
-        GameClient.doneButton(view: self.view, doneBtn: doneBtn, textFields: [playersTextField])
+        GraphicClient.doneButton(view: self.view, doneBtn: doneBtn, textFields: [playersTextField])
         playersLeft()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)

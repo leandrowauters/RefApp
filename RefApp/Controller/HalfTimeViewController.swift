@@ -79,7 +79,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         subHalftimeView.playerOutTextField.delegate = self
         noteHalfTimeView.notesTextView.delegate = self
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Enter", style: .done, target: self, action: #selector(dismissKeyboard))
-        GameClient.doneButton(view: self.view, doneBtn: doneBtn, textFields: [subHalftimeView.playerInTextField,subHalftimeView.playerOutTextField])
+        GraphicClient.doneButton(view: self.view, doneBtn: doneBtn, textFields: [subHalftimeView.playerInTextField,subHalftimeView.playerOutTextField])
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         

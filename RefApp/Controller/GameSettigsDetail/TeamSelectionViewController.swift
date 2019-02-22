@@ -26,14 +26,16 @@ class TeamSelectionViewController: UIViewController, UITextFieldDelegate {
     }
     
     func setupUI() {
-        homeTeamTextField.layer.borderWidth = 2
-        homeTeamTextField.layer.borderColor = UIColor.white.cgColor
-        homeTeamTextField.layer.cornerRadius = 10
-        homeTeamTextField.text = Game.homeTeam
-        awayTeamTextField.layer.borderWidth = 2
-        awayTeamTextField.layer.borderColor = UIColor.white.cgColor
-        awayTeamTextField.layer.cornerRadius = 10
-        awayTeamTextField.text = Game.awayTeam
+//        homeTeamTextField.layer.borderWidth = 2
+//        homeTeamTextField.layer.borderColor = UIColor.white.cgColor
+//        homeTeamTextField.layer.cornerRadius = 10
+//        homeTeamTextField.layer.masksToBounds = true
+//        homeTeamTextField.text = Game.homeTeam
+//        awayTeamTextField.layer.borderWidth = 2
+//        awayTeamTextField.layer.borderColor = UIColor.white.cgColor
+//        awayTeamTextField.layer.cornerRadius = 10
+//        awayTeamTextField.layer.masksToBounds = true
+//        awayTeamTextField.text = Game.awayTeam
         doneButton.layer.borderWidth = 2
         doneButton.layer.borderColor = UIColor.white.cgColor
         doneButton.layer.cornerRadius = doneButton.frame.height / 2
@@ -43,13 +45,9 @@ class TeamSelectionViewController: UIViewController, UITextFieldDelegate {
         setupUI()
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == homeTeamTextField || textField == awayTeamTextField {
-            textField.text = ""
-        }
-    }
+
     @IBAction func doneButtonPressed(_ sender: UIButton) {
-        if (homeTeamTextField.text != "" && homeTeamTextField.text != "Home") && (awayTeamTextField.text != "" && awayTeamTextField.text != "Away") {
+        if homeTeamTextField.text != "" && awayTeamTextField.text != ""  {
             if let team = homeTeamTextField.text {
                 Game.homeTeam = team
             }
@@ -59,15 +57,13 @@ class TeamSelectionViewController: UIViewController, UITextFieldDelegate {
             delegate.teamsLabelChange(to: "Selected")
             self.dismiss(animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "Please Select Two Team", message: nil, preferredStyle: .alert)
-            let okay = UIAlertAction(title: "Okay", style: .default) { (UIAlertAction) in
-                alert.dismiss(animated: true, completion: nil)
-            }
-            alert.addAction(okay)
-            present(alert, animated: true, completion: nil)
+            showAlert(title: "Please Select Two Teams", message: nil)
         }
     }
     
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == homeTeamTextField {
             awayTeamTextField.becomeFirstResponder()

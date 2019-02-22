@@ -20,16 +20,7 @@ struct GameClient {
         print("Date: \(Game.dateAndTime)")
         print("Extra Time? \(Game.extraTime)")
     }
-    static func doneButton(view: UIView, doneBtn: UIBarButtonItem, textFields: [UITextField]) {
-        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: view.frame.size.width, height: 30))
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-//        let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Enter Player", style: .done, target: self, action: #selector(doneButtonAction))
-        toolbar.setItems([flexSpace, doneBtn], animated: false)
-        toolbar.sizeToFit()
-        for textField in textFields{
-        textField.inputAccessoryView = toolbar
-        }
-    }
+
     static func convertLocalDateToString(str: String, dateFormat: String) -> String {
         // Making a Date from a String
         let dateString = str

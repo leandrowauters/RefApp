@@ -27,7 +27,7 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
         subTextField.delegate = self
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Enter Player", style: .done, target: self, action: #selector(doneButtonAction))
             
-        GameClient.doneButton(view: self.view, doneBtn: doneBtn, textFields: [subTextField])
+        GraphicClient.doneButton(view: self.view, doneBtn: doneBtn, textFields: [subTextField])
         setupUI()
 //        subTextField.delegate = self
         // Do any additional setup after loading the view.

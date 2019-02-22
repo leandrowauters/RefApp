@@ -33,7 +33,7 @@ class NamesInputVC: UIViewController {
             
         }
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Enter Name", style: .done, target: self, action: #selector(doneButtonAction))
-        GameClient.doneButton(view: self.view, doneBtn: doneBtn, textFields: [nameTextField])
+        GraphicClient.doneButton(view: self.view, doneBtn: doneBtn, textFields: [nameTextField])
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         notifications()

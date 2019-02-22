@@ -16,11 +16,8 @@ class PopActionsVC: UIViewController {
     var playerSelected = Int()
     var selectedButton = Int()
     var teamSelected = String()
-    var teamSide: Teams!
-    enum Teams{
-        case home
-        case away
-    }
+    var teamSide: Game.Teams!
+
 
     
     override func viewDidLoad() {

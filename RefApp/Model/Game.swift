@@ -8,6 +8,11 @@
 
 import UIKit
 class Game: Codable {
+    
+    enum Teams{
+        case home
+        case away
+    }
     static var gameName: String?
     // unique vc
     static var length = [90, 60, 30, 0] // STATIC VC

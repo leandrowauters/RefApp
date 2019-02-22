@@ -11,7 +11,7 @@ import UIKit
 class SelectPlayerVC: UIViewController, UITextFieldDelegate {
     var selectedPlayer = Int()
     var selectedButton = Int()
-    var teamSide: PopActionsVC.Teams!
+    var teamSide: Game.Teams!
     var teamSelected = String()
     
     weak var timerDelegate: TimerDelegate?

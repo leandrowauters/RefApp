@@ -333,6 +333,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (updateAction) in
                 
                 print("Game ended")
+                let gameStatistics = GameStatistics(winner: GameStatistics.getWinner(), homeYellowCards: GameStatistics.homeYellowCards, awayYellowCards: GameStatistics.awayYellowCards, homeRedCards: GameStatistics.homeRedCard, awayRedCards: GameStatistics.awayRedCard, homeGoals: Game.homeScore, awayGoals: Game.awayScore)
+                
+                print("Game Statistics: \(gameStatistics)")
             }))
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
             self.present(alert, animated: false)

@@ -18,6 +18,10 @@ class AwayView: UIView {
     func changeButton () {
         graphics.changeButtonLayout(buttons: awayPlayersButtons)
     }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        changeButton()
+    }
     func getCurrentViewController() -> UIViewController? {
         
         if let rootController = UIApplication.shared.keyWindow?.rootViewController {

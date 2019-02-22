@@ -84,9 +84,7 @@ class GraphicClient {
             button.alpha = 0
             button.backgroundColor = color
             self.fadeIn(button: button, 1, delay: 0, completion: { (Bool) in
-                
                 button.alpha = 1
-               
             })
         }
     }

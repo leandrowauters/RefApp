@@ -65,7 +65,7 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Save For Later", style: .default, handler: { (UIAlertAction) in
-                GameSaveClient.alert(vc: self)
+                DataPeristanceModel.saveGame(vc: self)
         }))
         self.present(alert, animated: false)
     }

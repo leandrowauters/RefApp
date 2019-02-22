@@ -14,7 +14,7 @@
 		D529FE0121B4755F00DDC366 /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529FE0021B4755F00DDC366 /* DatePickerVC.swift */; };
 		D52C80A421F79DA6005B8C95 /* AwayPlayersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C80A321F79DA6005B8C95 /* AwayPlayersCollectionViewCell.swift */; };
 		D52C80A621F79EE5005B8C95 /* AwayPlayersSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C80A521F79EE5005B8C95 /* AwayPlayersSelectionViewController.swift */; };
-		D5313FDE21D6CCFE00875B63 /* GameSaveClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5313FDD21D6CCFE00875B63 /* GameSaveClient.swift */; };
+		D5313FDE21D6CCFE00875B63 /* DataPeristanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5313FDD21D6CCFE00875B63 /* DataPeristanceModel.swift */; };
 		D5313FE021D6F26500875B63 /* AwayPlayersInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5313FDF21D6F26500875B63 /* AwayPlayersInputVC.swift */; };
 		D5313FE221D7096B00875B63 /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5313FE121D7096B00875B63 /* HomeView.xib */; };
 		D5313FE421D7099900875B63 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5313FE321D7099900875B63 /* HomeView.swift */; };
@@ -77,7 +77,7 @@
 		D529FE0021B4755F00DDC366 /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
 		D52C80A321F79DA6005B8C95 /* AwayPlayersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwayPlayersCollectionViewCell.swift; sourceTree = "<group>"; };
 		D52C80A521F79EE5005B8C95 /* AwayPlayersSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwayPlayersSelectionViewController.swift; sourceTree = "<group>"; };
-		D5313FDD21D6CCFE00875B63 /* GameSaveClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSaveClient.swift; sourceTree = "<group>"; };
+		D5313FDD21D6CCFE00875B63 /* DataPeristanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPeristanceModel.swift; sourceTree = "<group>"; };
 		D5313FDF21D6F26500875B63 /* AwayPlayersInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwayPlayersInputVC.swift; sourceTree = "<group>"; };
 		D5313FE121D7096B00875B63 /* HomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
 		D5313FE321D7099900875B63 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 			children = (
 				D5FBD98221B23548005D89F4 /* Game.swift */,
 				D550683121CDE61800F3C6F4 /* GameClient.swift */,
-				D5313FDD21D6CCFE00875B63 /* GameSaveClient.swift */,
+				D5313FDD21D6CCFE00875B63 /* DataPeristanceModel.swift */,
 				D5A851872215FA020019AFC0 /* Alert+Extension.swift */,
 				D5BDD17E21EAB55C0078408E /* DataPersisitanceManager.swift */,
 				D5C0F74F22176893006722DE /* UserSession.swift */,
@@ -482,7 +482,7 @@
 				D5D03CD2221DDCD900F04E03 /* PreviousGamesView.swift in Sources */,
 				D5C0F75022176893006722DE /* UserSession.swift in Sources */,
 				D550683221CDE61800F3C6F4 /* GameClient.swift in Sources */,
-				D5313FDE21D6CCFE00875B63 /* GameSaveClient.swift in Sources */,
+				D5313FDE21D6CCFE00875B63 /* DataPeristanceModel.swift in Sources */,
 				D58B2FC42208AEB4005FB7FB /* HalfTimeViewController.swift in Sources */,
 				D52C80A421F79DA6005B8C95 /* AwayPlayersCollectionViewCell.swift in Sources */,
 				D5D03CD0221DD04800F04E03 /* MyAccountInfoView.swift in Sources */,

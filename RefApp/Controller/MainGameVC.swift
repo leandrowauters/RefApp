@@ -283,7 +283,6 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         }
       
         UIView.animate(withDuration: 0.5, animations: {
-            
             self.startButton.isHidden = false
             self.startButton.alpha = 0.0
             self.timerLabels.forEach {$0.isHidden = true}
@@ -296,7 +295,6 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             self.timerLabels.forEach {$0.isHidden = false}
             self.halfLabel.isHidden = false
             self.minutesLabel.isHidden = false
-            
         }
 
 //        startButton.isHidden = true

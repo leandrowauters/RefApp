@@ -127,9 +127,8 @@ class PopActionsVC: UIViewController {
         for incident in Game.events{
             print(incident)
         }
-        dismiss(animated: true) {
-            self.eventDelegate?.activateViewDidAppear(bool: true)
-        }
+        self.eventDelegate?.activateViewDidAppear(bool: true)
+        dismiss(animated: true) 
         timer.resume()
         
     }

@@ -19,8 +19,8 @@ class SavedGameDetailedViewController: UIViewController {
     }
     
     @IBAction func deleteWasPressed(_ sender: UIBarButtonItem) {
-        let game = GameSaveClient.getGames()[index]
-        GameSaveClient.delete(game: game, atIndex: index)
+        let game = DataPeristanceModel.getGames()[index]
+        DataPeristanceModel.deleteGame(game: game, atIndex: index)
         navigationController?.popViewController(animated: true)
     }
     @IBAction func selectWasPress(_ sender: UIBarButtonItem) {

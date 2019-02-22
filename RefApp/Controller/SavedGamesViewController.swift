@@ -9,7 +9,7 @@
 import UIKit
 
 class SavedGamesViewController: UIViewController {
-    let loadedGames = GameSaveClient.getGames()
+    let loadedGames = DataPeristanceModel.getGames()
     
     @IBOutlet weak var savedGamesTableView: UITableView!
     override func viewDidLoad() {

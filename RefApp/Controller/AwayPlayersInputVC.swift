@@ -62,7 +62,7 @@ class AwayPlayersInputVC: UIViewController {
         }
     }
     @objc func saveTapped(){
-        GameSaveClient.alert(vc: self)
+        DataPeristanceModel.saveGame(vc: self)
     }
     @IBAction func nextButtonPressed(_ sender: UIButton) {
         let alert = UIAlertController(title:"Are You Sure?" , message: "Once The Game Begins Settings Cannot Be Change" , preferredStyle: .alert)

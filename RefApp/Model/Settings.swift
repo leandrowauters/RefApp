@@ -9,11 +9,31 @@
 import Foundation
 
 class Settings: Codable {
-    static var duration = Int()
-    static var numberOfPlayers = Int()
-    static var subsPerTeam = Int()
-    static var leagueName = Int()
-    
 
+    var userID: String?
+    var duration: Int?
+    var numberOfPlayers: Int?
+    var subsPerTeam: Int?
+    var leagueName: String?
+    
+    init() {}
+    
+    init(userID: String?,duration: Int?,numberOfPlayers: Int?, subsPerTeam: Int?, leagueName: String?) {
+        self.userID = userID
+        self.duration = duration
+        self.numberOfPlayers = numberOfPlayers
+        self.subsPerTeam = subsPerTeam
+        self.leagueName = leagueName
+    }
+    
+    func printSettings(){
+        print("""
+            Duration: \(duration ?? 0)
+            Number Of Players: \(numberOfPlayers ?? 0)
+            SubsPerTeam: \(numberOfPlayers ?? 0)
+            league Name: \(leagueName ?? "No League")
+            """)
+        
+    }
     
 }

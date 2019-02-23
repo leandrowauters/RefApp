@@ -9,7 +9,7 @@
 import UIKit
 
 class MainScreenViewController: UIViewController {
-
+    var settings = Settings()
     @IBOutlet weak var barButton: UIBarButtonItem!
     
     @IBOutlet weak var newGameButton: UIButton!
@@ -17,6 +17,7 @@ class MainScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        settings.printSettings()
         if UserSession.loginStatus == .existingAccount {
 //            barButton.title = "My Account"
             barButton.image = UIImage(named: "icons8-guest_male")

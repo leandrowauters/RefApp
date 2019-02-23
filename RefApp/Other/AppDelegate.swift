@@ -14,13 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var usersession: UserSession!
-
+    var settings: Settings!
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         usersession = UserSession()
         if let _ = usersession.getCurrentUser() {
             UserSession.loginStatus = .existingAccount
-        }
+            UserDefaultManager.loadUserDefault()
+            }
+        
+//        DataPeristanceModel.removeAllSettings()
         // Override point for customization after application launch.
         return true
     }

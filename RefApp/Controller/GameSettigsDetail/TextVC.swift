@@ -12,8 +12,11 @@ class TextVC: UIViewController {
     private var numberOfPlayers = Game.numberOfPlayers
     private var location = Game.location
     private var league = Game.league
+    private var settings = Settings()
     weak var gameDegelate: GameDelegate?
     weak var gameLenghtDelegate: GameLengthDelegate?
+    private var usersession: UserSession?
+    private var userID = String()
     var selectedIndexPath = Int()
     var myString = String()
     let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonAction))
@@ -25,14 +28,62 @@ class TextVC: UIViewController {
     
 
     override func viewDidLoad() {
-
+        if let user = usersession?.getCurrentUser() {
+            userID = user.uid
+        } else {
+            userID = UserDefaultManager.noUser
+        }
         super.viewDidLoad()
         print(selectedIndexPath)
         textField.delegate = self
         gameSettingLabel.text = myString
         useNumKeyboard()
-
+        usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
+        if selectedIndexPath != 4 {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save as default", style: .plain, target: self, action: #selector(userDefaultsPressed))
+        }
         
+    }
+    
+    @objc func userDefaultsPressed (){
+       
+        if let text = textField.text {
+        switch selectedIndexPath {
+        case 2:
+            Game.numberOfPlayers = Int(text)!
+            UserDefaults.standard.set(Game.numberOfPlayers, forKey: userID + UserDefaultManager.numberOfPlayers)
+            gameDegelate?.numberOfPlayersDidChange(to: Game.numberOfPlayers)
+            showAlert(title: "Saved", message: nil) { (UIAlertController) in
+                UIAlertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(UIAlertController, animated: true)
+            }
+            
+        case 6:
+            Game.league = text
+            UserDefaults.standard.set(Game.league, forKey: userID + UserDefaultManager.league)
+            gameDegelate?.leagueDidChange(to: Game.league)
+            showAlert(title: "Saved", message: nil) { (UIAlertController) in
+                UIAlertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(UIAlertController, animated: true)
+            }
+        case 7:
+            Game.lengthSelected = Int(text)!
+            UserDefaults.standard.set(Game.lengthSelected, forKey: userID + UserDefaultManager.duration)
+            gameLenghtDelegate?.gameLengthChange(to: Game.lengthSelected)
+            showAlert(title: "Saved", message: nil) { (UIAlertController) in
+                UIAlertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(UIAlertController, animated: true)
+            }
+        default:
+            return
+        }
+        }
         
     }
     func useNumKeyboard(){

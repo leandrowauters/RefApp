@@ -25,8 +25,10 @@ class GameSettings: UITableViewController {
     
     @IBOutlet weak var refereeNamesLabel: UILabel!
     @IBOutlet weak var capsNamesLabel: UILabel!
+    private var usersession: UserSession?
     override func viewDidLoad() {
         super.viewDidLoad()
+        usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
 //        GameSaveClient.savedGames = GameSaveClient.retriveGame()
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
         numberOfSubsLabel.text = "None"
@@ -34,6 +36,7 @@ class GameSettings: UITableViewController {
         myTableView.backgroundColor = #colorLiteral(red: 0.2737779021, green: 0.4506875277, blue: 0.6578510404, alpha: 1)
         numberOfPlayersLabel.adjustsFontSizeToFitWidth = true
         GameClient.printValues()
+        setupLabels()
 //        GameSaveClient.printAllDefaults()
 //        GameSaveClient.printAllDefaults()
     }
@@ -42,7 +45,20 @@ class GameSettings: UITableViewController {
         GameClient.printValues()
     }
     
-
+    func setupLabels () {
+        if UserDefaultManager.defaultDuration {
+            gameLenghtLabel.text = "\(Game.lengthSelected) minutes"
+        }
+        if UserDefaultManager.defaultNumberOfPlayers{
+            numberOfPlayersLabel.text = "\(Game.numberOfPlayers) vs. \(Game.numberOfPlayers)"
+        }
+        if UserDefaultManager.defaultSubPerTeam {
+            numberOfSubsLabel.text = Game.numberOfSubs.description
+        }
+        if UserDefaultManager.defaultLeague {
+            leagueNameLabel.text = "Selected"
+        }
+    }
     @IBAction func extraTimeSwitchPressed(_ sender: UISwitch) {
         if sender.isOn {
             Game.extraTime = true
@@ -66,6 +82,10 @@ class GameSettings: UITableViewController {
     @IBAction func subsStepperPressed(_ sender: UIStepper) {
         numberOfSubsLabel.isHidden = false
         let stepperValue = Int(sender.value)
+        if let user = usersession?.getCurrentUser() {
+            UserDefaults.standard.set(stepperValue, forKey: user.uid + UserDefaultManager.subPerTeam)
+        }
+        
         func updateValue(){
             Game.numberOfSubs = stepperValue
             numberOfSubsLabel.text = stepperValue.description

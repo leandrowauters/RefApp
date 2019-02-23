@@ -32,6 +32,7 @@
 		D558FF5E220A9A0C00B3B62D /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558FF5D220A9A0C00B3B62D /* EventsTableViewCell.swift */; };
 		D55DD9322220A423009843D2 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55DD9312220A423009843D2 /* GameData.swift */; };
 		D55DD9342220A4E7009843D2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55DD9332220A4E7009843D2 /* Settings.swift */; };
+		D55DD9382220F3F9009843D2 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55DD9372220F3F9009843D2 /* UserDefaultManager.swift */; };
 		D5637AF721B88BD2003821F5 /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5637AF621B88BD2003821F5 /* GameDelegate.swift */; };
 		D57420C9221739EA006D1CCB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57420C8221739EA006D1CCB /* CreateAccountViewController.swift */; };
 		D57420CD22173EC0006D1CCB /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57420CC22173EC0006D1CCB /* MyAccountViewController.swift */; };
@@ -97,6 +98,7 @@
 		D558FF5D220A9A0C00B3B62D /* EventsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
 		D55DD9312220A423009843D2 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		D55DD9332220A4E7009843D2 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		D55DD9372220F3F9009843D2 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		D5637AF621B88BD2003821F5 /* GameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
 		D57420C8221739EA006D1CCB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		D57420CC22173EC0006D1CCB /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				D5CDA72121ED267000A59133 /* GraphicClient.swift */,
 				D5D7194621FA674C003F2BF6 /* HomeAwayViewDelegate.swift */,
 				D5D03CDB221E3FBF00F04E03 /* Statistics.swift */,
+				D55DD9372220F3F9009843D2 /* UserDefaultManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				D57420CD22173EC0006D1CCB /* MyAccountViewController.swift in Sources */,
 				D5BDD18121EB01220078408E /* EventsViewController.swift in Sources */,
 				D5E76063221346FC00450F2E /* EventVCDetails.swift in Sources */,
+				D55DD9382220F3F9009843D2 /* UserDefaultManager.swift in Sources */,
 				D5313FE021D6F26500875B63 /* AwayPlayersInputVC.swift in Sources */,
 				D5CE6D7121DD3F9700FD921A /* MainTimer.swift in Sources */,
 				D532218D21DC3213004B0363 /* SelectPlayerVC.swift in Sources */,

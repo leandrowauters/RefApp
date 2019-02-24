@@ -30,6 +30,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     static var playerOut = String()
     static var home = true
     static var index = Int()
+    private var usersession: UserSession?
     let homeView2 = HomeView()
     let homeView: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
     let awayView: AwayView = Bundle.main.loadNibNamed("AwayView", owner: self, options: nil)?.first as! AwayView
@@ -53,6 +54,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         homeView.HomePlayersButtons.forEach{$0.isEnabled = false}
         awayView.awayPlayersButtons.forEach{$0.isEnabled = false}
         print("The view height is: \(timer2View.bounds.height)")
@@ -331,9 +333,16 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (updateAction) in
                 
                 print("Game ended")
-                let gameStatistics = GameStatistics(winner: GameStatistics.getWinner(), homeYellowCards: GameStatistics.homeYellowCards, awayYellowCards: GameStatistics.awayYellowCards, homeRedCards: GameStatistics.homeRedCard, awayRedCards: GameStatistics.awayRedCard, homeGoals: Game.homeScore, awayGoals: Game.awayScore)
-                
-                print("Game Statistics: \(gameStatistics)")
+                if let user = self.usersession?.getCurrentUser(){
+                    let gameStatistics = GameStatistics(userID: user.uid,winnerSide: GameStatistics.getWinnerHomeAway(), winnerTeam: GameStatistics.getWinnerTeam(), homeYellowCards: GameStatistics.homeYellowCards, awayYellowCards: GameStatistics.awayYellowCards, homeRedCards: GameStatistics.homeRedCard, awayRedCards: GameStatistics.awayRedCard, homeGoals: Game.homeScore, awayGoals: Game.awayScore)
+                    let gameData = GameData(userID: user.uid, winner:GameStatistics.getWinnerHomeAway() , gameName: Game.gameName ?? "noName", lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, homeScore: Game.homeScore, awayScore: Game.awayScore, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers, homeYellowCardPlayers: Game.homeYellowCardPlayers, homeRedCardPlayers: Game.homeRedCardPlayers, awayYellowCardPlayers: Game.awayYellowCardPlayers, awayRedCardPlayers: Game.awayRedCardPlayers, homeGoalsPlayers: Game.homeGoalsPlayers, awayGoalsPlayers: Game.awayGoalsPlayers, gameNotes: Game.gameNotes)
+//                    DatabaseManager.postGameStatisticsToDatabase(gameStatistics: gameStatistics)
+                    DatabaseManager.postGameDataToDatabase(gameData: gameData)
+                }
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "gameSummary")
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true, completion: nil)
             }))
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
             self.present(alert, animated: false)

@@ -12,9 +12,10 @@ enum Card {
     case yellow
     case red
 }
-enum Winner {
-    case home
-    case away
+enum Winner: String {
+    case home = "Home"
+    case away =  "Away"
+    case draw = "Draw"
 }
 class TotalStatistics {
     
@@ -59,8 +60,9 @@ class GameStatistics {
     static var homeRedCard = 0
     static var awayRedCard = 0
     
-    
-    var winner: Winner
+    var userID: String
+    var winnerSide: String
+    var winnerTeam: String
     var homeYellowCards: Int
     var awayYellowCards: Int
     var homeRedCards: Int
@@ -68,8 +70,10 @@ class GameStatistics {
     var homeGoals: Int
     var awayGoals: Int
     
-    init(winner: Winner, homeYellowCards: Int, awayYellowCards: Int, homeRedCards: Int, awayRedCards: Int, homeGoals: Int, awayGoals: Int) {
-        self.winner = winner
+    init(userID: String, winnerSide: String, winnerTeam: String, homeYellowCards: Int, awayYellowCards: Int, homeRedCards: Int, awayRedCards: Int, homeGoals: Int, awayGoals: Int) {
+        self.userID = userID
+        self.winnerSide = winnerSide
+        self.winnerTeam = winnerTeam
         self.homeYellowCards = homeYellowCards
         self.awayYellowCards = awayYellowCards
         self.homeRedCards = homeRedCards
@@ -77,12 +81,36 @@ class GameStatistics {
         self.homeGoals = homeGoals
         self.awayGoals = awayGoals
     }
-    static func getWinner() -> Winner {
+    init(dict: [String: Any]) {
+        self.userID = dict["userID"] as? String ?? "no user id"
+        self.winnerSide = dict["winnerSide"] as? String ?? "no winner side"
+        self.winnerTeam = dict["winnerTeam"] as? String ?? "no winner team"
+        self.homeYellowCards = dict["homeYellowCards"] as? Int ?? 0
+        self.awayYellowCards = dict["awayYellowCards"] as? Int ?? 0
+        self.homeRedCards = dict["homeRedCards"] as? Int ?? 0
+        self.awayRedCards = dict["awayRedCards"] as? Int ?? 0
+        self.homeGoals = dict["homeGoals"] as? Int ?? 0
+        self.awayGoals = dict["awayGoals"] as? Int ?? 0
+    }
+    static func getWinnerHomeAway() -> String{
         let winner: Winner
         if Game.homeScore > Game.awayScore {
             winner = .home
-        } else {
+        } else if Game.homeScore < Game.awayScore{
             winner = .away
+        } else {
+            winner = .draw
+        }
+        return winner.rawValue
+    }
+    static func getWinnerTeam() -> String{
+        var winner = String()
+        if Game.homeScore > Game.awayScore {
+            winner = Game.homeTeam
+        } else if Game.homeScore < Game.awayScore {
+            winner = Game.awayTeam
+        } else {
+            winner = "Draw"
         }
         return winner
     }

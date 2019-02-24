@@ -9,7 +9,9 @@
 import Foundation
 
 class GameData {
-    var gameName: String
+    var userID: String
+    var winner: String
+    var gameName: String?
     var lengthSelected: Int
     var numberOfPlayers: Int
     var location: String
@@ -20,6 +22,8 @@ class GameData {
     var extraTime: Bool
     var homeTeam: String
     var awayTeam: String
+    var homeScore: Int
+    var awayScore: Int
     var subs: Int
     var homePlayers: [Int]
     var awayPlayers: [Int]
@@ -30,10 +34,11 @@ class GameData {
     var homeGoalsPlayers: [Int]
     var awayGoalsPlayers: [Int]
     var gameNotes: [String]
-    var substitutionsMade: [(In: String, Out: String)]
-    var events: [Events]
+
     
-    init(gameName: String, lengthSelected:Int, numberOfPlayers: Int, location: String, dateAndTime: String, league: String, refereeNames: [String], caps: [String], extraTime: Bool, homeTeam: String, awayTeam: String, subs: Int, homePlayers: [Int], awayPlayers: [Int],homeYellowCardPlayers: [Int],homeRedCardPlayers: [Int],awayYellowCardPlayers: [Int], awayRedCardPlayers:[Int], homeGoalsPlayers: [Int], awayGoalsPlayers: [Int], gameNotes: [String], substitutionsMade: [(In: String, Out: String)], events: [Events]) {
+    init(userID: String,winner: String,gameName: String?, lengthSelected:Int, numberOfPlayers: Int, location: String, dateAndTime: String, league: String, refereeNames: [String], caps: [String], extraTime: Bool, homeTeam: String, awayTeam: String,homeScore: Int, awayScore: Int, subs: Int, homePlayers: [Int], awayPlayers: [Int],homeYellowCardPlayers: [Int],homeRedCardPlayers: [Int],awayYellowCardPlayers: [Int], awayRedCardPlayers:[Int], homeGoalsPlayers: [Int], awayGoalsPlayers: [Int], gameNotes: [String]) {
+        self.userID = userID
+        self.winner = winner
         self.gameName = gameName
         self.lengthSelected = lengthSelected
         self.numberOfPlayers = numberOfPlayers
@@ -45,6 +50,8 @@ class GameData {
         self.extraTime = extraTime
         self.homeTeam = homeTeam
         self.awayTeam = awayTeam
+        self.homeScore = homeScore
+        self.awayScore = awayScore
         self.subs = subs
         self.homePlayers = homePlayers
         self.awayPlayers = awayPlayers
@@ -55,8 +62,33 @@ class GameData {
         self.homeGoalsPlayers = homeGoalsPlayers
         self.awayGoalsPlayers = awayGoalsPlayers
         self.gameNotes = gameNotes
-        self.substitutionsMade = substitutionsMade
-        self.events = events
-        
+    }
+    
+    init(dict: [String: Any]) {
+        self.userID = dict["userID"] as? String ?? "no user id"
+        self.winner = dict["winner"] as? String ?? "n/a"
+        self.gameName = dict["gameName"] as? String ?? "n/a"
+        self.lengthSelected = dict["lengthSelected"] as? Int ?? 0
+        self.numberOfPlayers = dict["numberOfPlayers"] as? Int ?? 0
+        self.location = dict["location"] as? String ?? "n/a"
+        self.dateAndTime = dict["dateAndTime"] as? String ?? "n/a"
+        self.league = dict["league"] as? String ?? "n/a"
+        self.refereeNames = dict["refereeNames"] as? [String] ?? ["n/a"]
+        self.caps = dict["capsNames"] as? [String] ?? ["n/a"]
+        self.extraTime = dict["extraTime"] as? Bool ?? false
+        self.homeTeam = dict["homeTeam"] as? String ?? "n/a"
+        self.awayTeam = dict["awayTeam"] as? String ?? "n/a"
+        self.homeScore = dict["homeScore"] as? Int ?? 0
+        self.awayScore = dict["awayScore"] as? Int ?? 0
+        self.subs = dict["subs"] as? Int ?? 0
+        self.homePlayers = dict["homePlayers"] as? [Int] ?? [0]
+        self.awayPlayers = dict["awayPlayers"] as? [Int] ?? [0]
+        self.homeYellowCardPlayers = dict["homeYellowCardPlayers"] as? [Int] ?? [0]
+        self.homeRedCardPlayers = dict["homeRedCardPlayers"] as? [Int] ?? [0]
+        self.awayYellowCardPlayers = dict["awayYellowCardPlayers"] as? [Int] ?? [0]
+        self.awayRedCardPlayers = dict["awayRedCardPlayers"] as? [Int] ?? [0]
+        self.homeGoalsPlayers = dict["homeGoalsPlayers"] as? [Int] ?? [0]
+        self.awayGoalsPlayers = dict["awayGoalsPlayers"] as? [Int] ?? [0]
+        self.gameNotes = dict["gameNotes"] as? [String] ?? ["n/a"]
     }
 }

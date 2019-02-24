@@ -12,7 +12,6 @@ class TextVC: UIViewController {
     private var numberOfPlayers = Game.numberOfPlayers
     private var location = Game.location
     private var league = Game.league
-    private var settings = Settings()
     weak var gameDegelate: GameDelegate?
     weak var gameLenghtDelegate: GameLengthDelegate?
     private var usersession: UserSession?

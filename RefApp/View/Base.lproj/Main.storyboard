@@ -2073,10 +2073,10 @@
             </objects>
             <point key="canvasLocation" x="6000.0000000000009" y="919.56521739130437"/>
         </scene>
-        <!--View Controller-->
+        <!--Game Summary View Controller-->
         <scene sceneID="cvV-Gc-sRb">
             <objects>
-                <viewController id="Xik-v7-nEe" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameSummary" id="Xik-v7-nEe" customClass="GameSummaryViewController" customModule="RefApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IsA-Ow-4cc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

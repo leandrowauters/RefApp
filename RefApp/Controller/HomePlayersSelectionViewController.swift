@@ -14,7 +14,7 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
     let graphics = GraphicClient()
     @IBOutlet var numberPadButtons: [UIButton]!
     @IBOutlet weak var numbersCollectionView: UICollectionView!
-    @IBOutlet weak var playeredEnteredLabel: UILabel!
+
     
     var number = ""{
         didSet{
@@ -39,7 +39,12 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
         title = "\(Game.homeTeam) Players"
         numbersCollectionView.delegate = self
         numbersCollectionView.dataSource = self
-
+        scrollToLastIndex()
+    }
+    
+    func scrollToLastIndex(){
+        let indextPath = IndexPath(item: Game.homePlayers.count, section: 0)
+        numbersCollectionView.scrollToItem(at: indextPath, at: .right, animated: true)
     }
     override func viewDidLayoutSubviews() {
         graphics.changeButtonLayout(buttons: numberPadButtons)
@@ -49,9 +54,7 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
 //        numbersTextView.text = number
 
     }
-    @objc func hideLabel() {
-        playeredEnteredLabel.isHidden = true
-    }
+
     @IBAction func enterWasPressed(_ sender: UIButton) {
         if !homePlayers.contains(Int(number)!){
             homePlayers.append(Int(number)!)
@@ -63,8 +66,8 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
             numbersCollectionView.layoutIfNeeded()
             numbersCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         } else {
-            playeredEnteredLabel.isHidden = false
-            let _: Timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(hideLabel), userInfo: nil, repeats: true)
+            showAlert(title: "Player Already Entered", message: nil)
+//            let _: Timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(hideLabel), userInfo: nil, repeats: true)
             number = ""
             print("Number of players \(Game.homePlayers.count)")
         }

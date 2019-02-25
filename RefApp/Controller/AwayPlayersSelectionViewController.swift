@@ -14,7 +14,7 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
     
     @IBOutlet var numberPadButtons: [UIButton]!
     @IBOutlet weak var numbersCollectionView: UICollectionView!
-    @IBOutlet weak var playerEnteredLabel: UILabel!
+
     
     
     var number = ""{
@@ -38,11 +38,15 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "\(Game.awayTeam) Players"
+        scrollToLastIndex()
         numbersCollectionView.delegate = self
         numbersCollectionView.dataSource = self
 
     }
-    
+    func scrollToLastIndex(){
+        let indextPath = IndexPath(item: Game.homePlayers.count, section: 0)
+        numbersCollectionView.scrollToItem(at: indextPath, at: .right, animated: true)
+    }
 
     override func viewDidLayoutSubviews() {
         graphics.changeButtonLayout(buttons: numberPadButtons)
@@ -52,9 +56,7 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
         //        numbersTextView.text = number
         
     }
-    @objc func hideLabel() {
-        playerEnteredLabel.isHidden = true
-    }
+
     @IBAction func okayWasPressed(_ sender: UIButton) {
         let alert = UIAlertController(title:"Are You Sure?" , message: "Once The Game Begins Settings Cannot Be Change" , preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (updateAction) in
@@ -64,8 +66,21 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
             
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Save For Later", style: .default, handler: { (UIAlertAction) in
-                DataPeristanceModel.saveGameAlert(vc: self)
+        alert.addAction(UIAlertAction(title: "Save For Later", style: .default, handler: { (alertAction) in
+            self.showAlert(title: "Enter Game Name", message: nil, handler: { (alert) in
+                alert.addTextField(configurationHandler: { (UITextField) in
+                    _ = ""
+                })
+                alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (updateAction) in
+                    Game.gameName = alert.textFields?.first?.text
+                    let game = Game.init(userID: "hey", gameName: Game.gameName, lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers)
+                    DataPeristanceModel.addGame(game: game)
+                    
+                    
+                }))
+                self.present(alert, animated: true, completion: nil)
+            })
+            
         }))
         self.present(alert, animated: false)
     }
@@ -80,8 +95,7 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
             numbersCollectionView.layoutIfNeeded()
             numbersCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         } else {
-            playerEnteredLabel.isHidden = false
-            let _: Timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(hideLabel), userInfo: nil, repeats: true)
+            showAlert(title: "Player Already Entered", message: nil)
             number = ""
             print("Number of players \(Game.awayPlayers.count)")
         }

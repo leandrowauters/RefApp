@@ -777,13 +777,6 @@
                                     <action selector="backspacePressed:" destination="8pI-QS-oCL" eventType="touchUpInside" id="qwd-9V-1go"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Already Entered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lZ-S5-2fe">
-                                <rect key="frame" x="0.0" y="64" width="414" height="294.33333333333331"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.66510595034246578" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.2156862745" green="0.36862745099999999" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -792,7 +785,6 @@
                             <constraint firstItem="zif-c9-xFS" firstAttribute="height" secondItem="mI1-9Y-O4g" secondAttribute="height" id="1ty-4o-2XO"/>
                             <constraint firstItem="1dc-mA-BNR" firstAttribute="width" secondItem="mI1-9Y-O4g" secondAttribute="width" id="23O-9c-lGd"/>
                             <constraint firstItem="AlW-uH-9zh" firstAttribute="top" secondItem="mI1-9Y-O4g" secondAttribute="bottom" constant="25" id="2xP-KO-hgR"/>
-                            <constraint firstItem="9lZ-S5-2fe" firstAttribute="leading" secondItem="Zpw-Jw-JFG" secondAttribute="leading" id="32X-Wo-cKR"/>
                             <constraint firstItem="7gP-oS-pDB" firstAttribute="height" secondItem="MRE-Id-VZl" secondAttribute="height" multiplier="0.4" id="4EL-4P-m2O"/>
                             <constraint firstItem="rv0-C7-gaP" firstAttribute="centerY" secondItem="GT2-lG-Ei5" secondAttribute="centerY" id="4pp-un-LBA"/>
                             <constraint firstItem="U6z-mm-Iek" firstAttribute="width" secondItem="mI1-9Y-O4g" secondAttribute="width" id="5fy-1n-pyJ"/>
@@ -802,10 +794,8 @@
                             <constraint firstItem="U6z-mm-Iek" firstAttribute="centerY" secondItem="AlW-uH-9zh" secondAttribute="centerY" id="AGL-Bf-c6U"/>
                             <constraint firstItem="nad-YO-Za3" firstAttribute="width" secondItem="mI1-9Y-O4g" secondAttribute="width" id="CGa-ST-QRS"/>
                             <constraint firstItem="mI1-9Y-O4g" firstAttribute="leading" secondItem="DOX-Q6-3tb" secondAttribute="trailing" constant="25" id="CgU-gW-rPc"/>
-                            <constraint firstItem="Zpw-Jw-JFG" firstAttribute="trailing" secondItem="9lZ-S5-2fe" secondAttribute="trailing" id="GVe-QS-e5x"/>
                             <constraint firstItem="1dc-mA-BNR" firstAttribute="height" secondItem="mI1-9Y-O4g" secondAttribute="height" id="Gq0-Og-KOU"/>
                             <constraint firstItem="AlW-uH-9zh" firstAttribute="centerX" secondItem="mI1-9Y-O4g" secondAttribute="centerX" id="JKI-0d-gIG"/>
-                            <constraint firstItem="9lZ-S5-2fe" firstAttribute="top" secondItem="Zpw-Jw-JFG" secondAttribute="top" id="KAe-Sl-HBA"/>
                             <constraint firstItem="AlW-uH-9zh" firstAttribute="height" secondItem="mI1-9Y-O4g" secondAttribute="height" id="Md5-9u-D4H"/>
                             <constraint firstItem="2Pq-SM-yvg" firstAttribute="top" secondItem="AlW-uH-9zh" secondAttribute="bottom" constant="25" id="Mqq-YI-BLF"/>
                             <constraint firstItem="EOi-6r-Y9a" firstAttribute="height" secondItem="mI1-9Y-O4g" secondAttribute="height" id="Na8-gf-BRd"/>
@@ -846,7 +836,6 @@
                             <constraint firstItem="GT2-lG-Ei5" firstAttribute="top" secondItem="2Pq-SM-yvg" secondAttribute="bottom" constant="25" id="wPq-C6-Ny1"/>
                             <constraint firstItem="fWQ-Gd-bK8" firstAttribute="top" secondItem="EOi-6r-Y9a" secondAttribute="bottom" constant="25" id="wvK-51-JXN"/>
                             <constraint firstItem="rv0-C7-gaP" firstAttribute="height" secondItem="mI1-9Y-O4g" secondAttribute="height" id="x86-3e-Wth"/>
-                            <constraint firstItem="mI1-9Y-O4g" firstAttribute="top" secondItem="9lZ-S5-2fe" secondAttribute="bottom" constant="20" id="yv7-gN-Xd5"/>
                             <constraint firstItem="zif-c9-xFS" firstAttribute="centerY" secondItem="mI1-9Y-O4g" secondAttribute="centerY" id="zWb-QS-vRU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zpw-Jw-JFG"/>
@@ -854,7 +843,6 @@
                     <navigationItem key="navigationItem" title="Title" id="tF3-L2-bFZ"/>
                     <connections>
                         <outlet property="numbersCollectionView" destination="7gP-oS-pDB" id="vbA-Bc-84i"/>
-                        <outlet property="playeredEnteredLabel" destination="9lZ-S5-2fe" id="ozv-pP-vFG"/>
                         <outletCollection property="numberPadButtons" destination="mI1-9Y-O4g" collectionClass="NSMutableArray" id="Knh-tz-zSn"/>
                         <outletCollection property="numberPadButtons" destination="DOX-Q6-3tb" collectionClass="NSMutableArray" id="CGB-BW-sBD"/>
                         <outletCollection property="numberPadButtons" destination="zif-c9-xFS" collectionClass="NSMutableArray" id="Y0P-O3-bds"/>
@@ -1051,13 +1039,6 @@
                                     <action selector="enterWasPressed:" destination="0Lf-d4-sSE" eventType="touchUpInside" id="97g-2E-fat"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Already Entered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrO-iO-4mQ">
-                                <rect key="frame" x="0.0" y="64" width="414" height="294.33333333333331"/>
-                                <color key="backgroundColor" white="1" alpha="0.64000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLe-dg-Xgg">
                                 <rect key="frame" x="260.33333333333331" y="623.33333333333337" width="56.666666666666686" height="56.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1090,9 +1071,7 @@
                             <constraint firstItem="4J0-I5-SfQ" firstAttribute="leading" secondItem="9qM-VT-rHU" secondAttribute="trailing" constant="25" id="N6n-J7-23p"/>
                             <constraint firstItem="oq3-Uf-vFs" firstAttribute="top" secondItem="kf7-4T-pGJ" secondAttribute="bottom" constant="20" id="QTS-yH-ZZW"/>
                             <constraint firstItem="eBy-5X-8lQ" firstAttribute="top" secondItem="oq3-Uf-vFs" secondAttribute="bottom" constant="25" id="QV4-SA-Dmu"/>
-                            <constraint firstItem="YrO-iO-4mQ" firstAttribute="top" secondItem="Q5s-oU-eRA" secondAttribute="top" id="S1b-6i-ZOF"/>
                             <constraint firstItem="SLe-dg-Xgg" firstAttribute="top" secondItem="4J0-I5-SfQ" secondAttribute="bottom" constant="25" id="Sbh-wj-GoG"/>
-                            <constraint firstItem="oq3-Uf-vFs" firstAttribute="top" secondItem="YrO-iO-4mQ" secondAttribute="bottom" constant="20" id="UWY-kS-qOf"/>
                             <constraint firstItem="9qM-VT-rHU" firstAttribute="leading" secondItem="1Ag-SR-pz4" secondAttribute="trailing" constant="25" id="Uai-E0-mJJ"/>
                             <constraint firstItem="9qM-VT-rHU" firstAttribute="width" secondItem="oq3-Uf-vFs" secondAttribute="width" id="V4i-QQ-Ynq"/>
                             <constraint firstItem="1Ag-SR-pz4" firstAttribute="width" secondItem="oq3-Uf-vFs" secondAttribute="width" id="WYn-eh-fXz"/>
@@ -1113,7 +1092,6 @@
                             <constraint firstItem="1Ag-SR-pz4" firstAttribute="height" secondItem="oq3-Uf-vFs" secondAttribute="height" id="gcc-Ex-ZYl"/>
                             <constraint firstItem="Q5s-oU-eRA" firstAttribute="trailing" secondItem="kf7-4T-pGJ" secondAttribute="trailing" id="iGH-M2-KcZ"/>
                             <constraint firstItem="j0A-xJ-icm" firstAttribute="height" secondItem="oq3-Uf-vFs" secondAttribute="height" id="iVf-3T-ucP"/>
-                            <constraint firstItem="YrO-iO-4mQ" firstAttribute="trailing" secondItem="Q5s-oU-eRA" secondAttribute="trailing" id="jhe-du-Kto"/>
                             <constraint firstItem="4J0-I5-SfQ" firstAttribute="centerY" secondItem="9qM-VT-rHU" secondAttribute="centerY" id="jkc-VH-8ut"/>
                             <constraint firstItem="kf7-4T-pGJ" firstAttribute="top" secondItem="Q5s-oU-eRA" secondAttribute="top" id="k4L-CG-Lfi"/>
                             <constraint firstItem="SLe-dg-Xgg" firstAttribute="centerY" secondItem="j0A-xJ-icm" secondAttribute="centerY" id="m5m-wB-833"/>
@@ -1124,7 +1102,6 @@
                             <constraint firstItem="SLe-dg-Xgg" firstAttribute="leading" secondItem="j0A-xJ-icm" secondAttribute="trailing" constant="25" id="qfq-3F-B9r"/>
                             <constraint firstItem="oq3-Uf-vFs" firstAttribute="height" secondItem="XoR-d6-y9H" secondAttribute="height" multiplier="0.077" id="qzg-1G-rlo"/>
                             <constraint firstItem="GXr-iY-dAm" firstAttribute="leading" secondItem="eBy-5X-8lQ" secondAttribute="trailing" constant="25" id="sKC-lk-RhP"/>
-                            <constraint firstItem="YrO-iO-4mQ" firstAttribute="leading" secondItem="Q5s-oU-eRA" secondAttribute="leading" id="tGM-ef-ml3"/>
                             <constraint firstItem="1Ag-SR-pz4" firstAttribute="top" secondItem="JUX-vC-gki" secondAttribute="bottom" constant="25" id="tgq-HW-ZWe"/>
                             <constraint firstItem="eBy-5X-8lQ" firstAttribute="width" secondItem="oq3-Uf-vFs" secondAttribute="width" id="v5a-S6-wrT"/>
                             <constraint firstItem="9qM-VT-rHU" firstAttribute="centerX" secondItem="eBy-5X-8lQ" secondAttribute="centerX" id="w3n-wO-oci"/>
@@ -1137,7 +1114,6 @@
                     <navigationItem key="navigationItem" title="Title" id="b9s-g2-iMI"/>
                     <connections>
                         <outlet property="numbersCollectionView" destination="kf7-4T-pGJ" id="FNK-00-ZM7"/>
-                        <outlet property="playerEnteredLabel" destination="YrO-iO-4mQ" id="aMN-nZ-LbF"/>
                         <outletCollection property="numberPadButtons" destination="oq3-Uf-vFs" collectionClass="NSMutableArray" id="Vx9-0K-UV2"/>
                         <outletCollection property="numberPadButtons" destination="2oO-4A-FSs" collectionClass="NSMutableArray" id="Ykc-io-JCH"/>
                         <outletCollection property="numberPadButtons" destination="TET-Sb-uf2" collectionClass="NSMutableArray" id="e0P-bZ-CQ7"/>

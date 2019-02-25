@@ -60,13 +60,15 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
         eventDelegate?.redCard(bool: false, home: true)
         eventDelegate?.playerSelected(player: String(selectedPlayer))
         if Game.homePlayers.contains(Int(subTextField.text!)!){
-            textLabel.text = "Player Already Entered"
             subTextField.text = ""
-            textLabel.textColor = .red
-
-            let _: Timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(changeLabel), userInfo: nil, repeats: true)
-
+            showAlert(title: "Player Already Entered", message: nil)
             return
+        } else if Game.awayPlayers.contains(Int(subTextField.text!)!){
+            subTextField.text = ""
+            showAlert(title: "Player Already Entered", message: nil)
+            return
+            
+            
         }else if teamSide == .home {
             eventDelegate?.yellowCall(bool: false, home: true)
             eventDelegate?.redCard(bool: false, home: true)

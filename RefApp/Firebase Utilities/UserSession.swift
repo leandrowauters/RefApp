@@ -32,7 +32,7 @@ final class UserSession {
     weak var userSessionAccountDelegate: UserSessionAccountCreationDelegate?
     weak var usersessionSignOutDelegate: UserSessionSignOutDelegate?
     weak var usersessionSignInDelegate: UserSessionSignInDelegate?
-   
+
     public func createNewAccount(email: String, password: String, confirmPassoword: String) {
         Auth.auth().createUser(withEmail: email, password: password) { (authDataResult, error) in
             if let error = error {

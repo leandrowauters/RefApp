@@ -48,6 +48,7 @@ class Game: Codable {
     
     
     var gameName: String?
+    var userID: String
     var lengthSelected: Int
     var numberOfPlayers: Int
     var location: String
@@ -62,7 +63,8 @@ class Game: Codable {
     var homePlayers: [Int]
     var awayPlayers: [Int]
     
-    init(gameName: String?, lengthSelected:Int, numberOfPlayers: Int, location: String, dateAndTime: String, league: String, refereeNames: [String], caps: [String], extraTime: Bool, homeTeam: String, awayTeam: String, subs: Int, homePlayers: [Int], awayPlayers: [Int]) {
+    init(userID: String,gameName: String?, lengthSelected:Int, numberOfPlayers: Int, location: String, dateAndTime: String, league: String, refereeNames: [String], caps: [String], extraTime: Bool, homeTeam: String, awayTeam: String, subs: Int, homePlayers: [Int], awayPlayers: [Int]) {
+        self.userID = userID
         self.gameName = gameName
         self.lengthSelected = lengthSelected
         self.numberOfPlayers = numberOfPlayers
@@ -78,7 +80,27 @@ class Game: Codable {
         self.homePlayers = homePlayers
         self.awayPlayers = awayPlayers
     }
-
+    init(dict: [String: Any]){
+        self.userID = dict["userID"] as? String ?? "noUser"
+        self.gameName = dict["gameName"] as? String ?? "n/a"
+        self.lengthSelected = dict["lengthSelected"] as? Int ?? 0
+        self.numberOfPlayers = dict["numberOfPlayers"] as? Int ?? 0
+        self.location = dict["location"] as? String ?? "n/a"
+        self.dateAndTime = dict["dateAndTime"] as? String ?? "n/a"
+        self.league = dict["league"] as? String ?? "n/a"
+        self.refereeNames = dict["refereeNames"] as? [String] ?? ["n/a"]
+        self.caps = dict["caps"] as? [String] ?? ["n/a"]
+        self.extraTime = dict["extraTime"] as? Bool ?? false
+        self.homeTeam = dict["homeTeam"] as? String ?? "n/a"
+        self.awayTeam = dict["awayTeam"] as? String ?? "n/a"
+        self.subs = dict["subs"] as? Int ?? 0
+        self.homePlayers = dict["homePlayers"] as? [Int] ?? [0]
+        self.awayPlayers = dict["awayPlayers"] as? [Int] ?? [0]
+        
+    
+        
+        
+    }
 
     
 }

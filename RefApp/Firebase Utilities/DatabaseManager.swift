@@ -69,7 +69,7 @@ final class DatabaseManager {
     }
     static func postGameDataToDatabase(gameData: GameData) {
         var ref: DocumentReference? = nil
-        ref = firebaseDB.collection(DatabaseKeys.GameDataCollectionKey).addDocument(data: ["userID" : gameData.userID, "gameName" : gameData.gameName ?? "noName", "lengthSelected": gameData.lengthSelected, "numberOfPlayers": gameData.numberOfPlayers, "location" : gameData.location, "dateAndTime" : gameData.dateAndTime, "league": gameData.league, "refereeName": gameData.refereeNames, "capsNames": gameData.caps, "extraTime": gameData.extraTime,"homeTeam" : gameData.homeTeam, "awayTeam" : gameData.awayTeam,"subs" : gameData.subs,"homePlayers" : gameData.homePlayers, "awayPlayers": gameData.awayPlayers, "homeYellowCardPlayers": gameData.homeYellowCardPlayers, "homeRedCardPlayers" : gameData.homeRedCardPlayers, "awayYellowCardPlayers": gameData.awayYellowCardPlayers, "awayRedCardPlayers": gameData.awayRedCardPlayers, "homeGoalsPlayers": gameData.homeGoalsPlayers, "awayGoalsPlayers" : gameData.awayGoalsPlayers, "gameNotes": gameData.gameNotes], completion: { (error) in
+        ref = firebaseDB.collection(DatabaseKeys.GameDataCollectionKey).addDocument(data: ["userID" : gameData.userID, "gameName" : gameData.gameName!, "lengthSelected": gameData.lengthSelected, "numberOfPlayers": gameData.numberOfPlayers, "location" : gameData.location, "dateAndTime" : gameData.dateAndTime, "league": gameData.league, "refereeName": gameData.refereeNames, "capsNames": gameData.caps, "extraTime": gameData.extraTime,"homeTeam" : gameData.homeTeam, "awayTeam" : gameData.awayTeam,"subs" : gameData.subs,"homePlayers" : gameData.homePlayers, "awayPlayers": gameData.awayPlayers, "homeYellowCardPlayers": gameData.homeYellowCardPlayers, "homeRedCardPlayers" : gameData.homeRedCardPlayers, "awayYellowCardPlayers": gameData.awayYellowCardPlayers, "awayRedCardPlayers": gameData.awayRedCardPlayers, "homeGoalsPlayers": gameData.homeGoalsPlayers, "awayGoalsPlayers" : gameData.awayGoalsPlayers, "gameNotes": gameData.gameNotes], completion: { (error) in
             if let error = error {
                 print("posing gameData failed with error: \(error)")
             } else {
@@ -90,4 +90,27 @@ final class DatabaseManager {
             }
         })
     }
+    static func fetchGameData(vc: UIViewController) -> [GameData]{
+        var gameData = [GameData]()
+        // add a listener to observe changes to the firestore database
+        listener = DatabaseManager.firebaseDB.collection(DatabaseKeys.GameDataCollectionKey).addSnapshotListener(includeMetadataChanges: true) { (snapshot, error) in
+            if let error = error {
+                vc.showAlert(title: "Network Error", message: error.localizedDescription)
+            } else if let snapshot = snapshot {
+                var data = [GameData]()
+                for document in snapshot.documents {
+                    let gameData = GameData.init(dict: document.data())
+                    
+                    data.append(gameData)
+                }
+                gameData = data
+            }
+        }
+        return gameData
+    }
+    
+//    static func postSaveGameToDatabase(gameToSave: Game) {
+//         var ref: DocumentReference? = nil
+//        ref = firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).addDocument(data: ["userID": gameToSave.userID, "gameName": gameToSave.gameName!, "gameLenght": gameToSave.lengthSelected], completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
+//    }
 }

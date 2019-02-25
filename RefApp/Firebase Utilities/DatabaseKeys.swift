@@ -11,5 +11,6 @@ import Foundation
 struct DatabaseKeys {
     static let GameStatisticsCollectionKey = "gameStatistics" // firestore collecton key
     static let GameDataCollectionKey = "gameData"
+    static let SavedGameCollectionKey = "savedGame"
     static let UsersCollectionKey = "users" // firestore collection key
 }

@@ -49,20 +49,21 @@ struct DataPeristanceModel {
             print("Property list encoding error \(error)")
         }
     }
-
-    static func saveGameAlert(vc: UIViewController){
-        let alert = UIAlertController(title: "", message: "Enter Game Name", preferredStyle: .alert)
-        alert.addTextField { (TextField) in
-            _ = ""
-        }
-        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (updateAction) in
-            Game.gameName = alert.textFields?.first?.text
-            let game = Game.init(gameName: Game.gameName, lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers)
-            DataPeristanceModel.addGame(game: game)
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        vc.present(alert, animated: false)
-    }
+//
+//    static func saveGameAlert(vc: UIViewController, gameToSave: Game){
+//        let alert = UIAlertController(title: "", message: "Enter Game Name", preferredStyle: .alert)
+//        alert.addTextField { (TextField) in
+//            _ = ""
+//        }
+//        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (updateAction) in
+//            Game.gameName = alert.textFields?.first?.text
+//
+//            let game = Game.init(userID: "hey", gameName: Game.gameName, lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers)
+//            DataPeristanceModel.addGame(game: game)
+//        }))
+//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//        vc.present(alert, animated: false)
+//    }
 //    static func saveSettings() {
 //        let path = DataPersistanceManager.filepathToDocumentsDirectory(filename: settingsFileName)
 //        do{

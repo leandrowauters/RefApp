@@ -336,8 +336,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                 if let user = self.usersession?.getCurrentUser(){
                     let gameStatistics = GameStatistics(userID: user.uid,winnerSide: GameStatistics.getWinnerHomeAway(), winnerTeam: GameStatistics.getWinnerTeam(), homeYellowCards: GameStatistics.homeYellowCards, awayYellowCards: GameStatistics.awayYellowCards, homeRedCards: GameStatistics.homeRedCard, awayRedCards: GameStatistics.awayRedCard, homeGoals: Game.homeScore, awayGoals: Game.awayScore)
                     let gameData = GameData(userID: user.uid, winner:GameStatistics.getWinnerHomeAway() , gameName: Game.gameName ?? "noName", lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, homeScore: Game.homeScore, awayScore: Game.awayScore, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers, homeYellowCardPlayers: Game.homeYellowCardPlayers, homeRedCardPlayers: Game.homeRedCardPlayers, awayYellowCardPlayers: Game.awayYellowCardPlayers, awayRedCardPlayers: Game.awayRedCardPlayers, homeGoalsPlayers: Game.homeGoalsPlayers, awayGoalsPlayers: Game.awayGoalsPlayers, gameNotes: Game.gameNotes)
-//                    DatabaseManager.postGameStatisticsToDatabase(gameStatistics: gameStatistics)
+                    DatabaseManager.postGameStatisticsToDatabase(gameStatistics: gameStatistics)
                     DatabaseManager.postGameDataToDatabase(gameData: gameData)
+                    
                 }
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "gameSummary")

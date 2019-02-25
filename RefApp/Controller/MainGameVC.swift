@@ -142,6 +142,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //        MainTimer.time = -1
         DispatchQueue.main.async {
             if MainGameVC.turnOnTimer{
+                MainGameVC.turnOnTimer = false
                 print("Timer is running")
 //                self.runTimer()
                 self.graphics.timerCircle(strokeValue: CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + (((Game.lengthSelected / 2) * 60 ) / 3)), view: self.view, radius: self.viewWidth)
@@ -337,6 +338,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //            MainGameVC.halfTime = true
             MainTimer.time = 0
             Game.gameHalf = 2
+            
             self.timer.restartTimer()
         }))
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))

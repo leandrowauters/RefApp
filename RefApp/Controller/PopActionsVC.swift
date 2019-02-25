@@ -70,7 +70,9 @@ class PopActionsVC: UIViewController {
 //                Game.homeYellowCardPlayers.append(playerSelected)
 //                eventDelegate?.subWasMade(bool: false)
             }
-            
+            self.eventDelegate?.activateViewDidAppear(bool: true)
+            timer.resume()
+            dismiss(animated: true)
         case 1:
             let redCard = Events.init(type: TypeOfIncident.redCard.rawValue, playerNum: playerSelected, team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
                 Game.events.append(redCard)
@@ -96,6 +98,20 @@ class PopActionsVC: UIViewController {
 //                eventDelegate?.activateViewDidAppear(bool: true)
 //                eventDelegate?.subWasMade(bool: false)
             }
+            self.eventDelegate?.activateViewDidAppear(bool: true)
+            timer.resume()
+            dismiss(animated: true)
+        case 2:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let destination = storyboard.instantiateViewController(withIdentifier: "selectPlayer") as? SelectPlayerVC else {return}
+            destination.selectedPlayer = playerSelected
+            destination.teamSide = teamSide
+            destination.teamSelected = teamSelected
+            destination.selectedButton = selectedButton
+            destination.timerDelegate = timerDelegate
+            destination.eventDelegate = eventDelegate
+            destination.modalPresentationStyle = .overCurrentContext
+            present(destination, animated: true, completion: nil)
         case 3:
             let goal = Events.init(type: TypeOfIncident.goal.rawValue, playerNum: playerSelected,team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1))
                 Game.events.append(goal)
@@ -115,18 +131,23 @@ class PopActionsVC: UIViewController {
 //                eventDelegate?.subWasMade(bool: false)
                 Game.awayGoalsPlayers.append(playerSelected)
                 Game.awayScore += 1
+                
             }
+            self.eventDelegate?.activateViewDidAppear(bool: true)
+            timer.resume()
+            dismiss(animated: true)
 //             eventDelegate?.activateViewDidAppear(bool: true)
         default:
             return
+            
             
         }
         for incident in Game.events{
             print(incident)
         }
-        self.eventDelegate?.activateViewDidAppear(bool: true)
-        dismiss(animated: true) 
-        timer.resume()
+        
+        
+        
         
     }
     

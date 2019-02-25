@@ -2018,7 +2018,7 @@
                                 <rect key="frame" x="342" y="30" width="62" height="30"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
-                                    <segue destination="70P-ud-vub" kind="show" id="8Nn-Dg-Kq2"/>
+                                    <action selector="continuePressed:" destination="udM-GG-N1j" eventType="touchUpInside" id="WWn-xZ-pTn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2118,7 +2118,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="k2M-Dd-PUN" kind="presentation" id="f5L-Sg-B06"/>
+                                            <action selector="incidentButtonPressed:" destination="swo-jw-qbj" eventType="touchUpInside" id="2Ow-Xa-rCD"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bis-g3-nUf">

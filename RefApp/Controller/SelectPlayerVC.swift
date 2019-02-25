@@ -13,7 +13,7 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
     var selectedButton = Int()
     var teamSide: Game.Teams!
     var teamSelected = String()
-    
+    let timer = MainTimer(timeInterval: 1)
     weak var timerDelegate: TimerDelegate?
     weak var eventDelegate: EventDelegate?
     @IBOutlet weak var subTextField: UITextField!
@@ -52,12 +52,9 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
     
     
     @objc func doneButtonAction() {
-        timerDelegate?.turnOnTimer(turnOn: true)
-        timerDelegate?.keepStartButtonHidden(hide: true)
-        timerDelegate?.keepStartButtonDisable(disable: true)
-        timerDelegate?.addTapAfterSub(add: true)
+//        timerDelegate?.turnOnTimer(turnOn: true)
 
-        eventDelegate?.playerSelected(player: String(selectedPlayer))
+        timer.resume()
         if teamSide == .home {
             eventDelegate?.yellowCall(bool: false, home: true, away: false)
             eventDelegate?.redCard(bool: false, home: true, away: false)
@@ -100,11 +97,16 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
         let sub = Events.init(type: TypeOfIncident.sub.rawValue, playerNum: selectedPlayer, team: teamSelected, half: Game.gameHalf, subIn: Int(subTextField.text!)!, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1))
         Game.events.append(sub)
         print(Game.homePlayers)
-        
-        let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "mainGame") as? MainGameVC else {return}
-        vc.modalPresentationStyle = .overCurrentContext
-        present(vc, animated: true, completion: nil)
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        timerDelegate?.keepStartButtonHidden(hide: true)
+        timerDelegate?.keepStartButtonDisable(disable: true)
+        timerDelegate?.addTapAfterSub(add: true)
+        eventDelegate?.activateViewDidAppear(bool: true)
+        eventDelegate?.playerSelected(player: String(selectedPlayer))
+//        let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
+//        guard let vc = storyboard.instantiateViewController(withIdentifier: "mainGame") as? MainGameVC else {return}
+//        vc.modalPresentationStyle = .fullScreen
+//        present(vc, animated: true, completion: nil)
     }
     @objc func changeLabel (){
         textLabel.text = "Enter Sub Number"

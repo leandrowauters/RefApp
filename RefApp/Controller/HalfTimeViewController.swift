@@ -89,6 +89,17 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     @objc func dismissKeyboard() {
          self.view.endEditing(true)
     }
+    @IBAction func continuePressed(_ sender: UIButton) {
+        self.eventDelegate.halfTime(bool: true)
+        self.eventDelegate.redCard(bool: false, home: nil, away: nil)
+        self.eventDelegate.yellowCall(bool: false, home: nil, away: nil)
+        self.timerDelegate?.keepStartButtonDisable(disable: false)
+        self.timerDelegate?.keepStartButtonHidden(hide: false)
+        self.timerDelegate?.addTapAfterSub(add: false)
+        timerDelegate.turnOnTimer(turnOn: false)
+        
+       dismiss(animated: true, completion: nil)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         eventDelegate.halfTime(bool: true)
@@ -97,6 +108,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         timerDelegate?.keepStartButtonDisable(disable: false)
         timerDelegate?.keepStartButtonHidden(hide: false)
         timerDelegate?.addTapAfterSub(add: false)
+        timerDelegate.turnOnTimer(turnOn: false)
         
     }
     func setupCustomSegmentedBar() {

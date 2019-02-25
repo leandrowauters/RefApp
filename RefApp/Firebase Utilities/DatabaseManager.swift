@@ -109,8 +109,46 @@ final class DatabaseManager {
         return gameData
     }
     
-//    static func postSaveGameToDatabase(gameToSave: Game) {
-//         var ref: DocumentReference? = nil
-//        ref = firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).addDocument(data: ["userID": gameToSave.userID, "gameName": gameToSave.gameName!, "gameLenght": gameToSave.lengthSelected], completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
-//    }
+    static func postSaveGameToDatabase(gameToSave: Game) {
+         var ref: DocumentReference? = nil
+        ref = firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).addDocument(data: ["userID": gameToSave.userID, "gameName": gameToSave.gameName!, "gameLenght": gameToSave.lengthSelected, "numberOfPlayers" : gameToSave.numberOfPlayers, "location" : gameToSave.location, "dateAndTime" : gameToSave.dateAndTime, "league" : gameToSave.league, "refereeNames" : gameToSave.refereeNames, "caps" : gameToSave.caps , "extraTime" : gameToSave.extraTime, "homeTeam" : gameToSave.homeTeam , "awayTeam" : gameToSave.awayTeam, "subs" : gameToSave.subs, "homeTeam" : gameToSave.homeTeam, "awayTeam" : gameToSave.awayTeam, "subs" : gameToSave.subs, "homePlayers" : gameToSave.homePlayers, "awayPlayers" : gameToSave.awayTeam], completion: { (error) in
+            if let error = error {
+                print("posing gameToSave failed with error: \(error)")
+            } else {
+                print("post created at ref: \(ref?.documentID ?? "no doc id")")
+                
+                // updating a firestore dcoument:
+                // here we are updating the field dbReference for race review,
+                // useful for e.g deleting a (race review) document
+                DatabaseManager.firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey)
+                    .document(ref!.documentID)
+                    .updateData(["dbReference": ref!.documentID], completion: { (error) in
+                        if let error = error {
+                            print("error updating field: \(error)")
+                        } else {
+                            print("field updated")
+                        }
+                    })
+            }
+        })
+
+    }
+    static func fetchSaveGames(vc: UIViewController) -> [Game]{
+        var savedGames = [Game]()
+        // add a listener to observe changes to the firestore database
+        listener = DatabaseManager.firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).addSnapshotListener(includeMetadataChanges: true) { (snapshot, error) in
+            if let error = error {
+                vc.showAlert(title: "Network Error", message: error.localizedDescription)
+            } else if let snapshot = snapshot {
+                var games = [Game]()
+                for document in snapshot.documents {
+                    let savedGame = Game.init(dict: document.data())
+                    
+                    games.append(savedGame)
+                }
+                savedGames = games
+            }
+        }
+        return savedGames
+    }
 }

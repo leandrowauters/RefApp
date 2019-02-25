@@ -59,33 +59,37 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
         eventDelegate?.yellowCall(bool: false, home: true)
         eventDelegate?.redCard(bool: false, home: true)
         eventDelegate?.playerSelected(player: String(selectedPlayer))
-        if Game.homePlayers.contains(Int(subTextField.text!)!){
-            subTextField.text = ""
-            showAlert(title: "Player Already Entered", message: nil)
-            return
-        } else if Game.awayPlayers.contains(Int(subTextField.text!)!){
-            subTextField.text = ""
-            showAlert(title: "Player Already Entered", message: nil)
-            return
-            
-            
-        }else if teamSide == .home {
+        if teamSide == .home {
+            if Game.homePlayers.contains(Int(subTextField.text!)!){
+                subTextField.text = ""
+                showAlert(title: "Player Already Entered", message: nil)
+                return
+            }
             eventDelegate?.yellowCall(bool: false, home: true)
             eventDelegate?.redCard(bool: false, home: true)
             if let text = subTextField.text{
-                eventDelegate?.substitution(playerIn: text, playerOut: selectedPlayer.description, home: true, index: selectedButton)
-                eventDelegate?.subWasMade(bool: true)
+                Game.homePlayers.remove(at: selectedButton)
+                Game.homePlayers.insert(Int(text)!, at: Int(selectedButton))
+//                eventDelegate?.substitution(playerIn: text, playerOut: selectedPlayer.description, home: true, index: selectedButton)
+//                eventDelegate?.subWasMade(bool: true)
 //            Game.homePlayersSorted.remove(at: selectedButton)
 //            Game.homePlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
 //            Game.homePlayersSorted = Game.homePlayersSorted.sorted{$0 < $1}
 //            Game.homePlayers = Game.homePlayersSorted
             }
         } else if teamSide == .away {
+            if Game.awayPlayers.contains(Int(subTextField.text!)!){
+                subTextField.text = ""
+                showAlert(title: "Player Already Entered", message: nil)
+                return
+            }
             eventDelegate?.yellowCall(bool: false, home: false)
             eventDelegate?.redCard(bool: false, home: false)
             if let text = subTextField.text{
-                eventDelegate?.substitution(playerIn: text, playerOut: selectedPlayer.description, home: false, index: selectedButton)
-                eventDelegate?.subWasMade(bool: true)
+                Game.awayPlayers.remove(at: selectedButton)
+                Game.awayPlayers.insert(Int(text)!, at: Int(selectedButton))
+//                eventDelegate?.substitution(playerIn: text, playerOut: selectedPlayer.description, home: false, index: selectedButton)
+//                eventDelegate?.subWasMade(bool: true)
             }
 //            Game.awayPlayersSorted.remove(at: selectedButton)
 //            Game.awayPlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)

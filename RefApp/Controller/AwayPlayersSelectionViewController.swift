@@ -32,8 +32,8 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
             }
         }
     }
-    
-    
+    private var usersession: UserSession?
+    private var userID = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,13 +41,21 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
         scrollToLastIndex()
         numbersCollectionView.delegate = self
         numbersCollectionView.dataSource = self
+        getUserId()
 
     }
     func scrollToLastIndex(){
         let indextPath = IndexPath(item: Game.homePlayers.count, section: 0)
         numbersCollectionView.scrollToItem(at: indextPath, at: .right, animated: true)
     }
-
+    func getUserId() {
+        usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
+        if let user = usersession?.getCurrentUser() {
+            userID = user.uid
+        } else {
+            userID = UserDefaultManager.noUser
+        }
+    }
     override func viewDidLayoutSubviews() {
         graphics.changeButtonLayout(buttons: numberPadButtons)
     }
@@ -73,8 +81,14 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
                 })
                 alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (updateAction) in
                     Game.gameName = alert.textFields?.first?.text
-                    let game = Game.init(userID: "hey", gameName: Game.gameName, lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers)
-                    DataPeristanceModel.addGame(game: game)
+                    let game = Game.init(userID: self.userID, gameName: Game.gameName, lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers)
+                    if UserSession.loginStatus == .existingAccount{
+                        DatabaseManager.postSaveGameToDatabase(gameToSave: game)
+                    } else {
+                        DataPeristanceModel.addGame(game: game)
+                    }
+                    
+                    
                     
                     
                 }))

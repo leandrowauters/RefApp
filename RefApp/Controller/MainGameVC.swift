@@ -54,6 +54,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupButtons()
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         homeView.HomePlayersButtons.forEach{$0.isEnabled = false}
         awayView.awayPlayersButtons.forEach{$0.isEnabled = false}
@@ -109,6 +110,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 //        vc.timerDelegete = self
 //    }
     override func viewWillAppear(_ animated: Bool) {
+        setupButtons()
         reloadView()
         if !MainGameVC.home{
             teamsScrollView.scrollRectToVisible(CGRect(x: view.frame.width * CGFloat(1), y: 0, width: view.frame.width, height: view.frame.height / 2), animated: true)
@@ -181,7 +183,14 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     }
 
     
-
+    func setupButtons () {
+        for index in 0...Game.numberOfPlayers - 1 {
+            homeView.HomePlayersButtons[index].isHidden = false
+            awayView.awayPlayersButtons[index].isHidden = false
+            homeView.HomePlayersButtons[index].setTitle(Game.homePlayers[index].description, for: .normal)
+            awayView.awayPlayersButtons[index].setTitle(Game.awayPlayers[index].description, for: .normal)
+        }
+    }
     func reloadView(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideTimerView))
         timer2View.addGestureRecognizer(tap)
@@ -207,26 +216,27 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                     graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
                     button.isEnabled = false
                 }
-                if MainGameVC.substitution{
-                    if MainGameVC.home{
-                    if text == MainGameVC.playerOut {
-                        graphics.fadeOut(button: button,0.5 , delay: 0.5) { (Done) in
-                            button.setTitle(MainGameVC.playerIn, for: .normal)
-                            self.graphics.fadeIn(button: button, 0.5, delay: 0) { (Done) in
-                                button.setTitle(MainGameVC.playerIn, for: .normal)
-                                Game.homePlayers.remove(at: MainGameVC.index)
-                                Game.homePlayers.insert(Int(MainGameVC.playerIn)!, at: Int(MainGameVC.index))
-                                print(MainGameVC.index)
-                                print(MainGameVC.playerIn)
-                                print("Home Players = \(Game.homePlayers)")
-                            }
-                        }
-
-                    }
-                }
-                }
-
             }
+//                if MainGameVC.substitution{
+//                    if MainGameVC.home{
+//                    if button.tag == MainGameVC.index {
+//                        graphics.fadeOut(button: button,0.5 , delay: 0.5) { (Done) in
+//                            button.setTitle(MainGameVC.playerIn, for: .normal)
+//                            self.graphics.fadeIn(button: button, 0.5, delay: 0) { (Done) in
+//                                button.setTitle(MainGameVC.playerIn, for: .normal)
+////                                Game.homePlayers.remove(at: MainGameVC.index)
+////                                Game.homePlayers.insert(Int(MainGameVC.playerIn)!, at: Int(MainGameVC.index))
+//                                print(MainGameVC.index)
+//                                print(MainGameVC.playerIn)
+//                                print("Home Players = \(Game.homePlayers)")
+//                            }
+//                        }
+//
+//                    }
+//                }
+//                }
+
+            
         }
         } else {
         for button in awayView.awayPlayersButtons{
@@ -237,6 +247,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                     }
                 } else if Game.awayYellowCardPlayers.contains(Int(text)!) {
                     graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+                } else {
+                    button.backgroundColor = .clear
                 }
                 if MainGameVC.redCard{
                     if text == MainGameVC.playerSelected{
@@ -248,26 +260,26 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                     graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
                     button.isEnabled = false
                 }
-                if MainGameVC.substitution{
-                    if !MainGameVC.home{
-                    if text == MainGameVC.playerOut {
-                        graphics.fadeOut(button: button,0.5 , delay: 0.5) { (Done) in
-                            button.setTitle(MainGameVC.playerIn, for: .normal)
-                            self.graphics.fadeIn(button: button, 0.5, delay: 0) { (Done) in
-                                button.setTitle(MainGameVC.playerIn, for: .normal)
-                                Game.awayPlayers.remove(at: MainGameVC.index)
-                                Game.awayPlayers.insert(Int(MainGameVC.playerIn)!, at: Int(MainGameVC.index))
-                                print(MainGameVC.index)
-                                print(MainGameVC.playerIn)
-                                print("Away Players = \(Game.awayPlayers)")
-                            }
-                        }
-                        }
-                    }
-                }
-                
             }
-        }
+//                if MainGameVC.substitution{
+//                    if !MainGameVC.home{
+//                    if text == MainGameVC.playerOut {
+//                        graphics.fadeOut(button: button,0.5 , delay: 0.5) { (Done) in
+//                            button.setTitle(MainGameVC.playerIn, for: .normal)
+//                            self.graphics.fadeIn(button: button, 0.5, delay: 0) { (Done) in
+//                                button.setTitle(MainGameVC.playerIn, for: .normal)
+//                                Game.awayPlayers.remove(at: MainGameVC.index)
+//                                Game.awayPlayers.insert(Int(MainGameVC.playerIn)!, at: Int(MainGameVC.index))
+//                                print(MainGameVC.index)
+//                                print(MainGameVC.playerIn)
+//                                print("Away Players = \(Game.awayPlayers)")
+//                            }
+//                        }
+//                        }
+//                    }
+//                }
+            
+            }
         }
     }
     
@@ -334,8 +346,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                 
                 print("Game ended")
                 if let user = self.usersession?.getCurrentUser(){
-                    let gameStatistics = GameStatistics(userID: user.uid,winnerSide: GameStatistics.getWinnerHomeAway(), winnerTeam: GameStatistics.getWinnerTeam(), homeYellowCards: GameStatistics.homeYellowCards, awayYellowCards: GameStatistics.awayYellowCards, homeRedCards: GameStatistics.homeRedCard, awayRedCards: GameStatistics.awayRedCard, homeGoals: Game.homeScore, awayGoals: Game.awayScore)
-                    let gameData = GameData(userID: user.uid, winner:GameStatistics.getWinnerHomeAway() , gameName: Game.gameName ?? "noName", lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, homeScore: Game.homeScore, awayScore: Game.awayScore, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers, homeYellowCardPlayers: Game.homeYellowCardPlayers, homeRedCardPlayers: Game.homeRedCardPlayers, awayYellowCardPlayers: Game.awayYellowCardPlayers, awayRedCardPlayers: Game.awayRedCardPlayers, homeGoalsPlayers: Game.homeGoalsPlayers, awayGoalsPlayers: Game.awayGoalsPlayers, gameNotes: Game.gameNotes)
+                    let gameStatistics = GameStatistics(userID: user.uid,winnerSide: GameStatistics.getWinnerHomeAway(), winnerTeam: GameStatistics.getWinnerTeam(),totalRunningTime: 4, homeYellowCards: GameStatistics.homeYellowCards, awayYellowCards: GameStatistics.awayYellowCards, homeRedCards: GameStatistics.homeRedCard, awayRedCards: GameStatistics.awayRedCard, homeGoals: Game.homeScore, awayGoals: Game.awayScore)
+                    let gameData = GameData(userID: user.uid, winner:GameStatistics.getWinnerHomeAway() , gameName: Game.gameName!, lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, homeScore: Game.homeScore, awayScore: Game.awayScore, totalRunningTime: 4, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers, homeYellowCardPlayers: Game.homeYellowCardPlayers, homeRedCardPlayers: Game.homeRedCardPlayers, awayYellowCardPlayers: Game.awayYellowCardPlayers, awayRedCardPlayers: Game.awayRedCardPlayers, homeGoalsPlayers: Game.homeGoalsPlayers, awayGoalsPlayers: Game.awayGoalsPlayers, gameNotes: Game.gameNotes)
                     DatabaseManager.postGameStatisticsToDatabase(gameStatistics: gameStatistics)
                     DatabaseManager.postGameDataToDatabase(gameData: gameData)
                     
@@ -418,6 +430,10 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 }
 
 extension MainGameVC: TimerDelegate, EventDelegate{
+    func hideChangeScreenButton(hide: Bool) {
+        changeTimerButton.isHidden = hide
+    }
+    
     func substitution(playerIn: String, playerOut: String, home: Bool, index: Int) {
         MainGameVC.playerIn = playerIn
         MainGameVC.playerOut = playerOut
@@ -442,8 +458,6 @@ extension MainGameVC: TimerDelegate, EventDelegate{
             MainGameVC.home = home
         }
     }
-    
- 
     
 
     

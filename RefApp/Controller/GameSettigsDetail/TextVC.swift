@@ -27,23 +27,25 @@ class TextVC: UIViewController {
     
 
     override func viewDidLoad() {
-        if let user = usersession?.getCurrentUser() {
-            userID = user.uid
-        } else {
-            userID = UserDefaultManager.noUser
-        }
+        getUserId()
         super.viewDidLoad()
         print(selectedIndexPath)
         textField.delegate = self
         gameSettingLabel.text = myString
         useNumKeyboard()
-        usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         if selectedIndexPath != 4 {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save as default", style: .plain, target: self, action: #selector(userDefaultsPressed))
         }
         
     }
-    
+    func getUserId() {
+        usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
+        if let user = usersession?.getCurrentUser() {
+            userID = user.uid
+        } else {
+            userID = UserDefaultManager.noUser
+        }
+    }
     @objc func userDefaultsPressed (){
        
         if let text = textField.text {

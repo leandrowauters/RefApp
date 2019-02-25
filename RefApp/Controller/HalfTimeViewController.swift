@@ -94,9 +94,10 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         eventDelegate.halfTime(bool: true)
         eventDelegate.redCard(bool: false, home: nil)
         eventDelegate.yellowCall(bool: false, home: nil)
-        eventDelegate.subWasMade(bool: false)
         timerDelegate?.keepStartButtonDisable(disable: false)
         timerDelegate?.keepStartButtonHidden(hide: false)
+        timerDelegate?.addTapAfterSub(add: false)
+        
     }
     func setupCustomSegmentedBar() {
         view.addSubview(customSegmentedBar)

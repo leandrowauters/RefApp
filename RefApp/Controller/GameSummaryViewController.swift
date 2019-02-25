@@ -9,7 +9,7 @@
 import UIKit
 
 class GameSummaryViewController: UIViewController {
-
+    var gameData: GameData!
     override func viewDidLoad() {
         super.viewDidLoad()
 

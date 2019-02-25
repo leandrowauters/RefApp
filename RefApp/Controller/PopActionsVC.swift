@@ -52,23 +52,23 @@ class PopActionsVC: UIViewController {
                 Game.homeYellowCardPlayers.append(playerSelected)
                 timerDelegate?.keepStartButtonDisable(disable: true)
                 timerDelegate?.keepStartButtonHidden(hide: true)
-                eventDelegate?.yellowCall(bool: true, home: true)
-                eventDelegate?.redCard(bool: false, home: true)
+                eventDelegate?.yellowCall(bool: true, home: true, away: false)
+                eventDelegate?.redCard(bool: false, home: true, away: false)
                 eventDelegate?.playerSelected(player: String(playerSelected))
 //                eventDelegate?.activateViewDidAppear(bool: true)
                 GameStatistics.homeYellowCards += 1
-                eventDelegate?.subWasMade(bool: false)
+//                eventDelegate?.subWasMade(bool: false)
             } else if teamSide == .away{
                 Game.awayYellowCardPlayers.append(playerSelected)
                 timerDelegate?.keepStartButtonDisable(disable: true)
                 timerDelegate?.keepStartButtonHidden(hide: true)
-                eventDelegate?.yellowCall(bool: true, home: false)
-                eventDelegate?.redCard(bool: false, home: false)
+                eventDelegate?.yellowCall(bool: true, home: false, away: true)
+                eventDelegate?.redCard(bool: false, home: false, away: true)
                 eventDelegate?.playerSelected(player: String(playerSelected))
 //                eventDelegate?.activateViewDidAppear(bool: true)
                 GameStatistics.awayYellowCards += 1
 //                Game.homeYellowCardPlayers.append(playerSelected)
-                eventDelegate?.subWasMade(bool: false)
+//                eventDelegate?.subWasMade(bool: false)
             }
             
         case 1:
@@ -78,23 +78,23 @@ class PopActionsVC: UIViewController {
                 Game.homeRedCardPlayers.append(playerSelected)
                 timerDelegate?.keepStartButtonDisable(disable: true)
                 timerDelegate?.keepStartButtonHidden(hide: true)
-                eventDelegate?.yellowCall(bool: false, home: true)
-                eventDelegate?.redCard(bool: true, home: true)
+                eventDelegate?.yellowCall(bool: false, home: true, away: false)
+                eventDelegate?.redCard(bool: true, home: true, away: false)
                 eventDelegate?.playerSelected(player: String(playerSelected))
                 GameStatistics.homeRedCard += 1
 //                eventDelegate?.activateViewDidAppear(bool: true)
-                eventDelegate?.subWasMade(bool: false)
+//                eventDelegate?.subWasMade(bool: false)
                 
             } else if teamSide == .away{
                 Game.awayRedCardPlayers.append(playerSelected)
                 timerDelegate?.keepStartButtonDisable(disable: true)
                 timerDelegate?.keepStartButtonHidden(hide: true)
-                eventDelegate?.yellowCall(bool: false, home: false)
-                eventDelegate?.redCard(bool: true, home: false)
+                eventDelegate?.yellowCall(bool: false, home: false, away: true)
+                eventDelegate?.redCard(bool: true, home: false, away: true)
                 eventDelegate?.playerSelected(player: String(playerSelected))
                 GameStatistics.awayRedCard += 1
 //                eventDelegate?.activateViewDidAppear(bool: true)
-                eventDelegate?.subWasMade(bool: false)
+//                eventDelegate?.subWasMade(bool: false)
             }
         case 3:
             let goal = Events.init(type: TypeOfIncident.goal.rawValue, playerNum: playerSelected,team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1))
@@ -102,17 +102,17 @@ class PopActionsVC: UIViewController {
             if teamSide == .home {
                 timerDelegate?.keepStartButtonDisable(disable: true)
                 timerDelegate?.keepStartButtonHidden(hide: true)
-                eventDelegate?.yellowCall(bool: false, home: true)
-                eventDelegate?.redCard(bool: false, home: true)
-                eventDelegate?.subWasMade(bool: false)
+                eventDelegate?.yellowCall(bool: false, home: true, away: false)
+                eventDelegate?.redCard(bool: false, home: true, away: false)
+//                eventDelegate?.subWasMade(bool: false)
                 Game.homeGoalsPlayers.append(playerSelected)
                 Game.homeScore += 1
             } else if teamSide == .away{
                 timerDelegate?.keepStartButtonDisable(disable: true)
                 timerDelegate?.keepStartButtonHidden(hide: true)
-                eventDelegate?.yellowCall(bool: false, home: false)
-                eventDelegate?.redCard(bool: false, home: false)
-                eventDelegate?.subWasMade(bool: false)
+                eventDelegate?.yellowCall(bool: false, home: false, away: true)
+                eventDelegate?.redCard(bool: false, home: false, away: true)
+//                eventDelegate?.subWasMade(bool: false)
                 Game.awayGoalsPlayers.append(playerSelected)
                 Game.awayScore += 1
             }

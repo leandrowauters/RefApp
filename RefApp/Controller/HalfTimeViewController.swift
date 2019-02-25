@@ -92,8 +92,8 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         eventDelegate.halfTime(bool: true)
-        eventDelegate.redCard(bool: false, home: nil)
-        eventDelegate.yellowCall(bool: false, home: nil)
+        eventDelegate.redCard(bool: false, home: nil, away: nil)
+        eventDelegate.yellowCall(bool: false, home: nil, away: nil)
         timerDelegate?.keepStartButtonDisable(disable: false)
         timerDelegate?.keepStartButtonHidden(hide: false)
         timerDelegate?.addTapAfterSub(add: false)

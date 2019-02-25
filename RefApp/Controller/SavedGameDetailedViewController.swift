@@ -26,6 +26,7 @@ class SavedGameDetailedViewController: UIViewController {
     @IBAction func selectWasPress(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title:"Are You Sure?" , message: "Once The Game Begins Settings Cannot Be Change" , preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (updateAction) in
+            Game.gameName = self.savedGame.gameName
             Game.lengthSelected = self.savedGame.lengthSelected
             Game.numberOfPlayers = self.savedGame.numberOfPlayers
             Game.location = self.savedGame.location

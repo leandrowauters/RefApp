@@ -56,22 +56,21 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
         timerDelegate?.keepStartButtonHidden(hide: true)
         timerDelegate?.keepStartButtonDisable(disable: true)
         timerDelegate?.addTapAfterSub(add: true)
-        eventDelegate?.yellowCall(bool: false, home: true)
-        eventDelegate?.redCard(bool: false, home: true)
+
         eventDelegate?.playerSelected(player: String(selectedPlayer))
         if teamSide == .home {
+            eventDelegate?.yellowCall(bool: false, home: true, away: false)
+            eventDelegate?.redCard(bool: false, home: true, away: false)
             if Game.homePlayers.contains(Int(subTextField.text!)!){
                 subTextField.text = ""
                 showAlert(title: "Player Already Entered", message: nil)
                 return
             }
-            eventDelegate?.yellowCall(bool: false, home: true)
-            eventDelegate?.redCard(bool: false, home: true)
             if let text = subTextField.text{
                 Game.homePlayers.remove(at: selectedButton)
                 Game.homePlayers.insert(Int(text)!, at: Int(selectedButton))
 //                eventDelegate?.substitution(playerIn: text, playerOut: selectedPlayer.description, home: true, index: selectedButton)
-//                eventDelegate?.subWasMade(bool: true)
+                eventDelegate?.subWasMade(bool: true, scrollToAway: false)
 //            Game.homePlayersSorted.remove(at: selectedButton)
 //            Game.homePlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
 //            Game.homePlayersSorted = Game.homePlayersSorted.sorted{$0 < $1}
@@ -83,13 +82,14 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
                 showAlert(title: "Player Already Entered", message: nil)
                 return
             }
-            eventDelegate?.yellowCall(bool: false, home: false)
-            eventDelegate?.redCard(bool: false, home: false)
+            eventDelegate?.yellowCall(bool: false, home: false, away: true)
+            eventDelegate?.redCard(bool: false, home: false, away: true)
+            
             if let text = subTextField.text{
                 Game.awayPlayers.remove(at: selectedButton)
                 Game.awayPlayers.insert(Int(text)!, at: Int(selectedButton))
 //                eventDelegate?.substitution(playerIn: text, playerOut: selectedPlayer.description, home: false, index: selectedButton)
-//                eventDelegate?.subWasMade(bool: true)
+                eventDelegate?.subWasMade(bool: true, scrollToAway: true)
             }
 //            Game.awayPlayersSorted.remove(at: selectedButton)
 //            Game.awayPlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)

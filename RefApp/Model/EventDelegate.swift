@@ -9,11 +9,11 @@
 import Foundation
 
 protocol EventDelegate: AnyObject {
-    func yellowCall(bool: Bool, home: Bool?)
-    func redCard(bool: Bool, home: Bool?)
+    func yellowCall(bool: Bool, home: Bool?, away: Bool?)
+    func redCard(bool: Bool, home: Bool?, away: Bool?)
     func halfTime(bool: Bool)
     func playerSelected(player: String)
     func activateViewDidAppear(bool: Bool)
-    func substitution(playerIn: String, playerOut: String, home: Bool,index: Int)
-    func subWasMade(bool: Bool)
+//    func substitution(playerIn: String, playerOut: String, home: Bool,index: Int)
+    func subWasMade(bool: Bool, scrollToAway: Bool)
 }

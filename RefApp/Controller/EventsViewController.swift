@@ -131,8 +131,8 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         eventDelegate.halfTime(bool: false)
         timerDelegate?.keepStartButtonDisable(disable: true)
         timerDelegate?.keepStartButtonHidden(hide: true)
-        eventDelegate.redCard(bool: false, home: nil)
-        eventDelegate.yellowCall(bool: false, home: nil)
+        eventDelegate.redCard(bool: false, home: nil, away: nil)
+        eventDelegate.yellowCall(bool: false, home: nil, away: nil)
         dismiss(animated: true, completion: nil)
     }
     @objc func enterButtonPressed(){

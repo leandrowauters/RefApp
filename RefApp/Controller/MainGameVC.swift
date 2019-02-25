@@ -29,7 +29,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     static var playerIn = String()
     static var playerOut = String()
     static var home = true
+    static var away = true
     static var index = Int()
+    static var scrollToAway = false
     private var usersession: UserSession?
     let homeView2 = HomeView()
     let homeView: HomeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! HomeView
@@ -112,7 +114,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         setupButtons()
         reloadView()
-        if !MainGameVC.home{
+        if MainGameVC.scrollToAway{
             teamsScrollView.scrollRectToVisible(CGRect(x: view.frame.width * CGFloat(1), y: 0, width: view.frame.width, height: view.frame.height / 2), animated: true)
         }
         minutesLabel.text = "\(Game.lengthSelected / 2) Mins"
@@ -238,7 +240,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 
             
         }
-        } else {
+        }
+        if MainGameVC.away{
         for button in awayView.awayPlayersButtons{
             if let text = button.titleLabel?.text {
                 if MainGameVC.yellowCard{
@@ -247,8 +250,6 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                     }
                 } else if Game.awayYellowCardPlayers.contains(Int(text)!) {
                     graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
-                } else {
-                    button.backgroundColor = .clear
                 }
                 if MainGameVC.redCard{
                     if text == MainGameVC.playerSelected{
@@ -345,15 +346,18 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (updateAction) in
                 
                 print("Game ended")
+                let gameData: GameData!
                 if let user = self.usersession?.getCurrentUser(){
                     let gameStatistics = GameStatistics(userID: user.uid,winnerSide: GameStatistics.getWinnerHomeAway(), winnerTeam: GameStatistics.getWinnerTeam(),totalRunningTime: 4, homeYellowCards: GameStatistics.homeYellowCards, awayYellowCards: GameStatistics.awayYellowCards, homeRedCards: GameStatistics.homeRedCard, awayRedCards: GameStatistics.awayRedCard, homeGoals: Game.homeScore, awayGoals: Game.awayScore)
-                    let gameData = GameData(userID: user.uid, winner:GameStatistics.getWinnerHomeAway() , gameName: Game.gameName!, lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, homeScore: Game.homeScore, awayScore: Game.awayScore, totalRunningTime: 4, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers, homeYellowCardPlayers: Game.homeYellowCardPlayers, homeRedCardPlayers: Game.homeRedCardPlayers, awayYellowCardPlayers: Game.awayYellowCardPlayers, awayRedCardPlayers: Game.awayRedCardPlayers, homeGoalsPlayers: Game.homeGoalsPlayers, awayGoalsPlayers: Game.awayGoalsPlayers, gameNotes: Game.gameNotes)
+                    gameData = GameData(userID: user.uid, winner:GameStatistics.getWinnerHomeAway() , gameName: Game.gameName ?? "no name", lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, homeScore: Game.homeScore, awayScore: Game.awayScore, totalRunningTime: 4, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers, homeYellowCardPlayers: Game.homeYellowCardPlayers, homeRedCardPlayers: Game.homeRedCardPlayers, awayYellowCardPlayers: Game.awayYellowCardPlayers, awayRedCardPlayers: Game.awayRedCardPlayers, homeGoalsPlayers: Game.homeGoalsPlayers, awayGoalsPlayers: Game.awayGoalsPlayers, gameNotes: Game.gameNotes)
                     DatabaseManager.postGameStatisticsToDatabase(gameStatistics: gameStatistics)
                     DatabaseManager.postGameDataToDatabase(gameData: gameData)
-                    
+                } else {
+                    gameData = GameData(userID: "no id", winner:GameStatistics.getWinnerHomeAway() , gameName: Game.gameName ?? "no name", lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, homeScore: Game.homeScore, awayScore: Game.awayScore, totalRunningTime: 4, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers, homeYellowCardPlayers: Game.homeYellowCardPlayers, homeRedCardPlayers: Game.homeRedCardPlayers, awayYellowCardPlayers: Game.awayYellowCardPlayers, awayRedCardPlayers: Game.awayRedCardPlayers, homeGoalsPlayers: Game.homeGoalsPlayers, awayGoalsPlayers: Game.awayGoalsPlayers, gameNotes: Game.gameNotes)
                 }
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "gameSummary")
+                guard let vc = storyboard.instantiateViewController(withIdentifier: "gameSummary") as? GameSummaryViewController else {return}
+                vc.gameData = gameData
                 vc.modalPresentationStyle = .overFullScreen
                 self.present(vc, animated: true, completion: nil)
             }))
@@ -430,32 +434,42 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
 }
 
 extension MainGameVC: TimerDelegate, EventDelegate{
+
+    
     func hideChangeScreenButton(hide: Bool) {
         changeTimerButton.isHidden = hide
     }
     
-    func substitution(playerIn: String, playerOut: String, home: Bool, index: Int) {
-        MainGameVC.playerIn = playerIn
-        MainGameVC.playerOut = playerOut
-        MainGameVC.home = home
-        MainGameVC.index = index
+//    func substitution(playerIn: String, playerOut: String, home: Bool, index: Int) {
+//        MainGameVC.playerIn = playerIn
+//        MainGameVC.playerOut = playerOut
+//        MainGameVC.home = home
+//        MainGameVC.index = index
+//    }
+    
+    func subWasMade(bool: Bool, scrollToAway: Bool) {
+        MainGameVC.home = bool
+        MainGameVC.away = bool
+        MainGameVC.scrollToAway = scrollToAway
     }
     
-    func subWasMade(bool: Bool) {
-        MainGameVC.substitution = bool
-    }
-    
-    func yellowCall(bool: Bool, home: Bool?) {
+    func yellowCall(bool: Bool, home: Bool?, away: Bool?) {
         MainGameVC.yellowCard = bool
         if let home = home{
         MainGameVC.home = home
         }
+        if let away = away{
+        MainGameVC.away = away
+        }
     }
     
-    func redCard(bool: Bool, home: Bool?) {
+    func redCard(bool: Bool, home: Bool?, away: Bool?) {
         MainGameVC.redCard = bool
         if let home = home{
             MainGameVC.home = home
+        }
+        if let away = away{
+            MainGameVC.away = away
         }
     }
     

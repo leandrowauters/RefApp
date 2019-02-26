@@ -25,7 +25,6 @@
 		D532218B21D731F4004B0363 /* PopActionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D532218A21D731F4004B0363 /* PopActionsVC.swift */; };
 		D532218D21DC3213004B0363 /* SelectPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D532218C21DC3213004B0363 /* SelectPlayerVC.swift */; };
 		D544EC8F21C8498E004B285C /* NamesInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D544EC8E21C8498E004B285C /* NamesInputVC.swift */; };
-		D54C438C2225A61500C51A63 /* CoreDataReferee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D54C438A2225A61500C51A63 /* CoreDataReferee.xcdatamodeld */; };
 		D550683221CDE61800F3C6F4 /* GameClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D550683121CDE61800F3C6F4 /* GameClient.swift */; };
 		D558FF57220A859900B3B62D /* EventHalfTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558FF56220A859900B3B62D /* EventHalfTimeView.swift */; };
 		D558FF59220A85B100B3B62D /* SubHalfTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558FF58220A85B100B3B62D /* SubHalfTimeView.swift */; };
@@ -94,7 +93,6 @@
 		D532218A21D731F4004B0363 /* PopActionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopActionsVC.swift; sourceTree = "<group>"; };
 		D532218C21DC3213004B0363 /* SelectPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayerVC.swift; sourceTree = "<group>"; };
 		D544EC8E21C8498E004B285C /* NamesInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesInputVC.swift; sourceTree = "<group>"; };
-		D54C438B2225A61500C51A63 /* CoreDataReferee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataReferee.xcdatamodel; sourceTree = "<group>"; };
 		D550683121CDE61800F3C6F4 /* GameClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClient.swift; sourceTree = "<group>"; };
 		D558FF56220A859900B3B62D /* EventHalfTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHalfTimeView.swift; sourceTree = "<group>"; };
 		D558FF58220A85B100B3B62D /* SubHalfTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubHalfTimeView.swift; sourceTree = "<group>"; };
@@ -336,7 +334,6 @@
 			isa = PBXGroup;
 			children = (
 				D5FBD97021B23538005D89F4 /* AppDelegate.swift */,
-				D54C438A2225A61500C51A63 /* CoreDataReferee.xcdatamodeld */,
 				D5FBD97921B23539005D89F4 /* LaunchScreen.storyboard */,
 			);
 			path = Other;
@@ -530,7 +527,6 @@
 				D529FE0121B4755F00DDC366 /* DatePickerVC.swift in Sources */,
 				D5FA730921EFF53D007F77CE /* HomePlayersSelectionViewController.swift in Sources */,
 				D529FDFF21B4748C00DDC366 /* TeamsInputVC.swift in Sources */,
-				D54C438C2225A61500C51A63 /* CoreDataReferee.xcdatamodeld in Sources */,
 				D52C80A621F79EE5005B8C95 /* AwayPlayersSelectionViewController.swift in Sources */,
 				D5A62AA821E526C700C9183B /* SavedGameDetailedViewController.swift in Sources */,
 				D5FA730B21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift in Sources */,
@@ -745,19 +741,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D54C438A2225A61500C51A63 /* CoreDataReferee.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D54C438B2225A61500C51A63 /* CoreDataReferee.xcdatamodel */,
-			);
-			currentVersion = D54C438B2225A61500C51A63 /* CoreDataReferee.xcdatamodel */;
-			path = CoreDataReferee.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D5FBD96521B23538005D89F4 /* Project object */;
 }

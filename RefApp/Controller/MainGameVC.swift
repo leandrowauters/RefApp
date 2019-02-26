@@ -339,7 +339,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             MainTimer.time = 0
             Game.gameHalf = 2
             
-            self.timer.restartTimer()
+            self.timer.suspend()
         }))
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
             self.present(alert, animated: false)

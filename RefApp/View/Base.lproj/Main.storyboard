@@ -2230,24 +2230,70 @@
                                     <action selector="cancelPressed:" destination="k2M-Dd-PUN" eventType="touchUpInside" id="zrx-m6-d4E"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="44R-Ok-CJI">
+                                <rect key="frame" x="270.66666666666669" y="224.66666666666663" width="80" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5IO-ya-3TF">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="5IO-ya-3TF" firstAttribute="centerX" secondItem="44R-Ok-CJI" secondAttribute="centerX" id="EdD-Js-dGM"/>
+                                    <constraint firstItem="5IO-ya-3TF" firstAttribute="centerY" secondItem="44R-Ok-CJI" secondAttribute="centerY" id="JED-NA-io3"/>
+                                    <constraint firstItem="5IO-ya-3TF" firstAttribute="width" secondItem="44R-Ok-CJI" secondAttribute="width" id="Oyp-vk-Zrs"/>
+                                    <constraint firstItem="5IO-ya-3TF" firstAttribute="height" secondItem="44R-Ok-CJI" secondAttribute="height" id="d3T-fo-TPr"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDM-Qh-fuq">
+                                <rect key="frame" x="63.666666666666657" y="224.66666666666663" width="80" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HC4-aE-Glz">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="HC4-aE-Glz" firstAttribute="width" secondItem="JDM-Qh-fuq" secondAttribute="width" id="Bov-mb-8Jk"/>
+                                    <constraint firstItem="HC4-aE-Glz" firstAttribute="height" secondItem="JDM-Qh-fuq" secondAttribute="height" id="Ec2-bH-1aZ"/>
+                                    <constraint firstItem="HC4-aE-Glz" firstAttribute="centerX" secondItem="JDM-Qh-fuq" secondAttribute="centerX" id="YRn-9b-XT5"/>
+                                    <constraint firstItem="HC4-aE-Glz" firstAttribute="centerY" secondItem="JDM-Qh-fuq" secondAttribute="centerY" id="l12-jN-F8W"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.2156862745" green="0.36862745099999999" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="44R-Ok-CJI" firstAttribute="height" secondItem="NTE-XX-fUQ" secondAttribute="height" id="091-wu-RGd"/>
                             <constraint firstItem="fAk-ZY-YZ9" firstAttribute="trailing" secondItem="4pQ-hS-pU0" secondAttribute="trailing" constant="11" id="2EK-Ab-wMe"/>
                             <constraint firstItem="T5D-hQ-gbY" firstAttribute="centerX" secondItem="fAk-ZY-YZ9" secondAttribute="centerX" id="5xZ-am-Xb0"/>
                             <constraint firstItem="aSv-Mf-myT" firstAttribute="centerY" secondItem="NTE-XX-fUQ" secondAttribute="centerY" id="6Ws-dp-tdd"/>
                             <constraint firstItem="4pQ-hS-pU0" firstAttribute="top" secondItem="fAk-ZY-YZ9" secondAttribute="top" constant="81" id="8vd-TF-QtM"/>
+                            <constraint firstItem="44R-Ok-CJI" firstAttribute="width" secondItem="NTE-XX-fUQ" secondAttribute="width" id="AXy-n2-LtK"/>
+                            <constraint firstItem="44R-Ok-CJI" firstAttribute="centerY" secondItem="NTE-XX-fUQ" secondAttribute="centerY" id="FJj-sD-Kvb"/>
                             <constraint firstItem="NTE-XX-fUQ" firstAttribute="centerX" secondItem="fAk-ZY-YZ9" secondAttribute="centerX" multiplier="1.5" id="GeD-NS-SdP"/>
+                            <constraint firstItem="JDM-Qh-fuq" firstAttribute="width" secondItem="aSv-Mf-myT" secondAttribute="width" id="Owb-GF-Ggx"/>
                             <constraint firstItem="4pQ-hS-pU0" firstAttribute="leading" secondItem="fAk-ZY-YZ9" secondAttribute="leading" constant="11" id="T6q-Ha-9og"/>
                             <constraint firstItem="WvF-ON-5yJ" firstAttribute="leading" secondItem="fAk-ZY-YZ9" secondAttribute="leading" constant="20" id="X2y-o2-V7U"/>
+                            <constraint firstItem="44R-Ok-CJI" firstAttribute="centerX" secondItem="NTE-XX-fUQ" secondAttribute="centerX" id="dUk-h1-Isf"/>
                             <constraint firstItem="WvF-ON-5yJ" firstAttribute="top" secondItem="fAk-ZY-YZ9" secondAttribute="top" constant="5" id="ilI-EO-Xmd"/>
+                            <constraint firstItem="JDM-Qh-fuq" firstAttribute="height" secondItem="aSv-Mf-myT" secondAttribute="height" id="kCg-Pp-cDF"/>
                             <constraint firstItem="NTE-XX-fUQ" firstAttribute="centerY" secondItem="fAk-ZY-YZ9" secondAttribute="centerY" multiplier="0.7" id="oBv-TC-bR2"/>
                             <constraint firstItem="aSv-Mf-myT" firstAttribute="centerX" secondItem="fAk-ZY-YZ9" secondAttribute="centerX" multiplier="0.5" id="ucy-et-gGO"/>
+                            <constraint firstItem="JDM-Qh-fuq" firstAttribute="centerY" secondItem="aSv-Mf-myT" secondAttribute="centerY" id="voJ-vx-3cD"/>
+                            <constraint firstItem="JDM-Qh-fuq" firstAttribute="centerX" secondItem="aSv-Mf-myT" secondAttribute="centerX" id="wvJ-90-wxu"/>
                             <constraint firstItem="T5D-hQ-gbY" firstAttribute="centerY" secondItem="NTE-XX-fUQ" secondAttribute="centerY" id="zfW-y8-jLk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fAk-ZY-YZ9"/>
                     </view>
                     <connections>
+                        <outlet property="animatedLabelLeft" destination="HC4-aE-Glz" id="Tgr-fi-V4y"/>
+                        <outlet property="animatedLabelRight" destination="5IO-ya-3TF" id="MOt-vE-yD4"/>
+                        <outlet property="animatedViewLeft" destination="JDM-Qh-fuq" id="beV-he-sN7"/>
+                        <outlet property="animatedViewRight" destination="44R-Ok-CJI" id="31C-ST-G4j"/>
                         <outlet property="playerOutLabel" destination="aSv-Mf-myT" id="R8g-Rb-BkJ"/>
                         <outlet property="subTextField" destination="NTE-XX-fUQ" id="tKu-dw-Uc3"/>
                         <outlet property="textLabel" destination="4pQ-hS-pU0" id="YZm-IA-LFk"/>
@@ -2255,7 +2301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8c9-Ua-BTA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7228.985507246377" y="116.57608695652175"/>
+            <point key="canvasLocation" x="6863.7681159420299" y="117.39130434782609"/>
         </scene>
         <!--My Account View Controller-->
         <scene sceneID="C5P-1y-PuR">

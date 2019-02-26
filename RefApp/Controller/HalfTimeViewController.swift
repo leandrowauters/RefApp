@@ -235,7 +235,6 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         if subHalftimeView.teamSegmentedBar.selectedSegmentIndex == 0 {
         perfomSub(team: &Game.homePlayers, playerIn: playerIn, playerOut: playerOut, index: &index)
             print("Home After sub: \(Game.homePlayers)")
-       
         } else {
             perfomSub(team: &Game.awayPlayers, playerIn: playerIn, playerOut: playerOut, index: &index)
             print("Away After sub: \(Game.awayPlayers)")

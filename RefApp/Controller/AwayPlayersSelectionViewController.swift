@@ -38,14 +38,14 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "\(Game.awayTeam) Players"
-        scrollToLastIndex()
         numbersCollectionView.delegate = self
         numbersCollectionView.dataSource = self
+        scrollToLastIndex()
         getUserId()
 
     }
     func scrollToLastIndex(){
-        let indextPath = IndexPath(item: Game.homePlayers.count, section: 0)
+        let indextPath = IndexPath(item: awayPlayers.count, section: 0)
         numbersCollectionView.scrollToItem(at: indextPath, at: .right, animated: true)
     }
     func getUserId() {

@@ -9,16 +9,34 @@
 import UIKit
 
 class SavedGamesViewController: UIViewController {
-    let loadedGames = DataPeristanceModel.getGames()
-    
+    var loadedGames = [Game]() {
+        didSet{
+            self.savedGamesTableView.reloadData()
+        }
+    }
+    private var usersession: UserSession?
     @IBOutlet weak var savedGamesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         savedGamesTableView.dataSource = self
         savedGamesTableView.delegate = self
+        getGames()
     }
-    
+    func getGames() {
+        if UserSession.loginStatus == .existingAccount{
+            DatabaseManager.fetchSaveGames(vc: self) { (error, games) in
+                if let error = error{
+                    print(error)
+                }
+                if let games = games {
+                    self.loadedGames = games
+                }
+            }
+        } else {
+            loadedGames = DataPeristanceModel.getGames()
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = savedGamesTableView.indexPathForSelectedRow,
             let savedGameDetail = segue.destination as? SavedGameDetailedViewController else {return}

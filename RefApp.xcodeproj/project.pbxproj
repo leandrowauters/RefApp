@@ -310,8 +310,6 @@
 			children = (
 				D55DD93F2221FF83009843D2 /* GameSummaryViewController.swift */,
 				D58B2FC32208AEB4005FB7FB /* HalfTimeViewController.swift */,
-				D5A62AA521E4318500C9183B /* SavedGamesViewController.swift */,
-				D5A62AA721E526C700C9183B /* SavedGameDetailedViewController.swift */,
 				D5BDD18021EB01220078408E /* EventsViewController.swift */,
 				D532218C21DC3213004B0363 /* SelectPlayerVC.swift */,
 				D532218A21D731F4004B0363 /* PopActionsVC.swift */,
@@ -321,6 +319,8 @@
 				D510975021CAC57E008638B3 /* HomePlayersInputVC.swift */,
 				D5313FDF21D6F26500875B63 /* AwayPlayersInputVC.swift */,
 				D5FBD98421B2358D005D89F4 /* GameSettings.swift */,
+				D5A62AA721E526C700C9183B /* SavedGameDetailedViewController.swift */,
+				D5A62AA521E4318500C9183B /* SavedGamesViewController.swift */,
 				D57420CC22173EC0006D1CCB /* MyAccountViewController.swift */,
 				D57420C8221739EA006D1CCB /* CreateAccountViewController.swift */,
 				D5A8518B22166ABC0019AFC0 /* SignInViewController.swift */,

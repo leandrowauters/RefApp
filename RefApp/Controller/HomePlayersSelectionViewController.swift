@@ -44,18 +44,20 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
     
     func scrollToLastIndex(){
         let indextPath = IndexPath(item: Game.homePlayers.count, section: 0)
-        numbersCollectionView.scrollToItem(at: indextPath, at: .right, animated: true)
+        numbersCollectionView.scrollToItem(at: indextPath, at: .centeredHorizontally, animated: true)
     }
     override func viewDidLayoutSubviews() {
         graphics.changeButtonLayout(buttons: numberPadButtons)
     }
     @IBAction func numberPadWasPressed(_ sender: UIButton) {
+        
         number.append(Character(sender.tag.description))
 //        numbersTextView.text = number
 
     }
 
     @IBAction func enterWasPressed(_ sender: UIButton) {
+        if number != ""{
         if !homePlayers.contains(Int(number)!){
             homePlayers.append(Int(number)!)
             Game.homePlayers.append(Int(number)!)
@@ -66,10 +68,13 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
             numbersCollectionView.layoutIfNeeded()
             numbersCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         } else {
-            showAlert(title: "Player Already Entered", message: nil)
+            showAlert(title: "Player Already Entered", message: "Try again")
 //            let _: Timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(hideLabel), userInfo: nil, repeats: true)
             number = ""
             print("Number of players \(Game.homePlayers.count)")
+        }
+        } else {
+            showAlert(title: "Please enter player", message: "Try again")
         }
     }
     @IBAction func backspacePressed(_ sender: UIButton) {

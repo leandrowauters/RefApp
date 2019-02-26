@@ -100,6 +100,7 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
     }
     
     @IBAction func enterWasPressed(_ sender: UIButton) {
+        if number != ""{
         if !awayPlayers.contains(Int(number)!){
             awayPlayers.append(Int(number)!)
             Game.awayPlayers.append(Int(number)!)
@@ -112,6 +113,9 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
             showAlert(title: "Player Already Entered", message: nil)
             number = ""
             print("Number of players \(Game.awayPlayers.count)")
+        }
+        } else {
+            showAlert(title: "Please enter player", message: "Try again")
         }
     }
     @IBAction func backspacePressed(_ sender: UIButton) {

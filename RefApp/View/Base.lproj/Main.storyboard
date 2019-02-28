@@ -2341,26 +2341,39 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQP-bf-csD">
-                                <rect key="frame" x="352" y="20" width="57" height="30"/>
+                                <rect key="frame" x="337" y="30" width="57" height="30"/>
                                 <state key="normal" title="Sign out"/>
                                 <connections>
                                     <action selector="signOutPressed:" destination="1Dp-qn-Wzx" eventType="touchUpInside" id="BE4-TK-oKg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXX-7X-BvV">
+                                <rect key="frame" x="20" y="20" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2MK-VU-GS8"/>
+                                    <constraint firstAttribute="width" constant="50" id="A6Z-cp-a22"/>
+                                </constraints>
+                                <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="closeWindowPressed:" destination="1Dp-qn-Wzx" eventType="touchUpInside" id="UGv-2Z-Loc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.84313725490000002" green="0.17254901959999999" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="lQP-bf-csD" firstAttribute="top" secondItem="HKC-D4-in0" secondAttribute="top" id="C1K-1L-lzC"/>
+                            <constraint firstItem="HKC-D4-in0" firstAttribute="trailing" secondItem="lQP-bf-csD" secondAttribute="trailing" constant="20" id="3Bl-Ma-jiL"/>
                             <constraint firstItem="HKC-D4-in0" firstAttribute="trailing" secondItem="MUx-Uf-X3Q" secondAttribute="trailing" constant="11" id="CJz-Jm-HFx"/>
                             <constraint firstItem="GDl-GF-OCJ" firstAttribute="top" secondItem="ATQ-0E-fch" secondAttribute="bottom" id="CLn-el-Jog"/>
                             <constraint firstItem="HKC-D4-in0" firstAttribute="trailing" secondItem="GDl-GF-OCJ" secondAttribute="trailing" id="EvA-Mp-sYv"/>
                             <constraint firstItem="MUx-Uf-X3Q" firstAttribute="centerY" secondItem="uoF-nr-p2U" secondAttribute="centerY" multiplier="0.7" id="GhE-87-DQO"/>
+                            <constraint firstItem="lQP-bf-csD" firstAttribute="centerY" secondItem="UXX-7X-BvV" secondAttribute="centerY" id="GqM-Xd-imR"/>
                             <constraint firstItem="GDl-GF-OCJ" firstAttribute="leading" secondItem="HKC-D4-in0" secondAttribute="leading" id="HqR-b2-W16"/>
                             <constraint firstItem="GDl-GF-OCJ" firstAttribute="height" secondItem="m89-vo-NAh" secondAttribute="height" multiplier="0.75" id="Lv4-pf-ByK"/>
                             <constraint firstItem="uoF-nr-p2U" firstAttribute="centerY" secondItem="HKC-D4-in0" secondAttribute="centerY" multiplier="0.45" id="Piv-OY-Re2"/>
+                            <constraint firstItem="UXX-7X-BvV" firstAttribute="top" secondItem="HKC-D4-in0" secondAttribute="top" id="PpU-FI-IXo"/>
                             <constraint firstItem="MUx-Uf-X3Q" firstAttribute="leading" secondItem="uoF-nr-p2U" secondAttribute="trailing" constant="11" id="Qeu-bN-BCe"/>
+                            <constraint firstItem="UXX-7X-BvV" firstAttribute="leading" secondItem="HKC-D4-in0" secondAttribute="leading" constant="20" id="Qix-lq-Iaz"/>
                             <constraint firstItem="HKC-D4-in0" firstAttribute="trailing" secondItem="0ng-N6-gi8" secondAttribute="trailing" constant="11" id="RnY-dF-ww3"/>
-                            <constraint firstItem="HKC-D4-in0" firstAttribute="trailing" secondItem="lQP-bf-csD" secondAttribute="trailing" constant="5" id="am4-0l-0YU"/>
                             <constraint firstItem="ATQ-0E-fch" firstAttribute="leading" secondItem="HKC-D4-in0" secondAttribute="leading" id="cAD-e4-Nsh"/>
                             <constraint firstAttribute="trailing" secondItem="ATQ-0E-fch" secondAttribute="trailing" id="cSf-Sj-3jj"/>
                             <constraint firstItem="0ng-N6-gi8" firstAttribute="leading" secondItem="uoF-nr-p2U" secondAttribute="trailing" constant="11" id="esE-B0-21g"/>
@@ -2482,6 +2495,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6DF-bz-Uwa">
                                 <rect key="frame" x="62" y="369.66666666666669" width="290" height="30"/>
                                 <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="signInPressed:" destination="8ws-s7-VXg" eventType="touchUpInside" id="49P-RG-MXw"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dfe-J7-RBx">
                                 <rect key="frame" x="62" y="414.66666666666669" width="290" height="30"/>
@@ -2517,6 +2533,8 @@
                     </view>
                     <connections>
                         <outlet property="createAccountLabel" destination="A55-9m-til" id="EXT-sg-QFh"/>
+                        <outlet property="emailTextField" destination="6b9-g0-Hl8" id="Tna-AF-C2e"/>
+                        <outlet property="passwordTextField" destination="CDg-dN-j9K" id="S4U-0z-Ft1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5R-R0-iVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2543,6 +2561,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="close" width="25" height="25"/>
         <image name="deleteKey3" width="36" height="36"/>
         <image name="enterKey" width="36" height="36"/>
         <image name="icons8-menu" width="100" height="100"/>

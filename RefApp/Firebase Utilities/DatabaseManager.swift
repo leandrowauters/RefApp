@@ -162,4 +162,43 @@ final class DatabaseManager {
 
         
     }
+//    private func queryForReviewer() {
+//        // Query - for the user who created this race review
+//        let query = DatabaseManager.firebaseDB.collection(DatabaseKeys
+//            .UsersCollectionKey).whereField("userId", isEqualTo: raceReview.reviewerId)
+//        query.getDocuments { (snapshot, error) in
+//            if let error = error {
+//                self.showAlert(title: "Network Error", message: error.localizedDescription, actionTitle: "Try Again")
+//            } else if let snapshot = snapshot {
+//                guard let firstDocument = snapshot.documents.first else {
+//                    print("no document found")
+//                    return
+//                }
+//                let reviewer = RRUser(dict: firstDocument.data())
+//                DispatchQueue.main.async {
+//                    self.detailView.usernameLabel.text = "reviewed by @\(reviewer.username ?? "no ussername")"
+//                }
+//
+//                // setting up image url
+//                guard let imageURL = reviewer.imageURL,
+//                    !imageURL.isEmpty else {
+//                        print("no imageURL")
+//                        return
+//                }
+//                //use Kinhgisher or SWDwebImage cocoapods
+//                if let image = ImageCache.shared.fetchImageFromCache(urlString: imageURL) {
+//                    self.detailView.reviewersProfileImageView.image = image
+//                } else {
+//                    ImageCache.shared.fetchImageFromNetwork(urlString: imageURL) { (appError, image) in
+//                        if let appError = appError {
+//                            self.showAlert(title: "Fetching Image Error", message: appError.errorMessage(), actionTitle: "Ok")
+//                        } else if let image = image {
+//                            self.detailView.reviewersProfileImageView.image = image
+//                        }
+//                    }
+//                }
+//
+//            }
+//        }
+//    }
 }

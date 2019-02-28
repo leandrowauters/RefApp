@@ -15,14 +15,23 @@ class MainScreenViewController: UIViewController {
     @IBOutlet weak var newGameButton: UIButton!
     @IBOutlet weak var loadGameButton: UIButton!
     
+    weak var userdDidLoginDelegate: UserDidLogInDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if UserSession.loginStatus == .existingAccount {
-//            barButton.title = "My Account"
-            barButton.image = UIImage(named: "icons8-guest_male")
-        }
+        checkForLoginStatus()
+        userdDidLoginDelegate = self
         setupButtons(buttons: [newGameButton, loadGameButton])
+    }
+    
+    
+    func checkForLoginStatus() {
+        if UserSession.loginStatus == .existingAccount {
+            //            barButton.title = "My Account"
+            barButton.image = UIImage(named: "user")
+        } else {
+            barButton.image = nil
+            navigationItem.rightBarButtonItem?.title = "Sign In"
+        }
     }
     func setupButtons(buttons: [UIButton]) {
         for button in buttons {
@@ -35,13 +44,22 @@ class MainScreenViewController: UIViewController {
     @IBAction func barButtonPressed(_ sender: UIBarButtonItem) {
         
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
-        let signInVC = storyBoard.instantiateViewController(withIdentifier: "SignInViewController")
-        let myAccountVC = storyBoard.instantiateViewController(withIdentifier: "MyAccountVC")
+        guard let signInVC = storyBoard.instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController else {return}
+        guard let myAccountVC = storyBoard.instantiateViewController(withIdentifier: "MyAccountVC") as? MyAccountViewController else {return}
         if UserSession.loginStatus == .existingAccount{
-        navigationController?.pushViewController(myAccountVC, animated: true)
+        myAccountVC.modalPresentationStyle = .overFullScreen
+        myAccountVC.userDidLoginDelegate = self
+        present(myAccountVC, animated: true, completion: nil)
         } else {
-            navigationController?.pushViewController(signInVC, animated: true)
+            present(signInVC, animated: true, completion: nil)
+            signInVC.modalPresentationStyle = .overFullScreen
+            signInVC.userDidLoginDelegate = self
         }
     }
 
+}
+extension MainScreenViewController: UserDidLogInDelegate {
+    func userDidLogin() {
+        viewDidLoad()
+    }   
 }

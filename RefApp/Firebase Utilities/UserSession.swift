@@ -27,11 +27,15 @@ protocol UserSessionSignInDelegate: AnyObject {
     func didRecieveSignInError(_ usersession: UserSession, error: Error)
     func didSignInExistingUser(_ usersession: UserSession, user: User)
 }
+protocol UserDidLogInDelegate: AnyObject {
+    func userDidLogin()
+}
 final class UserSession {
     static var loginStatus: AccountLoginState = .newAccount
     weak var userSessionAccountDelegate: UserSessionAccountCreationDelegate?
     weak var usersessionSignOutDelegate: UserSessionSignOutDelegate?
     weak var usersessionSignInDelegate: UserSessionSignInDelegate?
+    weak var userDidLoginDelegate: UserDidLogInDelegate?
 
     public func createNewAccount(email: String, password: String, confirmPassoword: String) {
         Auth.auth().createUser(withEmail: email, password: password) { (authDataResult, error) in

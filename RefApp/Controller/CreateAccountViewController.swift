@@ -9,7 +9,10 @@
 import UIKit
 import Firebase
 class CreateAccountViewController: UIViewController {
-    @IBOutlet weak var userNameTextField: UITextField!
+    
+    
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     private var usersession: UserSession!
@@ -24,7 +27,7 @@ class CreateAccountViewController: UIViewController {
         self.view.endEditing(true)
     }
     @IBAction func createUserPressed(_ sender: UIButton) {
-        guard let email = userNameTextField.text,
+        guard let email = emailTextField.text,
             let password = passwordTextField.text,
             let confirmPassword = confirmPasswordTextField.text,
             !email.isEmpty,

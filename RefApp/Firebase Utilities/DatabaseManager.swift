@@ -10,9 +10,11 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
+
 final class DatabaseManager {
     
     private init() {}
+
     private static var games = [Game]()
     private static var listener: ListenerRegistration!
     static let firebaseDB: Firestore = {
@@ -111,7 +113,7 @@ final class DatabaseManager {
     
     static func postSaveGameToDatabase(gameToSave: Game) {
          var ref: DocumentReference? = nil
-        ref = firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).addDocument(data: ["userID": gameToSave.userID, "gameName": gameToSave.gameName!, "gameLenght": gameToSave.lengthSelected, "numberOfPlayers" : gameToSave.numberOfPlayers, "location" : gameToSave.location, "dateAndTime" : gameToSave.dateAndTime, "league" : gameToSave.league, "refereeNames" : gameToSave.refereeNames, "caps" : gameToSave.caps , "extraTime" : gameToSave.extraTime, "homeTeam" : gameToSave.homeTeam , "awayTeam" : gameToSave.awayTeam, "subs" : gameToSave.subs, "homePlayers" : gameToSave.homePlayers, "awayPlayers" : gameToSave.awayPlayers], completion: { (error) in
+        ref = firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).addDocument(data: ["userID": gameToSave.userID, "gameName": gameToSave.gameName!, "gameLenght": gameToSave.lengthSelected, "numberOfPlayers" : gameToSave.numberOfPlayers, "location" : gameToSave.location, "dateAndTime" : gameToSave.dateAndTime, "league" : gameToSave.league, "refereeNames" : gameToSave.refereeNames, "caps" : gameToSave.caps , "extraTime" : gameToSave.extraTime, "homeTeam" : gameToSave.homeTeam , "awayTeam" : gameToSave.awayTeam, "subs" : gameToSave.subs, "homePlayers" : gameToSave.homePlayers, "awayPlayers" : gameToSave.awayPlayers, "dBReference" : gameToSave.dbReferenceDocumentId], completion: { (error) in
             if let error = error {
                 print("posing gameToSave failed with error: \(error)")
             } else {
@@ -134,6 +136,7 @@ final class DatabaseManager {
 
     }
     static func fetchSaveGames(vc: UIViewController,completion: @escaping(Error?, [Game]?) -> Void) {
+        
         // add a listener to observe changes to the firestore database
         listener = DatabaseManager.firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).addSnapshotListener(includeMetadataChanges: true) { (snapshot, error) in
             if let error = error {
@@ -143,9 +146,20 @@ final class DatabaseManager {
                 for document in snapshot.documents {
                     let savedGame = Game.init(dict: document.data())
                     games.append(savedGame)
-                    completion(nil, games)
                 }
+                completion(nil, games)
             }
         }
+    }
+    static func deleteSavedGameFromDatabase(vc: UIViewController, gameToDelete: Game) {
+        firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).document(gameToDelete.dbReferenceDocumentId).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+
+        
     }
 }

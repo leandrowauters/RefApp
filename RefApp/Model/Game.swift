@@ -63,8 +63,8 @@ class Game: Codable {
     var subs: Int
     var homePlayers: [Int]
     var awayPlayers: [Int]
-    
-    init(userID: String,gameName: String?, lengthSelected:Int, numberOfPlayers: Int, location: String, dateAndTime: String, league: String, refereeNames: [String], caps: [String], extraTime: Bool, homeTeam: String, awayTeam: String, subs: Int, homePlayers: [Int], awayPlayers: [Int]) {
+    var dbReferenceDocumentId: String
+    init(userID: String,gameName: String?, lengthSelected:Int, numberOfPlayers: Int, location: String, dateAndTime: String, league: String, refereeNames: [String], caps: [String], extraTime: Bool, homeTeam: String, awayTeam: String, subs: Int, homePlayers: [Int], awayPlayers: [Int], dbReferenceDocumentId: String) {
         self.userID = userID
         self.gameName = gameName
         self.lengthSelected = lengthSelected
@@ -80,6 +80,7 @@ class Game: Codable {
         self.subs = subs
         self.homePlayers = homePlayers
         self.awayPlayers = awayPlayers
+        self.dbReferenceDocumentId = dbReferenceDocumentId
     }
     init(dict: [String: Any]){
         self.userID = dict["userID"] as? String ?? "noUser"
@@ -97,10 +98,7 @@ class Game: Codable {
         self.subs = dict["subs"] as? Int ?? 0
         self.homePlayers = dict["homePlayers"] as? [Int] ?? [0]
         self.awayPlayers = dict["awayPlayers"] as? [Int] ?? [0]
-        
-    
-        
-        
+        self.dbReferenceDocumentId = dict["dbReference"] as? String ?? "no dbReference"  
     }
 
     

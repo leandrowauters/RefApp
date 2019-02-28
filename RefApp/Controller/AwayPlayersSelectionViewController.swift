@@ -81,16 +81,12 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
                 })
                 alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (updateAction) in
                     Game.gameName = alert.textFields?.first?.text
-                    let game = Game.init(userID: self.userID, gameName: Game.gameName, lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers)
+                    let game = Game.init(userID: self.userID, gameName: Game.gameName, lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers, dbReferenceDocumentId: "")
                     if UserSession.loginStatus == .existingAccount{
                         DatabaseManager.postSaveGameToDatabase(gameToSave: game)
                     } else {
                         DataPeristanceModel.addGame(game: game)
-                    }
-                    
-                    
-                    
-                    
+                    }     
                 }))
                 self.present(alert, animated: true, completion: nil)
             })

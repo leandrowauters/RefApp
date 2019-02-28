@@ -19,9 +19,13 @@ class SavedGameDetailedViewController: UIViewController {
     }
     
     @IBAction func deleteWasPressed(_ sender: UIBarButtonItem) {
+        if UserSession.loginStatus == .existingAccount {
+            DatabaseManager.deleteSavedGameFromDatabase(vc: self, gameToDelete: savedGame)
+        }else{
         let game = DataPeristanceModel.getGames()[index]
         DataPeristanceModel.deleteGame(game: game, atIndex: index)
         navigationController?.popViewController(animated: true)
+    }
     }
     @IBAction func selectWasPress(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title:"Are You Sure?" , message: "Once The Game Begins Settings Cannot Be Change" , preferredStyle: .alert)

@@ -2340,9 +2340,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQP-bf-csD">
+                                <rect key="frame" x="352" y="20" width="57" height="30"/>
+                                <state key="normal" title="Sign out"/>
+                                <connections>
+                                    <action selector="signOutPressed:" destination="1Dp-qn-Wzx" eventType="touchUpInside" id="BE4-TK-oKg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.84313725490000002" green="0.17254901959999999" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="lQP-bf-csD" firstAttribute="top" secondItem="HKC-D4-in0" secondAttribute="top" id="C1K-1L-lzC"/>
                             <constraint firstItem="HKC-D4-in0" firstAttribute="trailing" secondItem="MUx-Uf-X3Q" secondAttribute="trailing" constant="11" id="CJz-Jm-HFx"/>
                             <constraint firstItem="GDl-GF-OCJ" firstAttribute="top" secondItem="ATQ-0E-fch" secondAttribute="bottom" id="CLn-el-Jog"/>
                             <constraint firstItem="HKC-D4-in0" firstAttribute="trailing" secondItem="GDl-GF-OCJ" secondAttribute="trailing" id="EvA-Mp-sYv"/>
@@ -2352,6 +2360,7 @@
                             <constraint firstItem="uoF-nr-p2U" firstAttribute="centerY" secondItem="HKC-D4-in0" secondAttribute="centerY" multiplier="0.45" id="Piv-OY-Re2"/>
                             <constraint firstItem="MUx-Uf-X3Q" firstAttribute="leading" secondItem="uoF-nr-p2U" secondAttribute="trailing" constant="11" id="Qeu-bN-BCe"/>
                             <constraint firstItem="HKC-D4-in0" firstAttribute="trailing" secondItem="0ng-N6-gi8" secondAttribute="trailing" constant="11" id="RnY-dF-ww3"/>
+                            <constraint firstItem="HKC-D4-in0" firstAttribute="trailing" secondItem="lQP-bf-csD" secondAttribute="trailing" constant="5" id="am4-0l-0YU"/>
                             <constraint firstItem="ATQ-0E-fch" firstAttribute="leading" secondItem="HKC-D4-in0" secondAttribute="leading" id="cAD-e4-Nsh"/>
                             <constraint firstAttribute="trailing" secondItem="ATQ-0E-fch" secondAttribute="trailing" id="cSf-Sj-3jj"/>
                             <constraint firstItem="0ng-N6-gi8" firstAttribute="leading" secondItem="uoF-nr-p2U" secondAttribute="trailing" constant="11" id="esE-B0-21g"/>

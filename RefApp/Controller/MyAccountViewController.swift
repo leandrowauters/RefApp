@@ -52,6 +52,10 @@ class MyAccountViewController: UIViewController {
         customSegmentedBar.addTarget(self, action: #selector(customSegmentedBarPressed(sender:)), for: UIControl.Event.valueChanged)
         
     }
+    @IBAction func signOutPressed(_ sender: UIButton) {
+//        usersession.signOut()
+    }
+    
     func setupViews(views: [UIView]){
         for view in views{
             self.view.addSubview(view)

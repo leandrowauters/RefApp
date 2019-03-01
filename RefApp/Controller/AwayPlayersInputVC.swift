@@ -18,13 +18,7 @@ class AwayPlayersInputVC: UIViewController {
     @IBOutlet weak var playerLeftLabel: UILabel!
     
     @IBOutlet weak var nextButton: UIButton!
-    
-    
-    
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

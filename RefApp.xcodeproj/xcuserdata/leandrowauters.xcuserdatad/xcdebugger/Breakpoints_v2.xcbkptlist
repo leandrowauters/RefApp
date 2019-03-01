@@ -794,12 +794,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/HalfTimeViewController.swift"
-            timestampString = "572912900.56181"
+            timestampString = "573169576.216375"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
-            landmarkName = "enterButtonPressed()"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "setupAnimatedViewRail()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -810,12 +810,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/HalfTimeViewController.swift"
-            timestampString = "572912900.561905"
+            timestampString = "573169576.216776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
-            landmarkName = "enterButtonPressed()"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "setupAnimatedViewRail()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -68,8 +68,7 @@ class GameSettings: UITableViewController {
             extraTimeLabel.text = "No"
         }
     }
-    
-    @IBAction func nextButtonWasPressed(_ sender: UIButton) {
+    @IBAction func nextButtonPressed(_ sender: UIBarButtonItem) {
         if Game.lengthSelected == 0 && Game.numberOfPlayers == 0 {
             let alert = UIAlertController(title: "Please select a duration and number of players", message: nil, preferredStyle: .alert)
             let okay = UIAlertAction(title: "Okay", style: .default) { (UIAlertAction) in
@@ -79,6 +78,7 @@ class GameSettings: UITableViewController {
             present(alert, animated: true, completion: nil)
         }
     }
+    
     @IBAction func subsStepperPressed(_ sender: UIStepper) {
         numberOfSubsLabel.isHidden = false
         let stepperValue = Int(sender.value)

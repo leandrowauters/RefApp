@@ -16,24 +16,60 @@ class CreateAccountViewController: UIViewController {
         ip.delegate = self
         return ip
     }()
-    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var countryTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var profileImageButton: UIButton!
+    @IBOutlet weak var conteinerView: UIView!
     
     private var usersession: UserSession!
     private var storageManager: StorageManager!
+    weak var userDidLoginDelegate: UserDidLogInDelegate?
     private var userImage: UIImage?
     private var displayName: String!
     override func viewDidLoad() {
         super.viewDidLoad()
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        countryTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         storageManager = (UIApplication.shared.delegate as! AppDelegate).storageManager
         usersession.userSessionAccountDelegate = self
         storageManager.delegate = self
         let screenTap = UITapGestureRecognizer.init(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(screenTap)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        registerKeyboardNotification()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        unregisterKeyboardNotifications()
+    }
+    private func registerKeyboardNotification(){
+        NotificationCenter.default.addObserver(self, selector: #selector(willShowKeyboard(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willHideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    private func unregisterKeyboardNotifications(){
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    @objc private func willShowKeyboard(notification: Notification){
+        guard let info = notification.userInfo,
+            let keyboardFrame = info["UIKeyboardFrameEndUserInfoKey"] as? CGRect else {
+                print("UserInfo is nil")
+                return
+        }
+        conteinerView.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.height)
+    }
+    @objc private func willHideKeyboard(){
+        conteinerView.transform = CGAffineTransform.identity
     }
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
@@ -63,18 +99,25 @@ class CreateAccountViewController: UIViewController {
         guard let email = emailTextField.text,
             let password = passwordTextField.text,
             let confirmPassword = confirmPasswordTextField.text,
-            let username = usernameTextField.text,
+            let firstName = firstNameTextField.text,
+            let lastName = lastNameTextField.text,
             !email.isEmpty,
             !confirmPassword.isEmpty,
             !password.isEmpty,
-            !username.isEmpty else {
+            !firstName.isEmpty,
+            !lastName.isEmpty else {
                 showAlert(title: "Missing Required Fields", message: "Email and Password Required")
                 return
         }
         if password != confirmPassword {
             showAlert(title: "Passwords do not match", message: "Try again")
             } else {
-            usersession.createNewAccount(displayName: username, email: email, password: password, confirmPassoword: confirmPassword)
+            if let country = countryTextField.text{
+                usersession.createNewAccount(email: email, password: password, confirmPassoword: confirmPassword, firstName: firstName, lastName: lastName, country: country)
+            } else {
+                usersession.createNewAccount(email: email, password: password, confirmPassoword: confirmPassword, firstName: firstName, lastName: lastName, country: nil)
+            }
+//            usersession.createNewAccount(displayName: username, email: email, password: password, confirmPassoword: confirmPassword)
         }
     }
     @IBAction func cancelPressed(_ sender: UIButton) {
@@ -127,5 +170,11 @@ extension CreateAccountViewController: StorageManagerDelegate {
     func didFetchImage(_ storageManager: StorageManager, imageURL: URL) {
         // update the auth user's photoURL
         usersession.updateUser(photoURL: imageURL)
+    }
+}
+extension CreateAccountViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

@@ -32,9 +32,14 @@ class SignInViewController: UIViewController {
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
+    @IBAction func cancelWasPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @objc func createAccountTapped() {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "CreateAccountViewController")
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "CreateAccountViewController") as? CreateAccountViewController else {return}
+        vc.userDidLoginDelegate = userDidLoginDelegate
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true, completion: nil)
     }
@@ -47,7 +52,6 @@ class SignInViewController: UIViewController {
                 return
         }
         usersession?.signInExistingUser(email: email, password: password)
-        UserSession.loginStatus = .existingAccount
     }
     
 }

@@ -38,14 +38,14 @@ final class UserSession {
     weak var usersessionSignInDelegate: UserSessionSignInDelegate?
     weak var userDidLoginDelegate: UserDidLogInDelegate?
 
-    public func createNewAccount(displayName: String, email: String, password: String, confirmPassoword: String) {
+    public func createNewAccount(email: String, password: String, confirmPassoword: String, firstName: String, lastName: String, country: String?) {
         Auth.auth().createUser(withEmail: email, password: password) { (authDataResult, error) in
             if let error = error {
                 self.userSessionAccountDelegate?.didRecieveErrorCreatingAccount(self, error: error)
             } else if let authDataResult = authDataResult {
                 self.userSessionAccountDelegate?.didCreateAccount(self, user: authDataResult.user)
                 let request = authDataResult.user.createProfileChangeRequest()
-                request.displayName = displayName
+                request.displayName = "\(lastName), \(firstName)"
                 request.commitChanges(completion: { (error) in
                     if let error = error {
                         print("error: \(error)")
@@ -62,7 +62,11 @@ final class UserSession {
                                       "email"       : authDataResult.user.email ?? "",
                                       "displayName" : authDataResult.user.displayName ?? "",
                                       "imageURL"    : authDataResult.user.photoURL ?? "",
-                                      "username"    : username
+                                      "firstName"   : firstName,
+                                      "lastName"    : lastName,
+                                      "username"    : username,
+                                      "country"     : country ?? ""
+                                
                                 ], completion: { (error) in
                                     if let error = error {
                                         print("error adding authenticated user to the database: \(error)")
@@ -84,6 +88,7 @@ final class UserSession {
             if let error = error {
                 self.usersessionSignInDelegate?.didRecieveSignInError(self, error: error)
             } else if let authDataResult = authDataResult {
+                UserSession.loginStatus = .existingAccount
                 self.usersessionSignInDelegate?.didSignInExistingUser(self, user: authDataResult.user)
             }
         }

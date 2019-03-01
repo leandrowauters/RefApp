@@ -126,6 +126,10 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         setTextView()
         registerKeyboardNotification()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        unregisterKeyboardNotifications()
+    }
     
     func setTextView(){
         noteHalfTimeView.enterTextButton.addTarget(self, action: #selector(enterButtonPressed), for: .touchUpInside)

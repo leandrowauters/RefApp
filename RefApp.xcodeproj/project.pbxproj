@@ -64,6 +64,8 @@
 		D5E76067221349FD00450F2E /* EventVCTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E76066221349FD00450F2E /* EventVCTextView.swift */; };
 		D5EDEBDF2228AD9100D12FF5 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EDEBDE2228AD9100D12FF5 /* StorageManager.swift */; };
 		D5EDEBE12228ADB700D12FF5 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EDEBE02228ADB700D12FF5 /* StorageKeys.swift */; };
+		D5EDEBE82229E6EF00D12FF5 /* CountryFlagAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EDEBE72229E6EF00D12FF5 /* CountryFlagAPIClient.swift */; };
+		D5EDEBEA2229E71400D12FF5 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EDEBE92229E71400D12FF5 /* Country.swift */; };
 		D5FA730921EFF53D007F77CE /* HomePlayersSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA730821EFF53D007F77CE /* HomePlayersSelectionViewController.swift */; };
 		D5FA730B21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA730A21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift */; };
 		D5FBD97121B23538005D89F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBD97021B23538005D89F4 /* AppDelegate.swift */; };
@@ -134,6 +136,8 @@
 		D5E76066221349FD00450F2E /* EventVCTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVCTextView.swift; sourceTree = "<group>"; };
 		D5EDEBDE2228AD9100D12FF5 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		D5EDEBE02228ADB700D12FF5 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
+		D5EDEBE72229E6EF00D12FF5 /* CountryFlagAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryFlagAPIClient.swift; sourceTree = "<group>"; };
+		D5EDEBE92229E71400D12FF5 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		D5FA730821EFF53D007F77CE /* HomePlayersSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayersSelectionViewController.swift; sourceTree = "<group>"; };
 		D5FA730A21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayersCollectionViewCell.swift; sourceTree = "<group>"; };
 		D5FBD96D21B23538005D89F4 /* RefApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RefApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,6 +247,14 @@
 			name = MyAccountViews;
 			sourceTree = "<group>";
 		};
+		D5EDEBE42229E69000D12FF5 /* Network Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D5EDEBE72229E6EF00D12FF5 /* CountryFlagAPIClient.swift */,
+			);
+			path = "Network Helpers";
+			sourceTree = "<group>";
+		};
 		D5FBD96421B23538005D89F4 = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +278,7 @@
 			children = (
 				D5FBD97C21B23539005D89F4 /* Info.plist */,
 				D5C0F751221BA8AD006722DE /* GoogleService-Info.plist */,
+				D5EDEBE42229E69000D12FF5 /* Network Helpers */,
 				D5FBD98621B2359D005D89F4 /* Model */,
 				D5FBD98721B235A9005D89F4 /* View */,
 				D5FBD98821B235AF005D89F4 /* Controller */,
@@ -280,6 +293,7 @@
 		D5FBD98621B2359D005D89F4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D5EDEBE92229E71400D12FF5 /* Country.swift */,
 				D5FBD98221B23548005D89F4 /* Game.swift */,
 				D55DD9312220A423009843D2 /* GameData.swift */,
 				D550683121CDE61800F3C6F4 /* GameClient.swift */,
@@ -510,10 +524,12 @@
 				D558FF57220A859900B3B62D /* EventHalfTimeView.swift in Sources */,
 				D5A8518C22166ABC0019AFC0 /* SignInViewController.swift in Sources */,
 				D57420C9221739EA006D1CCB /* CreateAccountViewController.swift in Sources */,
+				D5EDEBEA2229E71400D12FF5 /* Country.swift in Sources */,
 				D5CE6D6F21DD26CC00FD921A /* Events.swift in Sources */,
 				D57420CD22173EC0006D1CCB /* MyAccountViewController.swift in Sources */,
 				D5BDD18121EB01220078408E /* EventsViewController.swift in Sources */,
 				D5E76063221346FC00450F2E /* EventVCDetails.swift in Sources */,
+				D5EDEBE82229E6EF00D12FF5 /* CountryFlagAPIClient.swift in Sources */,
 				D55DD9382220F3F9009843D2 /* UserDefaultManager.swift in Sources */,
 				D5313FE021D6F26500875B63 /* AwayPlayersInputVC.swift in Sources */,
 				D5CE6D7121DD3F9700FD921A /* MainTimer.swift in Sources */,

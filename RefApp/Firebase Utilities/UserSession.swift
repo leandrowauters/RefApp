@@ -38,30 +38,39 @@ final class UserSession {
     weak var usersessionSignInDelegate: UserSessionSignInDelegate?
     weak var userDidLoginDelegate: UserDidLogInDelegate?
 
-    public func createNewAccount(email: String, password: String, confirmPassoword: String) {
+    public func createNewAccount(displayName: String, email: String, password: String, confirmPassoword: String) {
         Auth.auth().createUser(withEmail: email, password: password) { (authDataResult, error) in
             if let error = error {
                 self.userSessionAccountDelegate?.didRecieveErrorCreatingAccount(self, error: error)
             } else if let authDataResult = authDataResult {
                 self.userSessionAccountDelegate?.didCreateAccount(self, user: authDataResult.user)
-                guard let username = authDataResult.user.email?.components(separatedBy: "@").first else {
-                    print("no email entered")
-                    return
-                }
-                // add user to database
-                // use the user.uid as the document id for ease of use when updating / querying current user
-                DatabaseManager.firebaseDB.collection(DatabaseKeys.UsersCollectionKey)
-                    .document(authDataResult.user.uid.description)
-                    .setData(["userId"      : authDataResult.user.uid,
-                              "email"       : authDataResult.user.email ?? "",
-                              "displayName" : authDataResult.user.displayName ?? "",
-                              "imageURL"    : authDataResult.user.photoURL ?? "",
-                              "username"    : username
-                        ], completion: { (error) in
-                            if let error = error {
-                                print("error adding authenticated user to the database: \(error)")
-                            }
-                    })
+                let request = authDataResult.user.createProfileChangeRequest()
+                request.displayName = displayName
+                request.commitChanges(completion: { (error) in
+                    if let error = error {
+                        print("error: \(error)")
+                    } else {
+                        guard let username = authDataResult.user.email?.components(separatedBy: "@").first else {
+                            print("no email entered")
+                            return
+                        }
+                        // add user to database
+                        // use the user.uid as the document id for ease of use when updating / querying current user
+                        DatabaseManager.firebaseDB.collection(DatabaseKeys.UsersCollectionKey)
+                            .document(authDataResult.user.uid.description)
+                            .setData(["userId"      : authDataResult.user.uid,
+                                      "email"       : authDataResult.user.email ?? "",
+                                      "displayName" : authDataResult.user.displayName ?? "",
+                                      "imageURL"    : authDataResult.user.photoURL ?? "",
+                                      "username"    : username
+                                ], completion: { (error) in
+                                    if let error = error {
+                                        print("error adding authenticated user to the database: \(error)")
+                                    }
+                            })
+                    }
+                })
+
             }
         }
     }
@@ -92,13 +101,12 @@ final class UserSession {
             usersessionSignOutDelegate?.didRecieveSignOutError(self, error: error)
         }
     }
-    public func updateUser(displayName: String?, photoURL: URL?) {
+    public func updateUser(photoURL: URL?) {
         guard let user = getCurrentUser() else {
             print("no logged user")
             return
         }
         let request = user.createProfileChangeRequest()
-        request.displayName = displayName
         request.photoURL = photoURL
         request.commitChanges { (error) in
             if let error = error {
@@ -120,7 +128,8 @@ final class UserSession {
                         print("updating photo url error: \(error.localizedDescription)")
                         
                     })
-            }
+            
         }
+    }
     }
 }

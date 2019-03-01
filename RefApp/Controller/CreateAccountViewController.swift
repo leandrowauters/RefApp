@@ -74,8 +74,7 @@ class CreateAccountViewController: UIViewController {
         if password != confirmPassword {
             showAlert(title: "Passwords do not match", message: "Try again")
             } else {
-        self.displayName = username
-        usersession.createNewAccount(email: email, password: password, confirmPassoword: confirmPassword)
+            usersession.createNewAccount(displayName: username, email: email, password: password, confirmPassoword: confirmPassword)
         }
     }
     @IBAction func cancelPressed(_ sender: UIButton) {
@@ -127,6 +126,6 @@ extension CreateAccountViewController: UserSessionAccountCreationDelegate {
 extension CreateAccountViewController: StorageManagerDelegate {
     func didFetchImage(_ storageManager: StorageManager, imageURL: URL) {
         // update the auth user's photoURL
-        usersession.updateUser(displayName: displayName, photoURL: imageURL)
+        usersession.updateUser(photoURL: imageURL)
     }
 }

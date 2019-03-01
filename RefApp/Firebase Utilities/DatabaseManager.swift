@@ -135,22 +135,22 @@ final class DatabaseManager {
         })
 
     }
-    static func fetchSaveGames(vc: UIViewController,completion: @escaping(Error?, [Game]?) -> Void) {
-        
-        // add a listener to observe changes to the firestore database
-        listener = DatabaseManager.firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).addSnapshotListener(includeMetadataChanges: true) { (snapshot, error) in
-            if let error = error {
-                vc.showAlert(title: "Network Error", message: error.localizedDescription)
-            } else if let snapshot = snapshot {
-                var games = [Game]()
-                for document in snapshot.documents {
-                    let savedGame = Game.init(dict: document.data())
-                    games.append(savedGame)
-                }
-                completion(nil, games)
-            }
-        }
-    }
+//    static func fetchSaveGames(vc: UIViewController,completion: @escaping(Error?, [Game]?) -> Void) {
+//        
+//        // add a listener to observe changes to the firestore database
+//        listener = DatabaseManager.firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).addSnapshotListener(includeMetadataChanges: true) { (snapshot, error) in
+//            if let error = error {
+//                vc.showAlert(title: "Network Error", message: error.localizedDescription)
+//            } else if let snapshot = snapshot {
+//                var games = [Game]()
+//                for document in snapshot.documents {
+//                    let savedGame = Game.init(dict: document.data())
+//                    games.append(savedGame)
+//                }
+//                completion(nil, games)
+//            }
+//        }
+//    }
     static func deleteSavedGameFromDatabase(vc: UIViewController, gameToDelete: Game) {
         firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).document(gameToDelete.dbReferenceDocumentId).delete() { err in
             if let err = err {
@@ -161,6 +161,23 @@ final class DatabaseManager {
         }
 
         
+    }
+    
+    static func fetchSaveGames(vc: UIViewController,user: User, completion: @escaping(Error?, [Game]?) -> Void) {
+        let query = DatabaseManager.firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).whereField("userID", isEqualTo: user.uid)
+        query.getDocuments { (snapshot, error) in
+            if let error = error {
+                vc.showAlert(title: "Network Error", message: error.localizedDescription)
+            } else if let snapshot = snapshot{
+                var games = [Game]()
+                for document in snapshot.documents {
+                    let savedGame = Game.init(dict: document.data())
+                    games.append(savedGame)
+                }
+                completion(nil, games)
+            }
+        }
+        }
     }
 //    private func queryForReviewer() {
 //        // Query - for the user who created this race review
@@ -201,4 +218,4 @@ final class DatabaseManager {
 //            }
 //        }
 //    }
-}
+//}

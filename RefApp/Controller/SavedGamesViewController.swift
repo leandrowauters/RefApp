@@ -24,18 +24,28 @@ class SavedGamesViewController: UIViewController {
         getGames()
     }
     func getGames() {
-        if UserSession.loginStatus == .existingAccount{
-            DatabaseManager.fetchSaveGames(vc: self) { (error, games) in
-                if let error = error{
+        if let user = usersession?.getCurrentUser(){
+            DatabaseManager.fetchSaveGames(vc: self, user: user) { (error, games) in
+                if let error = error {
                     print(error)
                 }
                 if let games = games {
                     self.loadedGames = games
                 }
             }
-        } else {
-            loadedGames = DataPeristanceModel.getGames()
         }
+//        if UserSession.loginStatus == .existingAccount{
+//            DatabaseManager.fetchSaveGames(vc: self, user: ) { (error, games) in
+//                if let error = error{
+//                    print(error)
+//                }
+//                if let games = games {
+//                    self.loadedGames = games
+//                }
+//            }
+//        } else {
+//            loadedGames = DataPeristanceModel.getGames()
+//        }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = savedGamesTableView.indexPathForSelectedRow,

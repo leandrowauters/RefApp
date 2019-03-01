@@ -96,6 +96,7 @@ final class UserSession {
         }
         do {
             try Auth.auth().signOut()
+            UserSession.loginStatus = .newAccount
             usersessionSignOutDelegate?.didSignOutUser(self)
         } catch {
             usersessionSignOutDelegate?.didRecieveSignOutError(self, error: error)

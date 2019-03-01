@@ -14,11 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var usersession: UserSession!
+    var storageManager: StorageManager!
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        
+        storageManager = StorageManager()
         usersession = UserSession()
-        if let _ = usersession.getCurrentUser() {
+        if let user = usersession.getCurrentUser() {
+            print(user.uid)
             UserSession.loginStatus = .existingAccount
             UserDefaultManager.loadUserDefault()
             }

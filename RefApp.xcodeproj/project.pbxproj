@@ -62,6 +62,8 @@
 		D5D7194721FA674C003F2BF6 /* HomeAwayViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D7194621FA674C003F2BF6 /* HomeAwayViewDelegate.swift */; };
 		D5E76063221346FC00450F2E /* EventVCDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E76062221346FC00450F2E /* EventVCDetails.swift */; };
 		D5E76067221349FD00450F2E /* EventVCTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E76066221349FD00450F2E /* EventVCTextView.swift */; };
+		D5EDEBDF2228AD9100D12FF5 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EDEBDE2228AD9100D12FF5 /* StorageManager.swift */; };
+		D5EDEBE12228ADB700D12FF5 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EDEBE02228ADB700D12FF5 /* StorageKeys.swift */; };
 		D5FA730921EFF53D007F77CE /* HomePlayersSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA730821EFF53D007F77CE /* HomePlayersSelectionViewController.swift */; };
 		D5FA730B21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA730A21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift */; };
 		D5FBD97121B23538005D89F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBD97021B23538005D89F4 /* AppDelegate.swift */; };
@@ -130,6 +132,8 @@
 		D5D7194621FA674C003F2BF6 /* HomeAwayViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAwayViewDelegate.swift; sourceTree = "<group>"; };
 		D5E76062221346FC00450F2E /* EventVCDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVCDetails.swift; sourceTree = "<group>"; };
 		D5E76066221349FD00450F2E /* EventVCTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVCTextView.swift; sourceTree = "<group>"; };
+		D5EDEBDE2228AD9100D12FF5 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		D5EDEBE02228ADB700D12FF5 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
 		D5FA730821EFF53D007F77CE /* HomePlayersSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayersSelectionViewController.swift; sourceTree = "<group>"; };
 		D5FA730A21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayersCollectionViewCell.swift; sourceTree = "<group>"; };
 		D5FBD96D21B23538005D89F4 /* RefApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RefApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +197,8 @@
 				D5C0F74F22176893006722DE /* UserSession.swift */,
 				D55DD9392221F3C2009843D2 /* DatabaseManager.swift */,
 				D55DD93D2221F63E009843D2 /* DatabaseKeys.swift */,
+				D5EDEBDE2228AD9100D12FF5 /* StorageManager.swift */,
+				D5EDEBE02228ADB700D12FF5 /* StorageKeys.swift */,
 			);
 			path = "Firebase Utilities";
 			sourceTree = "<group>";
@@ -488,6 +494,7 @@
 			files = (
 				D5D03CDC221E3FBF00F04E03 /* Statistics.swift in Sources */,
 				D5A62AA621E4318500C9183B /* SavedGamesViewController.swift in Sources */,
+				D5EDEBDF2228AD9100D12FF5 /* StorageManager.swift in Sources */,
 				D5E76067221349FD00450F2E /* EventVCTextView.swift in Sources */,
 				D558FF5B220A85C100B3B62D /* NoteHalfTimeView.swift in Sources */,
 				D5FBD98321B23548005D89F4 /* Game.swift in Sources */,
@@ -514,6 +521,7 @@
 				D5D03CD2221DDCD900F04E03 /* PreviousGamesView.swift in Sources */,
 				D5C0F75022176893006722DE /* UserSession.swift in Sources */,
 				D550683221CDE61800F3C6F4 /* GameClient.swift in Sources */,
+				D5EDEBE12228ADB700D12FF5 /* StorageKeys.swift in Sources */,
 				D55DD93A2221F3C2009843D2 /* DatabaseManager.swift in Sources */,
 				D55DD9402221FF83009843D2 /* GameSummaryViewController.swift in Sources */,
 				D5313FDE21D6CCFE00875B63 /* DataPeristanceModel.swift in Sources */,

@@ -18,6 +18,7 @@ class SignInViewController: UIViewController {
     weak var userDidLoginDelegate: UserDidLogInDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
+
         view.backgroundColor = .white
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(createAccountTapped))
         createAccountLabel.isUserInteractionEnabled = true

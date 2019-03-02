@@ -85,7 +85,7 @@ class Game: Codable {
     init(dict: [String: Any]){
         self.userID = dict["userID"] as? String ?? "noUser"
         self.gameName = dict["gameName"] as? String ?? "n/a"
-        self.lengthSelected = dict["lengthSelected"] as? Int ?? 0
+        self.lengthSelected = dict["gameLength"] as? Int ?? 0
         self.numberOfPlayers = dict["numberOfPlayers"] as? Int ?? 0
         self.location = dict["location"] as? String ?? "n/a"
         self.dateAndTime = dict["dateAndTime"] as? String ?? "n/a"

@@ -21,6 +21,7 @@ class SavedGameDetailedViewController: UIViewController {
     @IBAction func deleteWasPressed(_ sender: UIBarButtonItem) {
         if UserSession.loginStatus == .existingAccount {
             DatabaseManager.deleteSavedGameFromDatabase(vc: self, gameToDelete: savedGame)
+            navigationController?.popViewController(animated: true)
         }else{
         let game = DataPeristanceModel.getGames()[index]
         DataPeristanceModel.deleteGame(game: game, atIndex: index)

@@ -48,10 +48,15 @@ class TextVC: UIViewController {
     }
     @objc func userDefaultsPressed (){
        
-        if let text = textField.text {
+        guard let text = textField.text,
+        !text.isEmpty,
+            let numberSelected = Int(text) else {
+                print("error")
+                return
+        }
         switch selectedIndexPath {
         case 2:
-            Game.numberOfPlayers = Int(text)!
+            Game.numberOfPlayers = numberSelected
             UserDefaults.standard.set(Game.numberOfPlayers, forKey: userID + UserDefaultManager.numberOfPlayers)
             gameDegelate?.numberOfPlayersDidChange(to: Game.numberOfPlayers)
             showAlert(title: "Saved", message: nil) { (UIAlertController) in
@@ -72,7 +77,7 @@ class TextVC: UIViewController {
                 self.present(UIAlertController, animated: true)
             }
         case 7:
-            Game.lengthSelected = Int(text)!
+            Game.lengthSelected = numberSelected
             UserDefaults.standard.set(Game.lengthSelected, forKey: userID + UserDefaultManager.duration)
             gameLenghtDelegate?.gameLengthChange(to: Game.lengthSelected)
             showAlert(title: "Saved", message: nil) { (UIAlertController) in
@@ -84,7 +89,7 @@ class TextVC: UIViewController {
         default:
             return
         }
-        }
+        
         
     }
     func useNumKeyboard(){

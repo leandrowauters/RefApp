@@ -34,7 +34,7 @@ class GameSettings: UITableViewController {
         numberOfSubsLabel.text = "None"
         title = "Game Settings"
         myTableView.backgroundColor = #colorLiteral(red: 0.2737779021, green: 0.4506875277, blue: 0.6578510404, alpha: 1)
-        numberOfPlayersLabel.adjustsFontSizeToFitWidth = true
+//        numberOfPlayersLabel.adjustsFontSizeToFitWidth = true
         GameClient.printValues()
         setupLabels()
 //        GameSaveClient.printAllDefaults()

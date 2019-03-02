@@ -24,7 +24,8 @@ class GameData {
     var awayTeam: String
     var homeScore: Int
     var awayScore: Int
-    var totalRunningTime: Int
+    var totalRunningTime: Double
+    var totalInjuryTimeGiven: Double
     var subs: Int
     var homePlayers: [Int]
     var awayPlayers: [Int]
@@ -37,7 +38,7 @@ class GameData {
     var gameNotes: [String]
 
     
-    init(userID: String,winner: String,gameName: String?, lengthSelected:Int, numberOfPlayers: Int, location: String, dateAndTime: String, league: String, refereeNames: [String], caps: [String], extraTime: Bool, homeTeam: String, awayTeam: String,homeScore: Int, awayScore: Int, totalRunningTime: Int, subs: Int, homePlayers: [Int], awayPlayers: [Int],homeYellowCardPlayers: [Int],homeRedCardPlayers: [Int],awayYellowCardPlayers: [Int], awayRedCardPlayers:[Int], homeGoalsPlayers: [Int], awayGoalsPlayers: [Int], gameNotes: [String]) {
+    init(userID: String,winner: String,gameName: String?, lengthSelected:Int, numberOfPlayers: Int, location: String, dateAndTime: String, league: String, refereeNames: [String], caps: [String], extraTime: Bool, homeTeam: String, awayTeam: String,homeScore: Int, awayScore: Int, totalRunningTime: Double, totalInjuryTimeGiven: Double, subs: Int, homePlayers: [Int], awayPlayers: [Int],homeYellowCardPlayers: [Int],homeRedCardPlayers: [Int],awayYellowCardPlayers: [Int], awayRedCardPlayers:[Int], homeGoalsPlayers: [Int], awayGoalsPlayers: [Int], gameNotes: [String]) {
         self.userID = userID
         self.winner = winner
         self.gameName = gameName
@@ -54,6 +55,7 @@ class GameData {
         self.homeScore = homeScore
         self.awayScore = awayScore
         self.totalRunningTime = totalRunningTime
+        self.totalInjuryTimeGiven = totalInjuryTimeGiven
         self.subs = subs
         self.homePlayers = homePlayers
         self.awayPlayers = awayPlayers
@@ -82,7 +84,8 @@ class GameData {
         self.awayTeam = dict["awayTeam"] as? String ?? "n/a"
         self.homeScore = dict["homeScore"] as? Int ?? 0
         self.awayScore = dict["awayScore"] as? Int ?? 0
-        self.totalRunningTime = dict["totalRunningTime"] as? Int ?? 0
+        self.totalRunningTime = dict["totalRunningTime"] as? Double ?? 0.0
+        self.totalInjuryTimeGiven = dict["totalInjuryTimeGiven"] as? Double ?? 0.0
         self.subs = dict["subs"] as? Int ?? 0
         self.homePlayers = dict["homePlayers"] as? [Int] ?? [0]
         self.awayPlayers = dict["awayPlayers"] as? [Int] ?? [0]

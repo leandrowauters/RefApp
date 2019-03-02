@@ -11,6 +11,7 @@ class MainTimer {
     
     let timeInterval: TimeInterval
     static var time = 0.0
+    static var totalTime = 0.0
     init(timeInterval: TimeInterval) {
         self.timeInterval = timeInterval
     }
@@ -72,7 +73,16 @@ class MainTimer {
         let seconds = Int(time) % 60
         return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
-    
+    static func getTimeInString(time: Double) -> String {
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
+    }
+    static func getTotalInjuryTimeGiven() -> Double {
+        let lenghtSelectedInSecs = Double(Game.lengthSelected * 60)
+        return MainTimer.totalTime - lenghtSelectedInSecs
+    }
     static func timeStringWithMilSec(time:TimeInterval) -> String {
         let hours = Int(time) / 3600
         let minutes = Int(time) / 60 % 60

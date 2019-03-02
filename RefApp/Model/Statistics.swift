@@ -32,10 +32,11 @@ class TotalStatistics {
     var avgAwayYellowPerGame: Int
     var avgHomeRedPerGame: Int
     var avgAwayRedPerGame: Int
-    
+    var avgRunningTimePerGame: Double
+    var avgInjuryTimeGiven: Double
 
     //FOR MYPROFILE STATISTICS
-    init(totalGames: Int, homeWins: Int, awayWins: Int,totalHomeYellows: Int, totalAwayYellows: Int, totalHomeReds: Int, totalAwayReds: Int, totalHomeGoals: Int, totalAwayGoals: Int, avgHomeYellowPerGame: Int, avgAwayYellowPerGame: Int, avgHomeRedPerGame: Int, avgAwayRedPerGame: Int) {
+    init(totalGames: Int, homeWins: Int, awayWins: Int,totalHomeYellows: Int, totalAwayYellows: Int, totalHomeReds: Int, totalAwayReds: Int, totalHomeGoals: Int, totalAwayGoals: Int, avgHomeYellowPerGame: Int, avgAwayYellowPerGame: Int, avgHomeRedPerGame: Int, avgAwayRedPerGame: Int, avgRunningTimePerGame: Double, avgInjuryTimeGiven: Double) {
         self.totalGames = totalGames
         self.homeWins = homeWins
         self.awayWins = awayWins
@@ -49,6 +50,8 @@ class TotalStatistics {
         self.avgAwayYellowPerGame = avgAwayYellowPerGame
         self.avgHomeRedPerGame = avgHomeRedPerGame
         self.avgAwayRedPerGame = avgAwayRedPerGame
+        self.avgRunningTimePerGame = avgRunningTimePerGame
+        self.avgInjuryTimeGiven = avgInjuryTimeGiven
     }
     static func getTotalGame(gameStatistics: [GameStatistics]) -> Int{
         return gameStatistics.count
@@ -108,8 +111,8 @@ class GameStatistics {
     
     var userID: String
     var winnerSide: String
-    var winnerTeam: String
-    var totalRunningTime: Int
+    var totalRunningTime: Double
+    var totalInjuryTimeGiven: Double
     var homeYellowCards: Int
     var awayYellowCards: Int
     var homeRedCards: Int
@@ -117,11 +120,11 @@ class GameStatistics {
     var homeGoals: Int
     var awayGoals: Int
     
-    init(userID: String, winnerSide: String, winnerTeam: String, totalRunningTime: Int, homeYellowCards: Int, awayYellowCards: Int, homeRedCards: Int, awayRedCards: Int, homeGoals: Int, awayGoals: Int) {
+    init(userID: String, winnerSide: String, totalRunningTime: Double, totalInjuryTimeGiven: Double, homeYellowCards: Int, awayYellowCards: Int, homeRedCards: Int, awayRedCards: Int, homeGoals: Int, awayGoals: Int) {
         self.userID = userID
         self.winnerSide = winnerSide
-        self.winnerTeam = winnerTeam
         self.totalRunningTime = totalRunningTime
+        self.totalInjuryTimeGiven = totalInjuryTimeGiven
         self.homeYellowCards = homeYellowCards
         self.awayYellowCards = awayYellowCards
         self.homeRedCards = homeRedCards
@@ -132,8 +135,8 @@ class GameStatistics {
     init(dict: [String: Any]) {
         self.userID = dict["userID"] as? String ?? "no user id"
         self.winnerSide = dict["winnerSide"] as? String ?? "no winner side"
-        self.winnerTeam = dict["winnerTeam"] as? String ?? "no winner team"
-        self.totalRunningTime = dict["totalRunningTime"] as? Int ?? 0
+        self.totalRunningTime = dict["totalRunningTime"] as? Double ?? 0.0
+        self.totalInjuryTimeGiven = dict["totalInjuryTimeGiven"] as? Double ?? 0.0
         self.homeYellowCards = dict["homeYellowCards"] as? Int ?? 0
         self.awayYellowCards = dict["awayYellowCards"] as? Int ?? 0
         self.homeRedCards = dict["homeRedCards"] as? Int ?? 0

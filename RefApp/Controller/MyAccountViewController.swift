@@ -7,8 +7,18 @@
 //
 
 import UIKit
-
+import Firebase
+import Kingfisher
 class MyAccountViewController: UIViewController {
+    
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var profileNameLabel: UILabel!
+    @IBOutlet weak var profileCountryLabel: UILabel!
+    @IBOutlet weak var countryFlagImage: UIImageView!
+    
+    
+    
+    
     let infoView: MyAccountInfoView = Bundle.main.loadNibNamed("MyAccountInfoView", owner: self, options: nil)?.first as! MyAccountInfoView
     let previousGamesView: PreviousGamesView = Bundle.main.loadNibNamed("PreviousGamesView", owner: self, options: nil)?.first as! PreviousGamesView
     lazy var customSegmentedBar: UISegmentedControl = {
@@ -43,7 +53,9 @@ class MyAccountViewController: UIViewController {
     var views = [UIView]()
     private var usersession: UserSession!
     weak var userDidLoginDelegate: UserDidLogInDelegate?
+    var referee: Referee!
     var userLoggedIn = Bool()
+    var graphics = GraphicClient()
     override func viewDidLoad() {
         super.viewDidLoad()
         views = [infoView,previousGamesView]
@@ -52,6 +64,9 @@ class MyAccountViewController: UIViewController {
         usersession.usersessionSignOutDelegate = self
         setupAnimatedViewRail()
         setupAnimatedView()
+//        setupCountryFlag()
+        setupLabels()
+        setupProfileImage()
         setupViews(views: views)
         customSegmentedBar.addTarget(self, action: #selector(customSegmentedBarPressed(sender:)), for: UIControl.Event.valueChanged)
         
@@ -70,7 +85,49 @@ class MyAccountViewController: UIViewController {
             userDidLoginDelegate?.userDidLogin()
         }
     }
-    
+    func setupCountryFlag(){
+        graphics.getCountyFlagURL(country: referee.country ?? "") { (error, flagURL) in
+            if let error = error{
+                print(error)
+            }
+            if let flagURL = flagURL {
+                if let url = URL(string: flagURL) {
+                    DispatchQueue.main.async {
+                        self.countryFlagImage.kf.setImage(with: url, placeholder: UIImage(named: "userImage"), options: [], progressBlock: nil, completionHandler: { (result) in
+                            switch result {
+                            case .success(let value):
+                                // The image was set to image view:
+                                print(value.image)
+                                
+                                // From where the image was retrieved:
+                                // - .none - Just downloaded.
+                                // - .memory - Got from memory cache.
+                                // - .disk - Got from disk cache.
+                                print(value.cacheType)
+                                
+                                // The source object which contains information like `url`.
+                                print(value.source)
+                                
+                            case .failure(let error):
+                                print(error) // The error happens
+                            }
+                        })
+                    }
+                }
+
+            }
+        }
+    }
+    func setupLabels() {
+        profileNameLabel.text = referee.displayName ?? ""
+        profileCountryLabel.text = referee.country ?? ""
+    }
+    func setupProfileImage(){
+        if let imageURL = referee.imageURL{
+            profileImage.kf.indicatorType = .activity
+            profileImage.kf.setImage(with: URL(string: imageURL))
+        }
+    }
     func setupViews(views: [UIView]){
         for view in views{
             self.view.addSubview(view)

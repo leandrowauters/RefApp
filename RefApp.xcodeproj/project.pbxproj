@@ -66,6 +66,7 @@
 		D5EDEBE12228ADB700D12FF5 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EDEBE02228ADB700D12FF5 /* StorageKeys.swift */; };
 		D5EDEBE82229E6EF00D12FF5 /* CountryFlagAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EDEBE72229E6EF00D12FF5 /* CountryFlagAPIClient.swift */; };
 		D5EDEBEA2229E71400D12FF5 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EDEBE92229E71400D12FF5 /* Country.swift */; };
+		D5EDEBEC2229F18700D12FF5 /* Referee.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EDEBEB2229F18700D12FF5 /* Referee.swift */; };
 		D5FA730921EFF53D007F77CE /* HomePlayersSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA730821EFF53D007F77CE /* HomePlayersSelectionViewController.swift */; };
 		D5FA730B21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA730A21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift */; };
 		D5FBD97121B23538005D89F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBD97021B23538005D89F4 /* AppDelegate.swift */; };
@@ -138,6 +139,7 @@
 		D5EDEBE02228ADB700D12FF5 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
 		D5EDEBE72229E6EF00D12FF5 /* CountryFlagAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryFlagAPIClient.swift; sourceTree = "<group>"; };
 		D5EDEBE92229E71400D12FF5 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		D5EDEBEB2229F18700D12FF5 /* Referee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Referee.swift; sourceTree = "<group>"; };
 		D5FA730821EFF53D007F77CE /* HomePlayersSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayersSelectionViewController.swift; sourceTree = "<group>"; };
 		D5FA730A21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayersCollectionViewCell.swift; sourceTree = "<group>"; };
 		D5FBD96D21B23538005D89F4 /* RefApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RefApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,6 +308,7 @@
 				D5CDA72121ED267000A59133 /* GraphicClient.swift */,
 				D5D7194621FA674C003F2BF6 /* HomeAwayViewDelegate.swift */,
 				D55DD9372220F3F9009843D2 /* UserDefaultManager.swift */,
+				D5EDEBEB2229F18700D12FF5 /* Referee.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -466,6 +470,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -532,6 +537,7 @@
 				D5EDEBE82229E6EF00D12FF5 /* CountryFlagAPIClient.swift in Sources */,
 				D55DD9382220F3F9009843D2 /* UserDefaultManager.swift in Sources */,
 				D5313FE021D6F26500875B63 /* AwayPlayersInputVC.swift in Sources */,
+				D5EDEBEC2229F18700D12FF5 /* Referee.swift in Sources */,
 				D5CE6D7121DD3F9700FD921A /* MainTimer.swift in Sources */,
 				D532218D21DC3213004B0363 /* SelectPlayerVC.swift in Sources */,
 				D5D03CD2221DDCD900F04E03 /* PreviousGamesView.swift in Sources */,

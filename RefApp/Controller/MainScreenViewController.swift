@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MainScreenViewController: UIViewController {
     
@@ -16,17 +17,18 @@ class MainScreenViewController: UIViewController {
     @IBOutlet weak var loadGameButton: UIButton!
     
     weak var userdDidLoginDelegate: UserDidLogInDelegate?
+    private var usersession: UserSession?
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkForLoginStatus()
+        usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         userdDidLoginDelegate = self
+        checkForLoginStatus()
         setupButtons(buttons: [newGameButton, loadGameButton])
     }
     
     
     func checkForLoginStatus() {
-        if UserSession.loginStatus == .existingAccount {
-            //            barButton.title = "My Account"
+        if let _ = usersession?.getCurrentUser(){
             barButton.image = UIImage(named: "user")
         } else {
             barButton.image = nil
@@ -46,14 +48,23 @@ class MainScreenViewController: UIViewController {
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
         guard let signInVC = storyBoard.instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController else {return}
         guard let myAccountVC = storyBoard.instantiateViewController(withIdentifier: "MyAccountVC") as? MyAccountViewController else {return}
-        if UserSession.loginStatus == .existingAccount{
-        myAccountVC.modalPresentationStyle = .overFullScreen
-        myAccountVC.userDidLoginDelegate = self
-        present(myAccountVC, animated: true, completion: nil)
+        if let user = usersession?.getCurrentUser(){
+            DatabaseManager.fetchReferee(vc: self, user: user) { (error, referee) in
+                if let error = error {
+                    print(error)
+                }
+                if let referee = referee {
+                    myAccountVC.modalPresentationStyle = .overFullScreen
+                    myAccountVC.userDidLoginDelegate = self
+                    myAccountVC.referee = referee
+                    self.present(myAccountVC, animated: true, completion: nil)
+                }
+            }
+            
         } else {
-            present(signInVC, animated: true, completion: nil)
             signInVC.modalPresentationStyle = .overFullScreen
             signInVC.userDidLoginDelegate = self
+            present(signInVC, animated: true, completion: nil)
         }
     }
 

@@ -178,6 +178,21 @@ final class DatabaseManager {
             }
         }
         }
+    static func fetchReferee(vc: UIViewController, user: User, completion: @escaping(Error?, Referee?) -> Void) {
+        let query = DatabaseManager.firebaseDB.collection(DatabaseKeys.UsersCollectionKey).whereField("userId", isEqualTo: user.uid)
+        query.getDocuments { (snapshot, error) in
+            if let error = error {
+                vc.showAlert(title: "Network Error", message: error.localizedDescription)
+            } else if let snapshot = snapshot {
+                guard let firstDocumet = snapshot.documents.first else {
+                    print("no document found")
+                    return
+                }
+                let referee = Referee.init(dict: firstDocumet.data())
+                completion(nil, referee)
+            }
+        }
+    }
     }
 //    private func queryForReviewer() {
 //        // Query - for the user who created this race review

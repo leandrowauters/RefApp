@@ -106,16 +106,17 @@ class GraphicClient {
         button.titleLabel?.font = UIFont.init(name: "Verdana", size: 37)// THIS SETS FONT
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 37)
     }
-    func getCountyFlag(country: String) -> UIImage{
+    func getCountyFlagURL(country: String,completion: @escaping(Error?, String?) -> Void){
+        var countryFlagURL: String?
         CountryFlagAPICleint.searchForCountry(country: country) { (error, countries) in
             if let error = error {
-                print(error)
+                completion(error, nil)
             }
             if let countries = countries {
-                
+                countryFlagURL = countries.first?.flag
+                completion(nil, countryFlagURL)
             }
         }
-        return UIImage()
     }
     
 }

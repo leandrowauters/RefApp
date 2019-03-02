@@ -99,7 +99,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="77" translatesAutoresizingMaskIntoConstraints="NO" id="gWb-Be-IoG">
-                                                    <rect key="frame" x="20" y="12.666666666666666" width="336" height="20.333333333333336"/>
+                                                    <rect key="frame" x="20" y="12.666666666666668" width="336" height="20.333333333333332"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number Of Players" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bU6-Ja-FtG">
                                                             <rect key="frame" x="0.0" y="0.0" width="129.66666666666666" height="20.333333333333332"/>
@@ -2362,7 +2362,7 @@
                                     <action selector="closeWindowPressed:" destination="1Dp-qn-Wzx" eventType="touchUpInside" id="UGv-2Z-Loc"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R2U-OE-Hmd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R2U-OE-Hmd">
                                 <rect key="frame" x="344" y="174.33333333333334" width="37" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="rdA-p2-MDz"/>
@@ -2394,6 +2394,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HKC-D4-in0"/>
                     </view>
+                    <connections>
+                        <outlet property="countryFlagImage" destination="R2U-OE-Hmd" id="gvN-Cg-FWM"/>
+                        <outlet property="profileCountryLabel" destination="0ng-N6-gi8" id="AKl-3A-QGN"/>
+                        <outlet property="profileImage" destination="uoF-nr-p2U" id="E93-rX-Y67"/>
+                        <outlet property="profileNameLabel" destination="MUx-Uf-X3Q" id="vVe-N4-HQj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HvN-9n-eSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,6 +10,9 @@ import UIKit
 
 class MyAccountInfoView: UIView {
 
+    @IBOutlet weak var infoTableView: UITableView!
+    
+    
     override func layoutSubviews() {
         super.layoutSubviews()
        

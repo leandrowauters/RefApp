@@ -56,20 +56,59 @@ class MyAccountViewController: UIViewController {
     var referee: Referee!
     var userLoggedIn = Bool()
     var graphics = GraphicClient()
+    var gameStatisticInfo = [String](){
+        didSet{
+            infoView.infoTableView.reloadData()
+        }
+    }
+    var gameStatistics = [GameStatistics]() {
+        didSet{
+            gameStatisticInfo = TotalStatistics.getTotalStatistics(gameStatistics: gameStatistics)
+        }
+    }
+    var gameData = [GameData]() {
+        didSet{
+            previousGamesView.previousGamesTableView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         views = [infoView,previousGamesView]
         setupSegmentedBar()
+        infoView.infoTableView.delegate = self
+        infoView.infoTableView.dataSource = self
+        previousGamesView.previousGamesTableView.delegate = self
+        previousGamesView.previousGamesTableView.dataSource = self
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         usersession.usersessionSignOutDelegate = self
         setupAnimatedViewRail()
         setupAnimatedView()
+        getGameStatistics()
+        getGameData()
 //        setupCountryFlag()
         setupLabels()
         setupProfileImage()
         setupViews(views: views)
         customSegmentedBar.addTarget(self, action: #selector(customSegmentedBarPressed(sender:)), for: UIControl.Event.valueChanged)
         
+    }
+    func getGameStatistics() {
+        if let user = usersession.getCurrentUser(){
+        DatabaseManager.fetchGameStatistics(vc: self, user: user) { (error, gameStatistics) in
+            if let gameStatisitcs = gameStatistics {
+                self.gameStatistics = gameStatisitcs
+            }
+        }
+        }
+    }
+    func getGameData(){
+        if let user = usersession.getCurrentUser(){
+            DatabaseManager.fetchGameData(vc: self, user: user) { (error, gameData) in
+                if let gameData = gameData {
+                    self.gameData = gameData
+                }
+            }
+        }
     }
     @IBAction func signOutPressed(_ sender: UIButton) {
         usersession.signOut()
@@ -198,6 +237,34 @@ extension MyAccountViewController: UserSessionSignOutDelegate{
 
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    
+}
+extension MyAccountViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == infoView.infoTableView{
+        return gameStatisticInfo.count
+        } else {
+            return gameData.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell.init(style: .subtitle, reuseIdentifier: "myAccountCell")
+        
+        
+        if tableView == infoView.infoTableView{
+        let statToSet = gameStatisticInfo[indexPath.row]
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        cell.textLabel?.text = statToSet
+        } else {
+            let dataToSet = gameData[indexPath.row]
+            cell.textLabel?.text = "\(dataToSet.homeTeam) vs. \(dataToSet.awayTeam)"
+            cell.detailTextLabel?.text = dataToSet.dateAndTime
+            cell.accessoryType = .disclosureIndicator
+        }
+        return cell
     }
     
     

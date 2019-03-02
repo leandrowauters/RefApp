@@ -15,8 +15,23 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MyAccountInfoView" customModule="RefApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S18-Se-DL0">
+                    <rect key="frame" x="0.0" y="10" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="0.20392156859999999" green="0.4039215686" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="S18-Se-DL0" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="7cE-R8-9IK"/>
+                <constraint firstItem="S18-Se-DL0" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="HGq-mG-nKz"/>
+                <constraint firstItem="S18-Se-DL0" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="SUQ-Oo-5nM"/>
+                <constraint firstItem="S18-Se-DL0" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="gGg-9U-g1V"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="infoTableView" destination="S18-Se-DL0" id="pDT-6K-ARr"/>
+            </connections>
             <point key="canvasLocation" x="138.40000000000001" y="139.880059970015"/>
         </view>
     </objects>

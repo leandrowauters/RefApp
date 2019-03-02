@@ -10,6 +10,8 @@ import UIKit
 
 class PreviousGamesView: UIView {
 
+    @IBOutlet weak var previousGamesTableView: UITableView!
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         

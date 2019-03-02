@@ -15,8 +15,23 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PreviousGamesView" customModule="RefApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u7s-jL-O4y">
+                    <rect key="frame" x="0.0" y="10" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="1" green="0.81004911310000005" blue="0.059001396349999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="u7s-jL-O4y" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Rb6-1j-KmJ"/>
+                <constraint firstItem="u7s-jL-O4y" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="U7p-bL-T29"/>
+                <constraint firstItem="u7s-jL-O4y" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="b23-7N-i36"/>
+                <constraint firstItem="u7s-jL-O4y" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="csv-3m-0b0"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="previousGamesTableView" destination="u7s-jL-O4y" id="ate-C6-mAN"/>
+            </connections>
         </view>
     </objects>
 </document>

@@ -1620,7 +1620,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.2156862745" green="0.36862745099999999" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="5ph-4M-3xT" firstAttribute="centerY" secondItem="qaf-0u-vK1" secondAttribute="centerY" id="8MN-I2-vg6"/>
                             <constraint firstItem="ala-Qy-fhd" firstAttribute="centerX" secondItem="5ph-4M-3xT" secondAttribute="centerX" id="ERO-EG-Iv7"/>

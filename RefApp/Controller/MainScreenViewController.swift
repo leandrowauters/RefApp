@@ -24,8 +24,9 @@ class MainScreenViewController: UIViewController {
         userdDidLoginDelegate = self
         checkForLoginStatus()
         setupButtons(buttons: [newGameButton, loadGameButton])
+        navigationController?.navigationBar.barTintColor = UIColor.black
+        
     }
-    
     
     func checkForLoginStatus() {
         if let _ = usersession?.getCurrentUser(){

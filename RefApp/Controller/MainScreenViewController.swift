@@ -35,6 +35,7 @@ class MainScreenViewController: UIViewController {
             navigationItem.rightBarButtonItem?.title = "Sign In"
         }
     }
+
     func setupButtons(buttons: [UIButton]) {
         for button in buttons {
             button.layer.borderWidth = 2

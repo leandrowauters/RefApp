@@ -65,6 +65,12 @@ class GraphicClient {
             textField.inputAccessoryView = toolbar
         }
     }
+    func changeImageToRound(image: UIImageView) {
+        image.layer.masksToBounds = true
+        image.layer.cornerRadius = image.frame.width / 2
+        image.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        image.layer.borderWidth = 2.0
+    }
     func changeButtonLayout(buttons: [UIButton]) {
             for button in buttons{
                 button.layer.masksToBounds = true
@@ -106,17 +112,7 @@ class GraphicClient {
         button.titleLabel?.font = UIFont.init(name: "Verdana", size: 37)// THIS SETS FONT
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 37)
     }
-    func getCountyFlagURL(country: String,completion: @escaping(Error?, String?) -> Void){
-        var countryFlagURL: String?
-        CountryFlagAPICleint.searchForCountry(country: country) { (error, countries) in
-            if let error = error {
-                completion(error, nil)
-            }
-            if let countries = countries {
-                countryFlagURL = countries.first?.flag
-                completion(nil, countryFlagURL)
-            }
-        }
-    }
+    
+
     
 }

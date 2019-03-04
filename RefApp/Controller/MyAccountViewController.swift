@@ -13,7 +13,7 @@ class MyAccountViewController: UIViewController {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
-    @IBOutlet weak var profileCountryLabel: UILabel!
+
     @IBOutlet weak var countryFlagImage: UIImageView!
     
     
@@ -85,12 +85,37 @@ class MyAccountViewController: UIViewController {
         setupAnimatedView()
         getGameStatistics()
         getGameData()
-//        setupCountryFlag()
+        graphics.changeImageToRound(image: profileImage)
+        setupCountryFlag()
+        checkForCountryFlagURL()
         setupLabels()
         setupProfileImage()
         setupViews(views: views)
         customSegmentedBar.addTarget(self, action: #selector(customSegmentedBarPressed(sender:)), for: UIControl.Event.valueChanged)
         
+    }
+    
+    func checkForCountryFlagURL(){
+        guard let country = referee.country else {
+            return
+        }
+        CountryAPIClient.getCountyAlphaCode(country: country) { (error, code) in
+            if let error = error {
+                print(error)
+            }
+            if let code = code{
+                CountryAPIClient.getCountryFlagUrl(countryAlpahaCode: code, completion: { (error, flagURL) in
+                    if let error = error {
+                        print(error)
+                    }
+                    if let flagURL = flagURL {
+                        DispatchQueue.main.async {
+                            self.countryFlagImage.kf.setImage(with: URL(string: flagURL))
+                        }
+                    }
+                })
+            }
+        }
     }
     func getGameStatistics() {
         if let user = usersession.getCurrentUser(){
@@ -125,41 +150,10 @@ class MyAccountViewController: UIViewController {
         }
     }
     func setupCountryFlag(){
-        graphics.getCountyFlagURL(country: referee.country ?? "") { (error, flagURL) in
-            if let error = error{
-                print(error)
-            }
-            if let flagURL = flagURL {
-                if let url = URL(string: flagURL) {
-                    DispatchQueue.main.async {
-                        self.countryFlagImage.kf.setImage(with: url, placeholder: UIImage(named: "userImage"), options: [], progressBlock: nil, completionHandler: { (result) in
-                            switch result {
-                            case .success(let value):
-                                // The image was set to image view:
-                                print(value.image)
-                                
-                                // From where the image was retrieved:
-                                // - .none - Just downloaded.
-                                // - .memory - Got from memory cache.
-                                // - .disk - Got from disk cache.
-                                print(value.cacheType)
-                                
-                                // The source object which contains information like `url`.
-                                print(value.source)
-                                
-                            case .failure(let error):
-                                print(error) // The error happens
-                            }
-                        })
-                    }
-                }
-
-            }
-        }
+        
     }
     func setupLabels() {
         profileNameLabel.text = referee.displayName ?? ""
-        profileCountryLabel.text = referee.country ?? ""
     }
     func setupProfileImage(){
         if let imageURL = referee.imageURL{
@@ -184,7 +178,7 @@ class MyAccountViewController: UIViewController {
         customSegmentedBar.translatesAutoresizingMaskIntoConstraints = false
         customSegmentedBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         customSegmentedBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        customSegmentedBar.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50).isActive = true
+        customSegmentedBar.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
         customSegmentedBar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         customSegmentedBar.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }

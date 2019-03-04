@@ -9,5 +9,13 @@
 import Foundation
 
 struct Country: Codable {
-    let flag: String
+    let alpha2Code: String
 }
+struct CountryFlag: Codable {
+    let Response: [ResponseWrapper]
+    struct ResponseWrapper: Codable {
+        let FlagPng: String
+    }
+    
+}
+

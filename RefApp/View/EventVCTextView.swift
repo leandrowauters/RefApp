@@ -22,9 +22,8 @@ class EventVCTextView: UIView {
         var button = UIButton()
         button.setTitle("Enter Note", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.2737779021, green: 0.4506875277, blue: 0.6578510404, alpha: 1)
-        button.layer.borderWidth = 5
-        button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
+
         return button
     }()
     override init(frame: CGRect) {

@@ -53,30 +53,26 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var timer2View: UIView!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var homeTeam: UILabel!
+    @IBOutlet weak var homeTeamScore: UILabel!
+    @IBOutlet weak var awayTeam: UILabel!
+    @IBOutlet weak var awayTeamScore: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButtons()
+        setupLabels()
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         homeView.HomePlayersButtons.forEach{$0.isEnabled = false}
         awayView.awayPlayersButtons.forEach{$0.isEnabled = false}
         print("The view height is: \(timer2View.bounds.height)")
         NotificationCenter.default.addObserver(self, selector: #selector(pauseTimer), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startApp) , name: UIApplication.didBecomeActiveNotification, object: nil)
-        scoreLabel.text = "\(Game.homeTeam) \(Game.homeScore) - \(Game.awayTeam) \(Game.awayScore)"
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideTimerView))
         timer2View.addGestureRecognizer(tap)
-        for index in 0...timerLabels.count - 1 {
-            switch index {
-            case 0:
-                timerLabels[index].font = UIFont.monospacedDigitSystemFont(ofSize: 53, weight: .regular)
-            case 1:
-                timerLabels[index].font = UIFont.monospacedDigitSystemFont(ofSize: 25, weight: .bold)
-            default:
-                print("Timer Label Index Error")
-                
-            }
-        }
+
         timer2View.isHidden = true
         changeTimerButton.isHidden = true
         if MainGameVC.sub{
@@ -105,7 +101,14 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             label.text = MainTimer.timeString(time: TimeInterval(MainTimer.time))
         }
     }
-
+    func setupLabels() {
+        scoreLabel.text = "\(Game.homeTeam) \(Game.homeScore) - \(Game.awayTeam) \(Game.awayScore)"
+        homeTeam.text = Game.homeTeam
+        awayTeam.text = Game.awayTeam
+        homeTeamScore.text = Game.homeScore.description
+        awayTeamScore.text = Game.awayScore.description
+        
+    }
 //    override func viewWillDisappear(_ animated: Bool) {
 //        let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
 //        guard let vc = storyboard.instantiateViewController(withIdentifier: "selectPlayer") as? SelectPlayerVC else {return}
@@ -197,7 +200,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     func reloadView(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideTimerView))
         timer2View.addGestureRecognizer(tap)
-        scoreLabel.text = "\(Game.homeTeam) \(Game.homeScore) - \(Game.awayTeam) \(Game.awayScore)"
+        setupLabels()
         if MainGameVC.home{
         for button in homeView.HomePlayersButtons{
             if let text = button.titleLabel?.text {
@@ -305,6 +308,10 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             self.halfLabel.isHidden = true
             self.minutesLabel.isHidden = true
         }) { (Bool) in
+            self.awayTeam.isHidden = false
+            self.homeTeam.isHidden = false
+            self.homeTeamScore.isHidden = false
+            self.awayTeamScore.isHidden = false
             self.startButton.alpha = 1.0
             self.startButton.isHidden = true
             self.startButton.isEnabled = true

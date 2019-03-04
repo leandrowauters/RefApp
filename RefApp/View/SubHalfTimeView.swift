@@ -14,7 +14,7 @@ class SubHalfTimeView: UIView {
         var segmentedControl = UISegmentedControl()
         segmentedControl.insertSegment(withTitle: "Home", at: 0, animated: true)
         segmentedControl.insertSegment(withTitle: "Away", at: 1, animated: true)
-        segmentedControl.backgroundColor = #colorLiteral(red: 0.354026258, green: 0.7636645436, blue: 0.9697399735, alpha: 1)
+        segmentedControl.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.tintColor = .clear
         segmentedControl.setTitleTextAttributes([
@@ -23,7 +23,7 @@ class SubHalfTimeView: UIView {
             ], for: .normal)
         segmentedControl.setTitleTextAttributes([
             NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 22.0),
-            NSAttributedString.Key.foregroundColor: UIColor.white
+            NSAttributedString.Key.foregroundColor: UIColor.orange
             ], for: .selected)
         return segmentedControl
     }()
@@ -72,7 +72,7 @@ class SubHalfTimeView: UIView {
     }()
     lazy var animatedView: UIView = {
         var view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .orange
         view.contentMode = .scaleAspectFit
         return view
     }()
@@ -121,7 +121,7 @@ class SubHalfTimeView: UIView {
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = #colorLiteral(red: 0.2737779021, green: 0.4506875277, blue: 0.6578510404, alpha: 1)
+        backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
         addSegmentedBar()
         setupAnimatedView()
         addLabel()

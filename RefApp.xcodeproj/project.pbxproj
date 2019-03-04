@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		31B9B91FF7CC2C962B67870A /* Pods_RefApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718F9C17FA0EB1C3BE311C17 /* Pods_RefApp.framework */; };
+		D509C3E5222DB70000C3EF6B /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509C3E4222DB70000C3EF6B /* EventCell.swift */; };
 		D510975121CAC57E008638B3 /* HomePlayersInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510975021CAC57E008638B3 /* HomePlayersInputVC.swift */; };
 		D529FDFB21B46E7A00DDC366 /* TextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529FDFA21B46E7A00DDC366 /* TextVC.swift */; };
 		D529FDFF21B4748C00DDC366 /* TeamsInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529FDFE21B4748C00DDC366 /* TeamsInputVC.swift */; };
@@ -82,6 +83,7 @@
 		718F9C17FA0EB1C3BE311C17 /* Pods_RefApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RefApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C9AD570AB70A8476E784C3 /* Pods-RefApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefApp.debug.xcconfig"; path = "Target Support Files/Pods-RefApp/Pods-RefApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B1D99525BDDE2393A018765D /* Pods-RefApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefApp.release.xcconfig"; path = "Target Support Files/Pods-RefApp/Pods-RefApp.release.xcconfig"; sourceTree = "<group>"; };
+		D509C3E4222DB70000C3EF6B /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		D510975021CAC57E008638B3 /* HomePlayersInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayersInputVC.swift; sourceTree = "<group>"; };
 		D529FDFA21B46E7A00DDC366 /* TextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextVC.swift; sourceTree = "<group>"; };
 		D529FDFE21B4748C00DDC366 /* TeamsInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsInputVC.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				D5FA730A21F01D0C007F77CE /* HomePlayersCollectionViewCell.swift */,
 				D58C2FFE21B5D50500A15E03 /* GameLengthCell.swift */,
 				D52C80A321F79DA6005B8C95 /* AwayPlayersCollectionViewCell.swift */,
+				D509C3E4222DB70000C3EF6B /* EventCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				D532217722067BBD00773748 /* TeamSelectionViewController.swift in Sources */,
 				D55DD93E2221F63E009843D2 /* DatabaseKeys.swift in Sources */,
 				D5FBD97121B23538005D89F4 /* AppDelegate.swift in Sources */,
+				D509C3E5222DB70000C3EF6B /* EventCell.swift in Sources */,
 				D5FBD98521B2358D005D89F4 /* GameSettings.swift in Sources */,
 				D5313FEA21D70D8E00875B63 /* AwayView.swift in Sources */,
 				D5A8519022166C060019AFC0 /* MainScreenViewController.swift in Sources */,

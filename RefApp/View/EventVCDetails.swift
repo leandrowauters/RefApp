@@ -14,7 +14,7 @@ class EventVCDetails: UIView {
         let label = UILabel()
         label.text = "Home Vs Away"
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = .white
         return label
     }()
     
@@ -22,7 +22,7 @@ class EventVCDetails: UIView {
         let label = UILabel()
         label.text = "0 - 0"
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = .white
         return label
     }()
     lazy var redCardImage: UIImageView = {
@@ -43,48 +43,48 @@ class EventVCDetails: UIView {
     lazy var yellowCardLabelHome: UILabel = {
        var label = UILabel()
         label.text = "Home:"
-        label.textColor = .black
+        label.textColor = .white
         label.numberOfLines = 5
         return label
     }()
     lazy var yellowCardLabelAway: UILabel = {
         var label = UILabel()
         label.text = "Away:"
-        label.textColor = .black
+        label.textColor = .white
         label.numberOfLines = 5
         return label
     }()
     lazy var goalLabelHome: UILabel = {
         var label = UILabel()
         label.text = "Home:"
-        label.textColor = .black
+        label.textColor = .white
         label.numberOfLines = 5
         return label
     }()
     lazy var goalLabelAway: UILabel = {
         var label = UILabel()
         label.text = "Away:"
-        label.textColor = .black
+        label.textColor = .white
         label.numberOfLines = 5
         return label
     }()
     lazy var redCardLabelHome: UILabel = {
         var label = UILabel()
         label.text = "Home:"
-        label.textColor = .black
+        label.textColor = .white
         label.numberOfLines = 5
         return label
     }()
     lazy var redCardLabelAway: UILabel = {
         var label = UILabel()
         label.text = "Away:"
-        label.textColor = .black
+        label.textColor = .white
         label.numberOfLines = 5
         return label
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .orange
+        backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
         setupTeamsLabel()
         setupScoreLabel()
         setupYellowCardImage()

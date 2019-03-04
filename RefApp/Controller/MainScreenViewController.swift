@@ -25,7 +25,7 @@ class MainScreenViewController: UIViewController {
         checkForLoginStatus()
         setupButtons(buttons: [newGameButton, loadGameButton])
         navigationController?.navigationBar.barTintColor = UIColor.black
-        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     func checkForLoginStatus() {

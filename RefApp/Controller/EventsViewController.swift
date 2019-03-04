@@ -16,6 +16,7 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     var events = Game.events
     let detailView = EventVCDetails()
     let textDetailView = EventVCTextView()
+    let graphics = GraphicClient()
     var views = [UIView]()
     lazy var customSegmentedBar: UISegmentedControl = {
         var segmentedControl = UISegmentedControl()
@@ -23,7 +24,7 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         segmentedControl.insertSegment(withTitle: "Details", at: 1, animated: true)
         segmentedControl.insertSegment(withTitle: "Text", at: 2, animated: true)
         segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.backgroundColor = #colorLiteral(red: 0.2567201853, green: 0.4751234055, blue: 0.4362891316, alpha: 1)
+        segmentedControl.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
         segmentedControl.tintColor = .clear
         segmentedControl.setTitleTextAttributes([
             NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20),
@@ -31,19 +32,19 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
             ], for: .normal)
         segmentedControl.setTitleTextAttributes([
             NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 22.0),
-            NSAttributedString.Key.foregroundColor: UIColor.white
+            NSAttributedString.Key.foregroundColor: UIColor.orange
             ], for: .selected)
         return segmentedControl
     }()
     lazy var animatedView: UIView = {
         var view = UIView()
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
         return view
     }()
     
     lazy var animatedViewRail: UIView = {
         var view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.2567201853, green: 0.4751234055, blue: 0.4362891316, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
         return view
     }()
     
@@ -176,11 +177,13 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = eventTableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath)
+        guard let cell = eventTableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? EventCell else {return UITableViewCell()}
         let eventToSet = events[indexPath.row]
-        cell.textLabel?.text = "\(eventToSet.team) - Player: \(eventToSet.playerNum)"
-        cell.backgroundColor = eventToSet.color
-        cell.detailTextLabel?.text = eventToSet.timeStamp
+        cell.cellTitle.text = "\(eventToSet.team) - Player: \(eventToSet.playerNum)"
+        cell.cellImage.backgroundColor = eventToSet.color
+        cell.cellSubtitle.text =  eventToSet.timeStamp
+        cell.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
+        graphics.changeImageToRound(image: cell.cellImage)
         return cell
     }
 

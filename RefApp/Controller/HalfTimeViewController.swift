@@ -35,7 +35,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         segmentedControl.insertSegment(withTitle: "Subtitution", at: 1, animated: true)
         segmentedControl.insertSegment(withTitle: "Notes", at: 2, animated: true)
         segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.backgroundColor = #colorLiteral(red: 0.2567201853, green: 0.4751234055, blue: 0.4362891316, alpha: 1)
+        segmentedControl.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
         segmentedControl.tintColor = .clear
         segmentedControl.setTitleTextAttributes([
             NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20),
@@ -43,20 +43,20 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
             ], for: .normal)
         segmentedControl.setTitleTextAttributes([
             NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 22.0),
-            NSAttributedString.Key.foregroundColor: UIColor.white
+            NSAttributedString.Key.foregroundColor: UIColor.orange
             ], for: .selected)
         return segmentedControl
     }()
     
     lazy var animatedView: UIView = {
        var view = UIView()
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
         return view
     }()
     
     lazy var animatedViewRail: UIView = {
         var view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.2567201853, green: 0.4751234055, blue: 0.4362891316, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
         return view
     }()
 

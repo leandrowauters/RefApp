@@ -26,7 +26,7 @@ class MyAccountViewController: UIViewController {
         segmentedControl.insertSegment(withTitle: "Info", at: 0, animated: true)
         segmentedControl.insertSegment(withTitle: "Previous Games", at: 2, animated: true)
         segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.backgroundColor = #colorLiteral(red: 0.2567201853, green: 0.4751234055, blue: 0.4362891316, alpha: 1)
+        segmentedControl.backgroundColor = #colorLiteral(red: 0.1726308763, green: 0.1726359427, blue: 0.1726332307, alpha: 1)
         segmentedControl.tintColor = .clear
         segmentedControl.setTitleTextAttributes([
             NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20),
@@ -34,20 +34,20 @@ class MyAccountViewController: UIViewController {
             ], for: .normal)
         segmentedControl.setTitleTextAttributes([
             NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 22.0),
-            NSAttributedString.Key.foregroundColor: UIColor.white
+            NSAttributedString.Key.foregroundColor: UIColor.orange
             ], for: .selected)
         return segmentedControl
     }()
     
     lazy var animatedView: UIView = {
         var view = UIView()
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.backgroundColor = UIColor.orange
         return view
     }()
     
     lazy var animatedViewRail: UIView = {
         var view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.2567201853, green: 0.4751234055, blue: 0.4362891316, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
         return view
     }()
     var views = [UIView]()
@@ -246,8 +246,10 @@ extension MyAccountViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init(style: .subtitle, reuseIdentifier: "myAccountCell")
-        
-        
+        cell.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
+        cell.textLabel?.textColor = .white
+        cell.detailTextLabel?.textColor = .white
+        tableView.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
         if tableView == infoView.infoTableView{
         let statToSet = gameStatisticInfo[indexPath.row]
         cell.textLabel?.adjustsFontSizeToFitWidth = true

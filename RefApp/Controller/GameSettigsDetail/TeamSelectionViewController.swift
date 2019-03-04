@@ -22,9 +22,12 @@ class TeamSelectionViewController: UIViewController, UITextFieldDelegate {
         homeTeamTextField.delegate = self
         awayTeamTextField.delegate = self
         setupUI()
-        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
-    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
     func setupUI() {
 //        homeTeamTextField.layer.borderWidth = 2
 //        homeTeamTextField.layer.borderColor = UIColor.white.cgColor
@@ -37,7 +40,7 @@ class TeamSelectionViewController: UIViewController, UITextFieldDelegate {
 //        awayTeamTextField.layer.masksToBounds = true
 //        awayTeamTextField.text = Game.awayTeam
         doneButton.layer.borderWidth = 2
-        doneButton.layer.borderColor = UIColor.white.cgColor
+        doneButton.layer.borderColor = UIColor.orange.cgColor
         doneButton.layer.cornerRadius = doneButton.frame.height / 2
         doneButton.layer.masksToBounds = true
     }

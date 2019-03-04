@@ -25,6 +25,7 @@ class GameLengthVC: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        myTableView.delegate = self
         if let user = usersession?.getCurrentUser(){
             userID = user.uid
             loginStatus = .existingAccount
@@ -41,6 +42,7 @@ class GameLengthVC: UIViewController {
     @objc func userDefaultsPressed(){
         UserDefaults.standard.set(Game.lengthSelected, forKey: userID + UserDefaultManager.duration)
     }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? TextVC else {return}
         destination.myString = "Enter Game Length:"
@@ -78,6 +80,11 @@ extension GameLengthVC: UITableViewDataSource{
 
 
 extension GameLengthVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
+        cell.textLabel?.textColor = .white
+        tableView.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let chosenGamelength = gameLength[indexPath.row]
@@ -107,4 +114,3 @@ extension GameLengthVC: GameLengthDelegate{
     
     
 }
-

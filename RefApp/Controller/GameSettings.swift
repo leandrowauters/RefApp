@@ -25,6 +25,8 @@ class GameSettings: UITableViewController {
     
     @IBOutlet weak var refereeNamesLabel: UILabel!
     @IBOutlet weak var capsNamesLabel: UILabel!
+    
+    @IBOutlet var StaticCellLabels: [UILabel]!
     private var usersession: UserSession?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,8 @@ class GameSettings: UITableViewController {
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
         numberOfSubsLabel.text = "None"
         title = "Game Settings"
-        myTableView.backgroundColor = #colorLiteral(red: 0.2737779021, green: 0.4506875277, blue: 0.6578510404, alpha: 1)
+        myTableView.backgroundColor = #colorLiteral(red: 0.1726308763, green: 0.1726359427, blue: 0.1726332307, alpha: 1)
+        myTableView.dataSource = self
 //        numberOfPlayersLabel.adjustsFontSizeToFitWidth = true
         GameClient.printValues()
         setupLabels()
@@ -44,8 +47,12 @@ class GameSettings: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         GameClient.printValues()
     }
+
     
     func setupLabels () {
+        for label in StaticCellLabels {
+            label.textColor = .white
+        }
         if UserDefaultManager.defaultDuration {
             gameLenghtLabel.text = "\(Game.lengthSelected) minutes"
         }
@@ -116,6 +123,8 @@ class GameSettings: UITableViewController {
             return "Error"
         }
     }
+
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "teamSelection":
@@ -154,6 +163,21 @@ class GameSettings: UITableViewController {
             print("Error4")
         }
     }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
+    }
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+        headerView.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
+        let headerLabel = UILabel(frame: CGRect(x: 30, y: 5, width:
+            tableView.bounds.size.width, height: tableView.bounds.size.height))
+        headerLabel.font = UIFont.systemFont(ofSize: 17.0)
+        headerLabel.textColor = UIColor.white
+        headerLabel.text = self.tableView(self.tableView, titleForHeaderInSection: section)
+        headerLabel.sizeToFit()
+        headerView.addSubview(headerLabel)
+        return headerView
+    }
 }
 extension GameSettings: GameDelegate {
     func capsNameChanged(to selected: String) {
@@ -189,5 +213,6 @@ extension GameSettings: GameDelegate {
         numberOfPlayersLabel.text = "\(numberOfPlayers) vs. \(numberOfPlayers)"
     }
 }
+
 
 

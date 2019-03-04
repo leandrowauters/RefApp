@@ -15,15 +15,15 @@ weak var gameDegelate: GameDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doneButton.layer.borderColor = UIColor.white.cgColor
-        doneButton.layer.borderWidth = 3
-        doneButton.layer.cornerRadius = 10
+//        doneButton.layer.borderColor = UIColor.white.cgColor
+//        doneButton.layer.borderWidth = 3
+//        doneButton.layer.cornerRadius = 10
         picker.setValue(UIColor.white, forKeyPath: "textColor")
 //        picker.backgroundColor = #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 0.8780233305)
-        picker.layer.borderColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1).cgColor
-        picker.layer.masksToBounds = true
-        picker.layer.borderWidth = 3
-        picker.layer.cornerRadius = 10
+//        picker.layer.borderColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1).cgColor
+//        picker.layer.masksToBounds = true
+//        picker.layer.borderWidth = 3
+//        picker.layer.cornerRadius = 10
     }
     @IBAction func doneWasClicked(_ sender: UIButton) {
         let date = GameClient.convertLocalDateToString(str: picker.date.description, dateFormat: "MMM d, h:mm a")

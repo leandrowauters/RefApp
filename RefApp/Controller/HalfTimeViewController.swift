@@ -265,7 +265,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 150
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == subHalftimeView.playerInTextField{

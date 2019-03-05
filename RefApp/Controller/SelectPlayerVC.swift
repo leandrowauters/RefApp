@@ -17,7 +17,11 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
     weak var timerDelegate: TimerDelegate?
     weak var eventDelegate: EventDelegate?
     @IBOutlet weak var subTextField: UITextField!
+    @IBOutlet weak var animatedViewRight: UIView!
+    @IBOutlet weak var animatedLabelRight: UILabel!
+    @IBOutlet weak var animatedViewLeft: UIView!
     
+    @IBOutlet weak var animatedLabelLeft: UILabel!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var playerOutLabel: UILabel!
     
@@ -34,9 +38,9 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
     }
     func setupUI(){
         if teamSide == .home{
-            view.backgroundColor = #colorLiteral(red: 0.2737779021, green: 0.4506875277, blue: 0.6578510404, alpha: 1)
+            view.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
         } else {
-            view.backgroundColor = #colorLiteral(red: 0.2567201853, green: 0.4751234055, blue: 0.4362891316, alpha: 1)
+            view.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
         }
         playerOutLabel.text = selectedPlayer.description
         playerOutLabel.layer.borderColor = UIColor.white.cgColor
@@ -49,55 +53,107 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    
+    func perfomSub ( team: inout [Int], playerIn: Int, playerOut: Int, index: inout Int){
+        if team.contains(playerIn) {
+            print("Player Already Playing")
+            showAlert(title: "Player Already Playing", message: "Please select another player")
+            subTextField.text = ""
+            return
+        }
+        for player in team {
+            if Int(playerOut) == player{
+                print(index)
+                team.remove(at: index)
+                team.insert(playerIn, at: index)
+                animatedViewRight.isHidden = false
+                animatedViewLeft.isHidden = false
+                animatedLabelRight.isHidden = false
+                animatedLabelLeft.isHidden = false
+                UIView.transition(with: animatedViewLeft, duration: 1, options: [.transitionFlipFromRight], animations: {
+                    self.playerOutLabel.text = ""
+                    self.animatedLabelLeft.text = playerIn.description
+                }) { (Bool) in
+//                    self.subHalftimeView.animatedLabelLeft.text = playerOut.description
+//                    self.subHalftimeView.playerInTextField.text = ""
+                }
+                
+                UIView.transition(with: animatedViewRight, duration: 1, options: [.transitionFlipFromRight], animations: {
+                    self.animatedLabelRight.text = playerOut.description
+                    self.subTextField.text = ""
+                }) { (Bool) in
+                    self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+//                    UIView.animate(withDuration: 1, delay: 0.5, options: [], animations: {
+//
+//                        self.animatedLabelRight.text = playerOut.description
+//                    }, completion: { (Bool) in
+////                        self.subHalftimeView.animatedLabelRight.alpha = 1
+////                        self.subHalftimeView.textAnimationViewRight.isHidden = true
+////                        self.subHalftimeView.playerOutTextField.isHidden = false
+//                    })
+                }
+                break
+            } else {
+                index += 1
+            }
+            if index == team.count - 1{
+//                showAlert(title: "Player Not Playing", message: "Please select another player")
+//                subHalftimeView.playerOutTextField.text = ""
+//                subHalftimeView.playerInTextField.text = ""
+//                print("No Player Found")
+            }
+            
+        }
+    }
     
     @objc func doneButtonAction() {
 //        timerDelegate?.turnOnTimer(turnOn: true)
-
+        var index = 0
         timer.resume()
+        if let text = subTextField.text {
         if teamSide == .home {
             eventDelegate?.yellowCall(bool: false, home: true, away: false)
             eventDelegate?.redCard(bool: false, home: true, away: false)
-            if Game.homePlayers.contains(Int(subTextField.text!)!){
-                subTextField.text = ""
-                showAlert(title: "Player Already Entered", message: nil)
-                return
-            }
-            if let text = subTextField.text{
-                Game.homePlayers.remove(at: selectedButton)
-                Game.homePlayers.insert(Int(text)!, at: Int(selectedButton))
-//                eventDelegate?.substitution(playerIn: text, playerOut: selectedPlayer.description, home: true, index: selectedButton)
-                eventDelegate?.subWasMade(bool: true, scrollToAway: false)
-//            Game.homePlayersSorted.remove(at: selectedButton)
-//            Game.homePlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
-//            Game.homePlayersSorted = Game.homePlayersSorted.sorted{$0 < $1}
-//            Game.homePlayers = Game.homePlayersSorted
-            }
+            perfomSub(team: &Game.homePlayers, playerIn: Int(text)!, playerOut: selectedPlayer, index: &index)
+//            if Game.homePlayers.contains(Int(subTextField.text!)!){
+//                subTextField.text = ""
+//                showAlert(title: "Player Already Entered", message: nil)
+//                return
+//            }
+//            if let text = subTextField.text{
+//                Game.homePlayers.remove(at: selectedButton)
+//                Game.homePlayers.insert(Int(text)!, at: Int(selectedButton))
+////                eventDelegate?.substitution(playerIn: text, playerOut: selectedPlayer.description, home: true, index: selectedButton)
+//                eventDelegate?.subWasMade(bool: true, scrollToAway: false)
+////            Game.homePlayersSorted.remove(at: selectedButton)
+////            Game.homePlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
+////            Game.homePlayersSorted = Game.homePlayersSorted.sorted{$0 < $1}
+////            Game.homePlayers = Game.homePlayersSorted
+//            }
         } else if teamSide == .away {
-            if Game.awayPlayers.contains(Int(subTextField.text!)!){
-                subTextField.text = ""
-                showAlert(title: "Player Already Entered", message: nil)
-                return
-            }
+//            if Game.awayPlayers.contains(Int(subTextField.text!)!){
+//                subTextField.text = ""
+//                showAlert(title: "Player Already Entered", message: nil)
+//                return
+//            }
             eventDelegate?.yellowCall(bool: false, home: false, away: true)
             eventDelegate?.redCard(bool: false, home: false, away: true)
-            
-            if let text = subTextField.text{
-                Game.awayPlayers.remove(at: selectedButton)
-                Game.awayPlayers.insert(Int(text)!, at: Int(selectedButton))
-//                eventDelegate?.substitution(playerIn: text, playerOut: selectedPlayer.description, home: false, index: selectedButton)
-                eventDelegate?.subWasMade(bool: true, scrollToAway: true)
-            }
+            perfomSub(team: &Game.awayPlayers, playerIn: Int(text)!, playerOut: selectedPlayer, index: &index)
+//            if let text = subTextField.text{
+//                Game.awayPlayers.remove(at: selectedButton)
+//                Game.awayPlayers.insert(Int(text)!, at: Int(selectedButton))
+////                eventDelegate?.substitution(playerIn: text, playerOut: selectedPlayer.description, home: false, index: selectedButton)
+//                eventDelegate?.subWasMade(bool: true, scrollToAway: true)
+//            }
 //            Game.awayPlayersSorted.remove(at: selectedButton)
 //            Game.awayPlayersSorted.insert(Int(subTextField.text!)!, at: selectedButton)
 //            Game.awayPlayersSorted = Game.awayPlayersSorted.sorted{$0 < $1}
 //            Game.awayPlayers = Game.awayPlayersSorted
         }
 //        Game.subs.append((In: subTextField.text!, Out: String(selectedPlayer) ))
-        let sub = Events.init(type: TypeOfIncident.sub.rawValue, playerNum: selectedPlayer, team: teamSelected, half: Game.gameHalf, subIn: Int(subTextField.text!)!, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1))
+        let sub = Events.init(type: TypeOfIncident.sub.rawValue, playerNum: selectedPlayer, team: teamSelected, half: Game.gameHalf, subIn: Int(text)!, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1))
         Game.events.append(sub)
         print(Game.homePlayers)
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+
         timerDelegate?.keepStartButtonHidden(hide: true)
         timerDelegate?.keepStartButtonDisable(disable: true)
         timerDelegate?.addTapAfterSub(add: true)
@@ -107,6 +163,7 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
 //        guard let vc = storyboard.instantiateViewController(withIdentifier: "mainGame") as? MainGameVC else {return}
 //        vc.modalPresentationStyle = .fullScreen
 //        present(vc, animated: true, completion: nil)
+        }
     }
     @objc func changeLabel (){
         textLabel.text = "Enter Sub Number"

@@ -1428,7 +1428,7 @@
                                     <action selector="selectWasPress:" destination="F9B-1q-Cge" id="jZv-Oy-1ce"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="trash" id="cy9-PJ-LuA">
+                            <barButtonItem image="icons8-more_filled" id="cy9-PJ-LuA">
                                 <connections>
                                     <action selector="deleteWasPressed:" destination="F9B-1q-Cge" id="OT7-Jy-wJy"/>
                                 </connections>
@@ -2388,11 +2388,11 @@
                         <viewLayoutGuide key="safeArea" id="fAk-ZY-YZ9"/>
                     </view>
                     <connections>
-                        <outlet property="animatedLabelLeft" destination="HC4-aE-Glz" id="Tgr-fi-V4y"/>
-                        <outlet property="animatedLabelRight" destination="5IO-ya-3TF" id="MOt-vE-yD4"/>
-                        <outlet property="animatedViewLeft" destination="JDM-Qh-fuq" id="beV-he-sN7"/>
-                        <outlet property="animatedViewRight" destination="44R-Ok-CJI" id="31C-ST-G4j"/>
-                        <outlet property="playerOutLabel" destination="aSv-Mf-myT" id="R8g-Rb-BkJ"/>
+                        <outlet property="animatedLabelLeft" destination="HC4-aE-Glz" id="DDc-WC-UAm"/>
+                        <outlet property="animatedLabelRight" destination="5IO-ya-3TF" id="YyP-10-nYG"/>
+                        <outlet property="animatedViewLeft" destination="JDM-Qh-fuq" id="Zga-7U-9Eo"/>
+                        <outlet property="animatedViewRight" destination="44R-Ok-CJI" id="cjX-dW-VDv"/>
+                        <outlet property="playerOutLabel" destination="aSv-Mf-myT" id="PP7-Ji-OdI"/>
                         <outlet property="subTextField" destination="NTE-XX-fUQ" id="tKu-dw-Uc3"/>
                         <outlet property="textLabel" destination="4pQ-hS-pU0" id="YZm-IA-LFk"/>
                     </connections>
@@ -2792,6 +2792,7 @@
         <image name="enterKey" width="36" height="36"/>
         <image name="goal" width="100" height="100"/>
         <image name="icons8-menu_filled" width="100" height="100"/>
+        <image name="icons8-more_filled" width="25" height="25"/>
         <image name="icons8-stop" width="100" height="100"/>
         <image name="redCard" width="100" height="100"/>
         <image name="substitution" width="100" height="100"/>

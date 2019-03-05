@@ -20,7 +20,8 @@ class GameSettings: UITableViewController {
     @IBOutlet weak var leagueNameLabel: UILabel!
     @IBOutlet weak var extraTimeLabel: UILabel!
     @IBOutlet var myTableView: UITableView!
-
+    @IBOutlet weak var extraTimeSwitch: UISwitch!
+    
     @IBOutlet var labelArrays: [UILabel]!
     
     @IBOutlet weak var refereeNamesLabel: UILabel!
@@ -28,6 +29,8 @@ class GameSettings: UITableViewController {
     
     @IBOutlet var StaticCellLabels: [UILabel]!
     private var usersession: UserSession?
+    var intention: Intention?
+    var game: Game!
     override func viewDidLoad() {
         super.viewDidLoad()
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
@@ -52,6 +55,22 @@ class GameSettings: UITableViewController {
     func setupLabels () {
         for label in StaticCellLabels {
             label.textColor = .white
+        }
+        
+        if intention == .edit{
+            teamSelectionLabel.text = "Selected"
+            gameLenghtLabel.text = "\(game!.lengthSelected) minutes"
+            numberOfPlayersLabel.text = "\(game!.numberOfPlayers) vs. \(game!.numberOfPlayers)"
+            numberOfSubsLabel.text = game!.subs.description
+            locationLabel.text = game?.location
+            dateTimeLabel.text = game?.dateAndTime
+            leagueNameLabel.text = game?.league
+            if game!.extraTime{
+                extraTimeSwitch.isOn = true
+            } else {
+                extraTimeSwitch.isOn = false
+            }
+            
         }
         if UserDefaultManager.defaultDuration {
             gameLenghtLabel.text = "\(Game.lengthSelected) minutes"
@@ -127,27 +146,51 @@ class GameSettings: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
+        case "next":
+            guard let destination = segue.destination as? HomePlayersSelectionViewController else {return}
+            if intention == .edit{
+                destination.intention = .edit
+                destination.game = game
+            }
         case "teamSelection":
             guard let destination = segue.destination as? TeamSelectionViewController else {return}
             destination.delegate = self
+            if intention == .edit{
+                destination.intention = .edit
+                destination.homeTeam = game.homeTeam
+                destination.awayTeam = game.awayTeam
+            }
         case "numberOfPlayers":
             guard let destination = segue.destination as? TextVC else {return}
             destination.myString = "Number Of Players Per Team: "
             destination.selectedIndexPath = 2
             destination.gameDegelate = self
+            if intention == .edit {
+                destination.selectedOption = game.numberOfPlayers.description
+                destination.intention = .edit
+            }
         case "location":
             guard let destination = segue.destination as? TextVC else {return}
             destination.myString = "Enter Location:"
             destination.selectedIndexPath = 4
             destination.gameDegelate = self
+            if intention == .edit {
+                destination.selectedOption = game.location
+                destination.intention = .edit
+            }
         case "date":
             guard let destination = segue.destination as? DatePickerVC else {return}
             destination.gameDegelate = self
+
         case "leagueName":
             guard let destination = segue.destination as? TextVC else {return}
             destination.myString = "Enter League:"
             destination.selectedIndexPath = 6
             destination.gameDegelate = self
+            if intention == .edit {
+                destination.selectedOption = game.league
+                destination.intention = .edit
+            }
         case "gameLength":
             guard let destination = segue.destination as? GameLengthVC else {return}
             destination.gameDelegate = self

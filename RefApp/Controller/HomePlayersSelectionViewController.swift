@@ -12,6 +12,8 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
     
     
     let graphics = GraphicClient()
+    var intention: Intention?
+    var game: Game?
     @IBOutlet var numberPadButtons: [UIButton]!
     @IBOutlet weak var numbersCollectionView: UICollectionView!
 
@@ -32,7 +34,7 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
         }
     }
     
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +43,13 @@ class HomePlayersSelectionViewController: UIViewController,UICollectionViewDataS
         numbersCollectionView.dataSource = self
         scrollToLastIndex()
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? AwayPlayersSelectionViewController else {return}
+        if intention == .edit{
+            destination.intention = .edit
+            destination.game = game
+        }
+    }
     func scrollToLastIndex(){
         let indextPath = IndexPath(item: Game.homePlayers.count, section: 0)
         numbersCollectionView.scrollToItem(at: indextPath, at: .centeredHorizontally, animated: true)

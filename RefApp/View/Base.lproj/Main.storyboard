@@ -394,7 +394,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Next" id="xU2-I4-f8M">
                             <connections>
                                 <action selector="nextButtonPressed:" destination="DbE-02-AZ3" id="k7U-8Q-wV4"/>
-                                <segue destination="8pI-QS-oCL" kind="show" id="HYK-FU-6q1"/>
+                                <segue destination="8pI-QS-oCL" kind="show" identifier="next" id="HYK-FU-6q1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -402,6 +402,7 @@
                         <outlet property="capsNamesLabel" destination="0h4-wi-SjY" id="Kgt-20-yxn"/>
                         <outlet property="dateTimeLabel" destination="LTJ-EU-PaK" id="ROQ-rO-D4G"/>
                         <outlet property="extraTimeLabel" destination="UhB-3x-Jyd" id="dTe-cs-8mM"/>
+                        <outlet property="extraTimeSwitch" destination="kN7-jZ-9LQ" id="5bc-lE-jSM"/>
                         <outlet property="gameLenghtLabel" destination="qpv-r8-z4k" id="3MK-kM-TqQ"/>
                         <outlet property="leagueNameLabel" destination="gGS-7f-r0M" id="dNY-wT-gWI"/>
                         <outlet property="locationLabel" destination="tBq-es-J8n" id="Eku-dv-DKn"/>
@@ -425,6 +426,8 @@
                         <outletCollection property="StaticCellLabels" destination="RMC-T4-qBs" collectionClass="NSMutableArray" id="VY7-wC-K70"/>
                         <outletCollection property="StaticCellLabels" destination="A4q-b3-9tT" collectionClass="NSMutableArray" id="Nxk-5k-XVR"/>
                         <outletCollection property="StaticCellLabels" destination="GLo-gm-ZIB" collectionClass="NSMutableArray" id="yi8-bi-4Tc"/>
+                        <outletCollection property="labelArrays" destination="T5Z-a2-Otm" collectionClass="NSMutableArray" id="2nQ-aj-6ay"/>
+                        <outletCollection property="labelArrays" destination="SCY-aY-Ud1" collectionClass="NSMutableArray" id="DlD-Ra-Mdh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQ4-Jc-V3V" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1316,7 +1319,7 @@
         <!--Title-->
         <scene sceneID="KOP-ZA-7eh">
             <objects>
-                <viewController id="F9B-1q-Cge" customClass="SavedGameDetailedViewController" customModule="RefApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SavedGameDetail" id="F9B-1q-Cge" customClass="SavedGameDetailedViewController" customModule="RefApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Aby-I0-2OW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2799,7 +2802,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="i0C-bt-bVX"/>
         <segue reference="FJf-qx-wD5"/>
-        <segue reference="D3x-yk-zOe"/>
+        <segue reference="x7g-4r-ffK"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

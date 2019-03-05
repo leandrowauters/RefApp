@@ -17,6 +17,9 @@ class TeamSelectionViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var doneButton: UIButton!
     
     weak var delegate: GameDelegate!
+    var homeTeam = String()
+    var awayTeam = String()
+    var intention: Intention?
     override func viewDidLoad() {
         super.viewDidLoad()
         homeTeamTextField.delegate = self
@@ -29,6 +32,10 @@ class TeamSelectionViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     func setupUI() {
+        if intention == .edit{
+            homeTeamTextField.text = homeTeam
+            awayTeamTextField.text = awayTeam
+        }
 //        homeTeamTextField.layer.borderWidth = 2
 //        homeTeamTextField.layer.borderColor = UIColor.white.cgColor
 //        homeTeamTextField.layer.cornerRadius = 10

@@ -17,7 +17,9 @@ class TextVC: UIViewController {
     private var usersession: UserSession?
     private var userID = String()
     var selectedIndexPath = Int()
+    var selectedOption = String()
     var myString = String()
+    var intention: Intention?
     let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonAction))
     
     
@@ -33,10 +35,16 @@ class TextVC: UIViewController {
         textField.delegate = self
         gameSettingLabel.text = myString
         useNumKeyboard()
+        if intention == .edit{
+            setupTextfield()
+        }
         if selectedIndexPath != 4 {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save as default", style: .plain, target: self, action: #selector(userDefaultsPressed))
         }
         
+    }
+    func setupTextfield() {
+        textField.text = selectedOption
     }
     func getUserId() {
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
@@ -49,14 +57,13 @@ class TextVC: UIViewController {
     @objc func userDefaultsPressed (){
        
         guard let text = textField.text,
-        !text.isEmpty,
-            let numberSelected = Int(text) else {
+        !text.isEmpty else {
                 print("error")
                 return
         }
         switch selectedIndexPath {
         case 2:
-            Game.numberOfPlayers = numberSelected
+            Game.numberOfPlayers = Int(text) ?? 0
             UserDefaults.standard.set(Game.numberOfPlayers, forKey: userID + UserDefaultManager.numberOfPlayers)
             gameDegelate?.numberOfPlayersDidChange(to: Game.numberOfPlayers)
             showAlert(title: "Saved", message: nil) { (UIAlertController) in
@@ -77,7 +84,7 @@ class TextVC: UIViewController {
                 self.present(UIAlertController, animated: true)
             }
         case 7:
-            Game.lengthSelected = numberSelected
+            Game.lengthSelected = Int(text) ?? 0
             UserDefaults.standard.set(Game.lengthSelected, forKey: userID + UserDefaultManager.duration)
             gameLenghtDelegate?.gameLengthChange(to: Game.lengthSelected)
             showAlert(title: "Saved", message: nil) { (UIAlertController) in

@@ -31,7 +31,8 @@ struct DataPeristanceModel {
         return games
     }
     
-    static func addGame(game: Game){
+    static func addGame(){
+        let game = Game.init(userID: "", gameName: Game.gameName, lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers, dbReferenceDocumentId: "")
         games.append(game)
         saveGame()
     }

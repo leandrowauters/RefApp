@@ -107,7 +107,8 @@ final class DatabaseManager {
         }
 
     }
-    static func postSaveGameToDatabase(gameToSave: Game) {
+    static func postSaveGameToDatabase(userID: String) {
+        let gameToSave = Game.init(userID: userID, gameName: Game.gameName, lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers, dbReferenceDocumentId: "")
          var ref: DocumentReference? = nil
         ref = firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).addDocument(data: ["userID": gameToSave.userID, "gameName": gameToSave.gameName!, "gameLength": gameToSave.lengthSelected, "numberOfPlayers" : gameToSave.numberOfPlayers, "location" : gameToSave.location, "dateAndTime" : gameToSave.dateAndTime, "league" : gameToSave.league, "refereeNames" : gameToSave.refereeNames, "caps" : gameToSave.caps , "extraTime" : gameToSave.extraTime, "homeTeam" : gameToSave.homeTeam , "awayTeam" : gameToSave.awayTeam, "subs" : gameToSave.subs, "homePlayers" : gameToSave.homePlayers, "awayPlayers" : gameToSave.awayPlayers, "dBReference" : gameToSave.dbReferenceDocumentId], completion: { (error) in
             if let error = error {
@@ -154,13 +155,11 @@ final class DatabaseManager {
             } else {
                 print("Document successfully removed!")
             }
-        }
-
-        
+        } 
     }
     
-    static func fetchSaveGames(vc: UIViewController,user: User, completion: @escaping(Error?, [Game]?) -> Void) {
-        let query = DatabaseManager.firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).whereField("userID", isEqualTo: user.uid)
+    static func fetchSaveGames(vc: UIViewController,userID: String, completion: @escaping(Error?, [Game]?) -> Void) {
+        let query = DatabaseManager.firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).whereField("userID", isEqualTo: userID)
         query.getDocuments { (snapshot, error) in
             if let error = error {
                 vc.showAlert(title: "Network Error", message: error.localizedDescription)

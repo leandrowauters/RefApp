@@ -8,6 +8,9 @@
 
 import UIKit
 
+enum Intention {
+    case edit
+}
 class SavedGameDetailedViewController: UIViewController {
     
     var savedGame: Game!
@@ -48,7 +51,12 @@ class SavedGameDetailedViewController: UIViewController {
         showSheetAlert(title: "Select option", message: nil) { (UIAlertController) in
             let edit = UIAlertAction(title: "Edit", style: .default
                 , handler: { (action) in
-                    print("Edit")
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    guard let gameSettings = storyboard.instantiateViewController(withIdentifier: "gameSettings") as? GameSettings else {return}
+                    gameSettings.intention = .edit
+                    self.assingSaveGameValues()
+                    gameSettings.game = self.savedGame
+                    self.navigationController?.pushViewController(gameSettings, animated: true)
             })
             let delete = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
                 if UserSession.loginStatus == .existingAccount {
@@ -71,20 +79,7 @@ class SavedGameDetailedViewController: UIViewController {
     @IBAction func selectWasPress(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title:"Are You Sure?" , message: "Once The Game Begins Settings Cannot Be Change" , preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (updateAction) in
-            Game.gameName = self.savedGame.gameName
-            Game.lengthSelected = self.savedGame.lengthSelected
-            Game.numberOfPlayers = self.savedGame.numberOfPlayers
-            Game.location = self.savedGame.location
-            Game.dateAndTime = self.savedGame.dateAndTime
-            Game.league = self.savedGame.league
-            Game.refereeNames = self.savedGame.refereeNames
-            Game.caps = self.savedGame.caps
-            Game.extraTime = self.savedGame.extraTime
-            Game.homeTeam = self.savedGame.homeTeam
-            Game.awayTeam = self.savedGame.awayTeam
-            Game.numberOfSubs = self.savedGame.subs
-            Game.homePlayers = self.savedGame.homePlayers
-            Game.awayPlayers = self.savedGame.awayPlayers
+            self.assingSaveGameValues()
             let storyboard: UIStoryboard = UIStoryboard (name: "Main", bundle: nil)
             guard let vc = storyboard.instantiateViewController(withIdentifier: "mainGame") as? MainGameVC else {return}
             self.present(vc, animated: true, completion: nil)
@@ -94,5 +89,20 @@ class SavedGameDetailedViewController: UIViewController {
         self.present(alert, animated: false)
 
     }
-
+    func assingSaveGameValues(){
+        Game.gameName = self.savedGame.gameName
+        Game.lengthSelected = self.savedGame.lengthSelected
+        Game.numberOfPlayers = self.savedGame.numberOfPlayers
+        Game.location = self.savedGame.location
+        Game.dateAndTime = self.savedGame.dateAndTime
+        Game.league = self.savedGame.league
+        Game.refereeNames = self.savedGame.refereeNames
+        Game.caps = self.savedGame.caps
+        Game.extraTime = self.savedGame.extraTime
+        Game.homeTeam = self.savedGame.homeTeam
+        Game.awayTeam = self.savedGame.awayTeam
+        Game.numberOfSubs = self.savedGame.subs
+        Game.homePlayers = self.savedGame.homePlayers
+        Game.awayPlayers = self.savedGame.awayPlayers
+    }
 }

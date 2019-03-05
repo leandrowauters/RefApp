@@ -7,11 +7,12 @@
 //
 
 import UIKit
-
 class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout  {
 
+
     let graphics = GraphicClient()
-    
+    var intention: Intention?
+    var game: Game!
     @IBOutlet var numberPadButtons: [UIButton]!
     @IBOutlet weak var numbersCollectionView: UICollectionView!
 
@@ -34,6 +35,7 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
     }
     private var usersession: UserSession?
     private var userID = String()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +44,32 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
         numbersCollectionView.dataSource = self
         scrollToLastIndex()
         getUserId()
+        if intention == .edit{
+            let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(donePressed))
+            self.navigationItem.rightBarButtonItem = doneButton
+        }
 
+    }
+    @objc func donePressed(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let savedGameDetail = storyboard.instantiateViewController(withIdentifier: "SavedGameDetail") as? SavedGameDetailedViewController else {return}
+        if UserSession.loginStatus == .existingAccount{
+            DatabaseManager.deleteSavedGameFromDatabase(vc: self, gameToDelete: game)
+            DatabaseManager.postSaveGameToDatabase(userID: self.userID)
+            DatabaseManager.fetchSaveGames(vc: self, userID: userID) { (error, games) in
+                if let error = error {
+                    print(error)
+                }
+                if let games = games {
+                    savedGameDetail.savedGame = games.last
+                    self.navigationController?.pushViewController(savedGameDetail, animated: true)
+                }
+            }
+        } else {
+            DataPeristanceModel.addGame()
+        }
+        
+        
     }
     func scrollToLastIndex(){
         let indextPath = IndexPath(item: awayPlayers.count, section: 0)
@@ -52,6 +79,7 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         if let user = usersession?.getCurrentUser() {
             userID = user.uid
+            
         } else {
             userID = UserDefaultManager.noUser
         }
@@ -81,11 +109,11 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
                 })
                 alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (updateAction) in
                     Game.gameName = alert.textFields?.first?.text
-                    let game = Game.init(userID: self.userID, gameName: Game.gameName, lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers, dbReferenceDocumentId: "")
+
                     if UserSession.loginStatus == .existingAccount{
-                        DatabaseManager.postSaveGameToDatabase(gameToSave: game)
+                        DatabaseManager.postSaveGameToDatabase(userID: self.userID)
                     } else {
-                        DataPeristanceModel.addGame(game: game)
+                        DataPeristanceModel.addGame()
                     }     
                 }))
                 self.present(alert, animated: true, completion: nil)

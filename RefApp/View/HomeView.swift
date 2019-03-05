@@ -49,7 +49,7 @@ class HomeView: UIView {
             vc.selectedButton = sender.tag
             vc.timerDelegate = (currentController as! TimerDelegate)
             vc.eventDelegate = (currentController as! EventDelegate)
-            currentController?.present(vc, animated: false, completion: nil)
+            currentController?.present(vc, animated: true, completion: nil)
     }
     
     

@@ -26,7 +26,7 @@ class SavedGamesViewController: UIViewController {
     }
     func getGames() {
         if let user = usersession?.getCurrentUser(){
-            DatabaseManager.fetchSaveGames(vc: self, user: user) { (error, games) in
+            DatabaseManager.fetchSaveGames(vc: self, userID: user.uid) { (error, games) in
                 if let error = error {
                     print(error)
                 }

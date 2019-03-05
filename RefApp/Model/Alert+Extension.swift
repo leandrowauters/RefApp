@@ -22,5 +22,9 @@ extension UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         handler(alertController)
     }
+    func showSheetAlert(title: String, message: String?, handler: @escaping (UIAlertController) -> Void) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        handler(alertController)
+    }
 
 }

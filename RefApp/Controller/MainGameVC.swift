@@ -69,7 +69,17 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         print("The view height is: \(timer2View.bounds.height)")
         NotificationCenter.default.addObserver(self, selector: #selector(pauseTimer), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startApp) , name: UIApplication.didBecomeActiveNotification, object: nil)
-        
+        for index in 0...timerLabels.count - 1 {
+            switch index {
+            case 0:
+                timerLabels[index].font = UIFont.monospacedDigitSystemFont(ofSize: 53, weight: .regular)
+            case 1:
+                timerLabels[index].font = UIFont.monospacedDigitSystemFont(ofSize: 25, weight: .bold)
+            default:
+                print("Timer Label Index Error")
+                
+            }
+        }
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideTimerView))
         timer2View.addGestureRecognizer(tap)
 

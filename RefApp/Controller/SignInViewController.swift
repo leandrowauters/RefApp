@@ -62,15 +62,24 @@ extension SignInViewController: UserSessionSignInDelegate{
         }
         
         func didSignInExistingUser(_ usersession: UserSession, user: User) {
-            self.presentMyAccountController()
+            self.presentMyAccountController(user: user)
         }
-    func presentMyAccountController(){
+    func presentMyAccountController(user: User){
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         guard let myAccountController = storyboard.instantiateViewController(withIdentifier: "MyAccountVC") as? MyAccountViewController else {print("No VC")
             return
         }
-        myAccountController.userLoggedIn = true
-        myAccountController.userDidLoginDelegate = userDidLoginDelegate
-        present(myAccountController, animated: true, completion: nil)
+        DatabaseManager.fetchReferee(vc: self, user: user) { (error, referee) in
+            if let error = error {
+                print(error)
+            }
+            if let referee = referee {
+                myAccountController.userLoggedIn = true
+                myAccountController.userDidLoginDelegate = self.userDidLoginDelegate
+                myAccountController.referee = referee
+                self.present(myAccountController, animated: true, completion: nil)
+                
+            }
+        }
     }
 }

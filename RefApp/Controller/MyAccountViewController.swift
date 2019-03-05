@@ -96,9 +96,7 @@ class MyAccountViewController: UIViewController {
     }
     
     func checkForCountryFlagURL(){
-        guard let country = referee.country else {
-            return
-        }
+        if let country = referee.country{
         CountryAPIClient.getCountyAlphaCode(country: country) { (error, code) in
             if let error = error {
                 print(error)
@@ -115,6 +113,7 @@ class MyAccountViewController: UIViewController {
                     }
                 })
             }
+        }
         }
     }
     func getGameStatistics() {

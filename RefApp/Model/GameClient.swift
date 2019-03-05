@@ -36,4 +36,58 @@ struct GameClient {
         dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: dateToReturn)
     }
+    func getHomePlayers(game: Game) -> String? {
+        var homePlayers: String?
+        for homePlayer in game.homePlayers {
+            if homePlayers == nil {
+                homePlayers = homePlayer.description
+            } else {
+                homePlayers = homePlayers! + ", " + homePlayer.description
+            }
+        }
+        return homePlayers
+    }
+    
+    func getAwayPlayers(game: Game) -> String? {
+        var awayPlayers: String?
+        for awayPlayer in game.awayPlayers {
+            if awayPlayers == nil {
+                awayPlayers = awayPlayer.description
+            } else {
+                awayPlayers = awayPlayers! + ", " + awayPlayer.description
+            }
+        }
+        return awayPlayers
+    }
+    
+    func getReferee(game: Game) -> String? {
+        var referees: String?
+        for referee in game.refereeNames {
+            if referees == nil {
+                referees = referee
+            } else {
+                referees = referees! + ", " + referee
+            }
+        }
+        return referees
+    }
+    
+    func getCapsNames(game: Game) -> String? {
+        var caps: String?
+        for cap in game.caps {
+            if caps == nil {
+                caps = cap
+            } else {
+                caps = caps! + ", " + cap
+            }
+        }
+        return caps
+    }
+    func checkForExtraTime(game: Game) -> String{
+        if game.extraTime {
+            return "Yes"
+        } else {
+            return "No"
+        }
+    }
 }

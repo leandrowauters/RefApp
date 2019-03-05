@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>858699797059-hah33vtfcd4bss88berhv10tjf5or4lc.apps.googleusercontent.com</string>
+	<string>31315727299-ifedd4iu39cq9fliip78p71pj0j5svq9.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.858699797059-hah33vtfcd4bss88berhv10tjf5or4lc</string>
+	<string>com.googleusercontent.apps.31315727299-ifedd4iu39cq9fliip78p71pj0j5svq9</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBmPcT8_Euck30_3wWJSASYZZkFlLsabTI</string>
+	<string>AIzaSyC-RonJAt-bqLwBROpNWBfAJ_VPtsxHqn8</string>
 	<key>GCM_SENDER_ID</key>
-	<string>858699797059</string>
+	<string>31315727299</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>Testing.RefApp</string>
 	<key>PROJECT_ID</key>
-	<string>refapp-e2af2</string>
+	<string>refapp-f08b3</string>
 	<key>STORAGE_BUCKET</key>
-	<string>refapp-e2af2.appspot.com</string>
+	<string>refapp-f08b3.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:858699797059:ios:30f8fae9ec39ecb9</string>
+	<string>1:31315727299:ios:30f8fae9ec39ecb9</string>
 	<key>DATABASE_URL</key>
-	<string>https://refapp-e2af2.firebaseio.com</string>
+	<string>https://refapp-f08b3.firebaseio.com</string>
 </dict>
 </plist>

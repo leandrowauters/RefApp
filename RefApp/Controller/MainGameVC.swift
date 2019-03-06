@@ -16,6 +16,8 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     weak var delegate: TimerDelegate!
     weak var eventDelegte: EventDelegate!
     var currentBackgroundDate = NSDate()
+    var gameClient = GameClient()
+    
     lazy var viewWidth = (timer2View.bounds.height / 2) - 30
     static var hide = false
     static var disable = false
@@ -198,40 +200,54 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         timer.resume()
     }
 
-    
+
     func setupButtons () {
         for index in 0...Game.numberOfPlayers - 1 {
             homeView.HomePlayersButtons[index].isHidden = false
             awayView.awayPlayersButtons[index].isHidden = false
+
             homeView.HomePlayersButtons[index].setTitle(Game.homePlayers[index].description, for: .normal)
             awayView.awayPlayersButtons[index].setTitle(Game.awayPlayers[index].description, for: .normal)
         }
     }
     func reloadView(){
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideTimerView))
         timer2View.addGestureRecognizer(tap)
         setupLabels()
         if MainGameVC.home{
         for button in homeView.HomePlayersButtons{
-            if let text = button.titleLabel?.text {
+            
+            if let text = button.title(for: .normal) {
+                if gameClient.checkForYellowCardDuplicates(playerToCheck: Int(text)!, yellowCardPlayers: Game.homeYellowCardPlayers){
+                    graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
+                    button.isEnabled = false
+                    continue
+                }
                 if MainGameVC.yellowCard{
                 if text == MainGameVC.playerSelected{
                     graphics.animateChangeColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
                 }
-                } else if Game.homeYellowCardPlayers.contains(Int(text)!) {
-                    graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+                   continue
                 }
                 if MainGameVC.redCard{
                     if text == MainGameVC.playerSelected{
                         graphics.animateChangeColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
                         button.isEnabled = false
                     }
-
-                    }
-                else if Game.homeRedCardPlayers.contains(Int(text)!) {
-                    graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
-                    button.isEnabled = false
+                    continue
+                }else if Game.homeYellowCardPlayers.contains(Int(text)!) {
+                    graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+                } else if Game.homeRedCardPlayers.contains(Int(text)!) {
+                        graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
+                        button.isEnabled = false
+                } else {
+                    graphics.changeButtonColor(button: button, color: .clear)
+                    
                 }
+
+
+
             }
 //                if MainGameVC.substitution{
 //                    if MainGameVC.home{
@@ -256,25 +272,37 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         }
         }
         if MainGameVC.away{
+            
         for button in awayView.awayPlayersButtons{
-            if let text = button.titleLabel?.text {
+            if let text = button.title(for: .normal) {
+                if gameClient.checkForYellowCardDuplicates(playerToCheck: Int(text)!, yellowCardPlayers: Game.awayYellowCardPlayers){
+                    graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
+                    button.isEnabled = false
+                    continue
+                }
+                
                 if MainGameVC.yellowCard{
                     if text == MainGameVC.playerSelected{
                         graphics.animateChangeColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
                     }
-                } else if Game.awayYellowCardPlayers.contains(Int(text)!) {
-                    graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+                    continue
                 }
                 if MainGameVC.redCard{
                     if text == MainGameVC.playerSelected{
                         graphics.animateChangeColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
                         button.isEnabled = false
                     }
-                }
-                else if Game.awayRedCardPlayers.contains(Int(text)!) {
+                    continue
+                }else if Game.awayYellowCardPlayers.contains(Int(text)!) {
+                    graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+                } else if Game.awayRedCardPlayers.contains(Int(text)!) {
                     graphics.changeButtonColor(button: button, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
                     button.isEnabled = false
+                } else {
+                    graphics.changeButtonColor(button: button, color: .clear)
+                    
                 }
+
             }
 //                if MainGameVC.substitution{
 //                    if !MainGameVC.home{

@@ -82,6 +82,7 @@ class PopActionsVC: UIViewController {
                 if Game.homeYellowCardPlayers.contains(playerSelected){
                     showAlert(title: "Player already booked", message: "Red Card?", style: .alert, customActionTitle: "Yes", cancelActionTitle: "No") { (action) in
                         self.redCard()
+                        Game.homeYellowCardPlayers.append(self.playerSelected)
                     }
                     break
                 }
@@ -95,6 +96,13 @@ class PopActionsVC: UIViewController {
                 GameStatistics.homeYellowCards += 1
 //                eventDelegate?.subWasMade(bool: false)
             } else if teamSide == .away{
+                if Game.awayYellowCardPlayers.contains(playerSelected){
+                    showAlert(title: "Player already booked", message: "Red Card?", style: .alert, customActionTitle: "Yes", cancelActionTitle: "No") { (action) in
+                        Game.homeYellowCardPlayers.append(self.playerSelected)
+                        self.redCard()
+                    }
+                    break
+                }
                 Game.awayYellowCardPlayers.append(playerSelected)
                 timerDelegate?.keepStartButtonDisable(disable: true)
                 timerDelegate?.keepStartButtonHidden(hide: true)

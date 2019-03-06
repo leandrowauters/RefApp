@@ -81,4 +81,16 @@ struct GameClient {
         // 4
         return attributedString
     }
+    func checkForYellowCardDuplicates(playerToCheck: Int, yellowCardPlayers: [Int]) -> Bool {
+        var count = 0
+        for player in yellowCardPlayers {
+            if playerToCheck == player{
+                count += 1
+            }
+        }
+        if count == 2{
+            return true
+        }
+        return false
+    }
 }

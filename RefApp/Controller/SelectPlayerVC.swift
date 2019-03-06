@@ -111,9 +111,10 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
         timer.resume()
         if let text = subTextField.text {
         if teamSide == .home {
+            perfomSub(team: &Game.homePlayers, playerIn: Int(text)!, playerOut: selectedPlayer, index: &index)
             eventDelegate?.yellowCall(bool: false, home: true, away: false)
             eventDelegate?.redCard(bool: false, home: true, away: false)
-            perfomSub(team: &Game.homePlayers, playerIn: Int(text)!, playerOut: selectedPlayer, index: &index)
+ 
 //            if Game.homePlayers.contains(Int(subTextField.text!)!){
 //                subTextField.text = ""
 //                showAlert(title: "Player Already Entered", message: nil)
@@ -135,9 +136,10 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
 //                showAlert(title: "Player Already Entered", message: nil)
 //                return
 //            }
+            perfomSub(team: &Game.awayPlayers, playerIn: Int(text)!, playerOut: selectedPlayer, index: &index)
             eventDelegate?.yellowCall(bool: false, home: false, away: true)
             eventDelegate?.redCard(bool: false, home: false, away: true)
-            perfomSub(team: &Game.awayPlayers, playerIn: Int(text)!, playerOut: selectedPlayer, index: &index)
+
 //            if let text = subTextField.text{
 //                Game.awayPlayers.remove(at: selectedButton)
 //                Game.awayPlayers.insert(Int(text)!, at: Int(selectedButton))

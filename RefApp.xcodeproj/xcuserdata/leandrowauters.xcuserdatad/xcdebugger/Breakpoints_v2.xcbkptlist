@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.4928271"
+            timestampString = "573598942.917938"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "509"
-            endingLineNumber = "509"
+            startingLineNumber = "537"
+            endingLineNumber = "537"
             landmarkName = "addTapAfterSub(add:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,7 +58,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.492885"
+            timestampString = "573598942.918064"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RefApp/Controller/MainGameVC.swift"
+            timestampString = "573598942.918167"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
@@ -74,27 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.492929"
+            timestampString = "573598942.918267"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.492972"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "startApp()"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,27 +106,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.493014"
+            timestampString = "573598942.918365"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "startApp()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RefApp/Controller/MainGameVC.swift"
+            timestampString = "573598942.918461"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "pauseTimer()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RefApp/Controller/MainGameVC.swift"
+            timestampString = "573598942.918555"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "191"
             endingLineNumber = "191"
-            landmarkName = "startApp()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.4930561"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
             landmarkName = "pauseTimer()"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,27 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.4930969"
+            timestampString = "573598942.918653"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "pauseTimer()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.493138"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "startApp()"
             landmarkType = "7">
             <Locations>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.493181"
+            timestampString = "573598942.9187469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "startApp()"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.49322"
+            timestampString = "573598942.918839"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "505"
-            endingLineNumber = "505"
+            startingLineNumber = "533"
+            endingLineNumber = "533"
             landmarkName = "playerSelected(player:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.4932621"
+            timestampString = "573598942.918933"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "506"
-            endingLineNumber = "506"
+            startingLineNumber = "534"
+            endingLineNumber = "534"
             landmarkName = "MainGameVC"
             landmarkType = "21">
          </BreakpointContent>
@@ -250,27 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.493304"
+            timestampString = "573598942.919052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
-            landmarkName = "reloadView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.4933439"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "504"
-            endingLineNumber = "504"
+            startingLineNumber = "532"
+            endingLineNumber = "532"
             landmarkName = "playerSelected(player:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -278,15 +262,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.493385"
+            timestampString = "573598942.919192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "reloadView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.493425"
+            timestampString = "573598942.919332"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "221"
@@ -314,27 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.493466"
+            timestampString = "573598942.919449"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
-            landmarkName = "reloadView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.493507"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "510"
-            endingLineNumber = "510"
+            startingLineNumber = "538"
+            endingLineNumber = "538"
             landmarkName = "MainGameVC"
             landmarkType = "21">
          </BreakpointContent>
@@ -346,43 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.493547"
+            timestampString = "573598942.919579"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
-            landmarkName = "reloadView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.4935859"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
-            landmarkName = "reloadView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.493627"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
             landmarkName = "MainGameVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -394,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.493668"
+            timestampString = "573598942.919723"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
+            startingLineNumber = "421"
+            endingLineNumber = "421"
             landmarkName = "MainGameVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -522,7 +458,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.493921"
+            timestampString = "573598942.919973"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RefApp/Controller/MainGameVC.swift"
+            timestampString = "573598942.920073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "161"
@@ -538,27 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.493959"
+            timestampString = "573598942.9201699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.494"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
             <Locations>
@@ -602,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.494038"
+            timestampString = "573598942.920266"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "reloadView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -618,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/PopActionsVC.swift"
-            timestampString = "573539549.759699"
+            timestampString = "573598942.920367"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "incidentButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -634,23 +570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/PopActionsVC.swift"
-            timestampString = "573539549.759761"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "incidentButtonPressed(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RefApp/Controller/PopActionsVC.swift"
-            timestampString = "573539549.759809"
+            timestampString = "573598942.920766"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
@@ -666,11 +586,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/PopActionsVC.swift"
-            timestampString = "573539549.759854"
+            timestampString = "573598942.921038"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "incidentButtonPressed(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RefApp/Controller/PopActionsVC.swift"
+            timestampString = "573598942.921297"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "incidentButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573504092.494163"
+            timestampString = "573598942.921558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "reloadView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -746,7 +682,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/HalfTimeViewController.swift"
-            timestampString = "573539549.759985"
+            timestampString = "573598942.921793"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "216"
@@ -762,7 +698,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/HalfTimeViewController.swift"
-            timestampString = "573539549.760035"
+            timestampString = "573598942.921856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "217"

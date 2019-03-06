@@ -9,50 +9,56 @@
 import UIKit
 
 class EventsTableViewCell: UITableViewCell {
+    var graphics = GraphicClient()
     
-    lazy var typeLabel: UILabel = {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        graphics.changeImageToRound(image: cellImage)
+    }
+    lazy var cellText: UILabel = {
        var label = UILabel()
         label.text = "Label"
         label.textColor = .white
         return label
     }()
-    lazy var playerLabel: UILabel = {
+    lazy var cellDetail: UILabel = {
        var label = UILabel()
         label.text = "Label"
         label.textColor = .white
         return label
     }()
-    lazy var timeStampLabel: UILabel = {
-        var label = UILabel()
-        label.text = "Label"
-        label.textColor = .white 
-        return label
+    lazy var cellImage: UIImageView = {
+        var image = UIImageView()
+        return image
     }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default , reuseIdentifier: "HalfTimeEventCell")
+        setupImage()
+        backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
         setupLabels()
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    func setupImage() {
+        addSubview(cellImage)
+        cellImage.translatesAutoresizingMaskIntoConstraints = false
+        cellImage.centerXAnchor.constraint(equalTo: centerXAnchor, constant: (bounds.width / 2) * 0.7).isActive = true
+        cellImage.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        cellImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3).isActive = true
+        cellImage.widthAnchor.constraint(equalTo: cellImage.heightAnchor, multiplier: 1).isActive = true
+    }
     func setupLabels() {
-        addSubview(typeLabel)
-        addSubview(playerLabel)
-        addSubview(timeStampLabel)
-        typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        playerLabel.translatesAutoresizingMaskIntoConstraints = false
-        timeStampLabel.translatesAutoresizingMaskIntoConstraints = false
-        playerLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        playerLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        playerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
-        playerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 11).isActive = true
-        typeLabel.bottomAnchor.constraint(equalTo: playerLabel.topAnchor, constant: -30).isActive = true
-        typeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
-        typeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
-        timeStampLabel.topAnchor.constraint(equalTo: playerLabel.bottomAnchor, constant: 30).isActive = true
-        timeStampLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
-        timeStampLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
+        addSubview(cellDetail)
+        addSubview(cellText)
+        cellText.translatesAutoresizingMaskIntoConstraints = false
+        cellDetail.translatesAutoresizingMaskIntoConstraints = false
+        cellDetail.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        cellDetail.trailingAnchor.constraint(equalTo: cellImage.leadingAnchor, constant: -15).isActive = true
+        cellDetail.centerYAnchor.constraint(equalTo: cellImage.centerYAnchor, constant: (bounds.height / 2) * 0.8).isActive = true
+        cellText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        cellText.trailingAnchor.constraint(equalTo: cellImage.trailingAnchor).isActive = true
+        cellText.bottomAnchor.constraint(equalTo: cellDetail.topAnchor, constant: -8).isActive = true
+        
     }
 }

@@ -130,7 +130,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewWillDisappear(true)
         unregisterKeyboardNotifications()
     }
-    
+
     func setTextView(){
         noteHalfTimeView.enterTextButton.addTarget(self, action: #selector(enterButtonPressed), for: .touchUpInside)
         if Game.gameNotes.count == 0 {
@@ -257,10 +257,10 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
             return UITableViewCell()
         }
         let eventToSet = events[indexPath.row]
-        cell.typeLabel.text = eventToSet.type
-        cell.playerLabel.text = "Player: \(eventToSet.playerNum), Team: \(eventToSet.team)"
-        cell.timeStampLabel.text = "Timestamp: \(eventToSet.timeStamp)"
-        cell.backgroundColor = eventToSet.color
+        cell.cellText.text = eventToSet.type
+        cell.cellDetail.text = "Player: \(eventToSet.playerNum), Team: \(eventToSet.team)"
+        cell.cellImage.backgroundColor = eventToSet.color
+        
         return cell
     }
     

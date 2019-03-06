@@ -91,8 +91,8 @@ class EventVCDetails: UIView {
         setupRedCardImage()
         setupGoalImage()
         setupYellowCardLabels(labels: [yellowCardLabelAway, yellowCardLabelHome])
-        setupGoalLabels(labels: [goalLabelHome,goalLabelAway])
         setupRedCardLabels(labels: [redCardLabelHome,redCardLabelAway])
+        setupGoalLabels(labels: [goalLabelHome,goalLabelAway])
     }
     
 
@@ -153,27 +153,27 @@ class EventVCDetails: UIView {
         yellowCardLabelAway.topAnchor.constraint(equalTo: yellowCardLabelHome.bottomAnchor, constant: 2).isActive = true
         yellowCardLabelAway.leadingAnchor.constraint(equalTo: yellowCardImage.trailingAnchor, constant: 10).isActive = true
     }
-    func setupGoalLabels(labels: [UILabel]){
+    func setupRedCardLabels(labels: [UILabel]){
         for label in labels {
             addSubview(label)
             label.translatesAutoresizingMaskIntoConstraints = false
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
             
         }
-        goalLabelHome.topAnchor.constraint(equalTo: yellowCardLabelAway.bottomAnchor, constant: 15).isActive = true
-        goalLabelHome.leadingAnchor.constraint(equalTo: goalImage.trailingAnchor, constant: 10).isActive = true
-        goalLabelAway.topAnchor.constraint(equalTo: goalLabelHome.bottomAnchor, constant: 2).isActive = true
-        goalLabelAway.leadingAnchor.constraint(equalTo: goalImage.trailingAnchor, constant: 10).isActive = true
+        redCardLabelHome.topAnchor.constraint(equalTo: yellowCardLabelAway.bottomAnchor, constant: 15).isActive = true
+        redCardLabelHome.leadingAnchor.constraint(equalTo: redCardImage.trailingAnchor, constant: 10).isActive = true
+        redCardLabelAway.topAnchor.constraint(equalTo: redCardLabelHome.bottomAnchor, constant: 2).isActive = true
+        redCardLabelAway.leadingAnchor.constraint(equalTo: redCardImage.trailingAnchor, constant: 10).isActive = true
     }
-    func setupRedCardLabels(labels: [UILabel]){
+    func setupGoalLabels(labels: [UILabel]){
         for label in labels {
             addSubview(label)
             label.translatesAutoresizingMaskIntoConstraints = false
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
         }
-        redCardLabelHome.topAnchor.constraint(equalTo: goalLabelAway.bottomAnchor, constant: 15).isActive = true
-        redCardLabelHome.leadingAnchor.constraint(equalTo: redCardImage.trailingAnchor, constant: 10).isActive = true
-        redCardLabelAway.topAnchor.constraint(equalTo: redCardLabelHome.bottomAnchor, constant: 2).isActive = true
-        redCardLabelAway.leadingAnchor.constraint(equalTo: redCardImage.trailingAnchor, constant: 10).isActive = true
+        goalLabelHome.topAnchor.constraint(equalTo: redCardLabelAway.bottomAnchor, constant: 15).isActive = true
+        goalLabelHome.leadingAnchor.constraint(equalTo: goalImage.trailingAnchor, constant: 10).isActive = true
+        goalLabelAway.topAnchor.constraint(equalTo: goalLabelHome.bottomAnchor, constant: 2).isActive = true
+        goalLabelAway.leadingAnchor.constraint(equalTo: goalImage.trailingAnchor, constant: 10).isActive = true
     }
 }

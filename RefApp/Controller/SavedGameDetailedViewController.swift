@@ -41,11 +41,12 @@ class SavedGameDetailedViewController: UIViewController {
         numberOfPlayersLabel.text = "Number of players per team: \(savedGame.numberOfPlayers) players"
         gameLengthLabel.text = "Duration: \(savedGame.lengthSelected) minutes"
         subsPerTeamLabel.text = "Subs allowed: \(savedGame.subs)"
-        homePlayersLabel.text = "\(savedGame.homeTeam) players: \(gameClient.getHomePlayers(game: savedGame) ?? "N/A")"
-        awayPlayerLabel.text = "\(savedGame.awayTeam) players: \(gameClient.getAwayPlayers(game: savedGame) ?? "N/A")"
+        homePlayersLabel.text = "\(savedGame.homeTeam) players: \(gameClient.convertIntArrayToString(array: savedGame.homePlayers) ?? "N/A")"
+        awayPlayerLabel.text = "\(savedGame.awayTeam) players: \(gameClient.convertIntArrayToString(array: savedGame.awayPlayers) ?? "N/A")"
         
-        refereeNamesLabels.text = "Referees: \(gameClient.getReferee(game: savedGame) ?? "N/A")"
-        captainNamesLabel.text = "Captains: \(gameClient.getCapsNames(game: savedGame) ?? "N/A")"
+        refereeNamesLabels.text = "Referees: \(gameClient.convertStringArrayToString(array: savedGame.refereeNames) ?? "N/A")"
+        captainNamesLabel.text = "Captains: \(gameClient.convertStringArrayToString(array: savedGame.caps) ?? "N/A")"
+        extraTimeLabel.text = "Extra Time: \(gameClient.checkForExtraTime(bool: savedGame.extraTime))"
     }
     @IBAction func deleteWasPressed(_ sender: UIBarButtonItem) {
         showSheetAlert(title: "Select option", message: nil) { (UIAlertController) in

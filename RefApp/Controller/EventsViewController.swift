@@ -14,6 +14,7 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     weak var timerDelegate: TimerDelegate!
     weak var eventDelegate: EventDelegate!
     var events = Game.events
+    var gameClient = GameClient()
     let detailView = EventVCDetails()
     let textDetailView = EventVCTextView()
     let graphics = GraphicClient()
@@ -102,12 +103,12 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         animatedViewRail.widthAnchor.constraint(equalTo: eventTableView.widthAnchor).isActive = true
     }
     func setupDetailView(){
-        detailView.yellowCardLabelHome.text = "Home: \(Game.homeYellowCardPlayers.description)"
-        detailView.yellowCardLabelAway.text = "Away: \(Game.awayYellowCardPlayers.description)"
-        detailView.redCardLabelHome.text = "Home: \(Game.homeRedCardPlayers.description)"
-        detailView.redCardLabelAway.text = "Away: \(Game.awayRedCardPlayers.description)"
-        detailView.goalLabelHome.text = "Home: \(Game.homeGoalsPlayers.description)"
-        detailView.goalLabelAway.text = "Home: \(Game.awayGoalsPlayers.description)"
+        detailView.yellowCardLabelHome.text = "Home: \(gameClient.convertIntArrayToString(array: Game.homeYellowCardPlayers) ?? "N/A")"
+        detailView.yellowCardLabelAway.text = "Away: \(gameClient.convertIntArrayToString(array: Game.awayYellowCardPlayers) ?? "N/A")"
+        detailView.redCardLabelHome.text = "Home: \(gameClient.convertIntArrayToString(array: Game.homeRedCardPlayers) ?? "N/A")"
+        detailView.redCardLabelAway.text = "Away: \(gameClient.convertIntArrayToString(array: Game.awayRedCardPlayers) ?? "N/A")"
+        detailView.goalLabelHome.text = "Home: \(gameClient.convertIntArrayToString(array: Game.homeGoalsPlayers) ?? "N/A")"
+        detailView.goalLabelAway.text = "Away: \(gameClient.convertIntArrayToString(array: Game.awayGoalsPlayers) ?? "N/A")"
     }
     func setupViews(views: [UIView]){
         for view in views{
@@ -183,7 +184,6 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         cell.cellImage.backgroundColor = eventToSet.color
         cell.cellSubtitle.text =  eventToSet.timeStamp
         cell.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
-        graphics.changeImageToRound(image: cell.cellImage)
         return cell
     }
 

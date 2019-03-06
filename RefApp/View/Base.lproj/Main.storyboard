@@ -2051,9 +2051,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="cellImage" destination="4C3-Bs-OZv" id="LkE-NH-XT1"/>
-                                            <outlet property="cellSubtitle" destination="1u1-BB-OBJ" id="aYj-zz-gra"/>
-                                            <outlet property="cellTitle" destination="cfs-nE-qyg" id="AoB-53-VSq"/>
+                                            <outlet property="cellImage" destination="4C3-Bs-OZv" id="BIs-Ip-elm"/>
+                                            <outlet property="cellSubtitle" destination="1u1-BB-OBJ" id="zuz-sQ-3ry"/>
+                                            <outlet property="cellTitle" destination="cfs-nE-qyg" id="vGq-gU-hAl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

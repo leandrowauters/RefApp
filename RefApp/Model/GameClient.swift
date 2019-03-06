@@ -36,55 +36,31 @@ struct GameClient {
         dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: dateToReturn)
     }
-    func getHomePlayers(game: Game) -> String? {
-        var homePlayers: String?
-        for homePlayer in game.homePlayers {
-            if homePlayers == nil {
-                homePlayers = homePlayer.description
+    func convertIntArrayToString(array: [Int]) -> String? {
+        var sentenceToReturn: String?
+        for number in array {
+            if sentenceToReturn == nil {
+                sentenceToReturn = number.description
             } else {
-                homePlayers = homePlayers! + ", " + homePlayer.description
+                sentenceToReturn = sentenceToReturn! + ", " + number.description
             }
         }
-        return homePlayers
+        return sentenceToReturn
     }
-    
-    func getAwayPlayers(game: Game) -> String? {
-        var awayPlayers: String?
-        for awayPlayer in game.awayPlayers {
-            if awayPlayers == nil {
-                awayPlayers = awayPlayer.description
+    func convertStringArrayToString(array: [String]) -> String? {
+        var sentenceToReturn: String?
+        for word in array {
+            if sentenceToReturn == nil {
+                sentenceToReturn = word
             } else {
-                awayPlayers = awayPlayers! + ", " + awayPlayer.description
+                sentenceToReturn = sentenceToReturn! + ", " + word.description
             }
         }
-        return awayPlayers
+        return sentenceToReturn
     }
-    
-    func getReferee(game: Game) -> String? {
-        var referees: String?
-        for referee in game.refereeNames {
-            if referees == nil {
-                referees = referee
-            } else {
-                referees = referees! + ", " + referee
-            }
-        }
-        return referees
-    }
-    
-    func getCapsNames(game: Game) -> String? {
-        var caps: String?
-        for cap in game.caps {
-            if caps == nil {
-                caps = cap
-            } else {
-                caps = caps! + ", " + cap
-            }
-        }
-        return caps
-    }
-    func checkForExtraTime(game: Game) -> String{
-        if game.extraTime {
+
+    func checkForExtraTime(bool: Bool) -> String{
+        if bool {
             return "Yes"
         } else {
             return "No"

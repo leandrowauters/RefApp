@@ -1,0 +1,6 @@
+framework module Pods_RefApp {
+  umbrella header "Pods-RefApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

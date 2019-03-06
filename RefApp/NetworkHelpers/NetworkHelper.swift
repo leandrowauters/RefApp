@@ -33,6 +33,6 @@ public final class NetworkHelper {
                 completionHandler(nil, data, response as? HTTPURLResponse)
             }
         }
-        task.resume()
+        task.resume() 
 }
 }

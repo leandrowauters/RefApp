@@ -22,6 +22,16 @@ extension UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         handler(alertController)
     }
+    public func showAlert(title: String?, message: String?,
+                          style: UIAlertController.Style, customActionTitle: String, cancelActionTitle: String,
+                          handler: ((UIAlertAction) -> Void)?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+        let okAction = UIAlertAction(title: cancelActionTitle, style: .cancel)
+        let customAction = UIAlertAction(title: customActionTitle, style: .default, handler: handler)
+        alertController.addAction(okAction)
+        alertController.addAction(customAction)
+        present(alertController, animated: true)
+    }
     func showSheetAlert(title: String, message: String?, handler: @escaping (UIAlertController) -> Void) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         handler(alertController)

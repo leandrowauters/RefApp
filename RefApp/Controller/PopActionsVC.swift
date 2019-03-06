@@ -10,6 +10,7 @@ import UIKit
 
 class PopActionsVC: UIViewController {
     let timer = MainTimer(timeInterval: 1)
+    let graphics = GraphicClient()
     let homeTeam = Game.homeTeam
     weak var timerDelegate: TimerDelegate?
     weak var eventDelegate: EventDelegate?
@@ -18,12 +19,14 @@ class PopActionsVC: UIViewController {
     var teamSelected = String()
     var teamSide: Game.Teams!
 
-
+    @IBOutlet weak var popView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(playerSelected)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(goBack))
+        graphics.addShadowToView(viewForShadow: popView)
         view.addGestureRecognizer(tap)
     }
     
@@ -42,13 +45,46 @@ class PopActionsVC: UIViewController {
         dismiss(animated: true, completion: nil)
         
     }
+    func redCard(){
+        if teamSide == .home{
+            Game.homeRedCardPlayers.append(playerSelected)
+            timerDelegate?.keepStartButtonDisable(disable: true)
+            timerDelegate?.keepStartButtonHidden(hide: true)
+            eventDelegate?.yellowCall(bool: false, home: true, away: false)
+            eventDelegate?.redCard(bool: true, home: true, away: false)
+            eventDelegate?.playerSelected(player: String(playerSelected))
+            GameStatistics.homeRedCard += 1
+            //                eventDelegate?.activateViewDidAppear(bool: true)
+            //                eventDelegate?.subWasMade(bool: false)
+            
+        } else if teamSide == .away{
+            Game.awayRedCardPlayers.append(playerSelected)
+            timerDelegate?.keepStartButtonDisable(disable: true)
+            timerDelegate?.keepStartButtonHidden(hide: true)
+            eventDelegate?.yellowCall(bool: false, home: false, away: true)
+            eventDelegate?.redCard(bool: true, home: false, away: true)
+            eventDelegate?.playerSelected(player: String(playerSelected))
+            GameStatistics.awayRedCard += 1
+            //                eventDelegate?.activateViewDidAppear(bool: true)
+            //                eventDelegate?.subWasMade(bool: false)
+        }
+        let redCard = Events.init(type: TypeOfIncident.redCard.rawValue, playerNum: playerSelected, team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
+        Game.events.append(redCard)
+        self.eventDelegate?.activateViewDidAppear(bool: true)
+        timer.resume()
+        dismiss(animated: true)
+    }
     // TO DO: CREATE INCIDENT PRESSING BUTTON
     @IBAction func incidentButtonPressed(_ sender: UIButton) {
         switch sender.tag {
         case 0:
-            let yellowCard = Events.init(type: TypeOfIncident.yellowCard.rawValue, playerNum: playerSelected, team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
-                Game.events.append(yellowCard)
             if teamSide == .home{
+                if Game.homeYellowCardPlayers.contains(playerSelected){
+                    showAlert(title: "Player already booked", message: "Red Card?", style: .alert, customActionTitle: "Yes", cancelActionTitle: "No") { (action) in
+                        self.redCard()
+                    }
+                    break
+                }
                 Game.homeYellowCardPlayers.append(playerSelected)
                 timerDelegate?.keepStartButtonDisable(disable: true)
                 timerDelegate?.keepStartButtonHidden(hide: true)
@@ -70,37 +106,13 @@ class PopActionsVC: UIViewController {
 //                Game.homeYellowCardPlayers.append(playerSelected)
 //                eventDelegate?.subWasMade(bool: false)
             }
+            let yellowCard = Events.init(type: TypeOfIncident.yellowCard.rawValue, playerNum: playerSelected, team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+            Game.events.append(yellowCard)
             self.eventDelegate?.activateViewDidAppear(bool: true)
             timer.resume()
             dismiss(animated: true)
         case 1:
-            let redCard = Events.init(type: TypeOfIncident.redCard.rawValue, playerNum: playerSelected, team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0.995932281, green: 0.2765177786, blue: 0.3620784283, alpha: 1))
-                Game.events.append(redCard)
-            if teamSide == .home{
-                Game.homeRedCardPlayers.append(playerSelected)
-                timerDelegate?.keepStartButtonDisable(disable: true)
-                timerDelegate?.keepStartButtonHidden(hide: true)
-                eventDelegate?.yellowCall(bool: false, home: true, away: false)
-                eventDelegate?.redCard(bool: true, home: true, away: false)
-                eventDelegate?.playerSelected(player: String(playerSelected))
-                GameStatistics.homeRedCard += 1
-//                eventDelegate?.activateViewDidAppear(bool: true)
-//                eventDelegate?.subWasMade(bool: false)
-                
-            } else if teamSide == .away{
-                Game.awayRedCardPlayers.append(playerSelected)
-                timerDelegate?.keepStartButtonDisable(disable: true)
-                timerDelegate?.keepStartButtonHidden(hide: true)
-                eventDelegate?.yellowCall(bool: false, home: false, away: true)
-                eventDelegate?.redCard(bool: true, home: false, away: true)
-                eventDelegate?.playerSelected(player: String(playerSelected))
-                GameStatistics.awayRedCard += 1
-//                eventDelegate?.activateViewDidAppear(bool: true)
-//                eventDelegate?.subWasMade(bool: false)
-            }
-            self.eventDelegate?.activateViewDidAppear(bool: true)
-            timer.resume()
-            dismiss(animated: true)
+            redCard()
         case 2:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             guard let destination = storyboard.instantiateViewController(withIdentifier: "selectPlayer") as? SelectPlayerVC else {return}

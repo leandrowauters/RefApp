@@ -19,6 +19,7 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     let textDetailView = EventVCTextView()
     let graphics = GraphicClient()
     var views = [UIView]()
+
     lazy var customSegmentedBar: UISegmentedControl = {
         var segmentedControl = UISegmentedControl()
         segmentedControl.insertSegment(withTitle: "Events", at: 0, animated: true)
@@ -72,7 +73,6 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewWillAppear(_ animated: Bool) {
         setTextView()
     }
-
     func setupCustomSegmentedBar() {
         view.addSubview(customSegmentedBar)
         customSegmentedBar.translatesAutoresizingMaskIntoConstraints = false
@@ -103,12 +103,12 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         animatedViewRail.widthAnchor.constraint(equalTo: eventTableView.widthAnchor).isActive = true
     }
     func setupDetailView(){
-        detailView.yellowCardLabelHome.text = "Home: \(gameClient.convertIntArrayToString(array: Game.homeYellowCardPlayers) ?? "N/A")"
-        detailView.yellowCardLabelAway.text = "Away: \(gameClient.convertIntArrayToString(array: Game.awayYellowCardPlayers) ?? "N/A")"
-        detailView.redCardLabelHome.text = "Home: \(gameClient.convertIntArrayToString(array: Game.homeRedCardPlayers) ?? "N/A")"
-        detailView.redCardLabelAway.text = "Away: \(gameClient.convertIntArrayToString(array: Game.awayRedCardPlayers) ?? "N/A")"
-        detailView.goalLabelHome.text = "Home: \(gameClient.convertIntArrayToString(array: Game.homeGoalsPlayers) ?? "N/A")"
-        detailView.goalLabelAway.text = "Away: \(gameClient.convertIntArrayToString(array: Game.awayGoalsPlayers) ?? "N/A")"
+        detailView.yellowCardLabelHome.text = "Home: \(gameClient.convertIntArrayToString(array: Game.homeYellowCardPlayers) ?? "")"
+        detailView.yellowCardLabelAway.text = "Away: \(gameClient.convertIntArrayToString(array: Game.awayYellowCardPlayers) ?? "")"
+        detailView.redCardLabelHome.text = "Home: \(gameClient.convertIntArrayToString(array: Game.homeRedCardPlayers) ?? "")"
+        detailView.redCardLabelAway.text = "Away: \(gameClient.convertIntArrayToString(array: Game.awayRedCardPlayers) ?? "")"
+        detailView.goalLabelHome.text = "Home: \(gameClient.convertIntArrayToString(array: Game.homeGoalsPlayers) ?? "")"
+        detailView.goalLabelAway.text = "Away: \(gameClient.convertIntArrayToString(array: Game.awayGoalsPlayers) ?? "")"
     }
     func setupViews(views: [UIView]){
         for view in views{
@@ -178,11 +178,12 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = eventTableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? EventCell else {return UITableViewCell()}
+        tableView.register(EventsTableViewCell.self, forCellReuseIdentifier: "HalfTimeEventCell")
+        guard let cell = eventTableView.dequeueReusableCell(withIdentifier: "HalfTimeEventCell", for: indexPath) as? EventsTableViewCell else {return UITableViewCell()}
         let eventToSet = events[indexPath.row]
-        cell.cellTitle.text = "\(eventToSet.team) - Player: \(eventToSet.playerNum)"
+        cell.cellText.text = "\(eventToSet.team) - Player: \(eventToSet.playerNum)"
         cell.cellImage.backgroundColor = eventToSet.color
-        cell.cellSubtitle.text =  eventToSet.timeStamp
+        cell.cellDetail.text =  eventToSet.timeStamp
         cell.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
         return cell
     }

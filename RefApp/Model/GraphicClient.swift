@@ -34,6 +34,8 @@ class GraphicClient {
         shapeLayer.strokeEnd = strokeValue
         shapeLayer.position = position
         shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi / 2, 0, 0, 1)
+//        trackLayer.shouldRasterize = true
+//        shapeLayer.shouldRasterize = true
         view.layer.addSublayer(shapeLayer)
         }
     }
@@ -113,6 +115,14 @@ class GraphicClient {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 37)
     }
     
+    func addShadowToView(viewForShadow: UIView) {
+        viewForShadow.layer.shadowColor = UIColor.black.cgColor
+        viewForShadow.layer.shadowOpacity = 1
+        viewForShadow.layer.shadowOffset = CGSize(width: -1, height: 1)
+        viewForShadow.layer.shadowRadius = 10
+        viewForShadow.layer.shadowPath = UIBezierPath(rect: viewForShadow.bounds).cgPath
+        viewForShadow.layer.shouldRasterize = true
+    }
 
     
 }

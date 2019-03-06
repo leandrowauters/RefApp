@@ -38,15 +38,17 @@ class SavedGameDetailedViewController: UIViewController {
     func setupLabels(){
         gameTitleLabel.text = "\(savedGame.homeTeam) vs. \(savedGame.awayTeam)"
         gameSubtitleLabel.text = "\(savedGame.location) - \(savedGame.dateAndTime)"
+        numberOfPlayersLabel.attributedText = gameClient.attributedText(wordsToBold: "Number of players per team:", string: "Number of players per team: \(savedGame.numberOfPlayers) players", fontSize: 17)
         numberOfPlayersLabel.text = "Number of players per team: \(savedGame.numberOfPlayers) players"
-        gameLengthLabel.text = "Duration: \(savedGame.lengthSelected) minutes"
-        subsPerTeamLabel.text = "Subs allowed: \(savedGame.subs)"
-        homePlayersLabel.text = "\(savedGame.homeTeam) players: \(gameClient.convertIntArrayToString(array: savedGame.homePlayers) ?? "N/A")"
-        awayPlayerLabel.text = "\(savedGame.awayTeam) players: \(gameClient.convertIntArrayToString(array: savedGame.awayPlayers) ?? "N/A")"
         
-        refereeNamesLabels.text = "Referees: \(gameClient.convertStringArrayToString(array: savedGame.refereeNames) ?? "N/A")"
-        captainNamesLabel.text = "Captains: \(gameClient.convertStringArrayToString(array: savedGame.caps) ?? "N/A")"
-        extraTimeLabel.text = "Extra Time: \(gameClient.checkForExtraTime(bool: savedGame.extraTime))"
+        gameLengthLabel.attributedText = gameClient.attributedText(wordsToBold: "Duration", string: "Duration: \(savedGame.lengthSelected) minutes", fontSize: 17)
+        
+        subsPerTeamLabel.attributedText = gameClient.attributedText(wordsToBold: "Subs allowed:", string: "Subs allowed: \(savedGame.subs)", fontSize: 17)
+        homePlayersLabel.attributedText = gameClient.attributedText(wordsToBold: "\(savedGame.homeTeam) players:", string: "\(savedGame.homeTeam) players: \(gameClient.convertIntArrayToString(array: savedGame.homePlayers) ?? "N/A")", fontSize: 17)
+        awayPlayerLabel.attributedText = gameClient.attributedText(wordsToBold: "\(savedGame.awayTeam) players:", string: "\(savedGame.awayTeam) players: \(gameClient.convertIntArrayToString(array: savedGame.awayPlayers) ?? "N/A")", fontSize: 17)
+        refereeNamesLabels.attributedText = gameClient.attributedText(wordsToBold: "Referees:", string: "Referees: \(gameClient.convertStringArrayToString(array: savedGame.refereeNames) ?? "N/A")", fontSize: 17)
+        captainNamesLabel.attributedText = gameClient.attributedText(wordsToBold: "Captains:", string: "Captains: \(gameClient.convertStringArrayToString(array: savedGame.caps) ?? "N/A")", fontSize: 17)
+        extraTimeLabel.attributedText = gameClient.attributedText(wordsToBold: "Extra time:", string: "Extra time: \(gameClient.checkForExtraTime(bool: savedGame.extraTime))", fontSize: 17)
     }
     @IBAction func deleteWasPressed(_ sender: UIBarButtonItem) {
         showSheetAlert(title: "Select option", message: nil) { (UIAlertController) in

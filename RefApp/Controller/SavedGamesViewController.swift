@@ -12,12 +12,17 @@ class SavedGamesViewController: UIViewController {
     var loadedGames = [Game]() {
         didSet{
             self.savedGamesTableView.reloadData()
+            self.activityIndicatior.stopAnimating()
         }
     }
     private var usersession: UserSession?
     @IBOutlet weak var savedGamesTableView: UITableView!
+    @IBOutlet weak var activityIndicatior: UIActivityIndicatorView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicatior.startAnimating()
         savedGamesTableView.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         savedGamesTableView.dataSource = self

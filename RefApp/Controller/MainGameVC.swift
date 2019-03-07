@@ -396,17 +396,20 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                 self.timer.suspend()
                 print("Game ended")
                 let gameData: GameData!
+                let gameStatistic: GameStatistics!
                 if let user = self.usersession?.getCurrentUser(){
-                    let gameStatistics = GameStatistics(userID: user.uid,winnerSide: GameStatistics.getWinnerHomeAway(),totalRunningTime: MainTimer.totalTime, totalInjuryTimeGiven: MainTimer.getTotalInjuryTimeGiven(), homeYellowCards: GameStatistics.homeYellowCards, awayYellowCards: GameStatistics.awayYellowCards, homeRedCards: GameStatistics.homeRedCard, awayRedCards: GameStatistics.awayRedCard, homeGoals: Game.homeScore, awayGoals: Game.awayScore)
+                    gameStatistic = GameStatistics(userID: user.uid,winnerSide: GameStatistics.getWinnerHomeAway(),totalRunningTime: MainTimer.totalTime, totalInjuryTimeGiven: MainTimer.getTotalInjuryTimeGiven(), homeYellowCards: GameStatistics.homeYellowCards, awayYellowCards: GameStatistics.awayYellowCards, homeRedCards: GameStatistics.homeRedCard, awayRedCards: GameStatistics.awayRedCard, homeGoals: Game.homeScore, awayGoals: Game.awayScore)
                     gameData = GameData(userID: user.uid, winner:GameStatistics.getWinnerHomeAway() , gameName: Game.gameName ?? "no name", lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, homeScore: Game.homeScore, awayScore: Game.awayScore, totalRunningTime: MainTimer.totalTime, totalInjuryTimeGiven: MainTimer.getTotalInjuryTimeGiven(), subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers, homeYellowCardPlayers: Game.homeYellowCardPlayers, homeRedCardPlayers: Game.homeRedCardPlayers, awayYellowCardPlayers: Game.awayYellowCardPlayers, awayRedCardPlayers: Game.awayRedCardPlayers, homeGoalsPlayers: Game.homeGoalsPlayers, awayGoalsPlayers: Game.awayGoalsPlayers, gameNotes: Game.gameNotes)
-                    DatabaseManager.postGameStatisticsToDatabase(gameStatistics: gameStatistics)
-                    DatabaseManager.postGameDataToDatabase(gameData: gameData)
                 } else {
+                    gameStatistic = nil
                     gameData = GameData(userID: "no id", winner:GameStatistics.getWinnerHomeAway() , gameName: Game.gameName ?? "no name", lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, homeScore: Game.homeScore, awayScore: Game.awayScore, totalRunningTime: 4, totalInjuryTimeGiven: 0,subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers, homeYellowCardPlayers: Game.homeYellowCardPlayers, homeRedCardPlayers: Game.homeRedCardPlayers, awayYellowCardPlayers: Game.awayYellowCardPlayers, awayRedCardPlayers: Game.awayRedCardPlayers, homeGoalsPlayers: Game.homeGoalsPlayers, awayGoalsPlayers: Game.awayGoalsPlayers, gameNotes: Game.gameNotes)
                 }
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 guard let vc = storyboard.instantiateViewController(withIdentifier: "gameSummary") as? GameSummaryViewController else {return}
+                vc.gameStatistics = gameStatistic
                 vc.gameData = gameData
+                vc.gameRunningTime = MainTimer.time
+                self.timer.suspend()
                 vc.modalPresentationStyle = .overFullScreen
                 self.present(vc, animated: true, completion: nil)
             }))

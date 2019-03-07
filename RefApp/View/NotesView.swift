@@ -1,15 +1,15 @@
 //
-//  EventVCTextView.swift
+//  NoteHalfTimeView.swift
 //  RefApp
 //
-//  Created by Leandro Wauters on 2/12/19.
+//  Created by Leandro Wauters on 2/5/19.
 //  Copyright © 2019 Leandro Wauters. All rights reserved.
 //
 
 import UIKit
 
-class EventVCTextView: UIView {
-
+class NotesView: UIView {
+    
     lazy var notesTextView: UITextView = {
         var textView = UITextView()
         textView.backgroundColor = #colorLiteral(red: 0.9770962596, green: 1, blue: 0.8907805085, alpha: 1)
@@ -23,7 +23,7 @@ class EventVCTextView: UIView {
         button.setTitle("Enter Note", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
-
+        
         return button
     }()
     override init(frame: CGRect) {

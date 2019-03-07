@@ -45,6 +45,7 @@ class TotalStatistics {
         let totalGames = "Number of games refereed:\(spaces)\(TotalStatistics.getTotalGame(gameStatistics: gameStatistics))"
         let homeWins = "Home team wins:\(spaces)\(TotalStatistics.getHomeWins(gameStatistics: gameStatistics))"
         let awayWins = "Away team wins:\(spaces)\(TotalStatistics.getAwayWins(gameStatistics: gameStatistics))"
+        let draws = "Draws:\(spaces)\(TotalStatistics.getDraws(gameStatistics: gameStatistics))"
         let totalHomeYellows = "Total home team yellow cards:\(spaces)\(TotalStatistics.getTotalHomeYellowsCards(gameStatistics: gameStatistics))"
         let totalAwayYellows = "Total away team yellow cards:\(spaces)\(TotalStatistics.getTotalAwayYellowCards(gameStatistics: gameStatistics))"
         let totalHomeReds = "Total home team red cards:\(spaces)\(TotalStatistics.getTotalHomeRedCards(gameStatistics: gameStatistics))"
@@ -57,7 +58,7 @@ class TotalStatistics {
         let avgAwayRedPerGame = "Avg. of away team red cards per game:\(spaces)\(String(format: "%.2f", TotalStatistics.getAvgAwayRedPerGame(gameStatistics: gameStatistics)))"
         let avgRunningTimePerGame = "Avg. of running time per game:\(spaces)\(MainTimer.getTimeInString(time: TotalStatistics.getAvgTotalRunningTime(gameStatistics: gameStatistics)))"
         let avgOfInjuryTimeGiven = "Avg. of injury time per game:\(spaces)\(MainTimer.getTimeInString(time: TotalStatistics.getAvgTotalInjuryTimeGiven(gameStatistics: gameStatistics)))"
-        return [totalGames,homeWins,awayWins,totalHomeYellows,totalAwayYellows,totalHomeReds,totalAwayReds, totalHomeGoals,totalAwayGoals,avgHomeYellowPerGame,avgAwayYellowPerGame,avgHomeRedPerGame,avgAwayRedPerGame,avgRunningTimePerGame,avgOfInjuryTimeGiven]
+        return [totalGames,homeWins,awayWins,draws,totalHomeYellows,totalAwayYellows,totalHomeReds,totalAwayReds, totalHomeGoals,totalAwayGoals,avgHomeYellowPerGame,avgAwayYellowPerGame,avgHomeRedPerGame,avgAwayRedPerGame,avgRunningTimePerGame,avgOfInjuryTimeGiven]
     }
     static func getTotalGame(gameStatistics: [GameStatistics]) -> Int{
         return gameStatistics.count
@@ -67,6 +68,9 @@ class TotalStatistics {
     }
     static func getAwayWins(gameStatistics:[GameStatistics]) -> Int {
         return gameStatistics.filter{$0.winnerSide == "Away"}.count
+    }
+    static func getDraws(gameStatistics:[GameStatistics]) -> Int {
+        return gameStatistics.filter{$0.winnerSide == "Draw"}.count
     }
     static func getTotalHomeYellowsCards(gameStatistics:[GameStatistics]) -> Int{
         return gameStatistics.reduce(0) {$0 + $1.homeYellowCards}

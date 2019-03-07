@@ -53,11 +53,13 @@ class EventsTableViewCell: UITableViewCell {
         addSubview(cellText)
         cellText.translatesAutoresizingMaskIntoConstraints = false
         cellDetail.translatesAutoresizingMaskIntoConstraints = false
+        cellText.adjustsFontSizeToFitWidth = true
+        cellDetail.adjustsFontSizeToFitWidth = true
         cellDetail.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         cellDetail.trailingAnchor.constraint(equalTo: cellImage.leadingAnchor, constant: -15).isActive = true
         cellDetail.centerYAnchor.constraint(equalTo: cellImage.centerYAnchor, constant: (bounds.height / 2) * 0.8).isActive = true
         cellText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        cellText.trailingAnchor.constraint(equalTo: cellImage.trailingAnchor).isActive = true
+        cellText.trailingAnchor.constraint(equalTo: cellImage.leadingAnchor, constant: -15).isActive = true
         cellText.bottomAnchor.constraint(equalTo: cellDetail.topAnchor, constant: -8).isActive = true
         
     }

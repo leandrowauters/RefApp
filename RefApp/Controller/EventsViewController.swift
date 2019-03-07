@@ -16,7 +16,7 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     var events = Game.events
     var gameClient = GameClient()
     let detailView = EventVCDetails()
-    let textDetailView = EventVCTextView()
+    let textDetailView = NotesView()
     let graphics = GraphicClient()
     var views = [UIView]()
 
@@ -181,7 +181,11 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.register(EventsTableViewCell.self, forCellReuseIdentifier: "HalfTimeEventCell")
         guard let cell = eventTableView.dequeueReusableCell(withIdentifier: "HalfTimeEventCell", for: indexPath) as? EventsTableViewCell else {return UITableViewCell()}
         let eventToSet = events[indexPath.row]
-        cell.cellText.text = "\(eventToSet.team) - Player: \(eventToSet.playerNum)"
+        if eventToSet.type == "Sub"{
+            cell.cellText.text = "\(eventToSet.team) - Player in: \(eventToSet.subIn!) - Player out: \(eventToSet.playerNum)"
+        } else {
+            cell.cellText.text = "\(eventToSet.team) - Player: \(eventToSet.playerNum)"
+        }
         cell.cellImage.backgroundColor = eventToSet.color
         cell.cellDetail.text =  eventToSet.timeStamp
         cell.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)

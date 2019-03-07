@@ -123,6 +123,67 @@ class GraphicClient {
         viewForShadow.layer.shadowPath = UIBezierPath(rect: viewForShadow.bounds).cgPath
         viewForShadow.layer.shouldRasterize = true
     }
-
+    lazy var animatedView: UIView = {
+        var view = UIView()
+        view.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        return view
+    }()
     
+    lazy var animatedViewRail: UIView = {
+        var view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
+        return view
+    }()
+    func segmentedControlBar(titles: [String],numberOfSegments: Int) -> UISegmentedControl{
+        let segmentedControl = UISegmentedControl()
+        var segments = numberOfSegments - 1
+        while segments >= 0{
+            segmentedControl.insertSegment(withTitle: titles[segments], at: segments, animated: true)
+            segments -= 1
+        }
+//        segmentedControl.insertSegment(withTitle: titles[0], at: 0, animated: true)
+//        segmentedControl.insertSegment(withTitle: titles[1], at: 1, animated: true)
+//        segmentedControl.insertSegment(withTitle: titles[2], at: 2, animated: true)
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
+        segmentedControl.tintColor = .clear
+        segmentedControl.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20),
+            NSAttributedString.Key.foregroundColor: UIColor.white
+            ], for: .normal)
+        segmentedControl.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 22.0),
+            NSAttributedString.Key.foregroundColor: UIColor.orange
+            ], for: .selected)
+        
+    
+        return segmentedControl
+    }
+    func setupCustomSegmentedBar(view: UIView, customSegmentedBar: UISegmentedControl,height: Double) {
+        view.addSubview(customSegmentedBar)
+        customSegmentedBar.translatesAutoresizingMaskIntoConstraints = false
+        customSegmentedBar.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: ( ( -view.frame.height / 2) * CGFloat(height))).isActive = true
+        customSegmentedBar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        customSegmentedBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        customSegmentedBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        customSegmentedBar.heightAnchor.constraint(equalToConstant: 50).isActive = true
+
+    }
+    func setupAnimatedView(view: UIView,animatedView: UIView, customSegmentedBar: UISegmentedControl,numberOfSegments: Int){
+        view.addSubview(animatedView)
+        animatedView.translatesAutoresizingMaskIntoConstraints = false
+        animatedView.topAnchor.constraint(equalTo: customSegmentedBar.bottomAnchor).isActive = true
+        animatedView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        animatedView.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        animatedView.widthAnchor.constraint(equalToConstant: view.frame.width / CGFloat(numberOfSegments)).isActive = true
+        
+    }
+    func setupAnimatedViewRail(view: UIView, animatedViewRail: UIView, customSegmentedBar: UISegmentedControl){
+        view.addSubview(animatedViewRail)
+        animatedViewRail.translatesAutoresizingMaskIntoConstraints = false
+        animatedViewRail.topAnchor.constraint(equalTo: customSegmentedBar.bottomAnchor).isActive = true
+        animatedViewRail.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        animatedViewRail.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        animatedViewRail.widthAnchor.constraint(equalTo: customSegmentedBar.widthAnchor).isActive = true
+    }
 }

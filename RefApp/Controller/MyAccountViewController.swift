@@ -21,35 +21,10 @@ class MyAccountViewController: UIViewController {
     
     let infoView: MyAccountInfoView = Bundle.main.loadNibNamed("MyAccountInfoView", owner: self, options: nil)?.first as! MyAccountInfoView
     let previousGamesView: PreviousGamesView = Bundle.main.loadNibNamed("PreviousGamesView", owner: self, options: nil)?.first as! PreviousGamesView
-    lazy var customSegmentedBar: UISegmentedControl = {
-        var segmentedControl = UISegmentedControl()
-        segmentedControl.insertSegment(withTitle: "Info", at: 0, animated: true)
-        segmentedControl.insertSegment(withTitle: "Previous Games", at: 2, animated: true)
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.backgroundColor = #colorLiteral(red: 0.1726308763, green: 0.1726359427, blue: 0.1726332307, alpha: 1)
-        segmentedControl.tintColor = .clear
-        segmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20),
-            NSAttributedString.Key.foregroundColor: UIColor.white
-            ], for: .normal)
-        segmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 22.0),
-            NSAttributedString.Key.foregroundColor: UIColor.orange
-            ], for: .selected)
-        return segmentedControl
-    }()
     
-    lazy var animatedView: UIView = {
-        var view = UIView()
-        view.backgroundColor = UIColor.orange
-        return view
-    }()
-    
-    lazy var animatedViewRail: UIView = {
-        var view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
-        return view
-    }()
+    lazy var customSegmentedBar: UISegmentedControl = graphics.segmentedControlBar(titles: ["Info", "Previous Games"], numberOfSegments: 2)
+    lazy var animatedView: UIView = graphics.animatedView
+    lazy var animatedViewRail: UIView = graphics.animatedViewRail
     var views = [UIView]()
     private var usersession: UserSession!
     weak var userDidLoginDelegate: UserDidLogInDelegate?
@@ -81,8 +56,8 @@ class MyAccountViewController: UIViewController {
         previousGamesView.previousGamesTableView.dataSource = self
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         usersession.usersessionSignOutDelegate = self
-        setupAnimatedViewRail()
-        setupAnimatedView()
+        graphics.setupAnimatedViewRail(view: view, animatedViewRail: animatedViewRail, customSegmentedBar: customSegmentedBar)
+        graphics.setupAnimatedView(view: view, animatedView: animatedView, customSegmentedBar: customSegmentedBar, numberOfSegments: 2)
         getGameStatistics()
         getGameData()
         graphics.changeImageToRound(image: profileImage)
@@ -180,23 +155,6 @@ class MyAccountViewController: UIViewController {
         customSegmentedBar.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
         customSegmentedBar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         customSegmentedBar.heightAnchor.constraint(equalToConstant: 50).isActive = true
-    }
-    func setupAnimatedView(){
-        view.addSubview(animatedView)
-        animatedView.translatesAutoresizingMaskIntoConstraints = false
-        animatedView.topAnchor.constraint(equalTo: customSegmentedBar.bottomAnchor).isActive = true
-        animatedView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        animatedView.heightAnchor.constraint(equalToConstant: 5).isActive = true
-        animatedView.widthAnchor.constraint(equalToConstant: view.frame.width / 2).isActive = true
-        
-    }
-    func setupAnimatedViewRail(){
-        view.addSubview(animatedViewRail)
-        animatedViewRail.translatesAutoresizingMaskIntoConstraints = false
-        animatedViewRail.topAnchor.constraint(equalTo: customSegmentedBar.bottomAnchor).isActive = true
-        animatedViewRail.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        animatedViewRail.heightAnchor.constraint(equalToConstant: 5).isActive = true
-        animatedViewRail.widthAnchor.constraint(equalTo: customSegmentedBar.widthAnchor).isActive = true
     }
     @objc func customSegmentedBarPressed(sender: UISegmentedControl){
         for i in 0...views.count - 1 {

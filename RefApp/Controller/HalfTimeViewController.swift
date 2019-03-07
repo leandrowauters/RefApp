@@ -11,9 +11,9 @@ import UIKit
 class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UITextViewDelegate {
 
     let events = Game.events
-    let eventHalfTimeView = EventHalfTimeView()
+    let eventHalfTimeView = EventsView()
     let subHalftimeView = SubHalfTimeView()
-    let noteHalfTimeView = NoteHalfTimeView()
+    let noteHalfTimeView = NotesView()
     let graphics = GraphicClient()
     var gameRunningTime = 0.0
     weak var timerDelegate: TimerDelegate!
@@ -26,39 +26,9 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var halfTimeTimeLabel: UILabel!
     
-    
-    
-    
-    lazy var customSegmentedBar: UISegmentedControl = {
-        var segmentedControl = UISegmentedControl()
-        segmentedControl.insertSegment(withTitle: "Events", at: 0, animated: true)
-        segmentedControl.insertSegment(withTitle: "Subtitution", at: 1, animated: true)
-        segmentedControl.insertSegment(withTitle: "Notes", at: 2, animated: true)
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
-        segmentedControl.tintColor = .clear
-        segmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20),
-            NSAttributedString.Key.foregroundColor: UIColor.white
-            ], for: .normal)
-        segmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 22.0),
-            NSAttributedString.Key.foregroundColor: UIColor.orange
-            ], for: .selected)
-        return segmentedControl
-    }()
-    
-    lazy var animatedView: UIView = {
-       var view = UIView()
-        view.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-        return view
-    }()
-    
-    lazy var animatedViewRail: UIView = {
-        var view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
-        return view
-    }()
+    lazy var customSegmentedBar: UISegmentedControl = graphics.segmentedControlBar(titles: ["Events", "Notes", "Sub"],numberOfSegments: 3)
+    lazy var animatedView: UIView = graphics.animatedView
+    lazy var animatedViewRail: UIView = graphics.animatedViewRail
 
     
     override func viewDidLoad() {
@@ -69,9 +39,10 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         subHalftimeView.doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
 
         views = [eventHalfTimeView,subHalftimeView,noteHalfTimeView]
-        setupCustomSegmentedBar()
-        setupAnimatedViewRail()
-        setupAnimatedView()
+        graphics.setupCustomSegmentedBar(view: view, customSegmentedBar: customSegmentedBar, height: 0.5)
+        customSegmentedBar.addTarget(self, action: #selector(customSegmentedBarPressed(sender:)), for: UIControl.Event.valueChanged)
+        graphics.setupAnimatedViewRail(view: view, animatedViewRail: animatedViewRail, customSegmentedBar: customSegmentedBar)
+        graphics.setupAnimatedView(view: view, animatedView: animatedView, customSegmentedBar: customSegmentedBar, numberOfSegments: 3)
         setupViews(views: views)
         eventHalfTimeView.eventsTableView.dataSource = self
         eventHalfTimeView.eventsTableView.delegate = self
@@ -111,16 +82,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         timerDelegate.turnOnTimer(turnOn: false)
         
     }
-    func setupCustomSegmentedBar() {
-        view.addSubview(customSegmentedBar)
-        customSegmentedBar.translatesAutoresizingMaskIntoConstraints = false
-        customSegmentedBar.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: ( ( -view.frame.height / 2) * 0.5)).isActive = true
-        customSegmentedBar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        customSegmentedBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        customSegmentedBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        customSegmentedBar.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        customSegmentedBar.addTarget(self, action: #selector(customSegmentedBarPressed(sender:)), for: UIControl.Event.valueChanged)
-    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         setTextView()
@@ -194,23 +156,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         views.first?.isHidden = false
     }
-    func setupAnimatedView(){
-        view.addSubview(animatedView)
-        animatedView.translatesAutoresizingMaskIntoConstraints = false
-        animatedView.topAnchor.constraint(equalTo: customSegmentedBar.bottomAnchor).isActive = true
-        animatedView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        animatedView.heightAnchor.constraint(equalToConstant: 5).isActive = true
-        animatedView.widthAnchor.constraint(equalToConstant: view.frame.width / 3).isActive = true
-        
-    }
-    func setupAnimatedViewRail(){
-        view.addSubview(animatedViewRail)
-        animatedViewRail.translatesAutoresizingMaskIntoConstraints = false
-        animatedViewRail.topAnchor.constraint(equalTo: customSegmentedBar.bottomAnchor).isActive = true
-        animatedViewRail.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        animatedViewRail.heightAnchor.constraint(equalToConstant: 5).isActive = true
-        animatedViewRail.widthAnchor.constraint(equalTo: customSegmentedBar.widthAnchor).isActive = true
-    }
+
 
     @objc func enterButtonPressed(){
         if noteHalfTimeView.notesTextView.text != "" {
@@ -257,7 +203,11 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
             return UITableViewCell()
         }
         let eventToSet = events[indexPath.row]
-        cell.cellText.text = eventToSet.type
+        if eventToSet.type == "Sub"{
+            cell.cellText.text = "\(eventToSet.team) - Player in: \(eventToSet.subIn!) - Player out: \(eventToSet.playerNum)"
+        } else {
+            cell.cellText.text = "\(eventToSet.team) - Player: \(eventToSet.playerNum)"
+        }
         cell.cellDetail.text = "Player: \(eventToSet.playerNum), Team: \(eventToSet.team)"
         cell.cellImage.backgroundColor = eventToSet.color
         

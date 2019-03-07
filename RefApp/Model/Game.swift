@@ -100,7 +100,40 @@ class Game: Codable {
         self.awayPlayers = dict["awayPlayers"] as? [Int] ?? [0]
         self.dbReferenceDocumentId = dict["dbReference"] as? String ?? "no dbReference"  
     }
-
+    static func setVariableToDefaultValues() {
+        Game.gameName = nil
+        // unique vc
+        Game.length = [90, 60, 30, 0] // STATIC VC
+        Game.lengthSelected = Int()
+        // TYPE INTO CELL
+        Game.numberOfPlayers = Int()
+        Game.location = String() //TYPE INTO CELL
+        Game.dateAndTime = String()//OR DATE? // DATE PICKER VIEW UNIQUE VC
+        Game.league = String() //INPUT MUST BE SAVED - [String]? // TYPE INTO CELL
+        Game.refereeNames = [String]() // TYPE INTO CELL
+        Game.caps = [String]()
+        Game.extraTime = Bool() // STATIC VC YES OR NOW
+        Game.homeTeam = "Home"
+        Game.awayTeam = "Away"
+        Game.numberOfSubs = Int()
+        Game.homePlayers = [Int]()
+        //    static var homePlayersSorted = Game.homePlayers.sorted{$0 < $1}
+        Game.awayPlayers = [Int]()
+        //    static var awayPlayersSorted = Game.awayPlayers.sorted{$0 < $1}
+        Game.homeYellowCardPlayers = [Int]()
+        Game.homeRedCardPlayers = [Int]()
+        Game.awayYellowCardPlayers = [Int]()
+        Game.awayRedCardPlayers = [Int]()
+        Game.homeGoalsPlayers = [Int]()
+        Game.awayGoalsPlayers = [Int]()
+        Game.homeScore = Int()
+        Game.awayScore = Int()
+        Game.events = [Events]()
+        Game.gameHalf = 1
+        Game.gameNotes = [String]()
+        Game.subtitutions = [(In: String, Out: String)]()
+        Game.totalRunningTime = 0
+    }
     
 }
 

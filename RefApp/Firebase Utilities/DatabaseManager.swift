@@ -132,6 +132,33 @@ final class DatabaseManager {
         })
 
     }
+    
+    static func updatedSaveGameToDatabase(userID: String, dbReference: String) {
+        let gameToSave = Game.init(userID: userID, gameName: Game.gameName, lengthSelected: Game.lengthSelected, numberOfPlayers: Game.numberOfPlayers, location: Game.location, dateAndTime: Game.dateAndTime, league: Game.league, refereeNames: Game.refereeNames, caps: Game.caps, extraTime: Game.extraTime, homeTeam: Game.homeTeam, awayTeam: Game.awayTeam, subs: Game.numberOfSubs, homePlayers: Game.homePlayers, awayPlayers: Game.awayPlayers, dbReferenceDocumentId: dbReference )
+        DatabaseManager.firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey).document(dbReference).updateData(["userID": gameToSave.userID, "gameName": gameToSave.gameName!, "gameLength": gameToSave.lengthSelected, "numberOfPlayers" : gameToSave.numberOfPlayers, "location" : gameToSave.location, "dateAndTime" : gameToSave.dateAndTime, "league" : gameToSave.league, "refereeNames" : gameToSave.refereeNames, "caps" : gameToSave.caps , "extraTime" : gameToSave.extraTime, "homeTeam" : gameToSave.homeTeam , "awayTeam" : gameToSave.awayTeam, "subs" : gameToSave.subs, "homePlayers" : gameToSave.homePlayers, "awayPlayers" : gameToSave.awayPlayers, "dBReference" : gameToSave.dbReferenceDocumentId]) { (error) in
+            if let error = error {
+                print("Error updating field: \(error)")
+            } else {
+                print("field updated")
+            }
+        }
+                
+                // updating a firestore dcoument:
+                // here we are updating the field dbReference for race review,
+                // useful for e.g deleting a (race review) document
+//                DatabaseManager.firebaseDB.collection(DatabaseKeys.SavedGameCollectionKey)
+//                    .document(ref!.documentID)
+//                    .updateData(["dbReference": ref!.documentID], completion: { (error) in
+//                        if let error = error {
+//                            print("error updating field: \(error)")
+//                        } else {
+//                            print("field updated")
+//                        }
+//                    })
+//            }
+//        })
+        
+    }
 //    static func fetchSaveGames(vc: UIViewController,completion: @escaping(Error?, [Game]?) -> Void) {
 //        
 //        // add a listener to observe changes to the firestore database

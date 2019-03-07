@@ -9,24 +9,9 @@
 import UIKit
 
 class SubHalfTimeView: UIView {
-
-    lazy var teamSegmentedBar: UISegmentedControl = {
-        var segmentedControl = UISegmentedControl()
-        segmentedControl.insertSegment(withTitle: "Home", at: 0, animated: true)
-        segmentedControl.insertSegment(withTitle: "Away", at: 1, animated: true)
-        segmentedControl.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.tintColor = .clear
-        segmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20),
-            NSAttributedString.Key.foregroundColor: UIColor.white
-            ], for: .normal)
-        segmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 22.0),
-            NSAttributedString.Key.foregroundColor: UIColor.orange
-            ], for: .selected)
-        return segmentedControl
-    }()
+    var graphics = GraphicClient()
+    lazy var teamSegmentedBar: UISegmentedControl = graphics.segmentedControlBar(titles: ["Home", "Away"], numberOfSegments: 2)
+    lazy var animatedView: UIView = graphics.animatedView
     lazy var titleLabel: UILabel = {
         var label = UILabel()
         label.text = "Enter Substitution"
@@ -70,12 +55,7 @@ class SubHalfTimeView: UIView {
         button.layer.cornerRadius = 10
         return button
     }()
-    lazy var animatedView: UIView = {
-        var view = UIView()
-        view.backgroundColor = .orange
-        view.contentMode = .scaleAspectFit
-        return view
-    }()
+
     
     lazy var image: UIImageView = {
         var image = UIImageView()

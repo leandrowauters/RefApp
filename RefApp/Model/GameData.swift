@@ -37,7 +37,17 @@ class GameData {
     var awayGoalsPlayers: [Int]
     var gameNotes: [String]
 
-    
+    static func getGameData(gameData: GameData) -> [String] {
+        let spaces = String(repeating: " ", count: 4)
+        let winner = "Winner:\(spaces)\(gameData.winner)"
+        let totalRunningTime = "Running time:\(spaces)\(gameData.totalRunningTime)"
+        let totalInjuryTime = "Total injury time:\(spaces)\(gameData.totalInjuryTimeGiven)"
+        let homeYellowCards = "Home yellow cards:\(spaces)\(gameData.homeYellowCardPlayers.count)"
+        let awayYellowCards = "Away yellow cards:\(spaces)\(gameData.awayYellowCardPlayers.count)"
+        let homeRedCards = "Home red cards:\(spaces)\(gameData.homeRedCardPlayers.count)"
+        let awayRedCards = "Away red cards:\(spaces)\(gameData.awayRedCardPlayers.count)"
+        return [winner,totalRunningTime,totalInjuryTime,homeYellowCards,awayYellowCards,homeRedCards,awayRedCards]
+    }
     init(userID: String,winner: String,gameName: String?, lengthSelected:Int, numberOfPlayers: Int, location: String, dateAndTime: String, league: String, refereeNames: [String], caps: [String], extraTime: Bool, homeTeam: String, awayTeam: String,homeScore: Int, awayScore: Int, totalRunningTime: Double, totalInjuryTimeGiven: Double, subs: Int, homePlayers: [Int], awayPlayers: [Int],homeYellowCardPlayers: [Int],homeRedCardPlayers: [Int],awayYellowCardPlayers: [Int], awayRedCardPlayers:[Int], homeGoalsPlayers: [Int], awayGoalsPlayers: [Int], gameNotes: [String]) {
         self.userID = userID
         self.winner = winner

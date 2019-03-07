@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventHalfTimeView: UIView {
+class EventsView: UIView {
     lazy var eventsTableView: UITableView = {
        var tableView = UITableView()
         

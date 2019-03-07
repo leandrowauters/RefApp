@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/GameSettigsDetail/TextVC.swift"
-            timestampString = "573504092.492736"
+            timestampString = "573677844.860709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "155"
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.917938"
+            timestampString = "573686090.744573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "537"
-            endingLineNumber = "537"
+            startingLineNumber = "538"
+            endingLineNumber = "538"
             landmarkName = "addTapAfterSub(add:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.918064"
+            timestampString = "573686090.744621"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.918167"
+            timestampString = "573686090.744665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.918267"
+            timestampString = "573686090.744711"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "201"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.918365"
+            timestampString = "573686090.744754"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "193"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.918461"
+            timestampString = "573686090.744796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "190"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.918555"
+            timestampString = "573686090.744839"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "191"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.918653"
+            timestampString = "573686090.744882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "196"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.9187469"
+            timestampString = "573686090.744925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "195"
@@ -218,29 +218,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.918839"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "533"
-            endingLineNumber = "533"
-            landmarkName = "playerSelected(player:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.918933"
+            timestampString = "573686090.7449681"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "534"
             endingLineNumber = "534"
-            landmarkName = "MainGameVC"
-            landmarkType = "21">
+            landmarkName = "playerSelected(player:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -250,13 +234,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.919052"
+            timestampString = "573686090.7450089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "532"
-            endingLineNumber = "532"
+            startingLineNumber = "535"
+            endingLineNumber = "535"
             landmarkName = "playerSelected(player:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RefApp/Controller/MainGameVC.swift"
+            timestampString = "573686090.745051"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "533"
+            endingLineNumber = "533"
+            landmarkName = "MainGameVC"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -266,7 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.919192"
+            timestampString = "573686090.7450939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "227"
@@ -282,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.919332"
+            timestampString = "573686090.745137"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "221"
@@ -298,13 +298,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.919449"
+            timestampString = "573686090.745178"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "538"
-            endingLineNumber = "538"
-            landmarkName = "MainGameVC"
-            landmarkType = "21">
+            startingLineNumber = "539"
+            endingLineNumber = "539"
+            landmarkName = "addTapAfterSub(add:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -314,13 +314,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.919579"
+            timestampString = "573686090.7452199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "428"
-            endingLineNumber = "428"
-            landmarkName = "MainGameVC"
-            landmarkType = "3">
+            startingLineNumber = "429"
+            endingLineNumber = "429"
+            landmarkName = "changeTimerWasPressed(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -330,13 +330,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.919723"
+            timestampString = "573686090.745262"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "421"
-            endingLineNumber = "421"
-            landmarkName = "MainGameVC"
-            landmarkType = "3">
+            startingLineNumber = "422"
+            endingLineNumber = "422"
+            landmarkName = "halfTimeButtonPressed(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -346,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/HomePlayersSelectionViewController.swift"
-            timestampString = "573504092.49371"
+            timestampString = "573678810.047699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -394,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/HomePlayersSelectionViewController.swift"
-            timestampString = "573504092.4937561"
+            timestampString = "573678810.047755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
@@ -410,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/HomePlayersSelectionViewController.swift"
-            timestampString = "573504092.493798"
+            timestampString = "573678810.047798"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
@@ -426,7 +426,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/HomePlayersSelectionViewController.swift"
-            timestampString = "573504092.49384"
+            timestampString = "573678810.047837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
@@ -442,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/HomePlayersSelectionViewController.swift"
-            timestampString = "573504092.49388"
+            timestampString = "573678810.047874"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
@@ -458,7 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.919973"
+            timestampString = "573686090.7453671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
@@ -474,7 +474,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.920073"
+            timestampString = "573686090.745412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "161"
@@ -490,7 +490,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.9201699"
+            timestampString = "573686090.745454"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "164"
@@ -538,7 +538,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.920266"
+            timestampString = "573686090.745495"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "217"
@@ -618,7 +618,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/MainGameVC.swift"
-            timestampString = "573598942.921558"
+            timestampString = "573686090.7455879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "213"
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/View/SubHalfTimeView.swift"
-            timestampString = "573506003.738816"
+            timestampString = "573686090.745651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "addRightAnimatedTextView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/View/SubHalfTimeView.swift"
-            timestampString = "573506003.738862"
+            timestampString = "573686090.746022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "addRightAnimatedTextView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/HalfTimeViewController.swift"
-            timestampString = "573598942.921793"
+            timestampString = "573686090.7463239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "enterButtonPressed()"
             landmarkType = "7">
          </BreakpointContent>
@@ -698,11 +698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RefApp/Controller/HalfTimeViewController.swift"
-            timestampString = "573598942.921856"
+            timestampString = "573686090.7463731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "enterButtonPressed()"
             landmarkType = "7">
          </BreakpointContent>

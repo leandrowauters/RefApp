@@ -18,6 +18,7 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
 
     
     
+    
     var number = ""{
         didSet{
             DispatchQueue.main.async {
@@ -52,19 +53,11 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
     }
     @objc func donePressed(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let savedGameDetail = storyboard.instantiateViewController(withIdentifier: "SavedGameDetail") as? SavedGameDetailedViewController else {return}
+        guard let savedGames = storyboard.instantiateViewController(withIdentifier: "SavedGames") as? SavedGamesViewController else {return}
         if UserSession.loginStatus == .existingAccount{
-            DatabaseManager.deleteSavedGameFromDatabase(vc: self, gameToDelete: game)
-            DatabaseManager.postSaveGameToDatabase(userID: self.userID)
-            DatabaseManager.fetchSaveGames(vc: self, userID: userID) { (error, games) in
-                if let error = error {
-                    print(error)
-                }
-                if let games = games {
-                    savedGameDetail.savedGame = games.last
-                    self.navigationController?.pushViewController(savedGameDetail, animated: true)
-                }
-            }
+            DatabaseManager.updatedSaveGameToDatabase(userID: userID, dbReference: game.dbReferenceDocumentId)
+            
+            navigationController?.pushViewController(savedGames, animated: true)
         } else {
             DataPeristanceModel.addGame()
         }
@@ -159,6 +152,9 @@ class AwayPlayersSelectionViewController: UIViewController,UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AwayCell", for: indexPath) as? AwayPlayersCollectionViewCell else {return UICollectionViewCell()}
+        if intention == .edit{
+            cell.okayButton.isEnabled = false
+        }
         return AwayPlayersCollectionViewCell.setUpCell(collectionView: collectionView, cell: cell, indexPath: indexPath.row, number: number)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

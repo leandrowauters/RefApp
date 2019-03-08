@@ -20,11 +20,15 @@ class PopActionsVC: UIViewController {
     var teamSide: Game.Teams!
 
     @IBOutlet weak var popView: UIView!
+    @IBOutlet var actionButtons: [UIButton]!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(playerSelected)
+        actionButtons.forEach{$0.titleLabel?.adjustsFontSizeToFitWidth = true}
+        actionButtons.forEach{$0.frame = ($0.frame.integral)}
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(goBack))
         graphics.addShadowToView(viewForShadow: popView)
         view.addGestureRecognizer(tap)

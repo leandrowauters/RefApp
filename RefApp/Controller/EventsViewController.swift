@@ -79,6 +79,40 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     override func viewWillAppear(_ animated: Bool) {
         setTextView()
+        registerKeyboardNotification()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        unregisterKeyboardNotifications()
+    }
+    private func registerKeyboardNotification(){
+        NotificationCenter.default.addObserver(self, selector: #selector(willShowKeyboard(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willHideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    private func unregisterKeyboardNotifications(){
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    @objc private func willShowKeyboard(notification: Notification){
+        guard let info = notification.userInfo,
+            let keyboardFrame = info["UIKeyboardFrameEndUserInfoKey"] as? CGRect else {
+                
+                print("UserInfo is nil")
+                return
+        }
+        let tableViewHeight = eventTableView.frame.height
+        let view = views[customSegmentedBar.selectedSegmentIndex]
+        if view == textDetailView {
+            view.bringSubviewToFront(textDetailView.enterTextButton)
+            textDetailView.enterTextButton.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.height + ((self.view.frame.height - tableViewHeight) / 2))
+        }
+    }
+    @objc private func willHideKeyboard(){
+        let view = views[customSegmentedBar.selectedSegmentIndex]
+        view.transform = CGAffineTransform.identity
+        if view == textDetailView {
+            textDetailView.enterTextButton.transform = CGAffineTransform.identity
+        }
+        
     }
     func setupCustomSegmentedBar() {
         view.addSubview(customSegmentedBar)

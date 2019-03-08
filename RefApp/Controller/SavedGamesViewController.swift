@@ -22,8 +22,10 @@ class SavedGamesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         activityIndicatior.startAnimating()
-        savedGamesTableView.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
+        savedGamesTableView.backgroundColor = #colorLiteral(red: 0.1726308763, green: 0.1726359427, blue: 0.1726332307, alpha: 1)
+        savedGamesTableView.tableFooterView = UIView()
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         savedGamesTableView.dataSource = self
         savedGamesTableView.delegate = self
@@ -71,10 +73,9 @@ extension SavedGamesViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let loadedGame = loadedGames[indexPath.row]
         let cell = savedGamesTableView.dequeueReusableCell(withIdentifier: "loadedGameCell", for: indexPath)
-        tableView.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
         cell.textLabel?.textColor = .white
         cell.detailTextLabel?.textColor = .white
-        cell.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
+        cell.backgroundColor = #colorLiteral(red: 0.1726308763, green: 0.1726359427, blue: 0.1726332307, alpha: 1)
         cell.textLabel?.text = loadedGame.gameName
         cell.detailTextLabel?.text = loadedGame.dateAndTime.description
         print(loadedGame.homeTeam)

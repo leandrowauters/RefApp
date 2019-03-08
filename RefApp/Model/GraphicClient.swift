@@ -45,8 +45,8 @@ class GraphicClient {
     func setTimerGraphics () {
        shapeLayer.strokeEnd = CGFloat(MainTimer.time) / CGFloat(((Game.lengthSelected / 2) * 60) + ((Game.lengthSelected / 2 * 60 ) / 3))
         if Int(MainTimer.time) == (((Game.lengthSelected / 2) * 60) - (((Game.lengthSelected / 2) * 60) / 10)) {
-            shapeLayer.strokeColor = #colorLiteral(red: 1, green: 0.765635848, blue: 0, alpha: 1)
-            trackLayer.strokeColor = #colorLiteral(red: 1, green: 0.868950069, blue: 0.4578225017, alpha: 1)
+            shapeLayer.strokeColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+            trackLayer.strokeColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         }
         if Int(MainTimer.time) == (Game.lengthSelected / 2) * 60 {
             shapeLayer.strokeColor = #colorLiteral(red: 1, green: 0, blue: 0.1359238923, alpha: 1)
@@ -121,7 +121,7 @@ class GraphicClient {
         viewForShadow.layer.shadowOffset = CGSize(width: -1, height: 1)
         viewForShadow.layer.shadowRadius = 10
         viewForShadow.layer.shadowPath = UIBezierPath(rect: viewForShadow.bounds).cgPath
-        viewForShadow.layer.shouldRasterize = true
+//        viewForShadow.layer.shouldRasterize = true
     }
     lazy var animatedView: UIView = {
         var view = UIView()

@@ -52,6 +52,8 @@ class MyAccountViewController: UIViewController {
         setupSegmentedBar()
         infoView.infoTableView.delegate = self
         infoView.infoTableView.dataSource = self
+        infoView.infoTableView.tableFooterView = UIView()
+        previousGamesView.previousGamesTableView.tableFooterView = UIView()
         previousGamesView.previousGamesTableView.delegate = self
         previousGamesView.previousGamesTableView.dataSource = self
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession

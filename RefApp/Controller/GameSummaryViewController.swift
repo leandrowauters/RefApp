@@ -42,17 +42,18 @@ class GameSummaryViewController: UIViewController {
         super.viewDidLoad()
         if rootViewController == .myAccount{
             customSegmentedBar = graphics.segmentedControlBar(titles: ["Summary", "Notes"],numberOfSegments: 2)
-            gameTimeLabel.isHidden = true
             views = [infoView,notesView]
+            gameTimeLabel.text = "\(gameData.dateAndTime)"
         } else {
             views = [infoView,eventsView,notesView]
+            gameTimeLabel.text = "\(MainTimer.timeString(time: gameRunningTime))"
         }
         navigationBar.barTintColor = UIColor.black
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         customSegmentedBar.addTarget(self, action: #selector(customSegmentedBarPressed(sender:)), for: UIControl.Event.valueChanged)
         gameTeamsLabel.text = "\(gameData.homeTeam) Vs. \(gameData.awayTeam)"
         gameScoreLabel.text = "\(gameData.homeScore) - \(gameData.awayScore)"
-        gameTimeLabel.text = "\(MainTimer.timeString(time: gameRunningTime))"
+        
         // Do any additional setup after loading the view.
         eventsView.eventsTableView.delegate = self
         eventsView.eventsTableView.dataSource = self

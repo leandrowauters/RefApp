@@ -20,6 +20,9 @@ class GameSummaryViewController: UIViewController {
     @IBOutlet weak var gameTimeLabel: UILabel!
     
     @IBOutlet weak var navigationBar: UINavigationBar!
+    
+    @IBOutlet weak var topView: UIView!
+    
     let events = Game.events
     let notesView = NotesView()
     let eventsView = EventsView()
@@ -29,6 +32,7 @@ class GameSummaryViewController: UIViewController {
     var gameData: GameData!
     var gameStatistics: GameStatistics?
     var gameRunningTime = 0.0
+    var rootViewController: RootViewController?
     var gameStatisticInfo = [String](){
         didSet{
             infoView.infoTableView.reloadData()
@@ -36,23 +40,40 @@ class GameSummaryViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        if rootViewController == .myAccount{
+            customSegmentedBar = graphics.segmentedControlBar(titles: ["Summary", "Notes"],numberOfSegments: 2)
+            gameTimeLabel.isHidden = true
+            views = [infoView,notesView]
+        } else {
+            views = [infoView,eventsView,notesView]
+        }
         navigationBar.barTintColor = UIColor.black
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         customSegmentedBar.addTarget(self, action: #selector(customSegmentedBarPressed(sender:)), for: UIControl.Event.valueChanged)
-        gameTeamsLabel.text = "\(Game.homeTeam) Vs. \(Game.awayTeam)"
-        gameScoreLabel.text = "\(Game.homeScore) - \(Game.awayScore)"
+        gameTeamsLabel.text = "\(gameData.homeTeam) Vs. \(gameData.awayTeam)"
+        gameScoreLabel.text = "\(gameData.homeScore) - \(gameData.awayScore)"
         gameTimeLabel.text = "\(MainTimer.timeString(time: gameRunningTime))"
         // Do any additional setup after loading the view.
-        views = [infoView,eventsView,notesView]
         eventsView.eventsTableView.delegate = self
         eventsView.eventsTableView.dataSource = self
         infoView.infoTableView.delegate = self
         infoView.infoTableView.dataSource = self
         graphics.setupCustomSegmentedBar(view: view, customSegmentedBar: customSegmentedBar, height: 0.3)
         graphics.setupAnimatedViewRail(view: view, animatedViewRail: animatedViewRail, customSegmentedBar: customSegmentedBar)
-        graphics.setupAnimatedView(view: view, animatedView: animatedView, customSegmentedBar: customSegmentedBar, numberOfSegments: 3)
+        if rootViewController == .myAccount{
+            graphics.setupAnimatedView(view: view, animatedView: animatedView, customSegmentedBar: customSegmentedBar, numberOfSegments: 2)
+        } else {
+            graphics.setupAnimatedView(view: view, animatedView: animatedView, customSegmentedBar: customSegmentedBar, numberOfSegments: 3)
+        }
+
         setupViews(views: views)
+        if rootViewController == .myAccount{
         gameStatisticInfo = GameData.getGameData(gameData: gameData)
+        } else {
+        gameStatisticInfo = GameData.getEndOFGameData(gameData: gameData)
+         
+        }
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -70,7 +91,6 @@ class GameSummaryViewController: UIViewController {
             notesView.notesTextView.text = "Tap to enter notes..."
         } else {
             notesView.notesTextView.textColor = .black
-            
             notesView.notesTextView.text = Game.gameNotes.last
         }
     }
@@ -84,14 +104,22 @@ class GameSummaryViewController: UIViewController {
         }
     }
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
-        if let gameStatistics = gameStatistics{
-        DatabaseManager.postGameStatisticsToDatabase(gameStatistics: gameStatistics)
-        DatabaseManager.postGameDataToDatabase(gameData: gameData)
-        
+            if rootViewController == .myAccount{
+                dismiss(animated: true, completion: nil)
+            } else {
+                if let gameStatistics = gameStatistics{
+                DatabaseManager.postGameStatisticsToDatabase(gameStatistics: gameStatistics)
+                DatabaseManager.postGameDataToDatabase(gameData: gameData)
+                Game.setVariableToDefaultValues()
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainScreen = storyboard.instantiateViewController(withIdentifier: "navigationController")
+                self.present(mainScreen, animated: true, completion: nil)
+                }
+            }
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //            let mainScreen = storyboard.instantiateViewController(withIdentifier: "navigationController")
 //            self.navigationController?.pushViewController(mainScreen, animated: true)
-        }
+        
     }
     @IBAction func deleteWasPressed(_ sender: UIBarButtonItem) {
         showAlert(title: "Delete?", message: "Are you sure?", style: .alert, customActionTitle: "Delete", cancelActionTitle: "No") { (action) in

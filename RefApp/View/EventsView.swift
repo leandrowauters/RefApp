@@ -11,7 +11,7 @@ import UIKit
 class EventsView: UIView {
     lazy var eventsTableView: UITableView = {
        var tableView = UITableView()
-        
+        tableView.tableFooterView = UIView()
         return tableView
     }()
     

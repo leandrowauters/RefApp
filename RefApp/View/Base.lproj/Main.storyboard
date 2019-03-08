@@ -2153,6 +2153,10 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MVb-yp-zEE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -2161,13 +2165,17 @@
                             <constraint firstItem="cBG-3X-GxP" firstAttribute="top" secondItem="aQ8-Qj-sui" secondAttribute="top" id="ESb-jB-wch"/>
                             <constraint firstItem="Pd9-TM-pw2" firstAttribute="centerX" secondItem="aQ8-Qj-sui" secondAttribute="centerX" id="FJ7-Lm-LUo"/>
                             <constraint firstItem="Pd9-TM-pw2" firstAttribute="centerY" secondItem="aQ8-Qj-sui" secondAttribute="centerY" multiplier="0.3" id="MKl-gc-ni6"/>
+                            <constraint firstItem="cBG-3X-GxP" firstAttribute="top" secondItem="MVb-yp-zEE" secondAttribute="bottom" id="S1W-rg-gMT"/>
                             <constraint firstItem="aQ8-Qj-sui" firstAttribute="trailing" secondItem="R72-oq-fMm" secondAttribute="trailing" constant="11" id="WLr-0D-Cwv"/>
                             <constraint firstItem="R72-oq-fMm" firstAttribute="top" secondItem="Pd9-TM-pw2" secondAttribute="bottom" constant="8" id="Xo9-LN-cZf"/>
                             <constraint firstItem="R72-oq-fMm" firstAttribute="leading" secondItem="aQ8-Qj-sui" secondAttribute="leading" constant="11" id="bAO-89-HMG"/>
+                            <constraint firstItem="MVb-yp-zEE" firstAttribute="top" secondItem="IsA-Ow-4cc" secondAttribute="top" id="beh-CI-gsB"/>
                             <constraint firstItem="Pd9-TM-pw2" firstAttribute="leading" secondItem="aQ8-Qj-sui" secondAttribute="leading" constant="11" id="d7e-al-qvt"/>
                             <constraint firstItem="1Qw-S1-kib" firstAttribute="leading" secondItem="aQ8-Qj-sui" secondAttribute="leading" constant="11" id="dsV-ty-seS"/>
                             <constraint firstItem="cBG-3X-GxP" firstAttribute="leading" secondItem="aQ8-Qj-sui" secondAttribute="leading" id="e5f-KG-1Fy"/>
+                            <constraint firstItem="MVb-yp-zEE" firstAttribute="leading" secondItem="IsA-Ow-4cc" secondAttribute="leading" id="iM9-nZ-Qbo"/>
                             <constraint firstItem="aQ8-Qj-sui" firstAttribute="trailing" secondItem="1Qw-S1-kib" secondAttribute="trailing" constant="11" id="may-mB-WeP"/>
+                            <constraint firstAttribute="trailing" secondItem="MVb-yp-zEE" secondAttribute="trailing" id="pVh-RM-foc"/>
                             <constraint firstItem="1Qw-S1-kib" firstAttribute="top" secondItem="R72-oq-fMm" secondAttribute="bottom" constant="10" id="qSu-fa-7lA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aQ8-Qj-sui"/>
@@ -2177,11 +2185,12 @@
                         <outlet property="gameTeamsLabel" destination="Pd9-TM-pw2" id="1qa-BY-EPP"/>
                         <outlet property="gameTimeLabel" destination="1Qw-S1-kib" id="xbf-Ya-hZf"/>
                         <outlet property="navigationBar" destination="cBG-3X-GxP" id="2w6-w4-MPx"/>
+                        <outlet property="topView" destination="MVb-yp-zEE" id="ifD-HA-piP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qrs-Gs-wwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7229" y="920"/>
+            <point key="canvasLocation" x="7228.985507246377" y="919.56521739130437"/>
         </scene>
         <!--Pop ActionsVC-->
         <scene sceneID="DQW-7V-5M3">
@@ -2268,7 +2277,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.13736758839999999" green="0.1367039769" blue="0.13803119999999999" alpha="0.4900203339041096" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.13736758839999999" green="0.1367039769" blue="0.13803119999999999" alpha="0.76910316780821919" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="bF1-Fi-n0V" firstAttribute="centerY" secondItem="CWr-Vq-33q" secondAttribute="centerY" id="6s8-ic-ZoA"/>
                             <constraint firstItem="eBg-aD-ZYb" firstAttribute="leading" secondItem="CWr-Vq-33q" secondAttribute="leading" constant="11" id="CXW-k3-SYt"/>

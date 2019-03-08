@@ -19,7 +19,7 @@ enum Winner: String {
 }
 class TotalStatistics {
     
-
+var gameClient = GameClient()
 
     //FOR MYPROFILE STATISTICS
 //    init(totalGames: String, homeWins: String, awayWins: String,totalHomeYellows: String, totalAwayYellows: String, totalHomeReds: String, totalAwayReds: String, totalHomeGoals: String, totalAwayGoals: String, avgHomeYellowPerGame: String, avgAwayYellowPerGame: String, avgHomeRedPerGame: String, avgAwayRedPerGame: String, avgRunningTimePerGame: String, avgInjuryTimeGiven: String) {

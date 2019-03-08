@@ -19,40 +19,47 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     let textDetailView = NotesView()
     let graphics = GraphicClient()
     var views = [UIView]()
+    lazy var customSegmentedBar: UISegmentedControl = graphics.segmentedControlBar(titles: ["Events", "Notes", "Details"], numberOfSegments: 3)
+    lazy var animatedView: UIView = graphics.animatedView
+    lazy var animatedViewRail: UIView = graphics.animatedViewRail
 
-    lazy var customSegmentedBar: UISegmentedControl = {
-        var segmentedControl = UISegmentedControl()
-        segmentedControl.insertSegment(withTitle: "Events", at: 0, animated: true)
-        segmentedControl.insertSegment(withTitle: "Details", at: 1, animated: true)
-        segmentedControl.insertSegment(withTitle: "Text", at: 2, animated: true)
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
-        segmentedControl.tintColor = .clear
-        segmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20),
-            NSAttributedString.Key.foregroundColor: UIColor.white
-            ], for: .normal)
-        segmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 22.0),
-            NSAttributedString.Key.foregroundColor: UIColor.orange
-            ], for: .selected)
-        return segmentedControl
-    }()
-    lazy var animatedView: UIView = {
-        var view = UIView()
-        view.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-        return view
-    }()
     
-    lazy var animatedViewRail: UIView = {
-        var view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
-        return view
-    }()
+    
+//    lazy var customSegmentedBar: UISegmentedControl = {
+//        var segmentedControl = UISegmentedControl()
+//        segmentedControl.insertSegment(withTitle: "Events", at: 0, animated: true)
+//        segmentedControl.insertSegment(withTitle: "Details", at: 1, animated: true)
+//        segmentedControl.insertSegment(withTitle: "Text", at: 2, animated: true)
+//        segmentedControl.selectedSegmentIndex = 0
+//        segmentedControl.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
+//        segmentedControl.tintColor = .clear
+//        segmentedControl.setTitleTextAttributes([
+//            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20),
+//            NSAttributedString.Key.foregroundColor: UIColor.white
+//            ], for: .normal)
+//        segmentedControl.setTitleTextAttributes([
+//            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 22.0),
+//            NSAttributedString.Key.foregroundColor: UIColor.orange
+//            ], for: .selected)
+//        return segmentedControl
+//    }()
+//    lazy var animatedView: UIView = {
+//        var view = UIView()
+//        view.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+//        return view
+//    }()
+//
+//    lazy var animatedViewRail: UIView = {
+//        var view = UIView()
+//        view.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
+//        return view
+//    }()
     
     @IBOutlet weak var eventTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        eventTableView.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
+        eventTableView.tableFooterView = UIView()
         views = [eventTableView,detailView,textDetailView]
         views.first?.isHidden = false
         setupAnimatedViewRail()

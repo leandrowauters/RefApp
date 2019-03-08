@@ -69,7 +69,7 @@ class MyAccountViewController: UIViewController {
         customSegmentedBar.addTarget(self, action: #selector(customSegmentedBarPressed(sender:)), for: UIControl.Event.valueChanged)
         
     }
-    
+
     func checkForCountryFlagURL(){
         if let country = referee.country{
         CountryAPIClient.getCountyAlphaCode(country: country) { (error, code) in
@@ -219,6 +219,12 @@ extension MyAccountViewController: UITableViewDelegate, UITableViewDataSource{
         }
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "gameSummary") as? GameSummaryViewController else {return}
+        vc.gameData = gameData[indexPath.row]
+        vc.rootViewController = .myAccount
+        present(vc, animated: true, completion: nil)
+    }
     
 }

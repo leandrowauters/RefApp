@@ -8,9 +8,7 @@
 
 import UIKit
 
-enum Intention {
-    case edit
-}
+
 class SavedGameDetailedViewController: UIViewController {
     
     var savedGame: Game!

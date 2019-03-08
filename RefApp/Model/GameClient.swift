@@ -7,7 +7,12 @@
 //
 
 import UIKit
-
+enum Intention {
+    case edit
+}
+enum RootViewController{
+    case myAccount
+}
 struct GameClient {
     static func printValues (){
         print("Location: \(Game.location)")
@@ -93,4 +98,5 @@ struct GameClient {
         }
         return false
     }
+    
 }

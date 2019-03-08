@@ -33,6 +33,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        eventHalfTimeView.eventsTableView.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
         halfTimeTeamsLabel.text = "\(Game.homeTeam) Vs. \(Game.awayTeam)"
         halfTimeScoreLabel.text = "\(Game.homeScore) - \(Game.awayScore)"
         halfTimeTimeLabel.text = "\(MainTimer.timeString(time: gameRunningTime))"
@@ -217,6 +218,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == subHalftimeView.playerInTextField{
             subHalftimeView.playerInTextField.placeholder = ""

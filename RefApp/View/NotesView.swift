@@ -9,12 +9,12 @@
 import UIKit
 
 class NotesView: UIView {
-    
+    var graphics = GraphicClient()
     lazy var notesTextView: UITextView = {
         var textView = UITextView()
         textView.backgroundColor = #colorLiteral(red: 0.9770962596, green: 1, blue: 0.8907805085, alpha: 1)
         textView.textColor = UIColor.lightGray
-        textView.font = UIFont.systemFont(ofSize: 15)
+        textView.font = graphics.getHiraginoSansFont(W3: false, size: 16)
         return textView
     }()
     

@@ -40,6 +40,7 @@ class GameSummaryViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        notesView.notesTextView.delegate = self
         if rootViewController == .myAccount{
             customSegmentedBar = graphics.segmentedControlBar(titles: ["Summary", "Notes"],numberOfSegments: 2)
             views = [infoView,notesView]
@@ -188,7 +189,7 @@ class GameSummaryViewController: UIViewController {
     }
     
 }
-extension GameSummaryViewController: UITableViewDelegate, UITableViewDataSource{
+extension GameSummaryViewController: UITableViewDelegate, UITableViewDataSource, UITextViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == infoView.infoTableView{
             return gameStatisticInfo.count
@@ -203,8 +204,9 @@ extension GameSummaryViewController: UITableViewDelegate, UITableViewDataSource{
             cell = UITableViewCell.init(style: .subtitle, reuseIdentifier: "myAccountCell")
             cell.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
             cell.textLabel?.textColor = .white
+            cell.textLabel?.font = graphics.getHiraginoSansFont(W3: false, size: 20)
             cell.detailTextLabel?.textColor = .white
-            tableView.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
+            cell.detailTextLabel?.font = graphics.getHiraginoSansFont(W3: false, size: 17)
             let statToSet = gameStatisticInfo[indexPath.row]
             cell.textLabel?.adjustsFontSizeToFitWidth = true
             cell.textLabel?.text = statToSet
@@ -229,5 +231,21 @@ extension GameSummaryViewController: UITableViewDelegate, UITableViewDataSource{
         }
         return 150
     }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        notesView.resignFirstResponder()
+        return true
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            notesView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if notesView.notesTextView.text == "Tap to enter notes..." {
+            notesView.notesTextView.text = ""
+            notesView.notesTextView.textColor = .black
+        }
+    }
 }

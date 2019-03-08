@@ -9,12 +9,13 @@
 import UIKit
 
 class EventVCDetails: UIView {
-
+    var graphics = GraphicClient()
     lazy var teamsLabel: UILabel = {
         let label = UILabel()
         label.text = "\(Game.homeTeam) vs. \(Game.awayTeam)"
         label.textAlignment = .center
         label.textColor = .white
+        label.font = graphics.getHiraginoSansFont(W3: true, size: 20)
         return label
     }()
     
@@ -23,21 +24,25 @@ class EventVCDetails: UIView {
         label.text = "0 - 0"
         label.textAlignment = .center
         label.textColor = .white
+        label.font = graphics.getHiraginoSansFont(W3: true, size: 20)
         return label
     }()
     lazy var redCardImage: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "redCard")
+
         return image
     }()
     lazy var yellowCardImage: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "yellowCard")
+
         return image
     }()
     lazy var goalImage: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "goal")
+       
         return image
     }()
     lazy var yellowCardLabelHome: UILabel = {
@@ -45,6 +50,7 @@ class EventVCDetails: UIView {
         label.text = "Home:"
         label.textColor = .white
         label.numberOfLines = 5
+        label.font = graphics.getHiraginoSansFont(W3: true, size: 20)
         return label
     }()
     lazy var yellowCardLabelAway: UILabel = {
@@ -52,6 +58,7 @@ class EventVCDetails: UIView {
         label.text = "Away:"
         label.textColor = .white
         label.numberOfLines = 5
+        label.font = graphics.getHiraginoSansFont(W3: true, size: 20)
         return label
     }()
     lazy var goalLabelHome: UILabel = {
@@ -59,6 +66,7 @@ class EventVCDetails: UIView {
         label.text = "Home:"
         label.textColor = .white
         label.numberOfLines = 5
+        label.font = graphics.getHiraginoSansFont(W3: true, size: 20)
         return label
     }()
     lazy var goalLabelAway: UILabel = {
@@ -66,6 +74,7 @@ class EventVCDetails: UIView {
         label.text = "Away:"
         label.textColor = .white
         label.numberOfLines = 5
+        label.font = graphics.getHiraginoSansFont(W3: true, size: 20)
         return label
     }()
     lazy var redCardLabelHome: UILabel = {
@@ -73,6 +82,7 @@ class EventVCDetails: UIView {
         label.text = "Home:"
         label.textColor = .white
         label.numberOfLines = 5
+        label.font = graphics.getHiraginoSansFont(W3: true, size: 20)
         return label
     }()
     lazy var redCardLabelAway: UILabel = {
@@ -80,6 +90,7 @@ class EventVCDetails: UIView {
         label.text = "Away:"
         label.textColor = .white
         label.numberOfLines = 5
+        label.font = graphics.getHiraginoSansFont(W3: true, size: 20)
         return label
     }()
     override init(frame: CGRect) {

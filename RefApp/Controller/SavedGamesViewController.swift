@@ -9,6 +9,7 @@
 import UIKit
 
 class SavedGamesViewController: UIViewController {
+    var graphics = GraphicClient()
     var loadedGames = [Game]() {
         didSet{
             self.savedGamesTableView.reloadData()
@@ -41,6 +42,8 @@ class SavedGamesViewController: UIViewController {
                     self.loadedGames = games
                 }
             }
+        } else {
+            loadedGames = DataPeristanceModel.getGames()
         }
 //        if UserSession.loginStatus == .existingAccount{
 //            DatabaseManager.fetchSaveGames(vc: self, user: ) { (error, games) in
@@ -78,8 +81,14 @@ extension SavedGamesViewController: UITableViewDataSource, UITableViewDelegate{
         cell.backgroundColor = #colorLiteral(red: 0.1726308763, green: 0.1726359427, blue: 0.1726332307, alpha: 1)
         cell.textLabel?.text = loadedGame.gameName
         cell.detailTextLabel?.text = loadedGame.dateAndTime.description
+        cell.textLabel?.font = graphics.getHiraginoSansFont(W3: true, size: 20)
+        cell.detailTextLabel?.font = graphics.getHiraginoSansFont(W3: true, size: 17)
         print(loadedGame.homeTeam)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 125
     }
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        //TO DO: SET ALL GAME VARIABLE TO LOADEDGAMES AND SEGUE TO AWAY SCREEN

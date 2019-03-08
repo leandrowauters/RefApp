@@ -35,6 +35,7 @@ class HalfTimeViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         eventHalfTimeView.eventsTableView.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
         halfTimeTeamsLabel.text = "\(Game.homeTeam) Vs. \(Game.awayTeam)"
+        halfTimeTimeLabel.adjustsFontSizeToFitWidth = true
         halfTimeScoreLabel.text = "\(Game.homeScore) - \(Game.awayScore)"
         halfTimeTimeLabel.text = "\(MainTimer.timeString(time: gameRunningTime))"
         subHalftimeView.doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)

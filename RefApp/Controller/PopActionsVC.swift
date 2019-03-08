@@ -137,7 +137,7 @@ class PopActionsVC: UIViewController {
             destination.modalPresentationStyle = .overCurrentContext
             present(destination, animated: true, completion: nil)
         case 3:
-            let goal = Events.init(type: TypeOfIncident.goal.rawValue, playerNum: playerSelected,team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1))
+            let goal = Events.init(type: TypeOfIncident.goal.rawValue, playerNum: playerSelected,team: teamSelected, half: Game.gameHalf, subIn: nil, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1))
                 Game.events.append(goal)
             if teamSide == .home {
                 timerDelegate?.keepStartButtonDisable(disable: true)

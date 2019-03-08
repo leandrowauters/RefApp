@@ -12,7 +12,7 @@ class GameLengthVC: UIViewController {
     private var gameLength = Game.length
     private var usersession: UserSession?
     weak var gameDelegate: GameDelegate?
-    
+    var graphics = GraphicClient()
     var selecteGameLenght = "Not Selected" {
         didSet{
             myTableView.reloadData()
@@ -64,11 +64,14 @@ extension GameLengthVC: UITableViewDataSource{
             
 
             cell.textLabel?.text = ("\(chosenGamelength) minutes")
+            cell.textLabel?.font = graphics.getHiraginoSansFont(W3: true, size: 17)
             cellToReturn = cell
         } else if chosenGamelength == 0 {
             let cell = myTableView.dequeueReusableCell(withIdentifier: "other", for: indexPath)
             cell.textLabel?.text = "Enter Other: "
+            cell.textLabel?.font = graphics.getHiraginoSansFont(W3: true, size: 17)
             cell.detailTextLabel?.textColor = .lightGray
+            cell.detailTextLabel?.font = graphics.getHiraginoSansFont(W3: true, size: 17)
             cell.detailTextLabel?.text = "\(selecteGameLenght)"
             cellToReturn = cell
         }

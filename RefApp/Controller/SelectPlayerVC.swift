@@ -152,7 +152,7 @@ class SelectPlayerVC: UIViewController, UITextFieldDelegate {
 //            Game.awayPlayers = Game.awayPlayersSorted
         }
 //        Game.subs.append((In: subTextField.text!, Out: String(selectedPlayer) ))
-        let sub = Events.init(type: TypeOfIncident.sub.rawValue, playerNum: selectedPlayer, team: teamSelected, half: Game.gameHalf, subIn: Int(text)!, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1))
+        let sub = Events.init(type: TypeOfIncident.sub.rawValue, playerNum: selectedPlayer, team: teamSelected, half: Game.gameHalf, subIn: Int(text)!, timeStamp: MainGameVC.timeStamp, color: #colorLiteral(red: 0.4119389951, green: 0.8247622848, blue: 0.9853010774, alpha: 1))
         Game.events.append(sub)
         print(Game.homePlayers)
 

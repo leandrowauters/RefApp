@@ -80,8 +80,7 @@ class GraphicClient {
                 button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                 button.layer.borderWidth = 2.0
                 button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
-                button.titleLabel?.font = UIFont.init(name: "Verdana", size: 33)// THIS SETS FONT
-                button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 33)
+                button.titleLabel?.font = getHiraginoSansFont(W3: false, size: 30)
                 //CREAT BUTTONS FOR EACH INSTANCE (YELLOW, RED, ....)
                 //            button.layer.cornerRadius = 0.5 * button.bounds.size.width
                 button.layer.masksToBounds = true
@@ -111,8 +110,7 @@ class GraphicClient {
         button.layer.borderWidth = 2.0
         button.backgroundColor = color
         button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
-        button.titleLabel?.font = UIFont.init(name: "Verdana", size: 37)// THIS SETS FONT
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 37)
+        button.titleLabel?.font = getHiraginoSansFont(W3: false, size: 30)
     }
     
     func addShadowToView(viewForShadow: UIView) {
@@ -148,11 +146,11 @@ class GraphicClient {
         segmentedControl.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
         segmentedControl.tintColor = .clear
         segmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20),
+            NSAttributedString.Key.font : getHiraginoSansFont(W3: true, size: 18),
             NSAttributedString.Key.foregroundColor: UIColor.white
             ], for: .normal)
         segmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 22.0),
+            NSAttributedString.Key.font : getHiraginoSansFont(W3: false, size: 20),
             NSAttributedString.Key.foregroundColor: UIColor.orange
             ], for: .selected)
         
@@ -186,4 +184,38 @@ class GraphicClient {
         animatedViewRail.heightAnchor.constraint(equalToConstant: 5).isActive = true
         animatedViewRail.widthAnchor.constraint(equalTo: customSegmentedBar.widthAnchor).isActive = true
     }
+    func getHiraginoSansFont(W3: Bool, size: Int) -> UIFont{
+        if W3{
+            if let hiraginoSansW3 = UIFont(name: "HiraginoSans-W3", size: CGFloat(size)) {
+                return hiraginoSansW3
+            }
+        } else {
+            if let hiraginoSansW6 = UIFont(name: "HiraginoSans-W6", size: CGFloat(size)) {
+                return hiraginoSansW6
+            }
+        }
+        return UIFont()
+    }
+    func attributedText(wordsToBold: String, string: String, fontSize: CGFloat) -> NSAttributedString {
+        
+        let string = string as NSString
+
+        
+        // *** Create instance of `NSMutableParagraphStyle`
+        let paragraphStyle = NSMutableParagraphStyle()
+        
+        // *** set LineSpacing property in points ***
+        paragraphStyle.lineSpacing = 15 // Whatever line spacing you want in points
+        let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedString.Key.font: getHiraginoSansFont(W3: true, size: Int(fontSize))])
+        
+        let boldFontAttribute = [NSAttributedString.Key.font: getHiraginoSansFont(W3: false, size: Int(fontSize))]
+        
+        // Part of string to be bold
+        attributedString.addAttributes(boldFontAttribute, range: string.range(of: wordsToBold))
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        
+        // 4
+        return attributedString
+    }
+
 }

@@ -16,7 +16,7 @@ class SubHalfTimeView: UIView {
         var label = UILabel()
         label.text = "Enter Substitution"
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.font = graphics.getHiraginoSansFont(W3: false, size: 20)
         label.textAlignment = .center
         return label
     }()
@@ -28,7 +28,7 @@ class SubHalfTimeView: UIView {
         textField.attributedPlaceholder = NSAttributedString(string: "In",attributes:[NSAttributedString.Key.foregroundColor: UIColor.white])
         textField.textAlignment = .center
         textField.borderStyle = .line
-        textField.font = UIFont.systemFont(ofSize: 35)
+        textField.font = graphics.getHiraginoSansFont(W3: true, size: 35)
         textField.layer.borderWidth = 2
         textField.layer.borderColor = UIColor.white.cgColor
         return textField
@@ -41,7 +41,7 @@ class SubHalfTimeView: UIView {
            textField.attributedPlaceholder = NSAttributedString(string: "Out",attributes:[NSAttributedString.Key.foregroundColor: UIColor.white])
         textField.textAlignment = .center
         textField.borderStyle = .line
-        textField.font = UIFont.systemFont(ofSize: 35)
+        textField.font = graphics.getHiraginoSansFont(W3: true, size: 35)
         textField.layer.borderWidth = 2
         textField.layer.borderColor = UIColor.white.cgColor
         return textField
@@ -86,7 +86,7 @@ class SubHalfTimeView: UIView {
         var label = UILabel()
         label.text = "4"
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 35)
+        label.font = graphics.getHiraginoSansFont(W3: true, size: 35)
         label.textAlignment = .center
         return label
     }()
@@ -95,7 +95,7 @@ class SubHalfTimeView: UIView {
         var label = UILabel()
         label.text = "5"
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 35)
+        label.font = graphics.getHiraginoSansFont(W3: true, size: 35)
         label.textAlignment = .center
         return label
     }()

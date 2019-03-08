@@ -18,12 +18,13 @@ class EventsTableViewCell: UITableViewCell {
     lazy var cellText: UILabel = {
        var label = UILabel()
         label.text = "Label"
+        label.font = graphics.getHiraginoSansFont(W3: false, size: 20)
         label.textColor = .white
         return label
     }()
     lazy var cellDetail: UILabel = {
        var label = UILabel()
-        label.text = "Label"
+        label.font = graphics.getHiraginoSansFont(W3: true, size: 17)
         label.textColor = .white
         return label
     }()

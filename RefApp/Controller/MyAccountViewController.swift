@@ -208,6 +208,7 @@ extension MyAccountViewController: UITableViewDelegate, UITableViewDataSource{
         cell.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
         cell.textLabel?.textColor = .white
         cell.detailTextLabel?.textColor = .white
+        cell.textLabel?.font = graphics.getHiraginoSansFont(W3: true, size: 20)
         tableView.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
         if tableView == infoView.infoTableView{
         let statToSet = gameStatisticInfo[indexPath.row]
@@ -217,6 +218,7 @@ extension MyAccountViewController: UITableViewDelegate, UITableViewDataSource{
             let dataToSet = gameData[indexPath.row]
             cell.textLabel?.text = "\(dataToSet.homeTeam) vs. \(dataToSet.awayTeam)"
             cell.detailTextLabel?.text = dataToSet.dateAndTime
+            cell.detailTextLabel?.font = graphics.getHiraginoSansFont(W3: true, size: 15)
             cell.accessoryType = .disclosureIndicator
         }
         return cell
@@ -227,6 +229,9 @@ extension MyAccountViewController: UITableViewDelegate, UITableViewDataSource{
         vc.gameData = gameData[indexPath.row]
         vc.rootViewController = .myAccount
         present(vc, animated: true, completion: nil)
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 125
     }
     
 }

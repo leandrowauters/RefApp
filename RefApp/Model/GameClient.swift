@@ -71,21 +71,7 @@ struct GameClient {
             return "No"
         }
     }
-    func attributedText(wordsToBold: String, string: String, fontSize: CGFloat) -> NSAttributedString {
-        
-        let string = string as NSString
-        
-        let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize: fontSize)])
-        
-        let boldFontAttribute = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: fontSize)]
-        
-        // Part of string to be bold
-        attributedString.addAttributes(boldFontAttribute, range: string.range(of: wordsToBold))
 
-        
-        // 4
-        return attributedString
-    }
     func checkForYellowCardDuplicates(playerToCheck: Int, yellowCardPlayers: [Int]) -> Bool {
         var count = 0
         for player in yellowCardPlayers {

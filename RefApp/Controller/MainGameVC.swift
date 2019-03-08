@@ -114,6 +114,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         }
     }
     func setupLabels() {
+        startButton.titleLabel?.adjustsFontSizeToFitWidth = true
         scoreLabel.text = "\(Game.homeTeam) \(Game.homeScore) - \(Game.awayTeam) \(Game.awayScore)"
         homeTeam.text = Game.homeTeam
         awayTeam.text = Game.awayTeam
@@ -140,7 +141,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         }
         if MainGameVC.halfTime {
             startButton.setTitle("Begin 2nd Half", for: .normal)
-            startButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+            startButton.titleLabel?.font = graphics.getHiraginoSansFont(W3: false, size: 25)
             graphics.setWheelToZero(view: self.view, radius: viewWidth)
 //            self.startButton.isHidden = false
 //            self.startButton.isEnabled = true
@@ -410,6 +411,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
                 vc.gameData = gameData
                 vc.gameRunningTime = MainTimer.time
                 self.timer.suspend()
+                MainTimer.time = 0
                 vc.modalPresentationStyle = .overFullScreen
                 self.present(vc, animated: true, completion: nil)
             }))

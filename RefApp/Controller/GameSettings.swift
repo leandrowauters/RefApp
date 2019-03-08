@@ -31,6 +31,7 @@ class GameSettings: UITableViewController {
     private var usersession: UserSession?
     var intention: Intention?
     var game: Game!
+    var graphics = GraphicClient()
     override func viewDidLoad() {
         super.viewDidLoad()
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
@@ -210,11 +211,11 @@ class GameSettings: UITableViewController {
         cell.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 1)
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
-        headerView.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.1882352941, blue: 0.1882352941, alpha: 1)
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 45))
+        headerView.backgroundColor = #colorLiteral(red: 0.1374986172, green: 0.1366885006, blue: 0.1381260157, alpha: 1)
         let headerLabel = UILabel(frame: CGRect(x: 30, y: 5, width:
             tableView.bounds.size.width, height: tableView.bounds.size.height))
-        headerLabel.font = UIFont.systemFont(ofSize: 17.0)
+        headerLabel.font = graphics.getHiraginoSansFont(W3: false, size: 19)
         headerLabel.textColor = UIColor.white
         headerLabel.text = self.tableView(self.tableView, titleForHeaderInSection: section)
         headerLabel.sizeToFit()

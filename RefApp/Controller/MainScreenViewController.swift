@@ -23,7 +23,6 @@ class MainScreenViewController: UIViewController {
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         userdDidLoginDelegate = self
         checkForLoginStatus()
-        setupButtons(buttons: [newGameButton, loadGameButton])
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
@@ -37,13 +36,7 @@ class MainScreenViewController: UIViewController {
         }
     }
 
-    func setupButtons(buttons: [UIButton]) {
-        for button in buttons {
-            button.layer.borderWidth = 2
-            button.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            button.layer.cornerRadius = 20
-        }
-    }
+
     
     @IBAction func barButtonPressed(_ sender: UIBarButtonItem) {
         

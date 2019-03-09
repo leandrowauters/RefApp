@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "subLightBlue48.png",
+      "filename" : "sub100.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "sub200.png",
       "scale" : "2x"
     },
     {

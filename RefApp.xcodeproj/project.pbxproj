@@ -59,6 +59,7 @@
 		D5D03CDE221E3FFD00F04E03 /* PreviousGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5D03CDD221E3FFD00F04E03 /* PreviousGamesView.xib */; };
 		D5D7194721FA674C003F2BF6 /* HomeAwayViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D7194621FA674C003F2BF6 /* HomeAwayViewDelegate.swift */; };
 		D5E76063221346FC00450F2E /* EventVCDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E76062221346FC00450F2E /* EventVCDetails.swift */; };
+		D5EBBF7D22357ABF00564BBF /* MyAccountPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EBBF7C22357ABF00564BBF /* MyAccountPopViewController.swift */; };
 		D5EDEBDF2228AD9100D12FF5 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EDEBDE2228AD9100D12FF5 /* StorageManager.swift */; };
 		D5EDEBE12228ADB700D12FF5 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EDEBE02228ADB700D12FF5 /* StorageKeys.swift */; };
 		D5EDEBE82229E6EF00D12FF5 /* CountryFlagAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EDEBE72229E6EF00D12FF5 /* CountryFlagAPIClient.swift */; };
@@ -130,6 +131,7 @@
 		D5D03CDD221E3FFD00F04E03 /* PreviousGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviousGamesView.xib; sourceTree = "<group>"; };
 		D5D7194621FA674C003F2BF6 /* HomeAwayViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAwayViewDelegate.swift; sourceTree = "<group>"; };
 		D5E76062221346FC00450F2E /* EventVCDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVCDetails.swift; sourceTree = "<group>"; };
+		D5EBBF7C22357ABF00564BBF /* MyAccountPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountPopViewController.swift; sourceTree = "<group>"; };
 		D5EDEBDE2228AD9100D12FF5 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		D5EDEBE02228ADB700D12FF5 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
 		D5EDEBE72229E6EF00D12FF5 /* CountryFlagAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryFlagAPIClient.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				D5A62AA721E526C700C9183B /* SavedGameDetailedViewController.swift */,
 				D5A62AA521E4318500C9183B /* SavedGamesViewController.swift */,
 				D57420CC22173EC0006D1CCB /* MyAccountViewController.swift */,
+				D5EBBF7C22357ABF00564BBF /* MyAccountPopViewController.swift */,
 				D57420C8221739EA006D1CCB /* CreateAccountViewController.swift */,
 				D5A8518B22166ABC0019AFC0 /* SignInViewController.swift */,
 				D5A8518F22166C060019AFC0 /* MainScreenViewController.swift */,
@@ -537,6 +540,7 @@
 				D55DD9322220A423009843D2 /* GameData.swift in Sources */,
 				D544EC8F21C8498E004B285C /* NamesInputVC.swift in Sources */,
 				D5BDD17F21EAB55C0078408E /* DataPersisitanceManager.swift in Sources */,
+				D5EBBF7D22357ABF00564BBF /* MyAccountPopViewController.swift in Sources */,
 				D529FE0121B4755F00DDC366 /* DatePickerVC.swift in Sources */,
 				D5FA730921EFF53D007F77CE /* HomePlayersSelectionViewController.swift in Sources */,
 				D529FDFF21B4748C00DDC366 /* TeamsInputVC.swift in Sources */,

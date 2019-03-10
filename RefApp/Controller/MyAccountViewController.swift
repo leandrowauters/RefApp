@@ -112,9 +112,12 @@ class MyAccountViewController: UIViewController {
         }
     }
     @IBAction func signOutPressed(_ sender: UIButton) {
-        usersession.signOut()
-        UserSession.loginStatus = .newAccount
-        userDidLoginDelegate?.userDidLogin()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let myAccountPopVC = storyboard.instantiateViewController(withIdentifier: "MyAccountPopVC") as? MyAccountPopViewController else {return}
+        myAccountPopVC.modalPresentationStyle = .overCurrentContext
+        myAccountPopVC.userLoggedIn = userLoggedIn
+        myAccountPopVC.userDidLoginDelegate = self.userDidLoginDelegate
+        self.present(myAccountPopVC, animated: true, completion: nil)
     }
     @IBAction func closeWindowPressed(_ sender: UIButton) {
         if userLoggedIn{

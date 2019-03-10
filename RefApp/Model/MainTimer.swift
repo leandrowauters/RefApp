@@ -12,6 +12,7 @@ class MainTimer {
     let timeInterval: TimeInterval
     static var time = 0.0
     static var totalTime = 0.0
+    var currentBackgroundDate = NSDate()
     init(timeInterval: TimeInterval) {
         self.timeInterval = timeInterval
     }
@@ -58,14 +59,20 @@ class MainTimer {
     }
     
     func restartTimer(){
+        if state == .suspended{
+            return
+        }
+        let difference = self.currentBackgroundDate.timeIntervalSince(NSDate() as Date)
+        let timeSince = abs(difference)
+        MainTimer.time += timeSince
+        timer.resume()
+    }
+    func pauseTime(){
+        if state == .suspended {
+            return
+        }
         timer.suspend()
-        state = .restated
-//        MainTimer.time = -1
-        //        self.timer.eventHandler = {
-        //            self.action()
-        //            MainTimer.time += 1
-        //        }
-        //        self.timer.resume()
+        currentBackgroundDate = NSDate()
     }
     static func timeString(time:TimeInterval) -> String {
         let hours = Int(time) / 3600

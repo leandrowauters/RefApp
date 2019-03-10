@@ -15,7 +15,7 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     var timer = MainTimer(timeInterval: 0.0001)
     weak var delegate: TimerDelegate!
     weak var eventDelegte: EventDelegate!
-    var currentBackgroundDate = NSDate()
+    
     var gameClient = GameClient()
     
     lazy var viewWidth = (timer2View.bounds.height / 2) - 30
@@ -68,7 +68,6 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         homeView.HomePlayersButtons.forEach{$0.isEnabled = false}
         awayView.awayPlayersButtons.forEach{$0.isEnabled = false}
-        print("The view height is: \(timer2View.bounds.height)")
         NotificationCenter.default.addObserver(self, selector: #selector(pauseTimer), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startApp) , name: UIApplication.didBecomeActiveNotification, object: nil)
         for index in 0...timerLabels.count - 1 {
@@ -140,9 +139,14 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
             halfLabel.text = "2nd Half"
         }
         if MainGameVC.halfTime {
+            homeView.HomePlayersButtons.forEach{$0.isEnabled = true}
+            awayView.awayPlayersButtons.forEach{$0.isEnabled = true}
             startButton.setTitle("Begin 2nd Half", for: .normal)
             startButton.titleLabel?.font = graphics.getHiraginoSansFont(W3: false, size: 25)
+            graphics.hideTimerWheel(isHidden: true)
             graphics.setWheelToZero(view: self.view, radius: viewWidth)
+            timer2View.isHidden = true
+            
 //            self.startButton.isHidden = false
 //            self.startButton.isEnabled = true
             MainGameVC.halfTime = false
@@ -187,18 +191,10 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
         timer.resume()
     }
     @objc func pauseTimer() {
-        timer.suspend()
-        currentBackgroundDate = NSDate()
+        timer.pauseTime()
     }
     @objc func startApp(){
-        let difference = self.currentBackgroundDate.timeIntervalSince(NSDate() as Date)
-        let timeSince = abs(difference)
-        MainTimer.time += timeSince
-        timer.eventHandler = {
-            MainTimer.time += 0.0001
-            self.action()
-        }
-        timer.resume()
+        timer.restartTimer()
     }
 
 
@@ -328,9 +324,9 @@ class MainGameVC: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func startButton(_ sender: UIButton) {
-        print("start was pressed")
         changeTimerButton.isHidden = false
         graphics.setWheelToZero(view: self.view, radius: viewWidth)
+        graphics.hideTimerWheel(isHidden: false)
         homeView.HomePlayersButtons.forEach{$0.isEnabled = true}
         awayView.awayPlayersButtons.forEach{$0.isEnabled = true}
         if timer.state == .suspended {

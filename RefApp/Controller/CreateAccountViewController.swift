@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 class CreateAccountViewController: UIViewController {
     
     private lazy var imagePickerController: UIImagePickerController = {

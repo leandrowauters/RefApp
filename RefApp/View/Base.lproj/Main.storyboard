@@ -1560,14 +1560,14 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RefLogo" translatesAutoresizingMaskIntoConstraints="NO" id="8TE-Ny-Xrm">
-                                <rect key="frame" x="51.666666666666657" y="203.33333333333334" width="310.66666666666674" height="73.333333333333343"/>
+                                <rect key="frame" x="51.666666666666657" y="199.33333333333334" width="310.66666666666674" height="73.333333333333343"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="5ph-4M-3xT" firstAttribute="centerY" secondItem="qaf-0u-vK1" secondAttribute="centerY" id="8MN-I2-vg6"/>
                             <constraint firstItem="ala-Qy-fhd" firstAttribute="centerX" secondItem="5ph-4M-3xT" secondAttribute="centerX" id="ERO-EG-Iv7"/>
-                            <constraint firstItem="8TE-Ny-Xrm" firstAttribute="centerY" secondItem="qaf-0u-vK1" secondAttribute="centerY" multiplier="0.6" id="Hmr-Wg-Ttm"/>
+                            <constraint firstItem="8TE-Ny-Xrm" firstAttribute="centerY" secondItem="qaf-0u-vK1" secondAttribute="centerY" multiplier="0.59" id="Hmr-Wg-Ttm"/>
                             <constraint firstItem="8TE-Ny-Xrm" firstAttribute="height" secondItem="nXx-gb-Dp7" secondAttribute="height" multiplier="0.1" id="WgM-dZ-PQO"/>
                             <constraint firstItem="ala-Qy-fhd" firstAttribute="top" secondItem="5ph-4M-3xT" secondAttribute="bottom" constant="30" id="Yvp-OR-SAo"/>
                             <constraint firstItem="ala-Qy-fhd" firstAttribute="width" secondItem="5ph-4M-3xT" secondAttribute="width" id="eFm-SZ-gLU"/>
@@ -1830,13 +1830,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="unt-oW-IWe">
-                                <rect key="frame" x="41.333333333333343" y="120.33333333333331" width="331.33333333333326" height="515.33333333333348"/>
+                                <rect key="frame" x="41.333333333333343" y="158.33333333333337" width="331.33333333333326" height="515"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pqw-At-TDn">
-                                <rect key="frame" x="20" y="20" width="30" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="X">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pqw-At-TDn">
+                                <rect key="frame" x="20" y="20" width="100" height="100"/>
+                                <state key="normal" image="close">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1848,7 +1847,7 @@
                         <constraints>
                             <constraint firstItem="unt-oW-IWe" firstAttribute="height" secondItem="68s-fW-oni" secondAttribute="height" multiplier="0.7" id="7dK-PR-J2k"/>
                             <constraint firstItem="Pqw-At-TDn" firstAttribute="top" secondItem="TsG-S4-RDa" secondAttribute="top" id="EcJ-Dd-MbE"/>
-                            <constraint firstItem="unt-oW-IWe" firstAttribute="centerY" secondItem="TsG-S4-RDa" secondAttribute="centerY" id="MIW-DZ-xRa"/>
+                            <constraint firstItem="unt-oW-IWe" firstAttribute="centerY" secondItem="TsG-S4-RDa" secondAttribute="centerY" multiplier="1.1" id="MIW-DZ-xRa"/>
                             <constraint firstItem="unt-oW-IWe" firstAttribute="width" secondItem="68s-fW-oni" secondAttribute="width" multiplier="0.8" id="SMF-Mz-ARe"/>
                             <constraint firstItem="unt-oW-IWe" firstAttribute="centerX" secondItem="TsG-S4-RDa" secondAttribute="centerX" id="l2x-Dk-F8X"/>
                             <constraint firstItem="Pqw-At-TDn" firstAttribute="leading" secondItem="TsG-S4-RDa" secondAttribute="leading" constant="20" id="xY7-ng-HDe"/>
@@ -2386,10 +2385,10 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQP-bf-csD">
-                                <rect key="frame" x="319" y="7.6666666666666643" width="75" height="75"/>
+                                <rect key="frame" x="344" y="20" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="TTf-uh-uwJ"/>
-                                    <constraint firstAttribute="height" constant="75" id="sgY-cs-MC4"/>
+                                    <constraint firstAttribute="width" constant="50" id="TTf-uh-uwJ"/>
+                                    <constraint firstAttribute="height" constant="50" id="sgY-cs-MC4"/>
                                 </constraints>
                                 <state key="normal" image="icons8-more_filled">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2758,7 +2757,7 @@
     </scenes>
     <resources>
         <image name="RefLogo" width="144" height="36"/>
-        <image name="close" width="25" height="25"/>
+        <image name="close" width="100" height="100"/>
         <image name="deleteKey3" width="36" height="36"/>
         <image name="enterKey" width="36" height="36"/>
         <image name="goal" width="100" height="100"/>

@@ -81,6 +81,9 @@ class MainTimer {
         return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
     static func getTimeInString(time: Double) -> String {
+        guard !(time.isNaN || time.isInfinite) else {
+            return "00:00:00"
+        }
         let hours = Int(time) / 3600
         let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60

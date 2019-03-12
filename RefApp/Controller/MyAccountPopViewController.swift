@@ -11,7 +11,9 @@ import UIKit
 class MyAccountPopViewController: UIViewController {
     private var usersession: UserSession!
     weak var userDidLoginDelegate: UserDidLogInDelegate?
+    weak var userDidUpdateDelegate: UserDidUpdateDelegate?
     var userLoggedIn = Bool()
+    var referee: Referee!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,19 +26,41 @@ class MyAccountPopViewController: UIViewController {
     @objc func goBack(){
         dismiss(animated: true, completion: nil)
     }
+    @IBAction func changePasswordPressed(_ sender: UIButton) {
+        
+    }
+    
+    
     @IBAction func signOutPressed(_ sender: Any) {
         showAlert(title: "Sign out", message: "Are you sure?", style: .alert, customActionTitle: "Yes", cancelActionTitle: "No") { (action) in
             self.usersession.signOut()
             UserSession.loginStatus = .newAccount
-            self.userDidLoginDelegate?.userDidLogin()
+//            self.userDidLoginDelegate?.userDidLogin()
         }
     }
     
     @IBAction func editAccountPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let createAccountVC = storyboard.instantiateViewController(withIdentifier: "CreateAccountViewController") as? CreateAccountViewController else {return}
+        createAccountVC.intention = .edit
+        createAccountVC.referee = referee
+        createAccountVC.modalPresentationStyle = .overCurrentContext
+        createAccountVC.userDidUpdatedDelegate = self.userDidUpdateDelegate
+        present(createAccountVC, animated: true, completion: nil)
         
     }
     @IBAction func deletePressed(_ sender: Any) {
-        
+        showAlert(title: "Delete", message: "Are you sure?", style: .alert, customActionTitle: "Yes", cancelActionTitle: "No") { (action) in
+            if let user = self.usersession.getCurrentUser(){
+                user.delete(completion: { (error) in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        print("User Deleted")
+                    }
+                })
+            }
+        }
     }
     
 

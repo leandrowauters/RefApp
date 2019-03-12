@@ -288,6 +288,7 @@
 			children = (
 				D5EDEBE92229E71400D12FF5 /* Country.swift */,
 				D5FBD98221B23548005D89F4 /* Game.swift */,
+				D5EDEBEB2229F18700D12FF5 /* Referee.swift */,
 				D55DD9312220A423009843D2 /* GameData.swift */,
 				D550683121CDE61800F3C6F4 /* GameClient.swift */,
 				D5D03CDB221E3FBF00F04E03 /* Statistics.swift */,
@@ -299,7 +300,6 @@
 				D5CDA72121ED267000A59133 /* GraphicClient.swift */,
 				D5D7194621FA674C003F2BF6 /* HomeAwayViewDelegate.swift */,
 				D55DD9372220F3F9009843D2 /* UserDefaultManager.swift */,
-				D5EDEBEB2229F18700D12FF5 /* Referee.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -332,8 +332,8 @@
 				D5FBD98421B2358D005D89F4 /* GameSettings.swift */,
 				D5A62AA721E526C700C9183B /* SavedGameDetailedViewController.swift */,
 				D5A62AA521E4318500C9183B /* SavedGamesViewController.swift */,
-				D57420CC22173EC0006D1CCB /* MyAccountViewController.swift */,
 				D5EBBF7C22357ABF00564BBF /* MyAccountPopViewController.swift */,
+				D57420CC22173EC0006D1CCB /* MyAccountViewController.swift */,
 				D57420C8221739EA006D1CCB /* CreateAccountViewController.swift */,
 				D5A8518B22166ABC0019AFC0 /* SignInViewController.swift */,
 				D5A8518F22166C060019AFC0 /* MainScreenViewController.swift */,

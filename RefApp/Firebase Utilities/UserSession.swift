@@ -30,6 +30,13 @@ protocol UserSessionSignInDelegate: AnyObject {
 protocol UserDidLogInDelegate: AnyObject {
     func userDidLogin()
 }
+protocol UserSessionUpdateDelegate: AnyObject {
+    func didRecieveUpdateError(_ usersession: UserSession, error: Error)
+    func didUpdateExistingUser(_ usersession: UserSession, user: User)
+}
+protocol UserDidUpdateDelegate: AnyObject {
+    func userDidUpdate(referee: Referee)
+}
 final class UserSession {
     static var loginStatus: AccountLoginState = .newAccount
     private var storageManager: StorageManager!
@@ -37,7 +44,9 @@ final class UserSession {
     weak var usersessionSignOutDelegate: UserSessionSignOutDelegate?
     weak var usersessionSignInDelegate: UserSessionSignInDelegate?
     weak var userDidLoginDelegate: UserDidLogInDelegate?
-
+    weak var userUpdateDelegate: UserSessionUpdateDelegate?
+    weak var userDidUpdateDelegate: UserDidUpdateDelegate?
+    
     public func createNewAccount(email: String, password: String, confirmPassoword: String, firstName: String, lastName: String, country: String?) {
         Auth.auth().createUser(withEmail: email, password: password) { (authDataResult, error) in
             if let error = error {
@@ -78,7 +87,31 @@ final class UserSession {
             }
         }
     }
-    
+    public func updateRefereeInfo(email: String, firstName: String, lastName: String, country: String?){
+        if let user = getCurrentUser(){
+            let request = user.createProfileChangeRequest()
+            request.displayName = "\(lastName), \(firstName)"
+            request.commitChanges { (error) in
+                if let error = error {
+                    self.userUpdateDelegate?.didRecieveUpdateError(self, error: error)
+                    
+                } else {
+                    self.userUpdateDelegate?.didUpdateExistingUser(self, user: user)
+                    guard let username = user.email?.components(separatedBy: "@").first else {
+                        print("no email entered")
+                        return
+                    }
+                    DatabaseManager.firebaseDB.collection(DatabaseKeys.UsersCollectionKey).document(user.uid.description).updateData(["email" : user.email ?? "","displayName" : user.displayName ?? "","firstName"   : firstName, "lastName"    : lastName, "username"    : username,"country"     : country ?? ""], completion: { (error) in
+                        if let error = error {
+                            print("error adding authenticated user to the database: \(error)")
+                        }
+                    })
+                    
+                    
+                }
+            }
+        }
+    }
     public func getCurrentUser() -> User? {
         return Auth.auth().currentUser
     }

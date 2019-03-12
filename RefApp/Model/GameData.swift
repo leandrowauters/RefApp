@@ -40,7 +40,7 @@ class GameData {
     static func getEndOFGameData(gameData: GameData) -> [String] {
         let spaces = String(repeating: " ", count: 4)
         let winner = "Winner:\(spaces)\(gameData.winner)"
-        let totalRunningTime = "Running time:\(spaces)\(MainTimer.getTimeInString(time: gameData.totalRunningTime))"
+        let totalRunningTime = "Duration:\(spaces)\(MainTimer.getTimeInString(time: gameData.totalRunningTime))"
         let totalInjuryTime = "Total injury time:\(spaces)\(MainTimer.getTimeInString(time: gameData.totalInjuryTimeGiven))"
         let homeYellowCards = "Home yellow cards:\(spaces)\(gameData.homeYellowCardPlayers.count)"
         let awayYellowCards = "Away yellow cards:\(spaces)\(gameData.awayYellowCardPlayers.count)"
@@ -51,7 +51,7 @@ class GameData {
     static func getGameData(gameData: GameData) -> [String]{
         let spaces = String(repeating: " ", count: 4)
         let gameClient = GameClient()
-        let totalRunningTime = "Running time:\(spaces)\(MainTimer.getTimeInString(time: gameData.totalRunningTime))"
+        let totalRunningTime = "Duration:\(spaces)\(MainTimer.getTimeInString(time: gameData.totalRunningTime))"
         let totalInjuryTime = "Total injury time:\(spaces)\(MainTimer.getTimeInString(time: gameData.totalInjuryTimeGiven))"
         let homeYellowCards = "Home yellow cards:\(spaces)\(gameData.homeYellowCardPlayers.count)"
         let awayYellowCards = "Away yellow cards:\(spaces)\(gameData.awayYellowCardPlayers.count)"

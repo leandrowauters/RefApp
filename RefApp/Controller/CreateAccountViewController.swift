@@ -26,9 +26,18 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet weak var profileImageButton: UIButton!
     @IBOutlet weak var conteinerView: UIView!
     
+    @IBOutlet var labelsTohide: [UILabel]!
+    @IBOutlet var editButtons: [UIButton]!
+    
+    @IBOutlet weak var createButton: UIButton!
+    
+    
     private var usersession: UserSession!
     private var storageManager: StorageManager!
     weak var userDidLoginDelegate: UserDidLogInDelegate?
+    weak var userDidUpdatedDelegate: UserDidUpdateDelegate?
+    var intention: Intention!
+    var referee: Referee!
     private var userImage: UIImage?
     private var displayName: String!
     override func viewDidLoad() {
@@ -42,6 +51,8 @@ class CreateAccountViewController: UIViewController {
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         storageManager = (UIApplication.shared.delegate as! AppDelegate).storageManager
         usersession.userSessionAccountDelegate = self
+        usersession.userUpdateDelegate = self
+        setupUI()
         storageManager.delegate = self
         let screenTap = UITapGestureRecognizer.init(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(screenTap)
@@ -54,6 +65,39 @@ class CreateAccountViewController: UIViewController {
         super.viewWillDisappear(true)
         unregisterKeyboardNotifications()
     }
+    func setupUI(){
+        
+        if intention == .edit {
+            if let imageURL = referee.imageURL{
+                profileImageButton.kf.setImage(with: URL(string: imageURL), for: .normal)
+            }
+            createButton.translatesAutoresizingMaskIntoConstraints = false
+            createButton.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 40).isActive = true
+            createButton.centerXAnchor.constraint(equalTo: emailTextField.centerXAnchor).isActive = true
+            createButton.widthAnchor.constraint(equalTo: emailTextField.widthAnchor).isActive = true
+            createButton.setTitle("Done", for: .normal)
+            firstNameTextField.isEnabled = false
+            firstNameTextField.text = referee.firstName
+            firstNameTextField.textColor = #colorLiteral(red: 0.1726308763, green: 0.1726359427, blue: 0.1726332307, alpha: 1)
+            lastNameTextField.isEnabled = false
+            lastNameTextField.text = referee.lastName
+            lastNameTextField.textColor = #colorLiteral(red: 0.1726308763, green: 0.1726359427, blue: 0.1726332307, alpha: 1)
+            countryTextField.isEnabled = false
+            countryTextField.text = referee.country
+            countryTextField.textColor = #colorLiteral(red: 0.1726308763, green: 0.1726359427, blue: 0.1726332307, alpha: 1)
+            emailTextField.isEnabled = false
+            emailTextField.text = referee.email
+            emailTextField.textColor = #colorLiteral(red: 0.1726308763, green: 0.1726359427, blue: 0.1726332307, alpha: 1)
+            labelsTohide.forEach{$0.isHidden = true}
+            passwordTextField.isHidden = true
+            confirmPasswordTextField.isHidden = true
+            editButtons.forEach{$0.isHidden = false}
+            
+        } else {
+            editButtons.forEach{$0.isHidden = true}
+        }
+    }
+
     private func registerKeyboardNotification(){
         NotificationCenter.default.addObserver(self, selector: #selector(willShowKeyboard(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willHideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -75,6 +119,27 @@ class CreateAccountViewController: UIViewController {
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
+    @IBAction func editPressed(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            firstNameTextField.isEnabled = true
+            firstNameTextField.becomeFirstResponder()
+        case 1:
+            lastNameTextField.isEnabled = true
+            lastNameTextField.becomeFirstResponder()
+        case 2:
+            countryTextField.isEnabled = true
+            countryTextField.becomeFirstResponder()
+        case 3:
+            emailTextField.isEnabled = true
+            emailTextField.becomeFirstResponder()
+        default:
+            return
+        }
+    }
+    
+    
+    
     @IBAction func selectImagePressed(_ sender: UIButton) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
@@ -95,8 +160,26 @@ class CreateAccountViewController: UIViewController {
     private func showImagePickerController() {
         present(imagePickerController, animated: true, completion: nil)
     }
+    
+    
     @IBAction func createUserPressed(_ sender: UIButton) {
-
+        if intention == .edit{
+            guard let email = emailTextField.text,
+            let firstName = firstNameTextField.text,
+            let lastName = lastNameTextField.text,
+            !email.isEmpty,
+            !firstName.isEmpty,
+                !lastName.isEmpty else {
+                    showAlert(title: "Missing Required Fields", message: "Email and Password Required")
+                    return
+            }
+            if let country = countryTextField.text {
+                usersession.updateRefereeInfo(email: email, firstName: firstName, lastName: lastName, country: country)
+            } else {
+                usersession.updateRefereeInfo(email: email, firstName: firstName, lastName: lastName, country: nil)
+            }
+        } else {
+        
         guard let email = emailTextField.text,
             let password = passwordTextField.text,
             let confirmPassword = confirmPasswordTextField.text,
@@ -119,6 +202,7 @@ class CreateAccountViewController: UIViewController {
                 usersession.createNewAccount(email: email, password: password, confirmPassoword: confirmPassword, firstName: firstName, lastName: lastName, country: nil)
             }
 //            usersession.createNewAccount(displayName: username, email: email, password: password, confirmPassoword: confirmPassword)
+            }
         }
     }
     @IBAction func cancelPressed(_ sender: UIButton) {
@@ -155,7 +239,11 @@ extension CreateAccountViewController: UserSessionAccountCreationDelegate {
         }
         showAlert(title: "Account Created", message: "Account created using \(user.email ?? "no email entered") ") { alertController in
             let okAction = UIAlertAction(title: "Ok", style: .default) { alert in
-                self.dismiss(animated: true, completion: nil)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                guard let myAccountVC = storyboard.instantiateViewController(withIdentifier: "MyAccountVC") as? MyAccountViewController else {return}
+                myAccountVC.modalPresentationStyle = .overCurrentContext
+                self.userDidLoginDelegate?.userDidLogin()
+//                self.dismiss(animated: true, completion: nil)
             }
             alertController.addAction(okAction)
             self.present(alertController, animated: true)
@@ -166,7 +254,34 @@ extension CreateAccountViewController: UserSessionAccountCreationDelegate {
         showAlert(title: "Account Creation Error", message: error.localizedDescription)
     }
 }
+extension CreateAccountViewController: UserSessionUpdateDelegate{
+    func didRecieveUpdateError(_ usersession: UserSession, error: Error) {
+        showAlert(title: "Account Update Error", message: error.localizedDescription)
+    }
     
+    func didUpdateExistingUser(_ usersession: UserSession, user: User) {
+        
+        showAlert(title: "Account Updated", message: "Account updated") { alertController in
+            let okAction = UIAlertAction(title: "Ok", style: .default) { alert in
+                DatabaseManager.fetchReferee(vc: self, user: user) { (error, referee) in
+                    if let error = error {
+                        print(error)
+                    }
+                    if let referee = referee {
+                       self.userDidUpdatedDelegate?.userDidUpdate(referee: referee)
+                       self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+                    }
+                }
+                
+                
+            }
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true)
+        }
+    }
+    
+    
+}
 extension CreateAccountViewController: StorageManagerDelegate {
     func didFetchImage(_ storageManager: StorageManager, imageURL: URL) {
         // update the auth user's photoURL
@@ -174,6 +289,9 @@ extension CreateAccountViewController: StorageManagerDelegate {
     }
 }
 extension CreateAccountViewController: UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.textColor = .white
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

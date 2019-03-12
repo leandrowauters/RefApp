@@ -28,6 +28,7 @@ class MyAccountViewController: UIViewController {
     var views = [UIView]()
     private var usersession: UserSession!
     weak var userDidLoginDelegate: UserDidLogInDelegate?
+    weak var userDidUpdateDelegate: UserDidUpdateDelegate?
     var referee: Referee!
     var userLoggedIn = Bool()
     var graphics = GraphicClient()
@@ -49,6 +50,7 @@ class MyAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         views = [infoView,previousGamesView]
+        userDidUpdateDelegate = self
         setupSegmentedBar()
         infoView.infoTableView.delegate = self
         infoView.infoTableView.dataSource = self
@@ -57,7 +59,6 @@ class MyAccountViewController: UIViewController {
         previousGamesView.previousGamesTableView.delegate = self
         previousGamesView.previousGamesTableView.dataSource = self
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
-        usersession.usersessionSignOutDelegate = self
         graphics.setupAnimatedViewRail(view: view, animatedViewRail: animatedViewRail, customSegmentedBar: customSegmentedBar)
         graphics.setupAnimatedView(view: view, animatedView: animatedView, customSegmentedBar: customSegmentedBar, numberOfSegments: 2)
         getGameStatistics()
@@ -117,6 +118,8 @@ class MyAccountViewController: UIViewController {
         myAccountPopVC.modalPresentationStyle = .overCurrentContext
         myAccountPopVC.userLoggedIn = userLoggedIn
         myAccountPopVC.userDidLoginDelegate = self.userDidLoginDelegate
+        myAccountPopVC.userDidUpdateDelegate = self
+        myAccountPopVC.referee = referee
         self.present(myAccountPopVC, animated: true, completion: nil)
     }
     @IBAction func closeWindowPressed(_ sender: UIButton) {
@@ -135,12 +138,15 @@ class MyAccountViewController: UIViewController {
         profileNameLabel.text = referee.displayName ?? ""
     }
     func setupProfileImage(){
-        if let imageURL = referee.imageURL{
+        if referee.imageURL != ""{
             profileImage.kf.indicatorType = .activity
-            profileImage.kf.setImage(with: URL(string: imageURL))
+            profileImage.kf.setImage(with: URL(string: referee.imageURL!))
+        } else {
+            profileImage.image = UIImage(named: "userImage")
         }
     }
     func setupViews(views: [UIView]){
+        
         for view in views{
             self.view.addSubview(view)
             view.translatesAutoresizingMaskIntoConstraints = false
@@ -175,24 +181,10 @@ class MyAccountViewController: UIViewController {
     }
 
 }
-extension MyAccountViewController: UserSessionSignOutDelegate{
-    
-    func didRecieveSignOutError(_ usersession: UserSession, error: Error) {
-        showAlert(title: "Error signing out", message: error.localizedDescription)
-    }
-    
-    func didSignOutUser(_ usersession: UserSession) {
-        showAlert(title: "Succesfully signed out", message: nil) { (alert) in
-            alert.addAction(UIAlertAction.init(title: "Ok", style: .default, handler: { (action) in
-                if self.userLoggedIn{
-                    self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
-                } else {
-                    self.dismiss(animated: true, completion: nil)
-                }
-            }))
-
-            self.present(alert, animated: true, completion: nil)
-        }
+extension MyAccountViewController: UserDidUpdateDelegate{
+    func userDidUpdate(referee: Referee) {
+        self.referee = referee
+        viewDidLoad()
     }
     
     
@@ -234,7 +226,11 @@ extension MyAccountViewController: UITableViewDelegate, UITableViewDataSource{
         present(vc, animated: true, completion: nil)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
+        if tableView == infoView.infoTableView {
+            return 50
+        } else {
+            return 100
+        }
     }
     
 }
